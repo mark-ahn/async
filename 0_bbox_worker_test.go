@@ -53,8 +53,13 @@ func new_some_worker(ctx context.Context) *some_worker {
 	return __
 }
 
-func (__ *some_worker) Push(req *async.WorkOfStringThenString) {
-	__.work_ch <- req
+func (__ *some_worker) Push(ctx context.Context, req *async.WorkOfStringThenString) error {
+	select {
+	case <-ctx.Done():
+		return fmt.Errorf("timeout")
+	case __.work_ch <- req:
+		return nil
+	}
 }
 func (__ *some_worker) DoneNotify() <-chan struct{} {
 	return __.done_ch

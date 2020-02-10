@@ -4,13 +4,15 @@
 
 package async
 
+import "context"
+
 type WorkOfBoolThenBool struct {
 	Argument bool
 	ReturnCh chan<- *ReturnOfBool
 }
 
 type WorkerOfPushBoolThenBool interface {
-	Push(*WorkOfBoolThenBool)
+	Push(context.Context, *WorkOfBoolThenBool) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -20,7 +22,7 @@ type WorkOfBoolThenByte struct {
 }
 
 type WorkerOfPushBoolThenByte interface {
-	Push(*WorkOfBoolThenByte)
+	Push(context.Context, *WorkOfBoolThenByte) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -30,7 +32,7 @@ type WorkOfBoolThenComplex128 struct {
 }
 
 type WorkerOfPushBoolThenComplex128 interface {
-	Push(*WorkOfBoolThenComplex128)
+	Push(context.Context, *WorkOfBoolThenComplex128) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -40,7 +42,7 @@ type WorkOfBoolThenComplex64 struct {
 }
 
 type WorkerOfPushBoolThenComplex64 interface {
-	Push(*WorkOfBoolThenComplex64)
+	Push(context.Context, *WorkOfBoolThenComplex64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -50,7 +52,7 @@ type WorkOfBoolThenError struct {
 }
 
 type WorkerOfPushBoolThenError interface {
-	Push(*WorkOfBoolThenError)
+	Push(context.Context, *WorkOfBoolThenError) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -60,7 +62,7 @@ type WorkOfBoolThenFloat32 struct {
 }
 
 type WorkerOfPushBoolThenFloat32 interface {
-	Push(*WorkOfBoolThenFloat32)
+	Push(context.Context, *WorkOfBoolThenFloat32) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -70,7 +72,7 @@ type WorkOfBoolThenFloat64 struct {
 }
 
 type WorkerOfPushBoolThenFloat64 interface {
-	Push(*WorkOfBoolThenFloat64)
+	Push(context.Context, *WorkOfBoolThenFloat64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -80,7 +82,7 @@ type WorkOfBoolThenInt struct {
 }
 
 type WorkerOfPushBoolThenInt interface {
-	Push(*WorkOfBoolThenInt)
+	Push(context.Context, *WorkOfBoolThenInt) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -90,7 +92,7 @@ type WorkOfBoolThenInt16 struct {
 }
 
 type WorkerOfPushBoolThenInt16 interface {
-	Push(*WorkOfBoolThenInt16)
+	Push(context.Context, *WorkOfBoolThenInt16) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -100,7 +102,7 @@ type WorkOfBoolThenInt32 struct {
 }
 
 type WorkerOfPushBoolThenInt32 interface {
-	Push(*WorkOfBoolThenInt32)
+	Push(context.Context, *WorkOfBoolThenInt32) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -110,7 +112,7 @@ type WorkOfBoolThenInt64 struct {
 }
 
 type WorkerOfPushBoolThenInt64 interface {
-	Push(*WorkOfBoolThenInt64)
+	Push(context.Context, *WorkOfBoolThenInt64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -120,7 +122,7 @@ type WorkOfBoolThenInt8 struct {
 }
 
 type WorkerOfPushBoolThenInt8 interface {
-	Push(*WorkOfBoolThenInt8)
+	Push(context.Context, *WorkOfBoolThenInt8) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -130,7 +132,7 @@ type WorkOfBoolThenRune struct {
 }
 
 type WorkerOfPushBoolThenRune interface {
-	Push(*WorkOfBoolThenRune)
+	Push(context.Context, *WorkOfBoolThenRune) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -140,7 +142,7 @@ type WorkOfBoolThenString struct {
 }
 
 type WorkerOfPushBoolThenString interface {
-	Push(*WorkOfBoolThenString)
+	Push(context.Context, *WorkOfBoolThenString) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -150,7 +152,7 @@ type WorkOfBoolThenUint struct {
 }
 
 type WorkerOfPushBoolThenUint interface {
-	Push(*WorkOfBoolThenUint)
+	Push(context.Context, *WorkOfBoolThenUint) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -160,7 +162,7 @@ type WorkOfBoolThenUint16 struct {
 }
 
 type WorkerOfPushBoolThenUint16 interface {
-	Push(*WorkOfBoolThenUint16)
+	Push(context.Context, *WorkOfBoolThenUint16) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -170,7 +172,7 @@ type WorkOfBoolThenUint32 struct {
 }
 
 type WorkerOfPushBoolThenUint32 interface {
-	Push(*WorkOfBoolThenUint32)
+	Push(context.Context, *WorkOfBoolThenUint32) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -180,7 +182,7 @@ type WorkOfBoolThenUint64 struct {
 }
 
 type WorkerOfPushBoolThenUint64 interface {
-	Push(*WorkOfBoolThenUint64)
+	Push(context.Context, *WorkOfBoolThenUint64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -190,7 +192,7 @@ type WorkOfBoolThenUint8 struct {
 }
 
 type WorkerOfPushBoolThenUint8 interface {
-	Push(*WorkOfBoolThenUint8)
+	Push(context.Context, *WorkOfBoolThenUint8) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -200,7 +202,7 @@ type WorkOfBoolThenUintptr struct {
 }
 
 type WorkerOfPushBoolThenUintptr interface {
-	Push(*WorkOfBoolThenUintptr)
+	Push(context.Context, *WorkOfBoolThenUintptr) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -210,7 +212,7 @@ type WorkOfBoolThenInterface struct {
 }
 
 type WorkerOfPushBoolThenInterface interface {
-	Push(*WorkOfBoolThenInterface)
+	Push(context.Context, *WorkOfBoolThenInterface) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -220,7 +222,7 @@ type WorkOfBoolThenStruct struct {
 }
 
 type WorkerOfPushBoolThenStruct interface {
-	Push(*WorkOfBoolThenStruct)
+	Push(context.Context, *WorkOfBoolThenStruct) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -230,7 +232,7 @@ type WorkOfByteThenBool struct {
 }
 
 type WorkerOfPushByteThenBool interface {
-	Push(*WorkOfByteThenBool)
+	Push(context.Context, *WorkOfByteThenBool) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -240,7 +242,7 @@ type WorkOfByteThenByte struct {
 }
 
 type WorkerOfPushByteThenByte interface {
-	Push(*WorkOfByteThenByte)
+	Push(context.Context, *WorkOfByteThenByte) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -250,7 +252,7 @@ type WorkOfByteThenComplex128 struct {
 }
 
 type WorkerOfPushByteThenComplex128 interface {
-	Push(*WorkOfByteThenComplex128)
+	Push(context.Context, *WorkOfByteThenComplex128) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -260,7 +262,7 @@ type WorkOfByteThenComplex64 struct {
 }
 
 type WorkerOfPushByteThenComplex64 interface {
-	Push(*WorkOfByteThenComplex64)
+	Push(context.Context, *WorkOfByteThenComplex64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -270,7 +272,7 @@ type WorkOfByteThenError struct {
 }
 
 type WorkerOfPushByteThenError interface {
-	Push(*WorkOfByteThenError)
+	Push(context.Context, *WorkOfByteThenError) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -280,7 +282,7 @@ type WorkOfByteThenFloat32 struct {
 }
 
 type WorkerOfPushByteThenFloat32 interface {
-	Push(*WorkOfByteThenFloat32)
+	Push(context.Context, *WorkOfByteThenFloat32) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -290,7 +292,7 @@ type WorkOfByteThenFloat64 struct {
 }
 
 type WorkerOfPushByteThenFloat64 interface {
-	Push(*WorkOfByteThenFloat64)
+	Push(context.Context, *WorkOfByteThenFloat64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -300,7 +302,7 @@ type WorkOfByteThenInt struct {
 }
 
 type WorkerOfPushByteThenInt interface {
-	Push(*WorkOfByteThenInt)
+	Push(context.Context, *WorkOfByteThenInt) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -310,7 +312,7 @@ type WorkOfByteThenInt16 struct {
 }
 
 type WorkerOfPushByteThenInt16 interface {
-	Push(*WorkOfByteThenInt16)
+	Push(context.Context, *WorkOfByteThenInt16) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -320,7 +322,7 @@ type WorkOfByteThenInt32 struct {
 }
 
 type WorkerOfPushByteThenInt32 interface {
-	Push(*WorkOfByteThenInt32)
+	Push(context.Context, *WorkOfByteThenInt32) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -330,7 +332,7 @@ type WorkOfByteThenInt64 struct {
 }
 
 type WorkerOfPushByteThenInt64 interface {
-	Push(*WorkOfByteThenInt64)
+	Push(context.Context, *WorkOfByteThenInt64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -340,7 +342,7 @@ type WorkOfByteThenInt8 struct {
 }
 
 type WorkerOfPushByteThenInt8 interface {
-	Push(*WorkOfByteThenInt8)
+	Push(context.Context, *WorkOfByteThenInt8) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -350,7 +352,7 @@ type WorkOfByteThenRune struct {
 }
 
 type WorkerOfPushByteThenRune interface {
-	Push(*WorkOfByteThenRune)
+	Push(context.Context, *WorkOfByteThenRune) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -360,7 +362,7 @@ type WorkOfByteThenString struct {
 }
 
 type WorkerOfPushByteThenString interface {
-	Push(*WorkOfByteThenString)
+	Push(context.Context, *WorkOfByteThenString) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -370,7 +372,7 @@ type WorkOfByteThenUint struct {
 }
 
 type WorkerOfPushByteThenUint interface {
-	Push(*WorkOfByteThenUint)
+	Push(context.Context, *WorkOfByteThenUint) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -380,7 +382,7 @@ type WorkOfByteThenUint16 struct {
 }
 
 type WorkerOfPushByteThenUint16 interface {
-	Push(*WorkOfByteThenUint16)
+	Push(context.Context, *WorkOfByteThenUint16) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -390,7 +392,7 @@ type WorkOfByteThenUint32 struct {
 }
 
 type WorkerOfPushByteThenUint32 interface {
-	Push(*WorkOfByteThenUint32)
+	Push(context.Context, *WorkOfByteThenUint32) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -400,7 +402,7 @@ type WorkOfByteThenUint64 struct {
 }
 
 type WorkerOfPushByteThenUint64 interface {
-	Push(*WorkOfByteThenUint64)
+	Push(context.Context, *WorkOfByteThenUint64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -410,7 +412,7 @@ type WorkOfByteThenUint8 struct {
 }
 
 type WorkerOfPushByteThenUint8 interface {
-	Push(*WorkOfByteThenUint8)
+	Push(context.Context, *WorkOfByteThenUint8) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -420,7 +422,7 @@ type WorkOfByteThenUintptr struct {
 }
 
 type WorkerOfPushByteThenUintptr interface {
-	Push(*WorkOfByteThenUintptr)
+	Push(context.Context, *WorkOfByteThenUintptr) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -430,7 +432,7 @@ type WorkOfByteThenInterface struct {
 }
 
 type WorkerOfPushByteThenInterface interface {
-	Push(*WorkOfByteThenInterface)
+	Push(context.Context, *WorkOfByteThenInterface) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -440,7 +442,7 @@ type WorkOfByteThenStruct struct {
 }
 
 type WorkerOfPushByteThenStruct interface {
-	Push(*WorkOfByteThenStruct)
+	Push(context.Context, *WorkOfByteThenStruct) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -450,7 +452,7 @@ type WorkOfComplex128ThenBool struct {
 }
 
 type WorkerOfPushComplex128ThenBool interface {
-	Push(*WorkOfComplex128ThenBool)
+	Push(context.Context, *WorkOfComplex128ThenBool) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -460,7 +462,7 @@ type WorkOfComplex128ThenByte struct {
 }
 
 type WorkerOfPushComplex128ThenByte interface {
-	Push(*WorkOfComplex128ThenByte)
+	Push(context.Context, *WorkOfComplex128ThenByte) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -470,7 +472,7 @@ type WorkOfComplex128ThenComplex128 struct {
 }
 
 type WorkerOfPushComplex128ThenComplex128 interface {
-	Push(*WorkOfComplex128ThenComplex128)
+	Push(context.Context, *WorkOfComplex128ThenComplex128) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -480,7 +482,7 @@ type WorkOfComplex128ThenComplex64 struct {
 }
 
 type WorkerOfPushComplex128ThenComplex64 interface {
-	Push(*WorkOfComplex128ThenComplex64)
+	Push(context.Context, *WorkOfComplex128ThenComplex64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -490,7 +492,7 @@ type WorkOfComplex128ThenError struct {
 }
 
 type WorkerOfPushComplex128ThenError interface {
-	Push(*WorkOfComplex128ThenError)
+	Push(context.Context, *WorkOfComplex128ThenError) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -500,7 +502,7 @@ type WorkOfComplex128ThenFloat32 struct {
 }
 
 type WorkerOfPushComplex128ThenFloat32 interface {
-	Push(*WorkOfComplex128ThenFloat32)
+	Push(context.Context, *WorkOfComplex128ThenFloat32) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -510,7 +512,7 @@ type WorkOfComplex128ThenFloat64 struct {
 }
 
 type WorkerOfPushComplex128ThenFloat64 interface {
-	Push(*WorkOfComplex128ThenFloat64)
+	Push(context.Context, *WorkOfComplex128ThenFloat64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -520,7 +522,7 @@ type WorkOfComplex128ThenInt struct {
 }
 
 type WorkerOfPushComplex128ThenInt interface {
-	Push(*WorkOfComplex128ThenInt)
+	Push(context.Context, *WorkOfComplex128ThenInt) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -530,7 +532,7 @@ type WorkOfComplex128ThenInt16 struct {
 }
 
 type WorkerOfPushComplex128ThenInt16 interface {
-	Push(*WorkOfComplex128ThenInt16)
+	Push(context.Context, *WorkOfComplex128ThenInt16) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -540,7 +542,7 @@ type WorkOfComplex128ThenInt32 struct {
 }
 
 type WorkerOfPushComplex128ThenInt32 interface {
-	Push(*WorkOfComplex128ThenInt32)
+	Push(context.Context, *WorkOfComplex128ThenInt32) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -550,7 +552,7 @@ type WorkOfComplex128ThenInt64 struct {
 }
 
 type WorkerOfPushComplex128ThenInt64 interface {
-	Push(*WorkOfComplex128ThenInt64)
+	Push(context.Context, *WorkOfComplex128ThenInt64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -560,7 +562,7 @@ type WorkOfComplex128ThenInt8 struct {
 }
 
 type WorkerOfPushComplex128ThenInt8 interface {
-	Push(*WorkOfComplex128ThenInt8)
+	Push(context.Context, *WorkOfComplex128ThenInt8) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -570,7 +572,7 @@ type WorkOfComplex128ThenRune struct {
 }
 
 type WorkerOfPushComplex128ThenRune interface {
-	Push(*WorkOfComplex128ThenRune)
+	Push(context.Context, *WorkOfComplex128ThenRune) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -580,7 +582,7 @@ type WorkOfComplex128ThenString struct {
 }
 
 type WorkerOfPushComplex128ThenString interface {
-	Push(*WorkOfComplex128ThenString)
+	Push(context.Context, *WorkOfComplex128ThenString) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -590,7 +592,7 @@ type WorkOfComplex128ThenUint struct {
 }
 
 type WorkerOfPushComplex128ThenUint interface {
-	Push(*WorkOfComplex128ThenUint)
+	Push(context.Context, *WorkOfComplex128ThenUint) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -600,7 +602,7 @@ type WorkOfComplex128ThenUint16 struct {
 }
 
 type WorkerOfPushComplex128ThenUint16 interface {
-	Push(*WorkOfComplex128ThenUint16)
+	Push(context.Context, *WorkOfComplex128ThenUint16) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -610,7 +612,7 @@ type WorkOfComplex128ThenUint32 struct {
 }
 
 type WorkerOfPushComplex128ThenUint32 interface {
-	Push(*WorkOfComplex128ThenUint32)
+	Push(context.Context, *WorkOfComplex128ThenUint32) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -620,7 +622,7 @@ type WorkOfComplex128ThenUint64 struct {
 }
 
 type WorkerOfPushComplex128ThenUint64 interface {
-	Push(*WorkOfComplex128ThenUint64)
+	Push(context.Context, *WorkOfComplex128ThenUint64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -630,7 +632,7 @@ type WorkOfComplex128ThenUint8 struct {
 }
 
 type WorkerOfPushComplex128ThenUint8 interface {
-	Push(*WorkOfComplex128ThenUint8)
+	Push(context.Context, *WorkOfComplex128ThenUint8) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -640,7 +642,7 @@ type WorkOfComplex128ThenUintptr struct {
 }
 
 type WorkerOfPushComplex128ThenUintptr interface {
-	Push(*WorkOfComplex128ThenUintptr)
+	Push(context.Context, *WorkOfComplex128ThenUintptr) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -650,7 +652,7 @@ type WorkOfComplex128ThenInterface struct {
 }
 
 type WorkerOfPushComplex128ThenInterface interface {
-	Push(*WorkOfComplex128ThenInterface)
+	Push(context.Context, *WorkOfComplex128ThenInterface) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -660,7 +662,7 @@ type WorkOfComplex128ThenStruct struct {
 }
 
 type WorkerOfPushComplex128ThenStruct interface {
-	Push(*WorkOfComplex128ThenStruct)
+	Push(context.Context, *WorkOfComplex128ThenStruct) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -670,7 +672,7 @@ type WorkOfComplex64ThenBool struct {
 }
 
 type WorkerOfPushComplex64ThenBool interface {
-	Push(*WorkOfComplex64ThenBool)
+	Push(context.Context, *WorkOfComplex64ThenBool) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -680,7 +682,7 @@ type WorkOfComplex64ThenByte struct {
 }
 
 type WorkerOfPushComplex64ThenByte interface {
-	Push(*WorkOfComplex64ThenByte)
+	Push(context.Context, *WorkOfComplex64ThenByte) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -690,7 +692,7 @@ type WorkOfComplex64ThenComplex128 struct {
 }
 
 type WorkerOfPushComplex64ThenComplex128 interface {
-	Push(*WorkOfComplex64ThenComplex128)
+	Push(context.Context, *WorkOfComplex64ThenComplex128) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -700,7 +702,7 @@ type WorkOfComplex64ThenComplex64 struct {
 }
 
 type WorkerOfPushComplex64ThenComplex64 interface {
-	Push(*WorkOfComplex64ThenComplex64)
+	Push(context.Context, *WorkOfComplex64ThenComplex64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -710,7 +712,7 @@ type WorkOfComplex64ThenError struct {
 }
 
 type WorkerOfPushComplex64ThenError interface {
-	Push(*WorkOfComplex64ThenError)
+	Push(context.Context, *WorkOfComplex64ThenError) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -720,7 +722,7 @@ type WorkOfComplex64ThenFloat32 struct {
 }
 
 type WorkerOfPushComplex64ThenFloat32 interface {
-	Push(*WorkOfComplex64ThenFloat32)
+	Push(context.Context, *WorkOfComplex64ThenFloat32) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -730,7 +732,7 @@ type WorkOfComplex64ThenFloat64 struct {
 }
 
 type WorkerOfPushComplex64ThenFloat64 interface {
-	Push(*WorkOfComplex64ThenFloat64)
+	Push(context.Context, *WorkOfComplex64ThenFloat64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -740,7 +742,7 @@ type WorkOfComplex64ThenInt struct {
 }
 
 type WorkerOfPushComplex64ThenInt interface {
-	Push(*WorkOfComplex64ThenInt)
+	Push(context.Context, *WorkOfComplex64ThenInt) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -750,7 +752,7 @@ type WorkOfComplex64ThenInt16 struct {
 }
 
 type WorkerOfPushComplex64ThenInt16 interface {
-	Push(*WorkOfComplex64ThenInt16)
+	Push(context.Context, *WorkOfComplex64ThenInt16) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -760,7 +762,7 @@ type WorkOfComplex64ThenInt32 struct {
 }
 
 type WorkerOfPushComplex64ThenInt32 interface {
-	Push(*WorkOfComplex64ThenInt32)
+	Push(context.Context, *WorkOfComplex64ThenInt32) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -770,7 +772,7 @@ type WorkOfComplex64ThenInt64 struct {
 }
 
 type WorkerOfPushComplex64ThenInt64 interface {
-	Push(*WorkOfComplex64ThenInt64)
+	Push(context.Context, *WorkOfComplex64ThenInt64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -780,7 +782,7 @@ type WorkOfComplex64ThenInt8 struct {
 }
 
 type WorkerOfPushComplex64ThenInt8 interface {
-	Push(*WorkOfComplex64ThenInt8)
+	Push(context.Context, *WorkOfComplex64ThenInt8) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -790,7 +792,7 @@ type WorkOfComplex64ThenRune struct {
 }
 
 type WorkerOfPushComplex64ThenRune interface {
-	Push(*WorkOfComplex64ThenRune)
+	Push(context.Context, *WorkOfComplex64ThenRune) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -800,7 +802,7 @@ type WorkOfComplex64ThenString struct {
 }
 
 type WorkerOfPushComplex64ThenString interface {
-	Push(*WorkOfComplex64ThenString)
+	Push(context.Context, *WorkOfComplex64ThenString) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -810,7 +812,7 @@ type WorkOfComplex64ThenUint struct {
 }
 
 type WorkerOfPushComplex64ThenUint interface {
-	Push(*WorkOfComplex64ThenUint)
+	Push(context.Context, *WorkOfComplex64ThenUint) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -820,7 +822,7 @@ type WorkOfComplex64ThenUint16 struct {
 }
 
 type WorkerOfPushComplex64ThenUint16 interface {
-	Push(*WorkOfComplex64ThenUint16)
+	Push(context.Context, *WorkOfComplex64ThenUint16) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -830,7 +832,7 @@ type WorkOfComplex64ThenUint32 struct {
 }
 
 type WorkerOfPushComplex64ThenUint32 interface {
-	Push(*WorkOfComplex64ThenUint32)
+	Push(context.Context, *WorkOfComplex64ThenUint32) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -840,7 +842,7 @@ type WorkOfComplex64ThenUint64 struct {
 }
 
 type WorkerOfPushComplex64ThenUint64 interface {
-	Push(*WorkOfComplex64ThenUint64)
+	Push(context.Context, *WorkOfComplex64ThenUint64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -850,7 +852,7 @@ type WorkOfComplex64ThenUint8 struct {
 }
 
 type WorkerOfPushComplex64ThenUint8 interface {
-	Push(*WorkOfComplex64ThenUint8)
+	Push(context.Context, *WorkOfComplex64ThenUint8) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -860,7 +862,7 @@ type WorkOfComplex64ThenUintptr struct {
 }
 
 type WorkerOfPushComplex64ThenUintptr interface {
-	Push(*WorkOfComplex64ThenUintptr)
+	Push(context.Context, *WorkOfComplex64ThenUintptr) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -870,7 +872,7 @@ type WorkOfComplex64ThenInterface struct {
 }
 
 type WorkerOfPushComplex64ThenInterface interface {
-	Push(*WorkOfComplex64ThenInterface)
+	Push(context.Context, *WorkOfComplex64ThenInterface) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -880,7 +882,7 @@ type WorkOfComplex64ThenStruct struct {
 }
 
 type WorkerOfPushComplex64ThenStruct interface {
-	Push(*WorkOfComplex64ThenStruct)
+	Push(context.Context, *WorkOfComplex64ThenStruct) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -890,7 +892,7 @@ type WorkOfErrorThenBool struct {
 }
 
 type WorkerOfPushErrorThenBool interface {
-	Push(*WorkOfErrorThenBool)
+	Push(context.Context, *WorkOfErrorThenBool) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -900,7 +902,7 @@ type WorkOfErrorThenByte struct {
 }
 
 type WorkerOfPushErrorThenByte interface {
-	Push(*WorkOfErrorThenByte)
+	Push(context.Context, *WorkOfErrorThenByte) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -910,7 +912,7 @@ type WorkOfErrorThenComplex128 struct {
 }
 
 type WorkerOfPushErrorThenComplex128 interface {
-	Push(*WorkOfErrorThenComplex128)
+	Push(context.Context, *WorkOfErrorThenComplex128) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -920,7 +922,7 @@ type WorkOfErrorThenComplex64 struct {
 }
 
 type WorkerOfPushErrorThenComplex64 interface {
-	Push(*WorkOfErrorThenComplex64)
+	Push(context.Context, *WorkOfErrorThenComplex64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -930,7 +932,7 @@ type WorkOfErrorThenError struct {
 }
 
 type WorkerOfPushErrorThenError interface {
-	Push(*WorkOfErrorThenError)
+	Push(context.Context, *WorkOfErrorThenError) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -940,7 +942,7 @@ type WorkOfErrorThenFloat32 struct {
 }
 
 type WorkerOfPushErrorThenFloat32 interface {
-	Push(*WorkOfErrorThenFloat32)
+	Push(context.Context, *WorkOfErrorThenFloat32) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -950,7 +952,7 @@ type WorkOfErrorThenFloat64 struct {
 }
 
 type WorkerOfPushErrorThenFloat64 interface {
-	Push(*WorkOfErrorThenFloat64)
+	Push(context.Context, *WorkOfErrorThenFloat64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -960,7 +962,7 @@ type WorkOfErrorThenInt struct {
 }
 
 type WorkerOfPushErrorThenInt interface {
-	Push(*WorkOfErrorThenInt)
+	Push(context.Context, *WorkOfErrorThenInt) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -970,7 +972,7 @@ type WorkOfErrorThenInt16 struct {
 }
 
 type WorkerOfPushErrorThenInt16 interface {
-	Push(*WorkOfErrorThenInt16)
+	Push(context.Context, *WorkOfErrorThenInt16) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -980,7 +982,7 @@ type WorkOfErrorThenInt32 struct {
 }
 
 type WorkerOfPushErrorThenInt32 interface {
-	Push(*WorkOfErrorThenInt32)
+	Push(context.Context, *WorkOfErrorThenInt32) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -990,7 +992,7 @@ type WorkOfErrorThenInt64 struct {
 }
 
 type WorkerOfPushErrorThenInt64 interface {
-	Push(*WorkOfErrorThenInt64)
+	Push(context.Context, *WorkOfErrorThenInt64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1000,7 +1002,7 @@ type WorkOfErrorThenInt8 struct {
 }
 
 type WorkerOfPushErrorThenInt8 interface {
-	Push(*WorkOfErrorThenInt8)
+	Push(context.Context, *WorkOfErrorThenInt8) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1010,7 +1012,7 @@ type WorkOfErrorThenRune struct {
 }
 
 type WorkerOfPushErrorThenRune interface {
-	Push(*WorkOfErrorThenRune)
+	Push(context.Context, *WorkOfErrorThenRune) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1020,7 +1022,7 @@ type WorkOfErrorThenString struct {
 }
 
 type WorkerOfPushErrorThenString interface {
-	Push(*WorkOfErrorThenString)
+	Push(context.Context, *WorkOfErrorThenString) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1030,7 +1032,7 @@ type WorkOfErrorThenUint struct {
 }
 
 type WorkerOfPushErrorThenUint interface {
-	Push(*WorkOfErrorThenUint)
+	Push(context.Context, *WorkOfErrorThenUint) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1040,7 +1042,7 @@ type WorkOfErrorThenUint16 struct {
 }
 
 type WorkerOfPushErrorThenUint16 interface {
-	Push(*WorkOfErrorThenUint16)
+	Push(context.Context, *WorkOfErrorThenUint16) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1050,7 +1052,7 @@ type WorkOfErrorThenUint32 struct {
 }
 
 type WorkerOfPushErrorThenUint32 interface {
-	Push(*WorkOfErrorThenUint32)
+	Push(context.Context, *WorkOfErrorThenUint32) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1060,7 +1062,7 @@ type WorkOfErrorThenUint64 struct {
 }
 
 type WorkerOfPushErrorThenUint64 interface {
-	Push(*WorkOfErrorThenUint64)
+	Push(context.Context, *WorkOfErrorThenUint64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1070,7 +1072,7 @@ type WorkOfErrorThenUint8 struct {
 }
 
 type WorkerOfPushErrorThenUint8 interface {
-	Push(*WorkOfErrorThenUint8)
+	Push(context.Context, *WorkOfErrorThenUint8) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1080,7 +1082,7 @@ type WorkOfErrorThenUintptr struct {
 }
 
 type WorkerOfPushErrorThenUintptr interface {
-	Push(*WorkOfErrorThenUintptr)
+	Push(context.Context, *WorkOfErrorThenUintptr) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1090,7 +1092,7 @@ type WorkOfErrorThenInterface struct {
 }
 
 type WorkerOfPushErrorThenInterface interface {
-	Push(*WorkOfErrorThenInterface)
+	Push(context.Context, *WorkOfErrorThenInterface) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1100,7 +1102,7 @@ type WorkOfErrorThenStruct struct {
 }
 
 type WorkerOfPushErrorThenStruct interface {
-	Push(*WorkOfErrorThenStruct)
+	Push(context.Context, *WorkOfErrorThenStruct) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1110,7 +1112,7 @@ type WorkOfFloat32ThenBool struct {
 }
 
 type WorkerOfPushFloat32ThenBool interface {
-	Push(*WorkOfFloat32ThenBool)
+	Push(context.Context, *WorkOfFloat32ThenBool) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1120,7 +1122,7 @@ type WorkOfFloat32ThenByte struct {
 }
 
 type WorkerOfPushFloat32ThenByte interface {
-	Push(*WorkOfFloat32ThenByte)
+	Push(context.Context, *WorkOfFloat32ThenByte) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1130,7 +1132,7 @@ type WorkOfFloat32ThenComplex128 struct {
 }
 
 type WorkerOfPushFloat32ThenComplex128 interface {
-	Push(*WorkOfFloat32ThenComplex128)
+	Push(context.Context, *WorkOfFloat32ThenComplex128) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1140,7 +1142,7 @@ type WorkOfFloat32ThenComplex64 struct {
 }
 
 type WorkerOfPushFloat32ThenComplex64 interface {
-	Push(*WorkOfFloat32ThenComplex64)
+	Push(context.Context, *WorkOfFloat32ThenComplex64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1150,7 +1152,7 @@ type WorkOfFloat32ThenError struct {
 }
 
 type WorkerOfPushFloat32ThenError interface {
-	Push(*WorkOfFloat32ThenError)
+	Push(context.Context, *WorkOfFloat32ThenError) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1160,7 +1162,7 @@ type WorkOfFloat32ThenFloat32 struct {
 }
 
 type WorkerOfPushFloat32ThenFloat32 interface {
-	Push(*WorkOfFloat32ThenFloat32)
+	Push(context.Context, *WorkOfFloat32ThenFloat32) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1170,7 +1172,7 @@ type WorkOfFloat32ThenFloat64 struct {
 }
 
 type WorkerOfPushFloat32ThenFloat64 interface {
-	Push(*WorkOfFloat32ThenFloat64)
+	Push(context.Context, *WorkOfFloat32ThenFloat64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1180,7 +1182,7 @@ type WorkOfFloat32ThenInt struct {
 }
 
 type WorkerOfPushFloat32ThenInt interface {
-	Push(*WorkOfFloat32ThenInt)
+	Push(context.Context, *WorkOfFloat32ThenInt) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1190,7 +1192,7 @@ type WorkOfFloat32ThenInt16 struct {
 }
 
 type WorkerOfPushFloat32ThenInt16 interface {
-	Push(*WorkOfFloat32ThenInt16)
+	Push(context.Context, *WorkOfFloat32ThenInt16) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1200,7 +1202,7 @@ type WorkOfFloat32ThenInt32 struct {
 }
 
 type WorkerOfPushFloat32ThenInt32 interface {
-	Push(*WorkOfFloat32ThenInt32)
+	Push(context.Context, *WorkOfFloat32ThenInt32) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1210,7 +1212,7 @@ type WorkOfFloat32ThenInt64 struct {
 }
 
 type WorkerOfPushFloat32ThenInt64 interface {
-	Push(*WorkOfFloat32ThenInt64)
+	Push(context.Context, *WorkOfFloat32ThenInt64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1220,7 +1222,7 @@ type WorkOfFloat32ThenInt8 struct {
 }
 
 type WorkerOfPushFloat32ThenInt8 interface {
-	Push(*WorkOfFloat32ThenInt8)
+	Push(context.Context, *WorkOfFloat32ThenInt8) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1230,7 +1232,7 @@ type WorkOfFloat32ThenRune struct {
 }
 
 type WorkerOfPushFloat32ThenRune interface {
-	Push(*WorkOfFloat32ThenRune)
+	Push(context.Context, *WorkOfFloat32ThenRune) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1240,7 +1242,7 @@ type WorkOfFloat32ThenString struct {
 }
 
 type WorkerOfPushFloat32ThenString interface {
-	Push(*WorkOfFloat32ThenString)
+	Push(context.Context, *WorkOfFloat32ThenString) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1250,7 +1252,7 @@ type WorkOfFloat32ThenUint struct {
 }
 
 type WorkerOfPushFloat32ThenUint interface {
-	Push(*WorkOfFloat32ThenUint)
+	Push(context.Context, *WorkOfFloat32ThenUint) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1260,7 +1262,7 @@ type WorkOfFloat32ThenUint16 struct {
 }
 
 type WorkerOfPushFloat32ThenUint16 interface {
-	Push(*WorkOfFloat32ThenUint16)
+	Push(context.Context, *WorkOfFloat32ThenUint16) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1270,7 +1272,7 @@ type WorkOfFloat32ThenUint32 struct {
 }
 
 type WorkerOfPushFloat32ThenUint32 interface {
-	Push(*WorkOfFloat32ThenUint32)
+	Push(context.Context, *WorkOfFloat32ThenUint32) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1280,7 +1282,7 @@ type WorkOfFloat32ThenUint64 struct {
 }
 
 type WorkerOfPushFloat32ThenUint64 interface {
-	Push(*WorkOfFloat32ThenUint64)
+	Push(context.Context, *WorkOfFloat32ThenUint64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1290,7 +1292,7 @@ type WorkOfFloat32ThenUint8 struct {
 }
 
 type WorkerOfPushFloat32ThenUint8 interface {
-	Push(*WorkOfFloat32ThenUint8)
+	Push(context.Context, *WorkOfFloat32ThenUint8) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1300,7 +1302,7 @@ type WorkOfFloat32ThenUintptr struct {
 }
 
 type WorkerOfPushFloat32ThenUintptr interface {
-	Push(*WorkOfFloat32ThenUintptr)
+	Push(context.Context, *WorkOfFloat32ThenUintptr) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1310,7 +1312,7 @@ type WorkOfFloat32ThenInterface struct {
 }
 
 type WorkerOfPushFloat32ThenInterface interface {
-	Push(*WorkOfFloat32ThenInterface)
+	Push(context.Context, *WorkOfFloat32ThenInterface) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1320,7 +1322,7 @@ type WorkOfFloat32ThenStruct struct {
 }
 
 type WorkerOfPushFloat32ThenStruct interface {
-	Push(*WorkOfFloat32ThenStruct)
+	Push(context.Context, *WorkOfFloat32ThenStruct) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1330,7 +1332,7 @@ type WorkOfFloat64ThenBool struct {
 }
 
 type WorkerOfPushFloat64ThenBool interface {
-	Push(*WorkOfFloat64ThenBool)
+	Push(context.Context, *WorkOfFloat64ThenBool) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1340,7 +1342,7 @@ type WorkOfFloat64ThenByte struct {
 }
 
 type WorkerOfPushFloat64ThenByte interface {
-	Push(*WorkOfFloat64ThenByte)
+	Push(context.Context, *WorkOfFloat64ThenByte) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1350,7 +1352,7 @@ type WorkOfFloat64ThenComplex128 struct {
 }
 
 type WorkerOfPushFloat64ThenComplex128 interface {
-	Push(*WorkOfFloat64ThenComplex128)
+	Push(context.Context, *WorkOfFloat64ThenComplex128) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1360,7 +1362,7 @@ type WorkOfFloat64ThenComplex64 struct {
 }
 
 type WorkerOfPushFloat64ThenComplex64 interface {
-	Push(*WorkOfFloat64ThenComplex64)
+	Push(context.Context, *WorkOfFloat64ThenComplex64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1370,7 +1372,7 @@ type WorkOfFloat64ThenError struct {
 }
 
 type WorkerOfPushFloat64ThenError interface {
-	Push(*WorkOfFloat64ThenError)
+	Push(context.Context, *WorkOfFloat64ThenError) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1380,7 +1382,7 @@ type WorkOfFloat64ThenFloat32 struct {
 }
 
 type WorkerOfPushFloat64ThenFloat32 interface {
-	Push(*WorkOfFloat64ThenFloat32)
+	Push(context.Context, *WorkOfFloat64ThenFloat32) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1390,7 +1392,7 @@ type WorkOfFloat64ThenFloat64 struct {
 }
 
 type WorkerOfPushFloat64ThenFloat64 interface {
-	Push(*WorkOfFloat64ThenFloat64)
+	Push(context.Context, *WorkOfFloat64ThenFloat64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1400,7 +1402,7 @@ type WorkOfFloat64ThenInt struct {
 }
 
 type WorkerOfPushFloat64ThenInt interface {
-	Push(*WorkOfFloat64ThenInt)
+	Push(context.Context, *WorkOfFloat64ThenInt) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1410,7 +1412,7 @@ type WorkOfFloat64ThenInt16 struct {
 }
 
 type WorkerOfPushFloat64ThenInt16 interface {
-	Push(*WorkOfFloat64ThenInt16)
+	Push(context.Context, *WorkOfFloat64ThenInt16) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1420,7 +1422,7 @@ type WorkOfFloat64ThenInt32 struct {
 }
 
 type WorkerOfPushFloat64ThenInt32 interface {
-	Push(*WorkOfFloat64ThenInt32)
+	Push(context.Context, *WorkOfFloat64ThenInt32) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1430,7 +1432,7 @@ type WorkOfFloat64ThenInt64 struct {
 }
 
 type WorkerOfPushFloat64ThenInt64 interface {
-	Push(*WorkOfFloat64ThenInt64)
+	Push(context.Context, *WorkOfFloat64ThenInt64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1440,7 +1442,7 @@ type WorkOfFloat64ThenInt8 struct {
 }
 
 type WorkerOfPushFloat64ThenInt8 interface {
-	Push(*WorkOfFloat64ThenInt8)
+	Push(context.Context, *WorkOfFloat64ThenInt8) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1450,7 +1452,7 @@ type WorkOfFloat64ThenRune struct {
 }
 
 type WorkerOfPushFloat64ThenRune interface {
-	Push(*WorkOfFloat64ThenRune)
+	Push(context.Context, *WorkOfFloat64ThenRune) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1460,7 +1462,7 @@ type WorkOfFloat64ThenString struct {
 }
 
 type WorkerOfPushFloat64ThenString interface {
-	Push(*WorkOfFloat64ThenString)
+	Push(context.Context, *WorkOfFloat64ThenString) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1470,7 +1472,7 @@ type WorkOfFloat64ThenUint struct {
 }
 
 type WorkerOfPushFloat64ThenUint interface {
-	Push(*WorkOfFloat64ThenUint)
+	Push(context.Context, *WorkOfFloat64ThenUint) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1480,7 +1482,7 @@ type WorkOfFloat64ThenUint16 struct {
 }
 
 type WorkerOfPushFloat64ThenUint16 interface {
-	Push(*WorkOfFloat64ThenUint16)
+	Push(context.Context, *WorkOfFloat64ThenUint16) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1490,7 +1492,7 @@ type WorkOfFloat64ThenUint32 struct {
 }
 
 type WorkerOfPushFloat64ThenUint32 interface {
-	Push(*WorkOfFloat64ThenUint32)
+	Push(context.Context, *WorkOfFloat64ThenUint32) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1500,7 +1502,7 @@ type WorkOfFloat64ThenUint64 struct {
 }
 
 type WorkerOfPushFloat64ThenUint64 interface {
-	Push(*WorkOfFloat64ThenUint64)
+	Push(context.Context, *WorkOfFloat64ThenUint64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1510,7 +1512,7 @@ type WorkOfFloat64ThenUint8 struct {
 }
 
 type WorkerOfPushFloat64ThenUint8 interface {
-	Push(*WorkOfFloat64ThenUint8)
+	Push(context.Context, *WorkOfFloat64ThenUint8) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1520,7 +1522,7 @@ type WorkOfFloat64ThenUintptr struct {
 }
 
 type WorkerOfPushFloat64ThenUintptr interface {
-	Push(*WorkOfFloat64ThenUintptr)
+	Push(context.Context, *WorkOfFloat64ThenUintptr) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1530,7 +1532,7 @@ type WorkOfFloat64ThenInterface struct {
 }
 
 type WorkerOfPushFloat64ThenInterface interface {
-	Push(*WorkOfFloat64ThenInterface)
+	Push(context.Context, *WorkOfFloat64ThenInterface) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1540,7 +1542,7 @@ type WorkOfFloat64ThenStruct struct {
 }
 
 type WorkerOfPushFloat64ThenStruct interface {
-	Push(*WorkOfFloat64ThenStruct)
+	Push(context.Context, *WorkOfFloat64ThenStruct) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1550,7 +1552,7 @@ type WorkOfIntThenBool struct {
 }
 
 type WorkerOfPushIntThenBool interface {
-	Push(*WorkOfIntThenBool)
+	Push(context.Context, *WorkOfIntThenBool) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1560,7 +1562,7 @@ type WorkOfIntThenByte struct {
 }
 
 type WorkerOfPushIntThenByte interface {
-	Push(*WorkOfIntThenByte)
+	Push(context.Context, *WorkOfIntThenByte) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1570,7 +1572,7 @@ type WorkOfIntThenComplex128 struct {
 }
 
 type WorkerOfPushIntThenComplex128 interface {
-	Push(*WorkOfIntThenComplex128)
+	Push(context.Context, *WorkOfIntThenComplex128) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1580,7 +1582,7 @@ type WorkOfIntThenComplex64 struct {
 }
 
 type WorkerOfPushIntThenComplex64 interface {
-	Push(*WorkOfIntThenComplex64)
+	Push(context.Context, *WorkOfIntThenComplex64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1590,7 +1592,7 @@ type WorkOfIntThenError struct {
 }
 
 type WorkerOfPushIntThenError interface {
-	Push(*WorkOfIntThenError)
+	Push(context.Context, *WorkOfIntThenError) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1600,7 +1602,7 @@ type WorkOfIntThenFloat32 struct {
 }
 
 type WorkerOfPushIntThenFloat32 interface {
-	Push(*WorkOfIntThenFloat32)
+	Push(context.Context, *WorkOfIntThenFloat32) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1610,7 +1612,7 @@ type WorkOfIntThenFloat64 struct {
 }
 
 type WorkerOfPushIntThenFloat64 interface {
-	Push(*WorkOfIntThenFloat64)
+	Push(context.Context, *WorkOfIntThenFloat64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1620,7 +1622,7 @@ type WorkOfIntThenInt struct {
 }
 
 type WorkerOfPushIntThenInt interface {
-	Push(*WorkOfIntThenInt)
+	Push(context.Context, *WorkOfIntThenInt) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1630,7 +1632,7 @@ type WorkOfIntThenInt16 struct {
 }
 
 type WorkerOfPushIntThenInt16 interface {
-	Push(*WorkOfIntThenInt16)
+	Push(context.Context, *WorkOfIntThenInt16) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1640,7 +1642,7 @@ type WorkOfIntThenInt32 struct {
 }
 
 type WorkerOfPushIntThenInt32 interface {
-	Push(*WorkOfIntThenInt32)
+	Push(context.Context, *WorkOfIntThenInt32) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1650,7 +1652,7 @@ type WorkOfIntThenInt64 struct {
 }
 
 type WorkerOfPushIntThenInt64 interface {
-	Push(*WorkOfIntThenInt64)
+	Push(context.Context, *WorkOfIntThenInt64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1660,7 +1662,7 @@ type WorkOfIntThenInt8 struct {
 }
 
 type WorkerOfPushIntThenInt8 interface {
-	Push(*WorkOfIntThenInt8)
+	Push(context.Context, *WorkOfIntThenInt8) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1670,7 +1672,7 @@ type WorkOfIntThenRune struct {
 }
 
 type WorkerOfPushIntThenRune interface {
-	Push(*WorkOfIntThenRune)
+	Push(context.Context, *WorkOfIntThenRune) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1680,7 +1682,7 @@ type WorkOfIntThenString struct {
 }
 
 type WorkerOfPushIntThenString interface {
-	Push(*WorkOfIntThenString)
+	Push(context.Context, *WorkOfIntThenString) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1690,7 +1692,7 @@ type WorkOfIntThenUint struct {
 }
 
 type WorkerOfPushIntThenUint interface {
-	Push(*WorkOfIntThenUint)
+	Push(context.Context, *WorkOfIntThenUint) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1700,7 +1702,7 @@ type WorkOfIntThenUint16 struct {
 }
 
 type WorkerOfPushIntThenUint16 interface {
-	Push(*WorkOfIntThenUint16)
+	Push(context.Context, *WorkOfIntThenUint16) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1710,7 +1712,7 @@ type WorkOfIntThenUint32 struct {
 }
 
 type WorkerOfPushIntThenUint32 interface {
-	Push(*WorkOfIntThenUint32)
+	Push(context.Context, *WorkOfIntThenUint32) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1720,7 +1722,7 @@ type WorkOfIntThenUint64 struct {
 }
 
 type WorkerOfPushIntThenUint64 interface {
-	Push(*WorkOfIntThenUint64)
+	Push(context.Context, *WorkOfIntThenUint64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1730,7 +1732,7 @@ type WorkOfIntThenUint8 struct {
 }
 
 type WorkerOfPushIntThenUint8 interface {
-	Push(*WorkOfIntThenUint8)
+	Push(context.Context, *WorkOfIntThenUint8) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1740,7 +1742,7 @@ type WorkOfIntThenUintptr struct {
 }
 
 type WorkerOfPushIntThenUintptr interface {
-	Push(*WorkOfIntThenUintptr)
+	Push(context.Context, *WorkOfIntThenUintptr) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1750,7 +1752,7 @@ type WorkOfIntThenInterface struct {
 }
 
 type WorkerOfPushIntThenInterface interface {
-	Push(*WorkOfIntThenInterface)
+	Push(context.Context, *WorkOfIntThenInterface) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1760,7 +1762,7 @@ type WorkOfIntThenStruct struct {
 }
 
 type WorkerOfPushIntThenStruct interface {
-	Push(*WorkOfIntThenStruct)
+	Push(context.Context, *WorkOfIntThenStruct) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1770,7 +1772,7 @@ type WorkOfInt16ThenBool struct {
 }
 
 type WorkerOfPushInt16ThenBool interface {
-	Push(*WorkOfInt16ThenBool)
+	Push(context.Context, *WorkOfInt16ThenBool) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1780,7 +1782,7 @@ type WorkOfInt16ThenByte struct {
 }
 
 type WorkerOfPushInt16ThenByte interface {
-	Push(*WorkOfInt16ThenByte)
+	Push(context.Context, *WorkOfInt16ThenByte) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1790,7 +1792,7 @@ type WorkOfInt16ThenComplex128 struct {
 }
 
 type WorkerOfPushInt16ThenComplex128 interface {
-	Push(*WorkOfInt16ThenComplex128)
+	Push(context.Context, *WorkOfInt16ThenComplex128) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1800,7 +1802,7 @@ type WorkOfInt16ThenComplex64 struct {
 }
 
 type WorkerOfPushInt16ThenComplex64 interface {
-	Push(*WorkOfInt16ThenComplex64)
+	Push(context.Context, *WorkOfInt16ThenComplex64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1810,7 +1812,7 @@ type WorkOfInt16ThenError struct {
 }
 
 type WorkerOfPushInt16ThenError interface {
-	Push(*WorkOfInt16ThenError)
+	Push(context.Context, *WorkOfInt16ThenError) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1820,7 +1822,7 @@ type WorkOfInt16ThenFloat32 struct {
 }
 
 type WorkerOfPushInt16ThenFloat32 interface {
-	Push(*WorkOfInt16ThenFloat32)
+	Push(context.Context, *WorkOfInt16ThenFloat32) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1830,7 +1832,7 @@ type WorkOfInt16ThenFloat64 struct {
 }
 
 type WorkerOfPushInt16ThenFloat64 interface {
-	Push(*WorkOfInt16ThenFloat64)
+	Push(context.Context, *WorkOfInt16ThenFloat64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1840,7 +1842,7 @@ type WorkOfInt16ThenInt struct {
 }
 
 type WorkerOfPushInt16ThenInt interface {
-	Push(*WorkOfInt16ThenInt)
+	Push(context.Context, *WorkOfInt16ThenInt) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1850,7 +1852,7 @@ type WorkOfInt16ThenInt16 struct {
 }
 
 type WorkerOfPushInt16ThenInt16 interface {
-	Push(*WorkOfInt16ThenInt16)
+	Push(context.Context, *WorkOfInt16ThenInt16) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1860,7 +1862,7 @@ type WorkOfInt16ThenInt32 struct {
 }
 
 type WorkerOfPushInt16ThenInt32 interface {
-	Push(*WorkOfInt16ThenInt32)
+	Push(context.Context, *WorkOfInt16ThenInt32) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1870,7 +1872,7 @@ type WorkOfInt16ThenInt64 struct {
 }
 
 type WorkerOfPushInt16ThenInt64 interface {
-	Push(*WorkOfInt16ThenInt64)
+	Push(context.Context, *WorkOfInt16ThenInt64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1880,7 +1882,7 @@ type WorkOfInt16ThenInt8 struct {
 }
 
 type WorkerOfPushInt16ThenInt8 interface {
-	Push(*WorkOfInt16ThenInt8)
+	Push(context.Context, *WorkOfInt16ThenInt8) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1890,7 +1892,7 @@ type WorkOfInt16ThenRune struct {
 }
 
 type WorkerOfPushInt16ThenRune interface {
-	Push(*WorkOfInt16ThenRune)
+	Push(context.Context, *WorkOfInt16ThenRune) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1900,7 +1902,7 @@ type WorkOfInt16ThenString struct {
 }
 
 type WorkerOfPushInt16ThenString interface {
-	Push(*WorkOfInt16ThenString)
+	Push(context.Context, *WorkOfInt16ThenString) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1910,7 +1912,7 @@ type WorkOfInt16ThenUint struct {
 }
 
 type WorkerOfPushInt16ThenUint interface {
-	Push(*WorkOfInt16ThenUint)
+	Push(context.Context, *WorkOfInt16ThenUint) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1920,7 +1922,7 @@ type WorkOfInt16ThenUint16 struct {
 }
 
 type WorkerOfPushInt16ThenUint16 interface {
-	Push(*WorkOfInt16ThenUint16)
+	Push(context.Context, *WorkOfInt16ThenUint16) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1930,7 +1932,7 @@ type WorkOfInt16ThenUint32 struct {
 }
 
 type WorkerOfPushInt16ThenUint32 interface {
-	Push(*WorkOfInt16ThenUint32)
+	Push(context.Context, *WorkOfInt16ThenUint32) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1940,7 +1942,7 @@ type WorkOfInt16ThenUint64 struct {
 }
 
 type WorkerOfPushInt16ThenUint64 interface {
-	Push(*WorkOfInt16ThenUint64)
+	Push(context.Context, *WorkOfInt16ThenUint64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1950,7 +1952,7 @@ type WorkOfInt16ThenUint8 struct {
 }
 
 type WorkerOfPushInt16ThenUint8 interface {
-	Push(*WorkOfInt16ThenUint8)
+	Push(context.Context, *WorkOfInt16ThenUint8) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1960,7 +1962,7 @@ type WorkOfInt16ThenUintptr struct {
 }
 
 type WorkerOfPushInt16ThenUintptr interface {
-	Push(*WorkOfInt16ThenUintptr)
+	Push(context.Context, *WorkOfInt16ThenUintptr) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1970,7 +1972,7 @@ type WorkOfInt16ThenInterface struct {
 }
 
 type WorkerOfPushInt16ThenInterface interface {
-	Push(*WorkOfInt16ThenInterface)
+	Push(context.Context, *WorkOfInt16ThenInterface) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1980,7 +1982,7 @@ type WorkOfInt16ThenStruct struct {
 }
 
 type WorkerOfPushInt16ThenStruct interface {
-	Push(*WorkOfInt16ThenStruct)
+	Push(context.Context, *WorkOfInt16ThenStruct) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -1990,7 +1992,7 @@ type WorkOfInt32ThenBool struct {
 }
 
 type WorkerOfPushInt32ThenBool interface {
-	Push(*WorkOfInt32ThenBool)
+	Push(context.Context, *WorkOfInt32ThenBool) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2000,7 +2002,7 @@ type WorkOfInt32ThenByte struct {
 }
 
 type WorkerOfPushInt32ThenByte interface {
-	Push(*WorkOfInt32ThenByte)
+	Push(context.Context, *WorkOfInt32ThenByte) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2010,7 +2012,7 @@ type WorkOfInt32ThenComplex128 struct {
 }
 
 type WorkerOfPushInt32ThenComplex128 interface {
-	Push(*WorkOfInt32ThenComplex128)
+	Push(context.Context, *WorkOfInt32ThenComplex128) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2020,7 +2022,7 @@ type WorkOfInt32ThenComplex64 struct {
 }
 
 type WorkerOfPushInt32ThenComplex64 interface {
-	Push(*WorkOfInt32ThenComplex64)
+	Push(context.Context, *WorkOfInt32ThenComplex64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2030,7 +2032,7 @@ type WorkOfInt32ThenError struct {
 }
 
 type WorkerOfPushInt32ThenError interface {
-	Push(*WorkOfInt32ThenError)
+	Push(context.Context, *WorkOfInt32ThenError) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2040,7 +2042,7 @@ type WorkOfInt32ThenFloat32 struct {
 }
 
 type WorkerOfPushInt32ThenFloat32 interface {
-	Push(*WorkOfInt32ThenFloat32)
+	Push(context.Context, *WorkOfInt32ThenFloat32) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2050,7 +2052,7 @@ type WorkOfInt32ThenFloat64 struct {
 }
 
 type WorkerOfPushInt32ThenFloat64 interface {
-	Push(*WorkOfInt32ThenFloat64)
+	Push(context.Context, *WorkOfInt32ThenFloat64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2060,7 +2062,7 @@ type WorkOfInt32ThenInt struct {
 }
 
 type WorkerOfPushInt32ThenInt interface {
-	Push(*WorkOfInt32ThenInt)
+	Push(context.Context, *WorkOfInt32ThenInt) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2070,7 +2072,7 @@ type WorkOfInt32ThenInt16 struct {
 }
 
 type WorkerOfPushInt32ThenInt16 interface {
-	Push(*WorkOfInt32ThenInt16)
+	Push(context.Context, *WorkOfInt32ThenInt16) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2080,7 +2082,7 @@ type WorkOfInt32ThenInt32 struct {
 }
 
 type WorkerOfPushInt32ThenInt32 interface {
-	Push(*WorkOfInt32ThenInt32)
+	Push(context.Context, *WorkOfInt32ThenInt32) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2090,7 +2092,7 @@ type WorkOfInt32ThenInt64 struct {
 }
 
 type WorkerOfPushInt32ThenInt64 interface {
-	Push(*WorkOfInt32ThenInt64)
+	Push(context.Context, *WorkOfInt32ThenInt64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2100,7 +2102,7 @@ type WorkOfInt32ThenInt8 struct {
 }
 
 type WorkerOfPushInt32ThenInt8 interface {
-	Push(*WorkOfInt32ThenInt8)
+	Push(context.Context, *WorkOfInt32ThenInt8) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2110,7 +2112,7 @@ type WorkOfInt32ThenRune struct {
 }
 
 type WorkerOfPushInt32ThenRune interface {
-	Push(*WorkOfInt32ThenRune)
+	Push(context.Context, *WorkOfInt32ThenRune) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2120,7 +2122,7 @@ type WorkOfInt32ThenString struct {
 }
 
 type WorkerOfPushInt32ThenString interface {
-	Push(*WorkOfInt32ThenString)
+	Push(context.Context, *WorkOfInt32ThenString) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2130,7 +2132,7 @@ type WorkOfInt32ThenUint struct {
 }
 
 type WorkerOfPushInt32ThenUint interface {
-	Push(*WorkOfInt32ThenUint)
+	Push(context.Context, *WorkOfInt32ThenUint) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2140,7 +2142,7 @@ type WorkOfInt32ThenUint16 struct {
 }
 
 type WorkerOfPushInt32ThenUint16 interface {
-	Push(*WorkOfInt32ThenUint16)
+	Push(context.Context, *WorkOfInt32ThenUint16) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2150,7 +2152,7 @@ type WorkOfInt32ThenUint32 struct {
 }
 
 type WorkerOfPushInt32ThenUint32 interface {
-	Push(*WorkOfInt32ThenUint32)
+	Push(context.Context, *WorkOfInt32ThenUint32) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2160,7 +2162,7 @@ type WorkOfInt32ThenUint64 struct {
 }
 
 type WorkerOfPushInt32ThenUint64 interface {
-	Push(*WorkOfInt32ThenUint64)
+	Push(context.Context, *WorkOfInt32ThenUint64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2170,7 +2172,7 @@ type WorkOfInt32ThenUint8 struct {
 }
 
 type WorkerOfPushInt32ThenUint8 interface {
-	Push(*WorkOfInt32ThenUint8)
+	Push(context.Context, *WorkOfInt32ThenUint8) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2180,7 +2182,7 @@ type WorkOfInt32ThenUintptr struct {
 }
 
 type WorkerOfPushInt32ThenUintptr interface {
-	Push(*WorkOfInt32ThenUintptr)
+	Push(context.Context, *WorkOfInt32ThenUintptr) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2190,7 +2192,7 @@ type WorkOfInt32ThenInterface struct {
 }
 
 type WorkerOfPushInt32ThenInterface interface {
-	Push(*WorkOfInt32ThenInterface)
+	Push(context.Context, *WorkOfInt32ThenInterface) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2200,7 +2202,7 @@ type WorkOfInt32ThenStruct struct {
 }
 
 type WorkerOfPushInt32ThenStruct interface {
-	Push(*WorkOfInt32ThenStruct)
+	Push(context.Context, *WorkOfInt32ThenStruct) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2210,7 +2212,7 @@ type WorkOfInt64ThenBool struct {
 }
 
 type WorkerOfPushInt64ThenBool interface {
-	Push(*WorkOfInt64ThenBool)
+	Push(context.Context, *WorkOfInt64ThenBool) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2220,7 +2222,7 @@ type WorkOfInt64ThenByte struct {
 }
 
 type WorkerOfPushInt64ThenByte interface {
-	Push(*WorkOfInt64ThenByte)
+	Push(context.Context, *WorkOfInt64ThenByte) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2230,7 +2232,7 @@ type WorkOfInt64ThenComplex128 struct {
 }
 
 type WorkerOfPushInt64ThenComplex128 interface {
-	Push(*WorkOfInt64ThenComplex128)
+	Push(context.Context, *WorkOfInt64ThenComplex128) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2240,7 +2242,7 @@ type WorkOfInt64ThenComplex64 struct {
 }
 
 type WorkerOfPushInt64ThenComplex64 interface {
-	Push(*WorkOfInt64ThenComplex64)
+	Push(context.Context, *WorkOfInt64ThenComplex64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2250,7 +2252,7 @@ type WorkOfInt64ThenError struct {
 }
 
 type WorkerOfPushInt64ThenError interface {
-	Push(*WorkOfInt64ThenError)
+	Push(context.Context, *WorkOfInt64ThenError) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2260,7 +2262,7 @@ type WorkOfInt64ThenFloat32 struct {
 }
 
 type WorkerOfPushInt64ThenFloat32 interface {
-	Push(*WorkOfInt64ThenFloat32)
+	Push(context.Context, *WorkOfInt64ThenFloat32) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2270,7 +2272,7 @@ type WorkOfInt64ThenFloat64 struct {
 }
 
 type WorkerOfPushInt64ThenFloat64 interface {
-	Push(*WorkOfInt64ThenFloat64)
+	Push(context.Context, *WorkOfInt64ThenFloat64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2280,7 +2282,7 @@ type WorkOfInt64ThenInt struct {
 }
 
 type WorkerOfPushInt64ThenInt interface {
-	Push(*WorkOfInt64ThenInt)
+	Push(context.Context, *WorkOfInt64ThenInt) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2290,7 +2292,7 @@ type WorkOfInt64ThenInt16 struct {
 }
 
 type WorkerOfPushInt64ThenInt16 interface {
-	Push(*WorkOfInt64ThenInt16)
+	Push(context.Context, *WorkOfInt64ThenInt16) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2300,7 +2302,7 @@ type WorkOfInt64ThenInt32 struct {
 }
 
 type WorkerOfPushInt64ThenInt32 interface {
-	Push(*WorkOfInt64ThenInt32)
+	Push(context.Context, *WorkOfInt64ThenInt32) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2310,7 +2312,7 @@ type WorkOfInt64ThenInt64 struct {
 }
 
 type WorkerOfPushInt64ThenInt64 interface {
-	Push(*WorkOfInt64ThenInt64)
+	Push(context.Context, *WorkOfInt64ThenInt64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2320,7 +2322,7 @@ type WorkOfInt64ThenInt8 struct {
 }
 
 type WorkerOfPushInt64ThenInt8 interface {
-	Push(*WorkOfInt64ThenInt8)
+	Push(context.Context, *WorkOfInt64ThenInt8) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2330,7 +2332,7 @@ type WorkOfInt64ThenRune struct {
 }
 
 type WorkerOfPushInt64ThenRune interface {
-	Push(*WorkOfInt64ThenRune)
+	Push(context.Context, *WorkOfInt64ThenRune) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2340,7 +2342,7 @@ type WorkOfInt64ThenString struct {
 }
 
 type WorkerOfPushInt64ThenString interface {
-	Push(*WorkOfInt64ThenString)
+	Push(context.Context, *WorkOfInt64ThenString) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2350,7 +2352,7 @@ type WorkOfInt64ThenUint struct {
 }
 
 type WorkerOfPushInt64ThenUint interface {
-	Push(*WorkOfInt64ThenUint)
+	Push(context.Context, *WorkOfInt64ThenUint) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2360,7 +2362,7 @@ type WorkOfInt64ThenUint16 struct {
 }
 
 type WorkerOfPushInt64ThenUint16 interface {
-	Push(*WorkOfInt64ThenUint16)
+	Push(context.Context, *WorkOfInt64ThenUint16) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2370,7 +2372,7 @@ type WorkOfInt64ThenUint32 struct {
 }
 
 type WorkerOfPushInt64ThenUint32 interface {
-	Push(*WorkOfInt64ThenUint32)
+	Push(context.Context, *WorkOfInt64ThenUint32) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2380,7 +2382,7 @@ type WorkOfInt64ThenUint64 struct {
 }
 
 type WorkerOfPushInt64ThenUint64 interface {
-	Push(*WorkOfInt64ThenUint64)
+	Push(context.Context, *WorkOfInt64ThenUint64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2390,7 +2392,7 @@ type WorkOfInt64ThenUint8 struct {
 }
 
 type WorkerOfPushInt64ThenUint8 interface {
-	Push(*WorkOfInt64ThenUint8)
+	Push(context.Context, *WorkOfInt64ThenUint8) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2400,7 +2402,7 @@ type WorkOfInt64ThenUintptr struct {
 }
 
 type WorkerOfPushInt64ThenUintptr interface {
-	Push(*WorkOfInt64ThenUintptr)
+	Push(context.Context, *WorkOfInt64ThenUintptr) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2410,7 +2412,7 @@ type WorkOfInt64ThenInterface struct {
 }
 
 type WorkerOfPushInt64ThenInterface interface {
-	Push(*WorkOfInt64ThenInterface)
+	Push(context.Context, *WorkOfInt64ThenInterface) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2420,7 +2422,7 @@ type WorkOfInt64ThenStruct struct {
 }
 
 type WorkerOfPushInt64ThenStruct interface {
-	Push(*WorkOfInt64ThenStruct)
+	Push(context.Context, *WorkOfInt64ThenStruct) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2430,7 +2432,7 @@ type WorkOfInt8ThenBool struct {
 }
 
 type WorkerOfPushInt8ThenBool interface {
-	Push(*WorkOfInt8ThenBool)
+	Push(context.Context, *WorkOfInt8ThenBool) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2440,7 +2442,7 @@ type WorkOfInt8ThenByte struct {
 }
 
 type WorkerOfPushInt8ThenByte interface {
-	Push(*WorkOfInt8ThenByte)
+	Push(context.Context, *WorkOfInt8ThenByte) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2450,7 +2452,7 @@ type WorkOfInt8ThenComplex128 struct {
 }
 
 type WorkerOfPushInt8ThenComplex128 interface {
-	Push(*WorkOfInt8ThenComplex128)
+	Push(context.Context, *WorkOfInt8ThenComplex128) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2460,7 +2462,7 @@ type WorkOfInt8ThenComplex64 struct {
 }
 
 type WorkerOfPushInt8ThenComplex64 interface {
-	Push(*WorkOfInt8ThenComplex64)
+	Push(context.Context, *WorkOfInt8ThenComplex64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2470,7 +2472,7 @@ type WorkOfInt8ThenError struct {
 }
 
 type WorkerOfPushInt8ThenError interface {
-	Push(*WorkOfInt8ThenError)
+	Push(context.Context, *WorkOfInt8ThenError) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2480,7 +2482,7 @@ type WorkOfInt8ThenFloat32 struct {
 }
 
 type WorkerOfPushInt8ThenFloat32 interface {
-	Push(*WorkOfInt8ThenFloat32)
+	Push(context.Context, *WorkOfInt8ThenFloat32) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2490,7 +2492,7 @@ type WorkOfInt8ThenFloat64 struct {
 }
 
 type WorkerOfPushInt8ThenFloat64 interface {
-	Push(*WorkOfInt8ThenFloat64)
+	Push(context.Context, *WorkOfInt8ThenFloat64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2500,7 +2502,7 @@ type WorkOfInt8ThenInt struct {
 }
 
 type WorkerOfPushInt8ThenInt interface {
-	Push(*WorkOfInt8ThenInt)
+	Push(context.Context, *WorkOfInt8ThenInt) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2510,7 +2512,7 @@ type WorkOfInt8ThenInt16 struct {
 }
 
 type WorkerOfPushInt8ThenInt16 interface {
-	Push(*WorkOfInt8ThenInt16)
+	Push(context.Context, *WorkOfInt8ThenInt16) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2520,7 +2522,7 @@ type WorkOfInt8ThenInt32 struct {
 }
 
 type WorkerOfPushInt8ThenInt32 interface {
-	Push(*WorkOfInt8ThenInt32)
+	Push(context.Context, *WorkOfInt8ThenInt32) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2530,7 +2532,7 @@ type WorkOfInt8ThenInt64 struct {
 }
 
 type WorkerOfPushInt8ThenInt64 interface {
-	Push(*WorkOfInt8ThenInt64)
+	Push(context.Context, *WorkOfInt8ThenInt64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2540,7 +2542,7 @@ type WorkOfInt8ThenInt8 struct {
 }
 
 type WorkerOfPushInt8ThenInt8 interface {
-	Push(*WorkOfInt8ThenInt8)
+	Push(context.Context, *WorkOfInt8ThenInt8) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2550,7 +2552,7 @@ type WorkOfInt8ThenRune struct {
 }
 
 type WorkerOfPushInt8ThenRune interface {
-	Push(*WorkOfInt8ThenRune)
+	Push(context.Context, *WorkOfInt8ThenRune) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2560,7 +2562,7 @@ type WorkOfInt8ThenString struct {
 }
 
 type WorkerOfPushInt8ThenString interface {
-	Push(*WorkOfInt8ThenString)
+	Push(context.Context, *WorkOfInt8ThenString) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2570,7 +2572,7 @@ type WorkOfInt8ThenUint struct {
 }
 
 type WorkerOfPushInt8ThenUint interface {
-	Push(*WorkOfInt8ThenUint)
+	Push(context.Context, *WorkOfInt8ThenUint) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2580,7 +2582,7 @@ type WorkOfInt8ThenUint16 struct {
 }
 
 type WorkerOfPushInt8ThenUint16 interface {
-	Push(*WorkOfInt8ThenUint16)
+	Push(context.Context, *WorkOfInt8ThenUint16) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2590,7 +2592,7 @@ type WorkOfInt8ThenUint32 struct {
 }
 
 type WorkerOfPushInt8ThenUint32 interface {
-	Push(*WorkOfInt8ThenUint32)
+	Push(context.Context, *WorkOfInt8ThenUint32) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2600,7 +2602,7 @@ type WorkOfInt8ThenUint64 struct {
 }
 
 type WorkerOfPushInt8ThenUint64 interface {
-	Push(*WorkOfInt8ThenUint64)
+	Push(context.Context, *WorkOfInt8ThenUint64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2610,7 +2612,7 @@ type WorkOfInt8ThenUint8 struct {
 }
 
 type WorkerOfPushInt8ThenUint8 interface {
-	Push(*WorkOfInt8ThenUint8)
+	Push(context.Context, *WorkOfInt8ThenUint8) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2620,7 +2622,7 @@ type WorkOfInt8ThenUintptr struct {
 }
 
 type WorkerOfPushInt8ThenUintptr interface {
-	Push(*WorkOfInt8ThenUintptr)
+	Push(context.Context, *WorkOfInt8ThenUintptr) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2630,7 +2632,7 @@ type WorkOfInt8ThenInterface struct {
 }
 
 type WorkerOfPushInt8ThenInterface interface {
-	Push(*WorkOfInt8ThenInterface)
+	Push(context.Context, *WorkOfInt8ThenInterface) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2640,7 +2642,7 @@ type WorkOfInt8ThenStruct struct {
 }
 
 type WorkerOfPushInt8ThenStruct interface {
-	Push(*WorkOfInt8ThenStruct)
+	Push(context.Context, *WorkOfInt8ThenStruct) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2650,7 +2652,7 @@ type WorkOfRuneThenBool struct {
 }
 
 type WorkerOfPushRuneThenBool interface {
-	Push(*WorkOfRuneThenBool)
+	Push(context.Context, *WorkOfRuneThenBool) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2660,7 +2662,7 @@ type WorkOfRuneThenByte struct {
 }
 
 type WorkerOfPushRuneThenByte interface {
-	Push(*WorkOfRuneThenByte)
+	Push(context.Context, *WorkOfRuneThenByte) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2670,7 +2672,7 @@ type WorkOfRuneThenComplex128 struct {
 }
 
 type WorkerOfPushRuneThenComplex128 interface {
-	Push(*WorkOfRuneThenComplex128)
+	Push(context.Context, *WorkOfRuneThenComplex128) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2680,7 +2682,7 @@ type WorkOfRuneThenComplex64 struct {
 }
 
 type WorkerOfPushRuneThenComplex64 interface {
-	Push(*WorkOfRuneThenComplex64)
+	Push(context.Context, *WorkOfRuneThenComplex64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2690,7 +2692,7 @@ type WorkOfRuneThenError struct {
 }
 
 type WorkerOfPushRuneThenError interface {
-	Push(*WorkOfRuneThenError)
+	Push(context.Context, *WorkOfRuneThenError) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2700,7 +2702,7 @@ type WorkOfRuneThenFloat32 struct {
 }
 
 type WorkerOfPushRuneThenFloat32 interface {
-	Push(*WorkOfRuneThenFloat32)
+	Push(context.Context, *WorkOfRuneThenFloat32) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2710,7 +2712,7 @@ type WorkOfRuneThenFloat64 struct {
 }
 
 type WorkerOfPushRuneThenFloat64 interface {
-	Push(*WorkOfRuneThenFloat64)
+	Push(context.Context, *WorkOfRuneThenFloat64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2720,7 +2722,7 @@ type WorkOfRuneThenInt struct {
 }
 
 type WorkerOfPushRuneThenInt interface {
-	Push(*WorkOfRuneThenInt)
+	Push(context.Context, *WorkOfRuneThenInt) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2730,7 +2732,7 @@ type WorkOfRuneThenInt16 struct {
 }
 
 type WorkerOfPushRuneThenInt16 interface {
-	Push(*WorkOfRuneThenInt16)
+	Push(context.Context, *WorkOfRuneThenInt16) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2740,7 +2742,7 @@ type WorkOfRuneThenInt32 struct {
 }
 
 type WorkerOfPushRuneThenInt32 interface {
-	Push(*WorkOfRuneThenInt32)
+	Push(context.Context, *WorkOfRuneThenInt32) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2750,7 +2752,7 @@ type WorkOfRuneThenInt64 struct {
 }
 
 type WorkerOfPushRuneThenInt64 interface {
-	Push(*WorkOfRuneThenInt64)
+	Push(context.Context, *WorkOfRuneThenInt64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2760,7 +2762,7 @@ type WorkOfRuneThenInt8 struct {
 }
 
 type WorkerOfPushRuneThenInt8 interface {
-	Push(*WorkOfRuneThenInt8)
+	Push(context.Context, *WorkOfRuneThenInt8) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2770,7 +2772,7 @@ type WorkOfRuneThenRune struct {
 }
 
 type WorkerOfPushRuneThenRune interface {
-	Push(*WorkOfRuneThenRune)
+	Push(context.Context, *WorkOfRuneThenRune) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2780,7 +2782,7 @@ type WorkOfRuneThenString struct {
 }
 
 type WorkerOfPushRuneThenString interface {
-	Push(*WorkOfRuneThenString)
+	Push(context.Context, *WorkOfRuneThenString) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2790,7 +2792,7 @@ type WorkOfRuneThenUint struct {
 }
 
 type WorkerOfPushRuneThenUint interface {
-	Push(*WorkOfRuneThenUint)
+	Push(context.Context, *WorkOfRuneThenUint) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2800,7 +2802,7 @@ type WorkOfRuneThenUint16 struct {
 }
 
 type WorkerOfPushRuneThenUint16 interface {
-	Push(*WorkOfRuneThenUint16)
+	Push(context.Context, *WorkOfRuneThenUint16) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2810,7 +2812,7 @@ type WorkOfRuneThenUint32 struct {
 }
 
 type WorkerOfPushRuneThenUint32 interface {
-	Push(*WorkOfRuneThenUint32)
+	Push(context.Context, *WorkOfRuneThenUint32) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2820,7 +2822,7 @@ type WorkOfRuneThenUint64 struct {
 }
 
 type WorkerOfPushRuneThenUint64 interface {
-	Push(*WorkOfRuneThenUint64)
+	Push(context.Context, *WorkOfRuneThenUint64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2830,7 +2832,7 @@ type WorkOfRuneThenUint8 struct {
 }
 
 type WorkerOfPushRuneThenUint8 interface {
-	Push(*WorkOfRuneThenUint8)
+	Push(context.Context, *WorkOfRuneThenUint8) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2840,7 +2842,7 @@ type WorkOfRuneThenUintptr struct {
 }
 
 type WorkerOfPushRuneThenUintptr interface {
-	Push(*WorkOfRuneThenUintptr)
+	Push(context.Context, *WorkOfRuneThenUintptr) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2850,7 +2852,7 @@ type WorkOfRuneThenInterface struct {
 }
 
 type WorkerOfPushRuneThenInterface interface {
-	Push(*WorkOfRuneThenInterface)
+	Push(context.Context, *WorkOfRuneThenInterface) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2860,7 +2862,7 @@ type WorkOfRuneThenStruct struct {
 }
 
 type WorkerOfPushRuneThenStruct interface {
-	Push(*WorkOfRuneThenStruct)
+	Push(context.Context, *WorkOfRuneThenStruct) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2870,7 +2872,7 @@ type WorkOfStringThenBool struct {
 }
 
 type WorkerOfPushStringThenBool interface {
-	Push(*WorkOfStringThenBool)
+	Push(context.Context, *WorkOfStringThenBool) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2880,7 +2882,7 @@ type WorkOfStringThenByte struct {
 }
 
 type WorkerOfPushStringThenByte interface {
-	Push(*WorkOfStringThenByte)
+	Push(context.Context, *WorkOfStringThenByte) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2890,7 +2892,7 @@ type WorkOfStringThenComplex128 struct {
 }
 
 type WorkerOfPushStringThenComplex128 interface {
-	Push(*WorkOfStringThenComplex128)
+	Push(context.Context, *WorkOfStringThenComplex128) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2900,7 +2902,7 @@ type WorkOfStringThenComplex64 struct {
 }
 
 type WorkerOfPushStringThenComplex64 interface {
-	Push(*WorkOfStringThenComplex64)
+	Push(context.Context, *WorkOfStringThenComplex64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2910,7 +2912,7 @@ type WorkOfStringThenError struct {
 }
 
 type WorkerOfPushStringThenError interface {
-	Push(*WorkOfStringThenError)
+	Push(context.Context, *WorkOfStringThenError) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2920,7 +2922,7 @@ type WorkOfStringThenFloat32 struct {
 }
 
 type WorkerOfPushStringThenFloat32 interface {
-	Push(*WorkOfStringThenFloat32)
+	Push(context.Context, *WorkOfStringThenFloat32) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2930,7 +2932,7 @@ type WorkOfStringThenFloat64 struct {
 }
 
 type WorkerOfPushStringThenFloat64 interface {
-	Push(*WorkOfStringThenFloat64)
+	Push(context.Context, *WorkOfStringThenFloat64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2940,7 +2942,7 @@ type WorkOfStringThenInt struct {
 }
 
 type WorkerOfPushStringThenInt interface {
-	Push(*WorkOfStringThenInt)
+	Push(context.Context, *WorkOfStringThenInt) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2950,7 +2952,7 @@ type WorkOfStringThenInt16 struct {
 }
 
 type WorkerOfPushStringThenInt16 interface {
-	Push(*WorkOfStringThenInt16)
+	Push(context.Context, *WorkOfStringThenInt16) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2960,7 +2962,7 @@ type WorkOfStringThenInt32 struct {
 }
 
 type WorkerOfPushStringThenInt32 interface {
-	Push(*WorkOfStringThenInt32)
+	Push(context.Context, *WorkOfStringThenInt32) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2970,7 +2972,7 @@ type WorkOfStringThenInt64 struct {
 }
 
 type WorkerOfPushStringThenInt64 interface {
-	Push(*WorkOfStringThenInt64)
+	Push(context.Context, *WorkOfStringThenInt64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2980,7 +2982,7 @@ type WorkOfStringThenInt8 struct {
 }
 
 type WorkerOfPushStringThenInt8 interface {
-	Push(*WorkOfStringThenInt8)
+	Push(context.Context, *WorkOfStringThenInt8) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -2990,7 +2992,7 @@ type WorkOfStringThenRune struct {
 }
 
 type WorkerOfPushStringThenRune interface {
-	Push(*WorkOfStringThenRune)
+	Push(context.Context, *WorkOfStringThenRune) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3000,7 +3002,7 @@ type WorkOfStringThenString struct {
 }
 
 type WorkerOfPushStringThenString interface {
-	Push(*WorkOfStringThenString)
+	Push(context.Context, *WorkOfStringThenString) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3010,7 +3012,7 @@ type WorkOfStringThenUint struct {
 }
 
 type WorkerOfPushStringThenUint interface {
-	Push(*WorkOfStringThenUint)
+	Push(context.Context, *WorkOfStringThenUint) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3020,7 +3022,7 @@ type WorkOfStringThenUint16 struct {
 }
 
 type WorkerOfPushStringThenUint16 interface {
-	Push(*WorkOfStringThenUint16)
+	Push(context.Context, *WorkOfStringThenUint16) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3030,7 +3032,7 @@ type WorkOfStringThenUint32 struct {
 }
 
 type WorkerOfPushStringThenUint32 interface {
-	Push(*WorkOfStringThenUint32)
+	Push(context.Context, *WorkOfStringThenUint32) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3040,7 +3042,7 @@ type WorkOfStringThenUint64 struct {
 }
 
 type WorkerOfPushStringThenUint64 interface {
-	Push(*WorkOfStringThenUint64)
+	Push(context.Context, *WorkOfStringThenUint64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3050,7 +3052,7 @@ type WorkOfStringThenUint8 struct {
 }
 
 type WorkerOfPushStringThenUint8 interface {
-	Push(*WorkOfStringThenUint8)
+	Push(context.Context, *WorkOfStringThenUint8) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3060,7 +3062,7 @@ type WorkOfStringThenUintptr struct {
 }
 
 type WorkerOfPushStringThenUintptr interface {
-	Push(*WorkOfStringThenUintptr)
+	Push(context.Context, *WorkOfStringThenUintptr) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3070,7 +3072,7 @@ type WorkOfStringThenInterface struct {
 }
 
 type WorkerOfPushStringThenInterface interface {
-	Push(*WorkOfStringThenInterface)
+	Push(context.Context, *WorkOfStringThenInterface) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3080,7 +3082,7 @@ type WorkOfStringThenStruct struct {
 }
 
 type WorkerOfPushStringThenStruct interface {
-	Push(*WorkOfStringThenStruct)
+	Push(context.Context, *WorkOfStringThenStruct) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3090,7 +3092,7 @@ type WorkOfUintThenBool struct {
 }
 
 type WorkerOfPushUintThenBool interface {
-	Push(*WorkOfUintThenBool)
+	Push(context.Context, *WorkOfUintThenBool) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3100,7 +3102,7 @@ type WorkOfUintThenByte struct {
 }
 
 type WorkerOfPushUintThenByte interface {
-	Push(*WorkOfUintThenByte)
+	Push(context.Context, *WorkOfUintThenByte) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3110,7 +3112,7 @@ type WorkOfUintThenComplex128 struct {
 }
 
 type WorkerOfPushUintThenComplex128 interface {
-	Push(*WorkOfUintThenComplex128)
+	Push(context.Context, *WorkOfUintThenComplex128) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3120,7 +3122,7 @@ type WorkOfUintThenComplex64 struct {
 }
 
 type WorkerOfPushUintThenComplex64 interface {
-	Push(*WorkOfUintThenComplex64)
+	Push(context.Context, *WorkOfUintThenComplex64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3130,7 +3132,7 @@ type WorkOfUintThenError struct {
 }
 
 type WorkerOfPushUintThenError interface {
-	Push(*WorkOfUintThenError)
+	Push(context.Context, *WorkOfUintThenError) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3140,7 +3142,7 @@ type WorkOfUintThenFloat32 struct {
 }
 
 type WorkerOfPushUintThenFloat32 interface {
-	Push(*WorkOfUintThenFloat32)
+	Push(context.Context, *WorkOfUintThenFloat32) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3150,7 +3152,7 @@ type WorkOfUintThenFloat64 struct {
 }
 
 type WorkerOfPushUintThenFloat64 interface {
-	Push(*WorkOfUintThenFloat64)
+	Push(context.Context, *WorkOfUintThenFloat64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3160,7 +3162,7 @@ type WorkOfUintThenInt struct {
 }
 
 type WorkerOfPushUintThenInt interface {
-	Push(*WorkOfUintThenInt)
+	Push(context.Context, *WorkOfUintThenInt) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3170,7 +3172,7 @@ type WorkOfUintThenInt16 struct {
 }
 
 type WorkerOfPushUintThenInt16 interface {
-	Push(*WorkOfUintThenInt16)
+	Push(context.Context, *WorkOfUintThenInt16) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3180,7 +3182,7 @@ type WorkOfUintThenInt32 struct {
 }
 
 type WorkerOfPushUintThenInt32 interface {
-	Push(*WorkOfUintThenInt32)
+	Push(context.Context, *WorkOfUintThenInt32) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3190,7 +3192,7 @@ type WorkOfUintThenInt64 struct {
 }
 
 type WorkerOfPushUintThenInt64 interface {
-	Push(*WorkOfUintThenInt64)
+	Push(context.Context, *WorkOfUintThenInt64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3200,7 +3202,7 @@ type WorkOfUintThenInt8 struct {
 }
 
 type WorkerOfPushUintThenInt8 interface {
-	Push(*WorkOfUintThenInt8)
+	Push(context.Context, *WorkOfUintThenInt8) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3210,7 +3212,7 @@ type WorkOfUintThenRune struct {
 }
 
 type WorkerOfPushUintThenRune interface {
-	Push(*WorkOfUintThenRune)
+	Push(context.Context, *WorkOfUintThenRune) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3220,7 +3222,7 @@ type WorkOfUintThenString struct {
 }
 
 type WorkerOfPushUintThenString interface {
-	Push(*WorkOfUintThenString)
+	Push(context.Context, *WorkOfUintThenString) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3230,7 +3232,7 @@ type WorkOfUintThenUint struct {
 }
 
 type WorkerOfPushUintThenUint interface {
-	Push(*WorkOfUintThenUint)
+	Push(context.Context, *WorkOfUintThenUint) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3240,7 +3242,7 @@ type WorkOfUintThenUint16 struct {
 }
 
 type WorkerOfPushUintThenUint16 interface {
-	Push(*WorkOfUintThenUint16)
+	Push(context.Context, *WorkOfUintThenUint16) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3250,7 +3252,7 @@ type WorkOfUintThenUint32 struct {
 }
 
 type WorkerOfPushUintThenUint32 interface {
-	Push(*WorkOfUintThenUint32)
+	Push(context.Context, *WorkOfUintThenUint32) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3260,7 +3262,7 @@ type WorkOfUintThenUint64 struct {
 }
 
 type WorkerOfPushUintThenUint64 interface {
-	Push(*WorkOfUintThenUint64)
+	Push(context.Context, *WorkOfUintThenUint64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3270,7 +3272,7 @@ type WorkOfUintThenUint8 struct {
 }
 
 type WorkerOfPushUintThenUint8 interface {
-	Push(*WorkOfUintThenUint8)
+	Push(context.Context, *WorkOfUintThenUint8) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3280,7 +3282,7 @@ type WorkOfUintThenUintptr struct {
 }
 
 type WorkerOfPushUintThenUintptr interface {
-	Push(*WorkOfUintThenUintptr)
+	Push(context.Context, *WorkOfUintThenUintptr) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3290,7 +3292,7 @@ type WorkOfUintThenInterface struct {
 }
 
 type WorkerOfPushUintThenInterface interface {
-	Push(*WorkOfUintThenInterface)
+	Push(context.Context, *WorkOfUintThenInterface) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3300,7 +3302,7 @@ type WorkOfUintThenStruct struct {
 }
 
 type WorkerOfPushUintThenStruct interface {
-	Push(*WorkOfUintThenStruct)
+	Push(context.Context, *WorkOfUintThenStruct) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3310,7 +3312,7 @@ type WorkOfUint16ThenBool struct {
 }
 
 type WorkerOfPushUint16ThenBool interface {
-	Push(*WorkOfUint16ThenBool)
+	Push(context.Context, *WorkOfUint16ThenBool) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3320,7 +3322,7 @@ type WorkOfUint16ThenByte struct {
 }
 
 type WorkerOfPushUint16ThenByte interface {
-	Push(*WorkOfUint16ThenByte)
+	Push(context.Context, *WorkOfUint16ThenByte) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3330,7 +3332,7 @@ type WorkOfUint16ThenComplex128 struct {
 }
 
 type WorkerOfPushUint16ThenComplex128 interface {
-	Push(*WorkOfUint16ThenComplex128)
+	Push(context.Context, *WorkOfUint16ThenComplex128) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3340,7 +3342,7 @@ type WorkOfUint16ThenComplex64 struct {
 }
 
 type WorkerOfPushUint16ThenComplex64 interface {
-	Push(*WorkOfUint16ThenComplex64)
+	Push(context.Context, *WorkOfUint16ThenComplex64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3350,7 +3352,7 @@ type WorkOfUint16ThenError struct {
 }
 
 type WorkerOfPushUint16ThenError interface {
-	Push(*WorkOfUint16ThenError)
+	Push(context.Context, *WorkOfUint16ThenError) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3360,7 +3362,7 @@ type WorkOfUint16ThenFloat32 struct {
 }
 
 type WorkerOfPushUint16ThenFloat32 interface {
-	Push(*WorkOfUint16ThenFloat32)
+	Push(context.Context, *WorkOfUint16ThenFloat32) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3370,7 +3372,7 @@ type WorkOfUint16ThenFloat64 struct {
 }
 
 type WorkerOfPushUint16ThenFloat64 interface {
-	Push(*WorkOfUint16ThenFloat64)
+	Push(context.Context, *WorkOfUint16ThenFloat64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3380,7 +3382,7 @@ type WorkOfUint16ThenInt struct {
 }
 
 type WorkerOfPushUint16ThenInt interface {
-	Push(*WorkOfUint16ThenInt)
+	Push(context.Context, *WorkOfUint16ThenInt) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3390,7 +3392,7 @@ type WorkOfUint16ThenInt16 struct {
 }
 
 type WorkerOfPushUint16ThenInt16 interface {
-	Push(*WorkOfUint16ThenInt16)
+	Push(context.Context, *WorkOfUint16ThenInt16) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3400,7 +3402,7 @@ type WorkOfUint16ThenInt32 struct {
 }
 
 type WorkerOfPushUint16ThenInt32 interface {
-	Push(*WorkOfUint16ThenInt32)
+	Push(context.Context, *WorkOfUint16ThenInt32) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3410,7 +3412,7 @@ type WorkOfUint16ThenInt64 struct {
 }
 
 type WorkerOfPushUint16ThenInt64 interface {
-	Push(*WorkOfUint16ThenInt64)
+	Push(context.Context, *WorkOfUint16ThenInt64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3420,7 +3422,7 @@ type WorkOfUint16ThenInt8 struct {
 }
 
 type WorkerOfPushUint16ThenInt8 interface {
-	Push(*WorkOfUint16ThenInt8)
+	Push(context.Context, *WorkOfUint16ThenInt8) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3430,7 +3432,7 @@ type WorkOfUint16ThenRune struct {
 }
 
 type WorkerOfPushUint16ThenRune interface {
-	Push(*WorkOfUint16ThenRune)
+	Push(context.Context, *WorkOfUint16ThenRune) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3440,7 +3442,7 @@ type WorkOfUint16ThenString struct {
 }
 
 type WorkerOfPushUint16ThenString interface {
-	Push(*WorkOfUint16ThenString)
+	Push(context.Context, *WorkOfUint16ThenString) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3450,7 +3452,7 @@ type WorkOfUint16ThenUint struct {
 }
 
 type WorkerOfPushUint16ThenUint interface {
-	Push(*WorkOfUint16ThenUint)
+	Push(context.Context, *WorkOfUint16ThenUint) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3460,7 +3462,7 @@ type WorkOfUint16ThenUint16 struct {
 }
 
 type WorkerOfPushUint16ThenUint16 interface {
-	Push(*WorkOfUint16ThenUint16)
+	Push(context.Context, *WorkOfUint16ThenUint16) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3470,7 +3472,7 @@ type WorkOfUint16ThenUint32 struct {
 }
 
 type WorkerOfPushUint16ThenUint32 interface {
-	Push(*WorkOfUint16ThenUint32)
+	Push(context.Context, *WorkOfUint16ThenUint32) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3480,7 +3482,7 @@ type WorkOfUint16ThenUint64 struct {
 }
 
 type WorkerOfPushUint16ThenUint64 interface {
-	Push(*WorkOfUint16ThenUint64)
+	Push(context.Context, *WorkOfUint16ThenUint64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3490,7 +3492,7 @@ type WorkOfUint16ThenUint8 struct {
 }
 
 type WorkerOfPushUint16ThenUint8 interface {
-	Push(*WorkOfUint16ThenUint8)
+	Push(context.Context, *WorkOfUint16ThenUint8) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3500,7 +3502,7 @@ type WorkOfUint16ThenUintptr struct {
 }
 
 type WorkerOfPushUint16ThenUintptr interface {
-	Push(*WorkOfUint16ThenUintptr)
+	Push(context.Context, *WorkOfUint16ThenUintptr) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3510,7 +3512,7 @@ type WorkOfUint16ThenInterface struct {
 }
 
 type WorkerOfPushUint16ThenInterface interface {
-	Push(*WorkOfUint16ThenInterface)
+	Push(context.Context, *WorkOfUint16ThenInterface) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3520,7 +3522,7 @@ type WorkOfUint16ThenStruct struct {
 }
 
 type WorkerOfPushUint16ThenStruct interface {
-	Push(*WorkOfUint16ThenStruct)
+	Push(context.Context, *WorkOfUint16ThenStruct) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3530,7 +3532,7 @@ type WorkOfUint32ThenBool struct {
 }
 
 type WorkerOfPushUint32ThenBool interface {
-	Push(*WorkOfUint32ThenBool)
+	Push(context.Context, *WorkOfUint32ThenBool) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3540,7 +3542,7 @@ type WorkOfUint32ThenByte struct {
 }
 
 type WorkerOfPushUint32ThenByte interface {
-	Push(*WorkOfUint32ThenByte)
+	Push(context.Context, *WorkOfUint32ThenByte) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3550,7 +3552,7 @@ type WorkOfUint32ThenComplex128 struct {
 }
 
 type WorkerOfPushUint32ThenComplex128 interface {
-	Push(*WorkOfUint32ThenComplex128)
+	Push(context.Context, *WorkOfUint32ThenComplex128) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3560,7 +3562,7 @@ type WorkOfUint32ThenComplex64 struct {
 }
 
 type WorkerOfPushUint32ThenComplex64 interface {
-	Push(*WorkOfUint32ThenComplex64)
+	Push(context.Context, *WorkOfUint32ThenComplex64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3570,7 +3572,7 @@ type WorkOfUint32ThenError struct {
 }
 
 type WorkerOfPushUint32ThenError interface {
-	Push(*WorkOfUint32ThenError)
+	Push(context.Context, *WorkOfUint32ThenError) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3580,7 +3582,7 @@ type WorkOfUint32ThenFloat32 struct {
 }
 
 type WorkerOfPushUint32ThenFloat32 interface {
-	Push(*WorkOfUint32ThenFloat32)
+	Push(context.Context, *WorkOfUint32ThenFloat32) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3590,7 +3592,7 @@ type WorkOfUint32ThenFloat64 struct {
 }
 
 type WorkerOfPushUint32ThenFloat64 interface {
-	Push(*WorkOfUint32ThenFloat64)
+	Push(context.Context, *WorkOfUint32ThenFloat64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3600,7 +3602,7 @@ type WorkOfUint32ThenInt struct {
 }
 
 type WorkerOfPushUint32ThenInt interface {
-	Push(*WorkOfUint32ThenInt)
+	Push(context.Context, *WorkOfUint32ThenInt) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3610,7 +3612,7 @@ type WorkOfUint32ThenInt16 struct {
 }
 
 type WorkerOfPushUint32ThenInt16 interface {
-	Push(*WorkOfUint32ThenInt16)
+	Push(context.Context, *WorkOfUint32ThenInt16) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3620,7 +3622,7 @@ type WorkOfUint32ThenInt32 struct {
 }
 
 type WorkerOfPushUint32ThenInt32 interface {
-	Push(*WorkOfUint32ThenInt32)
+	Push(context.Context, *WorkOfUint32ThenInt32) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3630,7 +3632,7 @@ type WorkOfUint32ThenInt64 struct {
 }
 
 type WorkerOfPushUint32ThenInt64 interface {
-	Push(*WorkOfUint32ThenInt64)
+	Push(context.Context, *WorkOfUint32ThenInt64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3640,7 +3642,7 @@ type WorkOfUint32ThenInt8 struct {
 }
 
 type WorkerOfPushUint32ThenInt8 interface {
-	Push(*WorkOfUint32ThenInt8)
+	Push(context.Context, *WorkOfUint32ThenInt8) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3650,7 +3652,7 @@ type WorkOfUint32ThenRune struct {
 }
 
 type WorkerOfPushUint32ThenRune interface {
-	Push(*WorkOfUint32ThenRune)
+	Push(context.Context, *WorkOfUint32ThenRune) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3660,7 +3662,7 @@ type WorkOfUint32ThenString struct {
 }
 
 type WorkerOfPushUint32ThenString interface {
-	Push(*WorkOfUint32ThenString)
+	Push(context.Context, *WorkOfUint32ThenString) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3670,7 +3672,7 @@ type WorkOfUint32ThenUint struct {
 }
 
 type WorkerOfPushUint32ThenUint interface {
-	Push(*WorkOfUint32ThenUint)
+	Push(context.Context, *WorkOfUint32ThenUint) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3680,7 +3682,7 @@ type WorkOfUint32ThenUint16 struct {
 }
 
 type WorkerOfPushUint32ThenUint16 interface {
-	Push(*WorkOfUint32ThenUint16)
+	Push(context.Context, *WorkOfUint32ThenUint16) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3690,7 +3692,7 @@ type WorkOfUint32ThenUint32 struct {
 }
 
 type WorkerOfPushUint32ThenUint32 interface {
-	Push(*WorkOfUint32ThenUint32)
+	Push(context.Context, *WorkOfUint32ThenUint32) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3700,7 +3702,7 @@ type WorkOfUint32ThenUint64 struct {
 }
 
 type WorkerOfPushUint32ThenUint64 interface {
-	Push(*WorkOfUint32ThenUint64)
+	Push(context.Context, *WorkOfUint32ThenUint64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3710,7 +3712,7 @@ type WorkOfUint32ThenUint8 struct {
 }
 
 type WorkerOfPushUint32ThenUint8 interface {
-	Push(*WorkOfUint32ThenUint8)
+	Push(context.Context, *WorkOfUint32ThenUint8) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3720,7 +3722,7 @@ type WorkOfUint32ThenUintptr struct {
 }
 
 type WorkerOfPushUint32ThenUintptr interface {
-	Push(*WorkOfUint32ThenUintptr)
+	Push(context.Context, *WorkOfUint32ThenUintptr) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3730,7 +3732,7 @@ type WorkOfUint32ThenInterface struct {
 }
 
 type WorkerOfPushUint32ThenInterface interface {
-	Push(*WorkOfUint32ThenInterface)
+	Push(context.Context, *WorkOfUint32ThenInterface) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3740,7 +3742,7 @@ type WorkOfUint32ThenStruct struct {
 }
 
 type WorkerOfPushUint32ThenStruct interface {
-	Push(*WorkOfUint32ThenStruct)
+	Push(context.Context, *WorkOfUint32ThenStruct) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3750,7 +3752,7 @@ type WorkOfUint64ThenBool struct {
 }
 
 type WorkerOfPushUint64ThenBool interface {
-	Push(*WorkOfUint64ThenBool)
+	Push(context.Context, *WorkOfUint64ThenBool) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3760,7 +3762,7 @@ type WorkOfUint64ThenByte struct {
 }
 
 type WorkerOfPushUint64ThenByte interface {
-	Push(*WorkOfUint64ThenByte)
+	Push(context.Context, *WorkOfUint64ThenByte) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3770,7 +3772,7 @@ type WorkOfUint64ThenComplex128 struct {
 }
 
 type WorkerOfPushUint64ThenComplex128 interface {
-	Push(*WorkOfUint64ThenComplex128)
+	Push(context.Context, *WorkOfUint64ThenComplex128) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3780,7 +3782,7 @@ type WorkOfUint64ThenComplex64 struct {
 }
 
 type WorkerOfPushUint64ThenComplex64 interface {
-	Push(*WorkOfUint64ThenComplex64)
+	Push(context.Context, *WorkOfUint64ThenComplex64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3790,7 +3792,7 @@ type WorkOfUint64ThenError struct {
 }
 
 type WorkerOfPushUint64ThenError interface {
-	Push(*WorkOfUint64ThenError)
+	Push(context.Context, *WorkOfUint64ThenError) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3800,7 +3802,7 @@ type WorkOfUint64ThenFloat32 struct {
 }
 
 type WorkerOfPushUint64ThenFloat32 interface {
-	Push(*WorkOfUint64ThenFloat32)
+	Push(context.Context, *WorkOfUint64ThenFloat32) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3810,7 +3812,7 @@ type WorkOfUint64ThenFloat64 struct {
 }
 
 type WorkerOfPushUint64ThenFloat64 interface {
-	Push(*WorkOfUint64ThenFloat64)
+	Push(context.Context, *WorkOfUint64ThenFloat64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3820,7 +3822,7 @@ type WorkOfUint64ThenInt struct {
 }
 
 type WorkerOfPushUint64ThenInt interface {
-	Push(*WorkOfUint64ThenInt)
+	Push(context.Context, *WorkOfUint64ThenInt) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3830,7 +3832,7 @@ type WorkOfUint64ThenInt16 struct {
 }
 
 type WorkerOfPushUint64ThenInt16 interface {
-	Push(*WorkOfUint64ThenInt16)
+	Push(context.Context, *WorkOfUint64ThenInt16) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3840,7 +3842,7 @@ type WorkOfUint64ThenInt32 struct {
 }
 
 type WorkerOfPushUint64ThenInt32 interface {
-	Push(*WorkOfUint64ThenInt32)
+	Push(context.Context, *WorkOfUint64ThenInt32) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3850,7 +3852,7 @@ type WorkOfUint64ThenInt64 struct {
 }
 
 type WorkerOfPushUint64ThenInt64 interface {
-	Push(*WorkOfUint64ThenInt64)
+	Push(context.Context, *WorkOfUint64ThenInt64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3860,7 +3862,7 @@ type WorkOfUint64ThenInt8 struct {
 }
 
 type WorkerOfPushUint64ThenInt8 interface {
-	Push(*WorkOfUint64ThenInt8)
+	Push(context.Context, *WorkOfUint64ThenInt8) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3870,7 +3872,7 @@ type WorkOfUint64ThenRune struct {
 }
 
 type WorkerOfPushUint64ThenRune interface {
-	Push(*WorkOfUint64ThenRune)
+	Push(context.Context, *WorkOfUint64ThenRune) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3880,7 +3882,7 @@ type WorkOfUint64ThenString struct {
 }
 
 type WorkerOfPushUint64ThenString interface {
-	Push(*WorkOfUint64ThenString)
+	Push(context.Context, *WorkOfUint64ThenString) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3890,7 +3892,7 @@ type WorkOfUint64ThenUint struct {
 }
 
 type WorkerOfPushUint64ThenUint interface {
-	Push(*WorkOfUint64ThenUint)
+	Push(context.Context, *WorkOfUint64ThenUint) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3900,7 +3902,7 @@ type WorkOfUint64ThenUint16 struct {
 }
 
 type WorkerOfPushUint64ThenUint16 interface {
-	Push(*WorkOfUint64ThenUint16)
+	Push(context.Context, *WorkOfUint64ThenUint16) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3910,7 +3912,7 @@ type WorkOfUint64ThenUint32 struct {
 }
 
 type WorkerOfPushUint64ThenUint32 interface {
-	Push(*WorkOfUint64ThenUint32)
+	Push(context.Context, *WorkOfUint64ThenUint32) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3920,7 +3922,7 @@ type WorkOfUint64ThenUint64 struct {
 }
 
 type WorkerOfPushUint64ThenUint64 interface {
-	Push(*WorkOfUint64ThenUint64)
+	Push(context.Context, *WorkOfUint64ThenUint64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3930,7 +3932,7 @@ type WorkOfUint64ThenUint8 struct {
 }
 
 type WorkerOfPushUint64ThenUint8 interface {
-	Push(*WorkOfUint64ThenUint8)
+	Push(context.Context, *WorkOfUint64ThenUint8) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3940,7 +3942,7 @@ type WorkOfUint64ThenUintptr struct {
 }
 
 type WorkerOfPushUint64ThenUintptr interface {
-	Push(*WorkOfUint64ThenUintptr)
+	Push(context.Context, *WorkOfUint64ThenUintptr) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3950,7 +3952,7 @@ type WorkOfUint64ThenInterface struct {
 }
 
 type WorkerOfPushUint64ThenInterface interface {
-	Push(*WorkOfUint64ThenInterface)
+	Push(context.Context, *WorkOfUint64ThenInterface) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3960,7 +3962,7 @@ type WorkOfUint64ThenStruct struct {
 }
 
 type WorkerOfPushUint64ThenStruct interface {
-	Push(*WorkOfUint64ThenStruct)
+	Push(context.Context, *WorkOfUint64ThenStruct) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3970,7 +3972,7 @@ type WorkOfUint8ThenBool struct {
 }
 
 type WorkerOfPushUint8ThenBool interface {
-	Push(*WorkOfUint8ThenBool)
+	Push(context.Context, *WorkOfUint8ThenBool) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3980,7 +3982,7 @@ type WorkOfUint8ThenByte struct {
 }
 
 type WorkerOfPushUint8ThenByte interface {
-	Push(*WorkOfUint8ThenByte)
+	Push(context.Context, *WorkOfUint8ThenByte) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -3990,7 +3992,7 @@ type WorkOfUint8ThenComplex128 struct {
 }
 
 type WorkerOfPushUint8ThenComplex128 interface {
-	Push(*WorkOfUint8ThenComplex128)
+	Push(context.Context, *WorkOfUint8ThenComplex128) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4000,7 +4002,7 @@ type WorkOfUint8ThenComplex64 struct {
 }
 
 type WorkerOfPushUint8ThenComplex64 interface {
-	Push(*WorkOfUint8ThenComplex64)
+	Push(context.Context, *WorkOfUint8ThenComplex64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4010,7 +4012,7 @@ type WorkOfUint8ThenError struct {
 }
 
 type WorkerOfPushUint8ThenError interface {
-	Push(*WorkOfUint8ThenError)
+	Push(context.Context, *WorkOfUint8ThenError) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4020,7 +4022,7 @@ type WorkOfUint8ThenFloat32 struct {
 }
 
 type WorkerOfPushUint8ThenFloat32 interface {
-	Push(*WorkOfUint8ThenFloat32)
+	Push(context.Context, *WorkOfUint8ThenFloat32) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4030,7 +4032,7 @@ type WorkOfUint8ThenFloat64 struct {
 }
 
 type WorkerOfPushUint8ThenFloat64 interface {
-	Push(*WorkOfUint8ThenFloat64)
+	Push(context.Context, *WorkOfUint8ThenFloat64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4040,7 +4042,7 @@ type WorkOfUint8ThenInt struct {
 }
 
 type WorkerOfPushUint8ThenInt interface {
-	Push(*WorkOfUint8ThenInt)
+	Push(context.Context, *WorkOfUint8ThenInt) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4050,7 +4052,7 @@ type WorkOfUint8ThenInt16 struct {
 }
 
 type WorkerOfPushUint8ThenInt16 interface {
-	Push(*WorkOfUint8ThenInt16)
+	Push(context.Context, *WorkOfUint8ThenInt16) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4060,7 +4062,7 @@ type WorkOfUint8ThenInt32 struct {
 }
 
 type WorkerOfPushUint8ThenInt32 interface {
-	Push(*WorkOfUint8ThenInt32)
+	Push(context.Context, *WorkOfUint8ThenInt32) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4070,7 +4072,7 @@ type WorkOfUint8ThenInt64 struct {
 }
 
 type WorkerOfPushUint8ThenInt64 interface {
-	Push(*WorkOfUint8ThenInt64)
+	Push(context.Context, *WorkOfUint8ThenInt64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4080,7 +4082,7 @@ type WorkOfUint8ThenInt8 struct {
 }
 
 type WorkerOfPushUint8ThenInt8 interface {
-	Push(*WorkOfUint8ThenInt8)
+	Push(context.Context, *WorkOfUint8ThenInt8) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4090,7 +4092,7 @@ type WorkOfUint8ThenRune struct {
 }
 
 type WorkerOfPushUint8ThenRune interface {
-	Push(*WorkOfUint8ThenRune)
+	Push(context.Context, *WorkOfUint8ThenRune) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4100,7 +4102,7 @@ type WorkOfUint8ThenString struct {
 }
 
 type WorkerOfPushUint8ThenString interface {
-	Push(*WorkOfUint8ThenString)
+	Push(context.Context, *WorkOfUint8ThenString) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4110,7 +4112,7 @@ type WorkOfUint8ThenUint struct {
 }
 
 type WorkerOfPushUint8ThenUint interface {
-	Push(*WorkOfUint8ThenUint)
+	Push(context.Context, *WorkOfUint8ThenUint) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4120,7 +4122,7 @@ type WorkOfUint8ThenUint16 struct {
 }
 
 type WorkerOfPushUint8ThenUint16 interface {
-	Push(*WorkOfUint8ThenUint16)
+	Push(context.Context, *WorkOfUint8ThenUint16) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4130,7 +4132,7 @@ type WorkOfUint8ThenUint32 struct {
 }
 
 type WorkerOfPushUint8ThenUint32 interface {
-	Push(*WorkOfUint8ThenUint32)
+	Push(context.Context, *WorkOfUint8ThenUint32) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4140,7 +4142,7 @@ type WorkOfUint8ThenUint64 struct {
 }
 
 type WorkerOfPushUint8ThenUint64 interface {
-	Push(*WorkOfUint8ThenUint64)
+	Push(context.Context, *WorkOfUint8ThenUint64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4150,7 +4152,7 @@ type WorkOfUint8ThenUint8 struct {
 }
 
 type WorkerOfPushUint8ThenUint8 interface {
-	Push(*WorkOfUint8ThenUint8)
+	Push(context.Context, *WorkOfUint8ThenUint8) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4160,7 +4162,7 @@ type WorkOfUint8ThenUintptr struct {
 }
 
 type WorkerOfPushUint8ThenUintptr interface {
-	Push(*WorkOfUint8ThenUintptr)
+	Push(context.Context, *WorkOfUint8ThenUintptr) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4170,7 +4172,7 @@ type WorkOfUint8ThenInterface struct {
 }
 
 type WorkerOfPushUint8ThenInterface interface {
-	Push(*WorkOfUint8ThenInterface)
+	Push(context.Context, *WorkOfUint8ThenInterface) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4180,7 +4182,7 @@ type WorkOfUint8ThenStruct struct {
 }
 
 type WorkerOfPushUint8ThenStruct interface {
-	Push(*WorkOfUint8ThenStruct)
+	Push(context.Context, *WorkOfUint8ThenStruct) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4190,7 +4192,7 @@ type WorkOfUintptrThenBool struct {
 }
 
 type WorkerOfPushUintptrThenBool interface {
-	Push(*WorkOfUintptrThenBool)
+	Push(context.Context, *WorkOfUintptrThenBool) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4200,7 +4202,7 @@ type WorkOfUintptrThenByte struct {
 }
 
 type WorkerOfPushUintptrThenByte interface {
-	Push(*WorkOfUintptrThenByte)
+	Push(context.Context, *WorkOfUintptrThenByte) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4210,7 +4212,7 @@ type WorkOfUintptrThenComplex128 struct {
 }
 
 type WorkerOfPushUintptrThenComplex128 interface {
-	Push(*WorkOfUintptrThenComplex128)
+	Push(context.Context, *WorkOfUintptrThenComplex128) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4220,7 +4222,7 @@ type WorkOfUintptrThenComplex64 struct {
 }
 
 type WorkerOfPushUintptrThenComplex64 interface {
-	Push(*WorkOfUintptrThenComplex64)
+	Push(context.Context, *WorkOfUintptrThenComplex64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4230,7 +4232,7 @@ type WorkOfUintptrThenError struct {
 }
 
 type WorkerOfPushUintptrThenError interface {
-	Push(*WorkOfUintptrThenError)
+	Push(context.Context, *WorkOfUintptrThenError) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4240,7 +4242,7 @@ type WorkOfUintptrThenFloat32 struct {
 }
 
 type WorkerOfPushUintptrThenFloat32 interface {
-	Push(*WorkOfUintptrThenFloat32)
+	Push(context.Context, *WorkOfUintptrThenFloat32) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4250,7 +4252,7 @@ type WorkOfUintptrThenFloat64 struct {
 }
 
 type WorkerOfPushUintptrThenFloat64 interface {
-	Push(*WorkOfUintptrThenFloat64)
+	Push(context.Context, *WorkOfUintptrThenFloat64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4260,7 +4262,7 @@ type WorkOfUintptrThenInt struct {
 }
 
 type WorkerOfPushUintptrThenInt interface {
-	Push(*WorkOfUintptrThenInt)
+	Push(context.Context, *WorkOfUintptrThenInt) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4270,7 +4272,7 @@ type WorkOfUintptrThenInt16 struct {
 }
 
 type WorkerOfPushUintptrThenInt16 interface {
-	Push(*WorkOfUintptrThenInt16)
+	Push(context.Context, *WorkOfUintptrThenInt16) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4280,7 +4282,7 @@ type WorkOfUintptrThenInt32 struct {
 }
 
 type WorkerOfPushUintptrThenInt32 interface {
-	Push(*WorkOfUintptrThenInt32)
+	Push(context.Context, *WorkOfUintptrThenInt32) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4290,7 +4292,7 @@ type WorkOfUintptrThenInt64 struct {
 }
 
 type WorkerOfPushUintptrThenInt64 interface {
-	Push(*WorkOfUintptrThenInt64)
+	Push(context.Context, *WorkOfUintptrThenInt64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4300,7 +4302,7 @@ type WorkOfUintptrThenInt8 struct {
 }
 
 type WorkerOfPushUintptrThenInt8 interface {
-	Push(*WorkOfUintptrThenInt8)
+	Push(context.Context, *WorkOfUintptrThenInt8) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4310,7 +4312,7 @@ type WorkOfUintptrThenRune struct {
 }
 
 type WorkerOfPushUintptrThenRune interface {
-	Push(*WorkOfUintptrThenRune)
+	Push(context.Context, *WorkOfUintptrThenRune) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4320,7 +4322,7 @@ type WorkOfUintptrThenString struct {
 }
 
 type WorkerOfPushUintptrThenString interface {
-	Push(*WorkOfUintptrThenString)
+	Push(context.Context, *WorkOfUintptrThenString) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4330,7 +4332,7 @@ type WorkOfUintptrThenUint struct {
 }
 
 type WorkerOfPushUintptrThenUint interface {
-	Push(*WorkOfUintptrThenUint)
+	Push(context.Context, *WorkOfUintptrThenUint) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4340,7 +4342,7 @@ type WorkOfUintptrThenUint16 struct {
 }
 
 type WorkerOfPushUintptrThenUint16 interface {
-	Push(*WorkOfUintptrThenUint16)
+	Push(context.Context, *WorkOfUintptrThenUint16) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4350,7 +4352,7 @@ type WorkOfUintptrThenUint32 struct {
 }
 
 type WorkerOfPushUintptrThenUint32 interface {
-	Push(*WorkOfUintptrThenUint32)
+	Push(context.Context, *WorkOfUintptrThenUint32) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4360,7 +4362,7 @@ type WorkOfUintptrThenUint64 struct {
 }
 
 type WorkerOfPushUintptrThenUint64 interface {
-	Push(*WorkOfUintptrThenUint64)
+	Push(context.Context, *WorkOfUintptrThenUint64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4370,7 +4372,7 @@ type WorkOfUintptrThenUint8 struct {
 }
 
 type WorkerOfPushUintptrThenUint8 interface {
-	Push(*WorkOfUintptrThenUint8)
+	Push(context.Context, *WorkOfUintptrThenUint8) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4380,7 +4382,7 @@ type WorkOfUintptrThenUintptr struct {
 }
 
 type WorkerOfPushUintptrThenUintptr interface {
-	Push(*WorkOfUintptrThenUintptr)
+	Push(context.Context, *WorkOfUintptrThenUintptr) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4390,7 +4392,7 @@ type WorkOfUintptrThenInterface struct {
 }
 
 type WorkerOfPushUintptrThenInterface interface {
-	Push(*WorkOfUintptrThenInterface)
+	Push(context.Context, *WorkOfUintptrThenInterface) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4400,7 +4402,7 @@ type WorkOfUintptrThenStruct struct {
 }
 
 type WorkerOfPushUintptrThenStruct interface {
-	Push(*WorkOfUintptrThenStruct)
+	Push(context.Context, *WorkOfUintptrThenStruct) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4410,7 +4412,7 @@ type WorkOfInterfaceThenBool struct {
 }
 
 type WorkerOfPushInterfaceThenBool interface {
-	Push(*WorkOfInterfaceThenBool)
+	Push(context.Context, *WorkOfInterfaceThenBool) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4420,7 +4422,7 @@ type WorkOfInterfaceThenByte struct {
 }
 
 type WorkerOfPushInterfaceThenByte interface {
-	Push(*WorkOfInterfaceThenByte)
+	Push(context.Context, *WorkOfInterfaceThenByte) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4430,7 +4432,7 @@ type WorkOfInterfaceThenComplex128 struct {
 }
 
 type WorkerOfPushInterfaceThenComplex128 interface {
-	Push(*WorkOfInterfaceThenComplex128)
+	Push(context.Context, *WorkOfInterfaceThenComplex128) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4440,7 +4442,7 @@ type WorkOfInterfaceThenComplex64 struct {
 }
 
 type WorkerOfPushInterfaceThenComplex64 interface {
-	Push(*WorkOfInterfaceThenComplex64)
+	Push(context.Context, *WorkOfInterfaceThenComplex64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4450,7 +4452,7 @@ type WorkOfInterfaceThenError struct {
 }
 
 type WorkerOfPushInterfaceThenError interface {
-	Push(*WorkOfInterfaceThenError)
+	Push(context.Context, *WorkOfInterfaceThenError) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4460,7 +4462,7 @@ type WorkOfInterfaceThenFloat32 struct {
 }
 
 type WorkerOfPushInterfaceThenFloat32 interface {
-	Push(*WorkOfInterfaceThenFloat32)
+	Push(context.Context, *WorkOfInterfaceThenFloat32) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4470,7 +4472,7 @@ type WorkOfInterfaceThenFloat64 struct {
 }
 
 type WorkerOfPushInterfaceThenFloat64 interface {
-	Push(*WorkOfInterfaceThenFloat64)
+	Push(context.Context, *WorkOfInterfaceThenFloat64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4480,7 +4482,7 @@ type WorkOfInterfaceThenInt struct {
 }
 
 type WorkerOfPushInterfaceThenInt interface {
-	Push(*WorkOfInterfaceThenInt)
+	Push(context.Context, *WorkOfInterfaceThenInt) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4490,7 +4492,7 @@ type WorkOfInterfaceThenInt16 struct {
 }
 
 type WorkerOfPushInterfaceThenInt16 interface {
-	Push(*WorkOfInterfaceThenInt16)
+	Push(context.Context, *WorkOfInterfaceThenInt16) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4500,7 +4502,7 @@ type WorkOfInterfaceThenInt32 struct {
 }
 
 type WorkerOfPushInterfaceThenInt32 interface {
-	Push(*WorkOfInterfaceThenInt32)
+	Push(context.Context, *WorkOfInterfaceThenInt32) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4510,7 +4512,7 @@ type WorkOfInterfaceThenInt64 struct {
 }
 
 type WorkerOfPushInterfaceThenInt64 interface {
-	Push(*WorkOfInterfaceThenInt64)
+	Push(context.Context, *WorkOfInterfaceThenInt64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4520,7 +4522,7 @@ type WorkOfInterfaceThenInt8 struct {
 }
 
 type WorkerOfPushInterfaceThenInt8 interface {
-	Push(*WorkOfInterfaceThenInt8)
+	Push(context.Context, *WorkOfInterfaceThenInt8) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4530,7 +4532,7 @@ type WorkOfInterfaceThenRune struct {
 }
 
 type WorkerOfPushInterfaceThenRune interface {
-	Push(*WorkOfInterfaceThenRune)
+	Push(context.Context, *WorkOfInterfaceThenRune) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4540,7 +4542,7 @@ type WorkOfInterfaceThenString struct {
 }
 
 type WorkerOfPushInterfaceThenString interface {
-	Push(*WorkOfInterfaceThenString)
+	Push(context.Context, *WorkOfInterfaceThenString) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4550,7 +4552,7 @@ type WorkOfInterfaceThenUint struct {
 }
 
 type WorkerOfPushInterfaceThenUint interface {
-	Push(*WorkOfInterfaceThenUint)
+	Push(context.Context, *WorkOfInterfaceThenUint) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4560,7 +4562,7 @@ type WorkOfInterfaceThenUint16 struct {
 }
 
 type WorkerOfPushInterfaceThenUint16 interface {
-	Push(*WorkOfInterfaceThenUint16)
+	Push(context.Context, *WorkOfInterfaceThenUint16) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4570,7 +4572,7 @@ type WorkOfInterfaceThenUint32 struct {
 }
 
 type WorkerOfPushInterfaceThenUint32 interface {
-	Push(*WorkOfInterfaceThenUint32)
+	Push(context.Context, *WorkOfInterfaceThenUint32) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4580,7 +4582,7 @@ type WorkOfInterfaceThenUint64 struct {
 }
 
 type WorkerOfPushInterfaceThenUint64 interface {
-	Push(*WorkOfInterfaceThenUint64)
+	Push(context.Context, *WorkOfInterfaceThenUint64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4590,7 +4592,7 @@ type WorkOfInterfaceThenUint8 struct {
 }
 
 type WorkerOfPushInterfaceThenUint8 interface {
-	Push(*WorkOfInterfaceThenUint8)
+	Push(context.Context, *WorkOfInterfaceThenUint8) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4600,7 +4602,7 @@ type WorkOfInterfaceThenUintptr struct {
 }
 
 type WorkerOfPushInterfaceThenUintptr interface {
-	Push(*WorkOfInterfaceThenUintptr)
+	Push(context.Context, *WorkOfInterfaceThenUintptr) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4610,7 +4612,7 @@ type WorkOfInterfaceThenInterface struct {
 }
 
 type WorkerOfPushInterfaceThenInterface interface {
-	Push(*WorkOfInterfaceThenInterface)
+	Push(context.Context, *WorkOfInterfaceThenInterface) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4620,7 +4622,7 @@ type WorkOfInterfaceThenStruct struct {
 }
 
 type WorkerOfPushInterfaceThenStruct interface {
-	Push(*WorkOfInterfaceThenStruct)
+	Push(context.Context, *WorkOfInterfaceThenStruct) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4630,7 +4632,7 @@ type WorkOfStructThenBool struct {
 }
 
 type WorkerOfPushStructThenBool interface {
-	Push(*WorkOfStructThenBool)
+	Push(context.Context, *WorkOfStructThenBool) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4640,7 +4642,7 @@ type WorkOfStructThenByte struct {
 }
 
 type WorkerOfPushStructThenByte interface {
-	Push(*WorkOfStructThenByte)
+	Push(context.Context, *WorkOfStructThenByte) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4650,7 +4652,7 @@ type WorkOfStructThenComplex128 struct {
 }
 
 type WorkerOfPushStructThenComplex128 interface {
-	Push(*WorkOfStructThenComplex128)
+	Push(context.Context, *WorkOfStructThenComplex128) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4660,7 +4662,7 @@ type WorkOfStructThenComplex64 struct {
 }
 
 type WorkerOfPushStructThenComplex64 interface {
-	Push(*WorkOfStructThenComplex64)
+	Push(context.Context, *WorkOfStructThenComplex64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4670,7 +4672,7 @@ type WorkOfStructThenError struct {
 }
 
 type WorkerOfPushStructThenError interface {
-	Push(*WorkOfStructThenError)
+	Push(context.Context, *WorkOfStructThenError) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4680,7 +4682,7 @@ type WorkOfStructThenFloat32 struct {
 }
 
 type WorkerOfPushStructThenFloat32 interface {
-	Push(*WorkOfStructThenFloat32)
+	Push(context.Context, *WorkOfStructThenFloat32) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4690,7 +4692,7 @@ type WorkOfStructThenFloat64 struct {
 }
 
 type WorkerOfPushStructThenFloat64 interface {
-	Push(*WorkOfStructThenFloat64)
+	Push(context.Context, *WorkOfStructThenFloat64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4700,7 +4702,7 @@ type WorkOfStructThenInt struct {
 }
 
 type WorkerOfPushStructThenInt interface {
-	Push(*WorkOfStructThenInt)
+	Push(context.Context, *WorkOfStructThenInt) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4710,7 +4712,7 @@ type WorkOfStructThenInt16 struct {
 }
 
 type WorkerOfPushStructThenInt16 interface {
-	Push(*WorkOfStructThenInt16)
+	Push(context.Context, *WorkOfStructThenInt16) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4720,7 +4722,7 @@ type WorkOfStructThenInt32 struct {
 }
 
 type WorkerOfPushStructThenInt32 interface {
-	Push(*WorkOfStructThenInt32)
+	Push(context.Context, *WorkOfStructThenInt32) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4730,7 +4732,7 @@ type WorkOfStructThenInt64 struct {
 }
 
 type WorkerOfPushStructThenInt64 interface {
-	Push(*WorkOfStructThenInt64)
+	Push(context.Context, *WorkOfStructThenInt64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4740,7 +4742,7 @@ type WorkOfStructThenInt8 struct {
 }
 
 type WorkerOfPushStructThenInt8 interface {
-	Push(*WorkOfStructThenInt8)
+	Push(context.Context, *WorkOfStructThenInt8) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4750,7 +4752,7 @@ type WorkOfStructThenRune struct {
 }
 
 type WorkerOfPushStructThenRune interface {
-	Push(*WorkOfStructThenRune)
+	Push(context.Context, *WorkOfStructThenRune) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4760,7 +4762,7 @@ type WorkOfStructThenString struct {
 }
 
 type WorkerOfPushStructThenString interface {
-	Push(*WorkOfStructThenString)
+	Push(context.Context, *WorkOfStructThenString) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4770,7 +4772,7 @@ type WorkOfStructThenUint struct {
 }
 
 type WorkerOfPushStructThenUint interface {
-	Push(*WorkOfStructThenUint)
+	Push(context.Context, *WorkOfStructThenUint) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4780,7 +4782,7 @@ type WorkOfStructThenUint16 struct {
 }
 
 type WorkerOfPushStructThenUint16 interface {
-	Push(*WorkOfStructThenUint16)
+	Push(context.Context, *WorkOfStructThenUint16) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4790,7 +4792,7 @@ type WorkOfStructThenUint32 struct {
 }
 
 type WorkerOfPushStructThenUint32 interface {
-	Push(*WorkOfStructThenUint32)
+	Push(context.Context, *WorkOfStructThenUint32) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4800,7 +4802,7 @@ type WorkOfStructThenUint64 struct {
 }
 
 type WorkerOfPushStructThenUint64 interface {
-	Push(*WorkOfStructThenUint64)
+	Push(context.Context, *WorkOfStructThenUint64) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4810,7 +4812,7 @@ type WorkOfStructThenUint8 struct {
 }
 
 type WorkerOfPushStructThenUint8 interface {
-	Push(*WorkOfStructThenUint8)
+	Push(context.Context, *WorkOfStructThenUint8) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4820,7 +4822,7 @@ type WorkOfStructThenUintptr struct {
 }
 
 type WorkerOfPushStructThenUintptr interface {
-	Push(*WorkOfStructThenUintptr)
+	Push(context.Context, *WorkOfStructThenUintptr) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4830,7 +4832,7 @@ type WorkOfStructThenInterface struct {
 }
 
 type WorkerOfPushStructThenInterface interface {
-	Push(*WorkOfStructThenInterface)
+	Push(context.Context, *WorkOfStructThenInterface) error
 	DoneNotify() <-chan struct{}
 }
 
@@ -4840,6 +4842,6 @@ type WorkOfStructThenStruct struct {
 }
 
 type WorkerOfPushStructThenStruct interface {
-	Push(*WorkOfStructThenStruct)
+	Push(context.Context, *WorkOfStructThenStruct) error
 	DoneNotify() <-chan struct{}
 }
