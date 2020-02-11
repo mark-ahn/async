@@ -10,6 +10,6 @@ type WorkOfSomeThenOther struct {
 }
 
 type WorkerOfPushSomeThenOther interface {
-	Push(context.Context, *WorkOfSomeThenOther) error
+	Push(context.Context, *WorkOfSomeThenOther)
 	DoneNotify() <-chan struct{}
 }

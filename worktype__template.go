@@ -10,6 +10,6 @@ type _Prefix_WorkOfSomeThenOther struct {
 }
 
 type _Prefix_WorkerOfPushSomeThenOther interface {
-	Push(context.Context, *_Prefix_WorkOfSomeThenOther) error
+	Push(context.Context, *_Prefix_WorkOfSomeThenOther)
 	DoneNotify() <-chan struct{}
 }
