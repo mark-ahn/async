@@ -156,6 +156,10 @@ func (__ *ApiDecouplerOfBytesThenBytes) DoOfBytesThenBytes(ctx context.Context, 
 
 type WorkHandlerOfBytesThenBytes = func(ctx context.Context, arg Bytes) (Bytes, error)
 
+type CallerOfBytesThenBytes interface {
+	Call(ctx context.Context, arg Bytes) (Bytes, error)
+}
+
 type WorkerOfBytesThenBytes struct {
 	api_syncer *ApiDecouplerOfBytesThenBytes
 	handler    WorkHandlerOfBytesThenBytes
@@ -414,6 +418,10 @@ func (__ *ApiDecouplerOfBytesThenString) DoOfBytesThenString(ctx context.Context
 }
 
 type WorkHandlerOfBytesThenString = func(ctx context.Context, arg Bytes) (string, error)
+
+type CallerOfBytesThenString interface {
+	Call(ctx context.Context, arg Bytes) (string, error)
+}
 
 type WorkerOfBytesThenString struct {
 	api_syncer *ApiDecouplerOfBytesThenString
@@ -674,6 +682,10 @@ func (__ *ApiDecouplerOfBytesThenInterface) DoOfBytesThenInterface(ctx context.C
 
 type WorkHandlerOfBytesThenInterface = func(ctx context.Context, arg Bytes) (interface{}, error)
 
+type CallerOfBytesThenInterface interface {
+	Call(ctx context.Context, arg Bytes) (interface{}, error)
+}
+
 type WorkerOfBytesThenInterface struct {
 	api_syncer *ApiDecouplerOfBytesThenInterface
 	handler    WorkHandlerOfBytesThenInterface
@@ -932,6 +944,10 @@ func (__ *ApiDecouplerOfStringThenBytes) DoOfStringThenBytes(ctx context.Context
 }
 
 type WorkHandlerOfStringThenBytes = func(ctx context.Context, arg string) (Bytes, error)
+
+type CallerOfStringThenBytes interface {
+	Call(ctx context.Context, arg string) (Bytes, error)
+}
 
 type WorkerOfStringThenBytes struct {
 	api_syncer *ApiDecouplerOfStringThenBytes
@@ -1192,6 +1208,10 @@ func (__ *ApiDecouplerOfStringThenString) DoOfStringThenString(ctx context.Conte
 
 type WorkHandlerOfStringThenString = func(ctx context.Context, arg string) (string, error)
 
+type CallerOfStringThenString interface {
+	Call(ctx context.Context, arg string) (string, error)
+}
+
 type WorkerOfStringThenString struct {
 	api_syncer *ApiDecouplerOfStringThenString
 	handler    WorkHandlerOfStringThenString
@@ -1450,6 +1470,10 @@ func (__ *ApiDecouplerOfStringThenInterface) DoOfStringThenInterface(ctx context
 }
 
 type WorkHandlerOfStringThenInterface = func(ctx context.Context, arg string) (interface{}, error)
+
+type CallerOfStringThenInterface interface {
+	Call(ctx context.Context, arg string) (interface{}, error)
+}
 
 type WorkerOfStringThenInterface struct {
 	api_syncer *ApiDecouplerOfStringThenInterface
@@ -1710,6 +1734,10 @@ func (__ *ApiDecouplerOfInterfaceThenBytes) DoOfInterfaceThenBytes(ctx context.C
 
 type WorkHandlerOfInterfaceThenBytes = func(ctx context.Context, arg interface{}) (Bytes, error)
 
+type CallerOfInterfaceThenBytes interface {
+	Call(ctx context.Context, arg interface{}) (Bytes, error)
+}
+
 type WorkerOfInterfaceThenBytes struct {
 	api_syncer *ApiDecouplerOfInterfaceThenBytes
 	handler    WorkHandlerOfInterfaceThenBytes
@@ -1969,6 +1997,10 @@ func (__ *ApiDecouplerOfInterfaceThenString) DoOfInterfaceThenString(ctx context
 
 type WorkHandlerOfInterfaceThenString = func(ctx context.Context, arg interface{}) (string, error)
 
+type CallerOfInterfaceThenString interface {
+	Call(ctx context.Context, arg interface{}) (string, error)
+}
+
 type WorkerOfInterfaceThenString struct {
 	api_syncer *ApiDecouplerOfInterfaceThenString
 	handler    WorkHandlerOfInterfaceThenString
@@ -2227,6 +2259,10 @@ func (__ *ApiDecouplerOfInterfaceThenInterface) DoOfInterfaceThenInterface(ctx c
 }
 
 type WorkHandlerOfInterfaceThenInterface = func(ctx context.Context, arg interface{}) (interface{}, error)
+
+type CallerOfInterfaceThenInterface interface {
+	Call(ctx context.Context, arg interface{}) (interface{}, error)
+}
 
 type WorkerOfInterfaceThenInterface struct {
 	api_syncer *ApiDecouplerOfInterfaceThenInterface

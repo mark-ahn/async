@@ -152,6 +152,10 @@ func (__ *ApiDecouplerOfSomeThenOther) DoOfSomeThenOther(ctx context.Context, wo
 
 type WorkHandlerOfSomeThenOther = func(ctx context.Context, arg Some) (Other, error)
 
+type CallerOfSomeThenOther interface {
+	Call(ctx context.Context, arg Some) (Other, error)
+}
+
 type WorkerOfSomeThenOther struct {
 	api_syncer *ApiDecouplerOfSomeThenOther
 	handler    WorkHandlerOfSomeThenOther
