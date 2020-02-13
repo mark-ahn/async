@@ -192,7 +192,8 @@ func NewWorkerOfBytesThenBytes(ctx context.Context, h WorkHandlerOfBytesThenByte
 		defer func() {
 			__.threads.Wait()
 			__.reset_queue()
-			for rst_req := range __.reset_ch {
+			for i := 0; i < len(__.reset_ch); i += 1 {
+				rst_req := <-__.reset_ch
 				rst_req <- fmt.Errorf("terminated worker")
 				close(rst_req)
 			}
@@ -450,7 +451,8 @@ func NewWorkerOfBytesThenString(ctx context.Context, h WorkHandlerOfBytesThenStr
 		defer func() {
 			__.threads.Wait()
 			__.reset_queue()
-			for rst_req := range __.reset_ch {
+			for i := 0; i < len(__.reset_ch); i += 1 {
+				rst_req := <-__.reset_ch
 				rst_req <- fmt.Errorf("terminated worker")
 				close(rst_req)
 			}
@@ -708,7 +710,8 @@ func NewWorkerOfBytesThenInterface(ctx context.Context, h WorkHandlerOfBytesThen
 		defer func() {
 			__.threads.Wait()
 			__.reset_queue()
-			for rst_req := range __.reset_ch {
+			for i := 0; i < len(__.reset_ch); i += 1 {
+				rst_req := <-__.reset_ch
 				rst_req <- fmt.Errorf("terminated worker")
 				close(rst_req)
 			}
@@ -966,7 +969,8 @@ func NewWorkerOfStringThenBytes(ctx context.Context, h WorkHandlerOfStringThenBy
 		defer func() {
 			__.threads.Wait()
 			__.reset_queue()
-			for rst_req := range __.reset_ch {
+			for i := 0; i < len(__.reset_ch); i += 1 {
+				rst_req := <-__.reset_ch
 				rst_req <- fmt.Errorf("terminated worker")
 				close(rst_req)
 			}
@@ -1224,7 +1228,8 @@ func NewWorkerOfStringThenString(ctx context.Context, h WorkHandlerOfStringThenS
 		defer func() {
 			__.threads.Wait()
 			__.reset_queue()
-			for rst_req := range __.reset_ch {
+			for i := 0; i < len(__.reset_ch); i += 1 {
+				rst_req := <-__.reset_ch
 				rst_req <- fmt.Errorf("terminated worker")
 				close(rst_req)
 			}
@@ -1482,7 +1487,8 @@ func NewWorkerOfStringThenInterface(ctx context.Context, h WorkHandlerOfStringTh
 		defer func() {
 			__.threads.Wait()
 			__.reset_queue()
-			for rst_req := range __.reset_ch {
+			for i := 0; i < len(__.reset_ch); i += 1 {
+				rst_req := <-__.reset_ch
 				rst_req <- fmt.Errorf("terminated worker")
 				close(rst_req)
 			}
@@ -1740,7 +1746,8 @@ func NewWorkerOfInterfaceThenBytes(ctx context.Context, h WorkHandlerOfInterface
 		defer func() {
 			__.threads.Wait()
 			__.reset_queue()
-			for rst_req := range __.reset_ch {
+			for i := 0; i < len(__.reset_ch); i += 1 {
+				rst_req := <-__.reset_ch
 				rst_req <- fmt.Errorf("terminated worker")
 				close(rst_req)
 			}
@@ -1998,7 +2005,8 @@ func NewWorkerOfInterfaceThenString(ctx context.Context, h WorkHandlerOfInterfac
 		defer func() {
 			__.threads.Wait()
 			__.reset_queue()
-			for rst_req := range __.reset_ch {
+			for i := 0; i < len(__.reset_ch); i += 1 {
+				rst_req := <-__.reset_ch
 				rst_req <- fmt.Errorf("terminated worker")
 				close(rst_req)
 			}
@@ -2256,7 +2264,8 @@ func NewWorkerOfInterfaceThenInterface(ctx context.Context, h WorkHandlerOfInter
 		defer func() {
 			__.threads.Wait()
 			__.reset_queue()
-			for rst_req := range __.reset_ch {
+			for i := 0; i < len(__.reset_ch); i += 1 {
+				rst_req := <-__.reset_ch
 				rst_req <- fmt.Errorf("terminated worker")
 				close(rst_req)
 			}

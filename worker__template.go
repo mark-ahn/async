@@ -188,7 +188,8 @@ func NewWorkerOfSomeThenOther(ctx context.Context, h WorkHandlerOfSomeThenOther,
 		defer func() {
 			__.threads.Wait()
 			__.reset_queue()
-			for rst_req := range __.reset_ch {
+			for i := 0; i < len(__.reset_ch); i += 1 {
+				rst_req := <-__.reset_ch
 				rst_req <- fmt.Errorf("terminated worker")
 				close(rst_req)
 			}
