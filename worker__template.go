@@ -7,10 +7,10 @@ import (
 )
 
 type PoolOfSomeThenOther interface {
-	GetSomeArg() *Some
-	PutSomeArg(*Some)
-	GetOtherReturn() *Other
-	PutOtherReturn(*Other)
+	// GetSomeArg() Some
+	// PutSomeArg(Some)
+	// GetOtherReturn() Other
+	// PutOtherReturn(Other)
 
 	GetWorkOfSomeThenOther() *WorkOfSomeThenOther
 	GetReturnOfOther() *ReturnOfOther

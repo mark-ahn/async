@@ -4,68 +4,8 @@
 
 package async
 
-type ReturnOfBool struct {
-	Value bool
-	Error error
-}
-
-type ReturnOfByte struct {
-	Value byte
-	Error error
-}
-
-type ReturnOfComplex128 struct {
-	Value complex128
-	Error error
-}
-
-type ReturnOfComplex64 struct {
-	Value complex64
-	Error error
-}
-
-type ReturnOfError struct {
-	Value error
-	Error error
-}
-
-type ReturnOfFloat32 struct {
-	Value float32
-	Error error
-}
-
-type ReturnOfFloat64 struct {
-	Value float64
-	Error error
-}
-
-type ReturnOfInt struct {
-	Value int
-	Error error
-}
-
-type ReturnOfInt16 struct {
-	Value int16
-	Error error
-}
-
-type ReturnOfInt32 struct {
-	Value int32
-	Error error
-}
-
-type ReturnOfInt64 struct {
-	Value int64
-	Error error
-}
-
-type ReturnOfInt8 struct {
-	Value int8
-	Error error
-}
-
-type ReturnOfRune struct {
-	Value rune
+type ReturnOfBytes struct {
+	Value Bytes
 	Error error
 }
 
@@ -74,42 +14,7 @@ type ReturnOfString struct {
 	Error error
 }
 
-type ReturnOfUint struct {
-	Value uint
-	Error error
-}
-
-type ReturnOfUint16 struct {
-	Value uint16
-	Error error
-}
-
-type ReturnOfUint32 struct {
-	Value uint32
-	Error error
-}
-
-type ReturnOfUint64 struct {
-	Value uint64
-	Error error
-}
-
-type ReturnOfUint8 struct {
-	Value uint8
-	Error error
-}
-
-type ReturnOfUintptr struct {
-	Value uintptr
-	Error error
-}
-
 type ReturnOfInterface struct {
 	Value interface{}
-	Error error
-}
-
-type ReturnOfStruct struct {
-	Value struct{}
 	Error error
 }
