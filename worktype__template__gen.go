@@ -11,6 +11,11 @@ type WorkOfBoolThenBool struct {
 	ReturnCh chan<- *ReturnOfBool
 }
 
+type WorkWithContextOfBoolThenBool struct {
+	context.Context
+	*WorkOfBoolThenBool
+}
+
 type WorkerOfPushBoolThenBool interface {
 	Push(context.Context, *WorkOfBoolThenBool)
 	DoneNotify() <-chan struct{}
@@ -19,6 +24,11 @@ type WorkerOfPushBoolThenBool interface {
 type WorkOfBoolThenByte struct {
 	Argument bool
 	ReturnCh chan<- *ReturnOfByte
+}
+
+type WorkWithContextOfBoolThenByte struct {
+	context.Context
+	*WorkOfBoolThenByte
 }
 
 type WorkerOfPushBoolThenByte interface {
@@ -31,6 +41,11 @@ type WorkOfBoolThenComplex128 struct {
 	ReturnCh chan<- *ReturnOfComplex128
 }
 
+type WorkWithContextOfBoolThenComplex128 struct {
+	context.Context
+	*WorkOfBoolThenComplex128
+}
+
 type WorkerOfPushBoolThenComplex128 interface {
 	Push(context.Context, *WorkOfBoolThenComplex128)
 	DoneNotify() <-chan struct{}
@@ -39,6 +54,11 @@ type WorkerOfPushBoolThenComplex128 interface {
 type WorkOfBoolThenComplex64 struct {
 	Argument bool
 	ReturnCh chan<- *ReturnOfComplex64
+}
+
+type WorkWithContextOfBoolThenComplex64 struct {
+	context.Context
+	*WorkOfBoolThenComplex64
 }
 
 type WorkerOfPushBoolThenComplex64 interface {
@@ -51,6 +71,11 @@ type WorkOfBoolThenError struct {
 	ReturnCh chan<- *ReturnOfError
 }
 
+type WorkWithContextOfBoolThenError struct {
+	context.Context
+	*WorkOfBoolThenError
+}
+
 type WorkerOfPushBoolThenError interface {
 	Push(context.Context, *WorkOfBoolThenError)
 	DoneNotify() <-chan struct{}
@@ -59,6 +84,11 @@ type WorkerOfPushBoolThenError interface {
 type WorkOfBoolThenFloat32 struct {
 	Argument bool
 	ReturnCh chan<- *ReturnOfFloat32
+}
+
+type WorkWithContextOfBoolThenFloat32 struct {
+	context.Context
+	*WorkOfBoolThenFloat32
 }
 
 type WorkerOfPushBoolThenFloat32 interface {
@@ -71,6 +101,11 @@ type WorkOfBoolThenFloat64 struct {
 	ReturnCh chan<- *ReturnOfFloat64
 }
 
+type WorkWithContextOfBoolThenFloat64 struct {
+	context.Context
+	*WorkOfBoolThenFloat64
+}
+
 type WorkerOfPushBoolThenFloat64 interface {
 	Push(context.Context, *WorkOfBoolThenFloat64)
 	DoneNotify() <-chan struct{}
@@ -79,6 +114,11 @@ type WorkerOfPushBoolThenFloat64 interface {
 type WorkOfBoolThenInt struct {
 	Argument bool
 	ReturnCh chan<- *ReturnOfInt
+}
+
+type WorkWithContextOfBoolThenInt struct {
+	context.Context
+	*WorkOfBoolThenInt
 }
 
 type WorkerOfPushBoolThenInt interface {
@@ -91,6 +131,11 @@ type WorkOfBoolThenInt16 struct {
 	ReturnCh chan<- *ReturnOfInt16
 }
 
+type WorkWithContextOfBoolThenInt16 struct {
+	context.Context
+	*WorkOfBoolThenInt16
+}
+
 type WorkerOfPushBoolThenInt16 interface {
 	Push(context.Context, *WorkOfBoolThenInt16)
 	DoneNotify() <-chan struct{}
@@ -99,6 +144,11 @@ type WorkerOfPushBoolThenInt16 interface {
 type WorkOfBoolThenInt32 struct {
 	Argument bool
 	ReturnCh chan<- *ReturnOfInt32
+}
+
+type WorkWithContextOfBoolThenInt32 struct {
+	context.Context
+	*WorkOfBoolThenInt32
 }
 
 type WorkerOfPushBoolThenInt32 interface {
@@ -111,6 +161,11 @@ type WorkOfBoolThenInt64 struct {
 	ReturnCh chan<- *ReturnOfInt64
 }
 
+type WorkWithContextOfBoolThenInt64 struct {
+	context.Context
+	*WorkOfBoolThenInt64
+}
+
 type WorkerOfPushBoolThenInt64 interface {
 	Push(context.Context, *WorkOfBoolThenInt64)
 	DoneNotify() <-chan struct{}
@@ -119,6 +174,11 @@ type WorkerOfPushBoolThenInt64 interface {
 type WorkOfBoolThenInt8 struct {
 	Argument bool
 	ReturnCh chan<- *ReturnOfInt8
+}
+
+type WorkWithContextOfBoolThenInt8 struct {
+	context.Context
+	*WorkOfBoolThenInt8
 }
 
 type WorkerOfPushBoolThenInt8 interface {
@@ -131,6 +191,11 @@ type WorkOfBoolThenRune struct {
 	ReturnCh chan<- *ReturnOfRune
 }
 
+type WorkWithContextOfBoolThenRune struct {
+	context.Context
+	*WorkOfBoolThenRune
+}
+
 type WorkerOfPushBoolThenRune interface {
 	Push(context.Context, *WorkOfBoolThenRune)
 	DoneNotify() <-chan struct{}
@@ -139,6 +204,11 @@ type WorkerOfPushBoolThenRune interface {
 type WorkOfBoolThenString struct {
 	Argument bool
 	ReturnCh chan<- *ReturnOfString
+}
+
+type WorkWithContextOfBoolThenString struct {
+	context.Context
+	*WorkOfBoolThenString
 }
 
 type WorkerOfPushBoolThenString interface {
@@ -151,6 +221,11 @@ type WorkOfBoolThenUint struct {
 	ReturnCh chan<- *ReturnOfUint
 }
 
+type WorkWithContextOfBoolThenUint struct {
+	context.Context
+	*WorkOfBoolThenUint
+}
+
 type WorkerOfPushBoolThenUint interface {
 	Push(context.Context, *WorkOfBoolThenUint)
 	DoneNotify() <-chan struct{}
@@ -159,6 +234,11 @@ type WorkerOfPushBoolThenUint interface {
 type WorkOfBoolThenUint16 struct {
 	Argument bool
 	ReturnCh chan<- *ReturnOfUint16
+}
+
+type WorkWithContextOfBoolThenUint16 struct {
+	context.Context
+	*WorkOfBoolThenUint16
 }
 
 type WorkerOfPushBoolThenUint16 interface {
@@ -171,6 +251,11 @@ type WorkOfBoolThenUint32 struct {
 	ReturnCh chan<- *ReturnOfUint32
 }
 
+type WorkWithContextOfBoolThenUint32 struct {
+	context.Context
+	*WorkOfBoolThenUint32
+}
+
 type WorkerOfPushBoolThenUint32 interface {
 	Push(context.Context, *WorkOfBoolThenUint32)
 	DoneNotify() <-chan struct{}
@@ -179,6 +264,11 @@ type WorkerOfPushBoolThenUint32 interface {
 type WorkOfBoolThenUint64 struct {
 	Argument bool
 	ReturnCh chan<- *ReturnOfUint64
+}
+
+type WorkWithContextOfBoolThenUint64 struct {
+	context.Context
+	*WorkOfBoolThenUint64
 }
 
 type WorkerOfPushBoolThenUint64 interface {
@@ -191,6 +281,11 @@ type WorkOfBoolThenUint8 struct {
 	ReturnCh chan<- *ReturnOfUint8
 }
 
+type WorkWithContextOfBoolThenUint8 struct {
+	context.Context
+	*WorkOfBoolThenUint8
+}
+
 type WorkerOfPushBoolThenUint8 interface {
 	Push(context.Context, *WorkOfBoolThenUint8)
 	DoneNotify() <-chan struct{}
@@ -199,6 +294,11 @@ type WorkerOfPushBoolThenUint8 interface {
 type WorkOfBoolThenUintptr struct {
 	Argument bool
 	ReturnCh chan<- *ReturnOfUintptr
+}
+
+type WorkWithContextOfBoolThenUintptr struct {
+	context.Context
+	*WorkOfBoolThenUintptr
 }
 
 type WorkerOfPushBoolThenUintptr interface {
@@ -211,6 +311,11 @@ type WorkOfBoolThenInterface struct {
 	ReturnCh chan<- *ReturnOfInterface
 }
 
+type WorkWithContextOfBoolThenInterface struct {
+	context.Context
+	*WorkOfBoolThenInterface
+}
+
 type WorkerOfPushBoolThenInterface interface {
 	Push(context.Context, *WorkOfBoolThenInterface)
 	DoneNotify() <-chan struct{}
@@ -219,6 +324,11 @@ type WorkerOfPushBoolThenInterface interface {
 type WorkOfBoolThenStruct struct {
 	Argument bool
 	ReturnCh chan<- *ReturnOfStruct
+}
+
+type WorkWithContextOfBoolThenStruct struct {
+	context.Context
+	*WorkOfBoolThenStruct
 }
 
 type WorkerOfPushBoolThenStruct interface {
@@ -231,6 +341,11 @@ type WorkOfByteThenBool struct {
 	ReturnCh chan<- *ReturnOfBool
 }
 
+type WorkWithContextOfByteThenBool struct {
+	context.Context
+	*WorkOfByteThenBool
+}
+
 type WorkerOfPushByteThenBool interface {
 	Push(context.Context, *WorkOfByteThenBool)
 	DoneNotify() <-chan struct{}
@@ -239,6 +354,11 @@ type WorkerOfPushByteThenBool interface {
 type WorkOfByteThenByte struct {
 	Argument byte
 	ReturnCh chan<- *ReturnOfByte
+}
+
+type WorkWithContextOfByteThenByte struct {
+	context.Context
+	*WorkOfByteThenByte
 }
 
 type WorkerOfPushByteThenByte interface {
@@ -251,6 +371,11 @@ type WorkOfByteThenComplex128 struct {
 	ReturnCh chan<- *ReturnOfComplex128
 }
 
+type WorkWithContextOfByteThenComplex128 struct {
+	context.Context
+	*WorkOfByteThenComplex128
+}
+
 type WorkerOfPushByteThenComplex128 interface {
 	Push(context.Context, *WorkOfByteThenComplex128)
 	DoneNotify() <-chan struct{}
@@ -259,6 +384,11 @@ type WorkerOfPushByteThenComplex128 interface {
 type WorkOfByteThenComplex64 struct {
 	Argument byte
 	ReturnCh chan<- *ReturnOfComplex64
+}
+
+type WorkWithContextOfByteThenComplex64 struct {
+	context.Context
+	*WorkOfByteThenComplex64
 }
 
 type WorkerOfPushByteThenComplex64 interface {
@@ -271,6 +401,11 @@ type WorkOfByteThenError struct {
 	ReturnCh chan<- *ReturnOfError
 }
 
+type WorkWithContextOfByteThenError struct {
+	context.Context
+	*WorkOfByteThenError
+}
+
 type WorkerOfPushByteThenError interface {
 	Push(context.Context, *WorkOfByteThenError)
 	DoneNotify() <-chan struct{}
@@ -279,6 +414,11 @@ type WorkerOfPushByteThenError interface {
 type WorkOfByteThenFloat32 struct {
 	Argument byte
 	ReturnCh chan<- *ReturnOfFloat32
+}
+
+type WorkWithContextOfByteThenFloat32 struct {
+	context.Context
+	*WorkOfByteThenFloat32
 }
 
 type WorkerOfPushByteThenFloat32 interface {
@@ -291,6 +431,11 @@ type WorkOfByteThenFloat64 struct {
 	ReturnCh chan<- *ReturnOfFloat64
 }
 
+type WorkWithContextOfByteThenFloat64 struct {
+	context.Context
+	*WorkOfByteThenFloat64
+}
+
 type WorkerOfPushByteThenFloat64 interface {
 	Push(context.Context, *WorkOfByteThenFloat64)
 	DoneNotify() <-chan struct{}
@@ -299,6 +444,11 @@ type WorkerOfPushByteThenFloat64 interface {
 type WorkOfByteThenInt struct {
 	Argument byte
 	ReturnCh chan<- *ReturnOfInt
+}
+
+type WorkWithContextOfByteThenInt struct {
+	context.Context
+	*WorkOfByteThenInt
 }
 
 type WorkerOfPushByteThenInt interface {
@@ -311,6 +461,11 @@ type WorkOfByteThenInt16 struct {
 	ReturnCh chan<- *ReturnOfInt16
 }
 
+type WorkWithContextOfByteThenInt16 struct {
+	context.Context
+	*WorkOfByteThenInt16
+}
+
 type WorkerOfPushByteThenInt16 interface {
 	Push(context.Context, *WorkOfByteThenInt16)
 	DoneNotify() <-chan struct{}
@@ -319,6 +474,11 @@ type WorkerOfPushByteThenInt16 interface {
 type WorkOfByteThenInt32 struct {
 	Argument byte
 	ReturnCh chan<- *ReturnOfInt32
+}
+
+type WorkWithContextOfByteThenInt32 struct {
+	context.Context
+	*WorkOfByteThenInt32
 }
 
 type WorkerOfPushByteThenInt32 interface {
@@ -331,6 +491,11 @@ type WorkOfByteThenInt64 struct {
 	ReturnCh chan<- *ReturnOfInt64
 }
 
+type WorkWithContextOfByteThenInt64 struct {
+	context.Context
+	*WorkOfByteThenInt64
+}
+
 type WorkerOfPushByteThenInt64 interface {
 	Push(context.Context, *WorkOfByteThenInt64)
 	DoneNotify() <-chan struct{}
@@ -339,6 +504,11 @@ type WorkerOfPushByteThenInt64 interface {
 type WorkOfByteThenInt8 struct {
 	Argument byte
 	ReturnCh chan<- *ReturnOfInt8
+}
+
+type WorkWithContextOfByteThenInt8 struct {
+	context.Context
+	*WorkOfByteThenInt8
 }
 
 type WorkerOfPushByteThenInt8 interface {
@@ -351,6 +521,11 @@ type WorkOfByteThenRune struct {
 	ReturnCh chan<- *ReturnOfRune
 }
 
+type WorkWithContextOfByteThenRune struct {
+	context.Context
+	*WorkOfByteThenRune
+}
+
 type WorkerOfPushByteThenRune interface {
 	Push(context.Context, *WorkOfByteThenRune)
 	DoneNotify() <-chan struct{}
@@ -359,6 +534,11 @@ type WorkerOfPushByteThenRune interface {
 type WorkOfByteThenString struct {
 	Argument byte
 	ReturnCh chan<- *ReturnOfString
+}
+
+type WorkWithContextOfByteThenString struct {
+	context.Context
+	*WorkOfByteThenString
 }
 
 type WorkerOfPushByteThenString interface {
@@ -371,6 +551,11 @@ type WorkOfByteThenUint struct {
 	ReturnCh chan<- *ReturnOfUint
 }
 
+type WorkWithContextOfByteThenUint struct {
+	context.Context
+	*WorkOfByteThenUint
+}
+
 type WorkerOfPushByteThenUint interface {
 	Push(context.Context, *WorkOfByteThenUint)
 	DoneNotify() <-chan struct{}
@@ -379,6 +564,11 @@ type WorkerOfPushByteThenUint interface {
 type WorkOfByteThenUint16 struct {
 	Argument byte
 	ReturnCh chan<- *ReturnOfUint16
+}
+
+type WorkWithContextOfByteThenUint16 struct {
+	context.Context
+	*WorkOfByteThenUint16
 }
 
 type WorkerOfPushByteThenUint16 interface {
@@ -391,6 +581,11 @@ type WorkOfByteThenUint32 struct {
 	ReturnCh chan<- *ReturnOfUint32
 }
 
+type WorkWithContextOfByteThenUint32 struct {
+	context.Context
+	*WorkOfByteThenUint32
+}
+
 type WorkerOfPushByteThenUint32 interface {
 	Push(context.Context, *WorkOfByteThenUint32)
 	DoneNotify() <-chan struct{}
@@ -399,6 +594,11 @@ type WorkerOfPushByteThenUint32 interface {
 type WorkOfByteThenUint64 struct {
 	Argument byte
 	ReturnCh chan<- *ReturnOfUint64
+}
+
+type WorkWithContextOfByteThenUint64 struct {
+	context.Context
+	*WorkOfByteThenUint64
 }
 
 type WorkerOfPushByteThenUint64 interface {
@@ -411,6 +611,11 @@ type WorkOfByteThenUint8 struct {
 	ReturnCh chan<- *ReturnOfUint8
 }
 
+type WorkWithContextOfByteThenUint8 struct {
+	context.Context
+	*WorkOfByteThenUint8
+}
+
 type WorkerOfPushByteThenUint8 interface {
 	Push(context.Context, *WorkOfByteThenUint8)
 	DoneNotify() <-chan struct{}
@@ -419,6 +624,11 @@ type WorkerOfPushByteThenUint8 interface {
 type WorkOfByteThenUintptr struct {
 	Argument byte
 	ReturnCh chan<- *ReturnOfUintptr
+}
+
+type WorkWithContextOfByteThenUintptr struct {
+	context.Context
+	*WorkOfByteThenUintptr
 }
 
 type WorkerOfPushByteThenUintptr interface {
@@ -431,6 +641,11 @@ type WorkOfByteThenInterface struct {
 	ReturnCh chan<- *ReturnOfInterface
 }
 
+type WorkWithContextOfByteThenInterface struct {
+	context.Context
+	*WorkOfByteThenInterface
+}
+
 type WorkerOfPushByteThenInterface interface {
 	Push(context.Context, *WorkOfByteThenInterface)
 	DoneNotify() <-chan struct{}
@@ -439,6 +654,11 @@ type WorkerOfPushByteThenInterface interface {
 type WorkOfByteThenStruct struct {
 	Argument byte
 	ReturnCh chan<- *ReturnOfStruct
+}
+
+type WorkWithContextOfByteThenStruct struct {
+	context.Context
+	*WorkOfByteThenStruct
 }
 
 type WorkerOfPushByteThenStruct interface {
@@ -451,6 +671,11 @@ type WorkOfComplex128ThenBool struct {
 	ReturnCh chan<- *ReturnOfBool
 }
 
+type WorkWithContextOfComplex128ThenBool struct {
+	context.Context
+	*WorkOfComplex128ThenBool
+}
+
 type WorkerOfPushComplex128ThenBool interface {
 	Push(context.Context, *WorkOfComplex128ThenBool)
 	DoneNotify() <-chan struct{}
@@ -459,6 +684,11 @@ type WorkerOfPushComplex128ThenBool interface {
 type WorkOfComplex128ThenByte struct {
 	Argument complex128
 	ReturnCh chan<- *ReturnOfByte
+}
+
+type WorkWithContextOfComplex128ThenByte struct {
+	context.Context
+	*WorkOfComplex128ThenByte
 }
 
 type WorkerOfPushComplex128ThenByte interface {
@@ -471,6 +701,11 @@ type WorkOfComplex128ThenComplex128 struct {
 	ReturnCh chan<- *ReturnOfComplex128
 }
 
+type WorkWithContextOfComplex128ThenComplex128 struct {
+	context.Context
+	*WorkOfComplex128ThenComplex128
+}
+
 type WorkerOfPushComplex128ThenComplex128 interface {
 	Push(context.Context, *WorkOfComplex128ThenComplex128)
 	DoneNotify() <-chan struct{}
@@ -479,6 +714,11 @@ type WorkerOfPushComplex128ThenComplex128 interface {
 type WorkOfComplex128ThenComplex64 struct {
 	Argument complex128
 	ReturnCh chan<- *ReturnOfComplex64
+}
+
+type WorkWithContextOfComplex128ThenComplex64 struct {
+	context.Context
+	*WorkOfComplex128ThenComplex64
 }
 
 type WorkerOfPushComplex128ThenComplex64 interface {
@@ -491,6 +731,11 @@ type WorkOfComplex128ThenError struct {
 	ReturnCh chan<- *ReturnOfError
 }
 
+type WorkWithContextOfComplex128ThenError struct {
+	context.Context
+	*WorkOfComplex128ThenError
+}
+
 type WorkerOfPushComplex128ThenError interface {
 	Push(context.Context, *WorkOfComplex128ThenError)
 	DoneNotify() <-chan struct{}
@@ -499,6 +744,11 @@ type WorkerOfPushComplex128ThenError interface {
 type WorkOfComplex128ThenFloat32 struct {
 	Argument complex128
 	ReturnCh chan<- *ReturnOfFloat32
+}
+
+type WorkWithContextOfComplex128ThenFloat32 struct {
+	context.Context
+	*WorkOfComplex128ThenFloat32
 }
 
 type WorkerOfPushComplex128ThenFloat32 interface {
@@ -511,6 +761,11 @@ type WorkOfComplex128ThenFloat64 struct {
 	ReturnCh chan<- *ReturnOfFloat64
 }
 
+type WorkWithContextOfComplex128ThenFloat64 struct {
+	context.Context
+	*WorkOfComplex128ThenFloat64
+}
+
 type WorkerOfPushComplex128ThenFloat64 interface {
 	Push(context.Context, *WorkOfComplex128ThenFloat64)
 	DoneNotify() <-chan struct{}
@@ -519,6 +774,11 @@ type WorkerOfPushComplex128ThenFloat64 interface {
 type WorkOfComplex128ThenInt struct {
 	Argument complex128
 	ReturnCh chan<- *ReturnOfInt
+}
+
+type WorkWithContextOfComplex128ThenInt struct {
+	context.Context
+	*WorkOfComplex128ThenInt
 }
 
 type WorkerOfPushComplex128ThenInt interface {
@@ -531,6 +791,11 @@ type WorkOfComplex128ThenInt16 struct {
 	ReturnCh chan<- *ReturnOfInt16
 }
 
+type WorkWithContextOfComplex128ThenInt16 struct {
+	context.Context
+	*WorkOfComplex128ThenInt16
+}
+
 type WorkerOfPushComplex128ThenInt16 interface {
 	Push(context.Context, *WorkOfComplex128ThenInt16)
 	DoneNotify() <-chan struct{}
@@ -539,6 +804,11 @@ type WorkerOfPushComplex128ThenInt16 interface {
 type WorkOfComplex128ThenInt32 struct {
 	Argument complex128
 	ReturnCh chan<- *ReturnOfInt32
+}
+
+type WorkWithContextOfComplex128ThenInt32 struct {
+	context.Context
+	*WorkOfComplex128ThenInt32
 }
 
 type WorkerOfPushComplex128ThenInt32 interface {
@@ -551,6 +821,11 @@ type WorkOfComplex128ThenInt64 struct {
 	ReturnCh chan<- *ReturnOfInt64
 }
 
+type WorkWithContextOfComplex128ThenInt64 struct {
+	context.Context
+	*WorkOfComplex128ThenInt64
+}
+
 type WorkerOfPushComplex128ThenInt64 interface {
 	Push(context.Context, *WorkOfComplex128ThenInt64)
 	DoneNotify() <-chan struct{}
@@ -559,6 +834,11 @@ type WorkerOfPushComplex128ThenInt64 interface {
 type WorkOfComplex128ThenInt8 struct {
 	Argument complex128
 	ReturnCh chan<- *ReturnOfInt8
+}
+
+type WorkWithContextOfComplex128ThenInt8 struct {
+	context.Context
+	*WorkOfComplex128ThenInt8
 }
 
 type WorkerOfPushComplex128ThenInt8 interface {
@@ -571,6 +851,11 @@ type WorkOfComplex128ThenRune struct {
 	ReturnCh chan<- *ReturnOfRune
 }
 
+type WorkWithContextOfComplex128ThenRune struct {
+	context.Context
+	*WorkOfComplex128ThenRune
+}
+
 type WorkerOfPushComplex128ThenRune interface {
 	Push(context.Context, *WorkOfComplex128ThenRune)
 	DoneNotify() <-chan struct{}
@@ -579,6 +864,11 @@ type WorkerOfPushComplex128ThenRune interface {
 type WorkOfComplex128ThenString struct {
 	Argument complex128
 	ReturnCh chan<- *ReturnOfString
+}
+
+type WorkWithContextOfComplex128ThenString struct {
+	context.Context
+	*WorkOfComplex128ThenString
 }
 
 type WorkerOfPushComplex128ThenString interface {
@@ -591,6 +881,11 @@ type WorkOfComplex128ThenUint struct {
 	ReturnCh chan<- *ReturnOfUint
 }
 
+type WorkWithContextOfComplex128ThenUint struct {
+	context.Context
+	*WorkOfComplex128ThenUint
+}
+
 type WorkerOfPushComplex128ThenUint interface {
 	Push(context.Context, *WorkOfComplex128ThenUint)
 	DoneNotify() <-chan struct{}
@@ -599,6 +894,11 @@ type WorkerOfPushComplex128ThenUint interface {
 type WorkOfComplex128ThenUint16 struct {
 	Argument complex128
 	ReturnCh chan<- *ReturnOfUint16
+}
+
+type WorkWithContextOfComplex128ThenUint16 struct {
+	context.Context
+	*WorkOfComplex128ThenUint16
 }
 
 type WorkerOfPushComplex128ThenUint16 interface {
@@ -611,6 +911,11 @@ type WorkOfComplex128ThenUint32 struct {
 	ReturnCh chan<- *ReturnOfUint32
 }
 
+type WorkWithContextOfComplex128ThenUint32 struct {
+	context.Context
+	*WorkOfComplex128ThenUint32
+}
+
 type WorkerOfPushComplex128ThenUint32 interface {
 	Push(context.Context, *WorkOfComplex128ThenUint32)
 	DoneNotify() <-chan struct{}
@@ -619,6 +924,11 @@ type WorkerOfPushComplex128ThenUint32 interface {
 type WorkOfComplex128ThenUint64 struct {
 	Argument complex128
 	ReturnCh chan<- *ReturnOfUint64
+}
+
+type WorkWithContextOfComplex128ThenUint64 struct {
+	context.Context
+	*WorkOfComplex128ThenUint64
 }
 
 type WorkerOfPushComplex128ThenUint64 interface {
@@ -631,6 +941,11 @@ type WorkOfComplex128ThenUint8 struct {
 	ReturnCh chan<- *ReturnOfUint8
 }
 
+type WorkWithContextOfComplex128ThenUint8 struct {
+	context.Context
+	*WorkOfComplex128ThenUint8
+}
+
 type WorkerOfPushComplex128ThenUint8 interface {
 	Push(context.Context, *WorkOfComplex128ThenUint8)
 	DoneNotify() <-chan struct{}
@@ -639,6 +954,11 @@ type WorkerOfPushComplex128ThenUint8 interface {
 type WorkOfComplex128ThenUintptr struct {
 	Argument complex128
 	ReturnCh chan<- *ReturnOfUintptr
+}
+
+type WorkWithContextOfComplex128ThenUintptr struct {
+	context.Context
+	*WorkOfComplex128ThenUintptr
 }
 
 type WorkerOfPushComplex128ThenUintptr interface {
@@ -651,6 +971,11 @@ type WorkOfComplex128ThenInterface struct {
 	ReturnCh chan<- *ReturnOfInterface
 }
 
+type WorkWithContextOfComplex128ThenInterface struct {
+	context.Context
+	*WorkOfComplex128ThenInterface
+}
+
 type WorkerOfPushComplex128ThenInterface interface {
 	Push(context.Context, *WorkOfComplex128ThenInterface)
 	DoneNotify() <-chan struct{}
@@ -659,6 +984,11 @@ type WorkerOfPushComplex128ThenInterface interface {
 type WorkOfComplex128ThenStruct struct {
 	Argument complex128
 	ReturnCh chan<- *ReturnOfStruct
+}
+
+type WorkWithContextOfComplex128ThenStruct struct {
+	context.Context
+	*WorkOfComplex128ThenStruct
 }
 
 type WorkerOfPushComplex128ThenStruct interface {
@@ -671,6 +1001,11 @@ type WorkOfComplex64ThenBool struct {
 	ReturnCh chan<- *ReturnOfBool
 }
 
+type WorkWithContextOfComplex64ThenBool struct {
+	context.Context
+	*WorkOfComplex64ThenBool
+}
+
 type WorkerOfPushComplex64ThenBool interface {
 	Push(context.Context, *WorkOfComplex64ThenBool)
 	DoneNotify() <-chan struct{}
@@ -679,6 +1014,11 @@ type WorkerOfPushComplex64ThenBool interface {
 type WorkOfComplex64ThenByte struct {
 	Argument complex64
 	ReturnCh chan<- *ReturnOfByte
+}
+
+type WorkWithContextOfComplex64ThenByte struct {
+	context.Context
+	*WorkOfComplex64ThenByte
 }
 
 type WorkerOfPushComplex64ThenByte interface {
@@ -691,6 +1031,11 @@ type WorkOfComplex64ThenComplex128 struct {
 	ReturnCh chan<- *ReturnOfComplex128
 }
 
+type WorkWithContextOfComplex64ThenComplex128 struct {
+	context.Context
+	*WorkOfComplex64ThenComplex128
+}
+
 type WorkerOfPushComplex64ThenComplex128 interface {
 	Push(context.Context, *WorkOfComplex64ThenComplex128)
 	DoneNotify() <-chan struct{}
@@ -699,6 +1044,11 @@ type WorkerOfPushComplex64ThenComplex128 interface {
 type WorkOfComplex64ThenComplex64 struct {
 	Argument complex64
 	ReturnCh chan<- *ReturnOfComplex64
+}
+
+type WorkWithContextOfComplex64ThenComplex64 struct {
+	context.Context
+	*WorkOfComplex64ThenComplex64
 }
 
 type WorkerOfPushComplex64ThenComplex64 interface {
@@ -711,6 +1061,11 @@ type WorkOfComplex64ThenError struct {
 	ReturnCh chan<- *ReturnOfError
 }
 
+type WorkWithContextOfComplex64ThenError struct {
+	context.Context
+	*WorkOfComplex64ThenError
+}
+
 type WorkerOfPushComplex64ThenError interface {
 	Push(context.Context, *WorkOfComplex64ThenError)
 	DoneNotify() <-chan struct{}
@@ -719,6 +1074,11 @@ type WorkerOfPushComplex64ThenError interface {
 type WorkOfComplex64ThenFloat32 struct {
 	Argument complex64
 	ReturnCh chan<- *ReturnOfFloat32
+}
+
+type WorkWithContextOfComplex64ThenFloat32 struct {
+	context.Context
+	*WorkOfComplex64ThenFloat32
 }
 
 type WorkerOfPushComplex64ThenFloat32 interface {
@@ -731,6 +1091,11 @@ type WorkOfComplex64ThenFloat64 struct {
 	ReturnCh chan<- *ReturnOfFloat64
 }
 
+type WorkWithContextOfComplex64ThenFloat64 struct {
+	context.Context
+	*WorkOfComplex64ThenFloat64
+}
+
 type WorkerOfPushComplex64ThenFloat64 interface {
 	Push(context.Context, *WorkOfComplex64ThenFloat64)
 	DoneNotify() <-chan struct{}
@@ -739,6 +1104,11 @@ type WorkerOfPushComplex64ThenFloat64 interface {
 type WorkOfComplex64ThenInt struct {
 	Argument complex64
 	ReturnCh chan<- *ReturnOfInt
+}
+
+type WorkWithContextOfComplex64ThenInt struct {
+	context.Context
+	*WorkOfComplex64ThenInt
 }
 
 type WorkerOfPushComplex64ThenInt interface {
@@ -751,6 +1121,11 @@ type WorkOfComplex64ThenInt16 struct {
 	ReturnCh chan<- *ReturnOfInt16
 }
 
+type WorkWithContextOfComplex64ThenInt16 struct {
+	context.Context
+	*WorkOfComplex64ThenInt16
+}
+
 type WorkerOfPushComplex64ThenInt16 interface {
 	Push(context.Context, *WorkOfComplex64ThenInt16)
 	DoneNotify() <-chan struct{}
@@ -759,6 +1134,11 @@ type WorkerOfPushComplex64ThenInt16 interface {
 type WorkOfComplex64ThenInt32 struct {
 	Argument complex64
 	ReturnCh chan<- *ReturnOfInt32
+}
+
+type WorkWithContextOfComplex64ThenInt32 struct {
+	context.Context
+	*WorkOfComplex64ThenInt32
 }
 
 type WorkerOfPushComplex64ThenInt32 interface {
@@ -771,6 +1151,11 @@ type WorkOfComplex64ThenInt64 struct {
 	ReturnCh chan<- *ReturnOfInt64
 }
 
+type WorkWithContextOfComplex64ThenInt64 struct {
+	context.Context
+	*WorkOfComplex64ThenInt64
+}
+
 type WorkerOfPushComplex64ThenInt64 interface {
 	Push(context.Context, *WorkOfComplex64ThenInt64)
 	DoneNotify() <-chan struct{}
@@ -779,6 +1164,11 @@ type WorkerOfPushComplex64ThenInt64 interface {
 type WorkOfComplex64ThenInt8 struct {
 	Argument complex64
 	ReturnCh chan<- *ReturnOfInt8
+}
+
+type WorkWithContextOfComplex64ThenInt8 struct {
+	context.Context
+	*WorkOfComplex64ThenInt8
 }
 
 type WorkerOfPushComplex64ThenInt8 interface {
@@ -791,6 +1181,11 @@ type WorkOfComplex64ThenRune struct {
 	ReturnCh chan<- *ReturnOfRune
 }
 
+type WorkWithContextOfComplex64ThenRune struct {
+	context.Context
+	*WorkOfComplex64ThenRune
+}
+
 type WorkerOfPushComplex64ThenRune interface {
 	Push(context.Context, *WorkOfComplex64ThenRune)
 	DoneNotify() <-chan struct{}
@@ -799,6 +1194,11 @@ type WorkerOfPushComplex64ThenRune interface {
 type WorkOfComplex64ThenString struct {
 	Argument complex64
 	ReturnCh chan<- *ReturnOfString
+}
+
+type WorkWithContextOfComplex64ThenString struct {
+	context.Context
+	*WorkOfComplex64ThenString
 }
 
 type WorkerOfPushComplex64ThenString interface {
@@ -811,6 +1211,11 @@ type WorkOfComplex64ThenUint struct {
 	ReturnCh chan<- *ReturnOfUint
 }
 
+type WorkWithContextOfComplex64ThenUint struct {
+	context.Context
+	*WorkOfComplex64ThenUint
+}
+
 type WorkerOfPushComplex64ThenUint interface {
 	Push(context.Context, *WorkOfComplex64ThenUint)
 	DoneNotify() <-chan struct{}
@@ -819,6 +1224,11 @@ type WorkerOfPushComplex64ThenUint interface {
 type WorkOfComplex64ThenUint16 struct {
 	Argument complex64
 	ReturnCh chan<- *ReturnOfUint16
+}
+
+type WorkWithContextOfComplex64ThenUint16 struct {
+	context.Context
+	*WorkOfComplex64ThenUint16
 }
 
 type WorkerOfPushComplex64ThenUint16 interface {
@@ -831,6 +1241,11 @@ type WorkOfComplex64ThenUint32 struct {
 	ReturnCh chan<- *ReturnOfUint32
 }
 
+type WorkWithContextOfComplex64ThenUint32 struct {
+	context.Context
+	*WorkOfComplex64ThenUint32
+}
+
 type WorkerOfPushComplex64ThenUint32 interface {
 	Push(context.Context, *WorkOfComplex64ThenUint32)
 	DoneNotify() <-chan struct{}
@@ -839,6 +1254,11 @@ type WorkerOfPushComplex64ThenUint32 interface {
 type WorkOfComplex64ThenUint64 struct {
 	Argument complex64
 	ReturnCh chan<- *ReturnOfUint64
+}
+
+type WorkWithContextOfComplex64ThenUint64 struct {
+	context.Context
+	*WorkOfComplex64ThenUint64
 }
 
 type WorkerOfPushComplex64ThenUint64 interface {
@@ -851,6 +1271,11 @@ type WorkOfComplex64ThenUint8 struct {
 	ReturnCh chan<- *ReturnOfUint8
 }
 
+type WorkWithContextOfComplex64ThenUint8 struct {
+	context.Context
+	*WorkOfComplex64ThenUint8
+}
+
 type WorkerOfPushComplex64ThenUint8 interface {
 	Push(context.Context, *WorkOfComplex64ThenUint8)
 	DoneNotify() <-chan struct{}
@@ -859,6 +1284,11 @@ type WorkerOfPushComplex64ThenUint8 interface {
 type WorkOfComplex64ThenUintptr struct {
 	Argument complex64
 	ReturnCh chan<- *ReturnOfUintptr
+}
+
+type WorkWithContextOfComplex64ThenUintptr struct {
+	context.Context
+	*WorkOfComplex64ThenUintptr
 }
 
 type WorkerOfPushComplex64ThenUintptr interface {
@@ -871,6 +1301,11 @@ type WorkOfComplex64ThenInterface struct {
 	ReturnCh chan<- *ReturnOfInterface
 }
 
+type WorkWithContextOfComplex64ThenInterface struct {
+	context.Context
+	*WorkOfComplex64ThenInterface
+}
+
 type WorkerOfPushComplex64ThenInterface interface {
 	Push(context.Context, *WorkOfComplex64ThenInterface)
 	DoneNotify() <-chan struct{}
@@ -879,6 +1314,11 @@ type WorkerOfPushComplex64ThenInterface interface {
 type WorkOfComplex64ThenStruct struct {
 	Argument complex64
 	ReturnCh chan<- *ReturnOfStruct
+}
+
+type WorkWithContextOfComplex64ThenStruct struct {
+	context.Context
+	*WorkOfComplex64ThenStruct
 }
 
 type WorkerOfPushComplex64ThenStruct interface {
@@ -891,6 +1331,11 @@ type WorkOfErrorThenBool struct {
 	ReturnCh chan<- *ReturnOfBool
 }
 
+type WorkWithContextOfErrorThenBool struct {
+	context.Context
+	*WorkOfErrorThenBool
+}
+
 type WorkerOfPushErrorThenBool interface {
 	Push(context.Context, *WorkOfErrorThenBool)
 	DoneNotify() <-chan struct{}
@@ -899,6 +1344,11 @@ type WorkerOfPushErrorThenBool interface {
 type WorkOfErrorThenByte struct {
 	Argument error
 	ReturnCh chan<- *ReturnOfByte
+}
+
+type WorkWithContextOfErrorThenByte struct {
+	context.Context
+	*WorkOfErrorThenByte
 }
 
 type WorkerOfPushErrorThenByte interface {
@@ -911,6 +1361,11 @@ type WorkOfErrorThenComplex128 struct {
 	ReturnCh chan<- *ReturnOfComplex128
 }
 
+type WorkWithContextOfErrorThenComplex128 struct {
+	context.Context
+	*WorkOfErrorThenComplex128
+}
+
 type WorkerOfPushErrorThenComplex128 interface {
 	Push(context.Context, *WorkOfErrorThenComplex128)
 	DoneNotify() <-chan struct{}
@@ -919,6 +1374,11 @@ type WorkerOfPushErrorThenComplex128 interface {
 type WorkOfErrorThenComplex64 struct {
 	Argument error
 	ReturnCh chan<- *ReturnOfComplex64
+}
+
+type WorkWithContextOfErrorThenComplex64 struct {
+	context.Context
+	*WorkOfErrorThenComplex64
 }
 
 type WorkerOfPushErrorThenComplex64 interface {
@@ -931,6 +1391,11 @@ type WorkOfErrorThenError struct {
 	ReturnCh chan<- *ReturnOfError
 }
 
+type WorkWithContextOfErrorThenError struct {
+	context.Context
+	*WorkOfErrorThenError
+}
+
 type WorkerOfPushErrorThenError interface {
 	Push(context.Context, *WorkOfErrorThenError)
 	DoneNotify() <-chan struct{}
@@ -939,6 +1404,11 @@ type WorkerOfPushErrorThenError interface {
 type WorkOfErrorThenFloat32 struct {
 	Argument error
 	ReturnCh chan<- *ReturnOfFloat32
+}
+
+type WorkWithContextOfErrorThenFloat32 struct {
+	context.Context
+	*WorkOfErrorThenFloat32
 }
 
 type WorkerOfPushErrorThenFloat32 interface {
@@ -951,6 +1421,11 @@ type WorkOfErrorThenFloat64 struct {
 	ReturnCh chan<- *ReturnOfFloat64
 }
 
+type WorkWithContextOfErrorThenFloat64 struct {
+	context.Context
+	*WorkOfErrorThenFloat64
+}
+
 type WorkerOfPushErrorThenFloat64 interface {
 	Push(context.Context, *WorkOfErrorThenFloat64)
 	DoneNotify() <-chan struct{}
@@ -959,6 +1434,11 @@ type WorkerOfPushErrorThenFloat64 interface {
 type WorkOfErrorThenInt struct {
 	Argument error
 	ReturnCh chan<- *ReturnOfInt
+}
+
+type WorkWithContextOfErrorThenInt struct {
+	context.Context
+	*WorkOfErrorThenInt
 }
 
 type WorkerOfPushErrorThenInt interface {
@@ -971,6 +1451,11 @@ type WorkOfErrorThenInt16 struct {
 	ReturnCh chan<- *ReturnOfInt16
 }
 
+type WorkWithContextOfErrorThenInt16 struct {
+	context.Context
+	*WorkOfErrorThenInt16
+}
+
 type WorkerOfPushErrorThenInt16 interface {
 	Push(context.Context, *WorkOfErrorThenInt16)
 	DoneNotify() <-chan struct{}
@@ -979,6 +1464,11 @@ type WorkerOfPushErrorThenInt16 interface {
 type WorkOfErrorThenInt32 struct {
 	Argument error
 	ReturnCh chan<- *ReturnOfInt32
+}
+
+type WorkWithContextOfErrorThenInt32 struct {
+	context.Context
+	*WorkOfErrorThenInt32
 }
 
 type WorkerOfPushErrorThenInt32 interface {
@@ -991,6 +1481,11 @@ type WorkOfErrorThenInt64 struct {
 	ReturnCh chan<- *ReturnOfInt64
 }
 
+type WorkWithContextOfErrorThenInt64 struct {
+	context.Context
+	*WorkOfErrorThenInt64
+}
+
 type WorkerOfPushErrorThenInt64 interface {
 	Push(context.Context, *WorkOfErrorThenInt64)
 	DoneNotify() <-chan struct{}
@@ -999,6 +1494,11 @@ type WorkerOfPushErrorThenInt64 interface {
 type WorkOfErrorThenInt8 struct {
 	Argument error
 	ReturnCh chan<- *ReturnOfInt8
+}
+
+type WorkWithContextOfErrorThenInt8 struct {
+	context.Context
+	*WorkOfErrorThenInt8
 }
 
 type WorkerOfPushErrorThenInt8 interface {
@@ -1011,6 +1511,11 @@ type WorkOfErrorThenRune struct {
 	ReturnCh chan<- *ReturnOfRune
 }
 
+type WorkWithContextOfErrorThenRune struct {
+	context.Context
+	*WorkOfErrorThenRune
+}
+
 type WorkerOfPushErrorThenRune interface {
 	Push(context.Context, *WorkOfErrorThenRune)
 	DoneNotify() <-chan struct{}
@@ -1019,6 +1524,11 @@ type WorkerOfPushErrorThenRune interface {
 type WorkOfErrorThenString struct {
 	Argument error
 	ReturnCh chan<- *ReturnOfString
+}
+
+type WorkWithContextOfErrorThenString struct {
+	context.Context
+	*WorkOfErrorThenString
 }
 
 type WorkerOfPushErrorThenString interface {
@@ -1031,6 +1541,11 @@ type WorkOfErrorThenUint struct {
 	ReturnCh chan<- *ReturnOfUint
 }
 
+type WorkWithContextOfErrorThenUint struct {
+	context.Context
+	*WorkOfErrorThenUint
+}
+
 type WorkerOfPushErrorThenUint interface {
 	Push(context.Context, *WorkOfErrorThenUint)
 	DoneNotify() <-chan struct{}
@@ -1039,6 +1554,11 @@ type WorkerOfPushErrorThenUint interface {
 type WorkOfErrorThenUint16 struct {
 	Argument error
 	ReturnCh chan<- *ReturnOfUint16
+}
+
+type WorkWithContextOfErrorThenUint16 struct {
+	context.Context
+	*WorkOfErrorThenUint16
 }
 
 type WorkerOfPushErrorThenUint16 interface {
@@ -1051,6 +1571,11 @@ type WorkOfErrorThenUint32 struct {
 	ReturnCh chan<- *ReturnOfUint32
 }
 
+type WorkWithContextOfErrorThenUint32 struct {
+	context.Context
+	*WorkOfErrorThenUint32
+}
+
 type WorkerOfPushErrorThenUint32 interface {
 	Push(context.Context, *WorkOfErrorThenUint32)
 	DoneNotify() <-chan struct{}
@@ -1059,6 +1584,11 @@ type WorkerOfPushErrorThenUint32 interface {
 type WorkOfErrorThenUint64 struct {
 	Argument error
 	ReturnCh chan<- *ReturnOfUint64
+}
+
+type WorkWithContextOfErrorThenUint64 struct {
+	context.Context
+	*WorkOfErrorThenUint64
 }
 
 type WorkerOfPushErrorThenUint64 interface {
@@ -1071,6 +1601,11 @@ type WorkOfErrorThenUint8 struct {
 	ReturnCh chan<- *ReturnOfUint8
 }
 
+type WorkWithContextOfErrorThenUint8 struct {
+	context.Context
+	*WorkOfErrorThenUint8
+}
+
 type WorkerOfPushErrorThenUint8 interface {
 	Push(context.Context, *WorkOfErrorThenUint8)
 	DoneNotify() <-chan struct{}
@@ -1079,6 +1614,11 @@ type WorkerOfPushErrorThenUint8 interface {
 type WorkOfErrorThenUintptr struct {
 	Argument error
 	ReturnCh chan<- *ReturnOfUintptr
+}
+
+type WorkWithContextOfErrorThenUintptr struct {
+	context.Context
+	*WorkOfErrorThenUintptr
 }
 
 type WorkerOfPushErrorThenUintptr interface {
@@ -1091,6 +1631,11 @@ type WorkOfErrorThenInterface struct {
 	ReturnCh chan<- *ReturnOfInterface
 }
 
+type WorkWithContextOfErrorThenInterface struct {
+	context.Context
+	*WorkOfErrorThenInterface
+}
+
 type WorkerOfPushErrorThenInterface interface {
 	Push(context.Context, *WorkOfErrorThenInterface)
 	DoneNotify() <-chan struct{}
@@ -1099,6 +1644,11 @@ type WorkerOfPushErrorThenInterface interface {
 type WorkOfErrorThenStruct struct {
 	Argument error
 	ReturnCh chan<- *ReturnOfStruct
+}
+
+type WorkWithContextOfErrorThenStruct struct {
+	context.Context
+	*WorkOfErrorThenStruct
 }
 
 type WorkerOfPushErrorThenStruct interface {
@@ -1111,6 +1661,11 @@ type WorkOfFloat32ThenBool struct {
 	ReturnCh chan<- *ReturnOfBool
 }
 
+type WorkWithContextOfFloat32ThenBool struct {
+	context.Context
+	*WorkOfFloat32ThenBool
+}
+
 type WorkerOfPushFloat32ThenBool interface {
 	Push(context.Context, *WorkOfFloat32ThenBool)
 	DoneNotify() <-chan struct{}
@@ -1119,6 +1674,11 @@ type WorkerOfPushFloat32ThenBool interface {
 type WorkOfFloat32ThenByte struct {
 	Argument float32
 	ReturnCh chan<- *ReturnOfByte
+}
+
+type WorkWithContextOfFloat32ThenByte struct {
+	context.Context
+	*WorkOfFloat32ThenByte
 }
 
 type WorkerOfPushFloat32ThenByte interface {
@@ -1131,6 +1691,11 @@ type WorkOfFloat32ThenComplex128 struct {
 	ReturnCh chan<- *ReturnOfComplex128
 }
 
+type WorkWithContextOfFloat32ThenComplex128 struct {
+	context.Context
+	*WorkOfFloat32ThenComplex128
+}
+
 type WorkerOfPushFloat32ThenComplex128 interface {
 	Push(context.Context, *WorkOfFloat32ThenComplex128)
 	DoneNotify() <-chan struct{}
@@ -1139,6 +1704,11 @@ type WorkerOfPushFloat32ThenComplex128 interface {
 type WorkOfFloat32ThenComplex64 struct {
 	Argument float32
 	ReturnCh chan<- *ReturnOfComplex64
+}
+
+type WorkWithContextOfFloat32ThenComplex64 struct {
+	context.Context
+	*WorkOfFloat32ThenComplex64
 }
 
 type WorkerOfPushFloat32ThenComplex64 interface {
@@ -1151,6 +1721,11 @@ type WorkOfFloat32ThenError struct {
 	ReturnCh chan<- *ReturnOfError
 }
 
+type WorkWithContextOfFloat32ThenError struct {
+	context.Context
+	*WorkOfFloat32ThenError
+}
+
 type WorkerOfPushFloat32ThenError interface {
 	Push(context.Context, *WorkOfFloat32ThenError)
 	DoneNotify() <-chan struct{}
@@ -1159,6 +1734,11 @@ type WorkerOfPushFloat32ThenError interface {
 type WorkOfFloat32ThenFloat32 struct {
 	Argument float32
 	ReturnCh chan<- *ReturnOfFloat32
+}
+
+type WorkWithContextOfFloat32ThenFloat32 struct {
+	context.Context
+	*WorkOfFloat32ThenFloat32
 }
 
 type WorkerOfPushFloat32ThenFloat32 interface {
@@ -1171,6 +1751,11 @@ type WorkOfFloat32ThenFloat64 struct {
 	ReturnCh chan<- *ReturnOfFloat64
 }
 
+type WorkWithContextOfFloat32ThenFloat64 struct {
+	context.Context
+	*WorkOfFloat32ThenFloat64
+}
+
 type WorkerOfPushFloat32ThenFloat64 interface {
 	Push(context.Context, *WorkOfFloat32ThenFloat64)
 	DoneNotify() <-chan struct{}
@@ -1179,6 +1764,11 @@ type WorkerOfPushFloat32ThenFloat64 interface {
 type WorkOfFloat32ThenInt struct {
 	Argument float32
 	ReturnCh chan<- *ReturnOfInt
+}
+
+type WorkWithContextOfFloat32ThenInt struct {
+	context.Context
+	*WorkOfFloat32ThenInt
 }
 
 type WorkerOfPushFloat32ThenInt interface {
@@ -1191,6 +1781,11 @@ type WorkOfFloat32ThenInt16 struct {
 	ReturnCh chan<- *ReturnOfInt16
 }
 
+type WorkWithContextOfFloat32ThenInt16 struct {
+	context.Context
+	*WorkOfFloat32ThenInt16
+}
+
 type WorkerOfPushFloat32ThenInt16 interface {
 	Push(context.Context, *WorkOfFloat32ThenInt16)
 	DoneNotify() <-chan struct{}
@@ -1199,6 +1794,11 @@ type WorkerOfPushFloat32ThenInt16 interface {
 type WorkOfFloat32ThenInt32 struct {
 	Argument float32
 	ReturnCh chan<- *ReturnOfInt32
+}
+
+type WorkWithContextOfFloat32ThenInt32 struct {
+	context.Context
+	*WorkOfFloat32ThenInt32
 }
 
 type WorkerOfPushFloat32ThenInt32 interface {
@@ -1211,6 +1811,11 @@ type WorkOfFloat32ThenInt64 struct {
 	ReturnCh chan<- *ReturnOfInt64
 }
 
+type WorkWithContextOfFloat32ThenInt64 struct {
+	context.Context
+	*WorkOfFloat32ThenInt64
+}
+
 type WorkerOfPushFloat32ThenInt64 interface {
 	Push(context.Context, *WorkOfFloat32ThenInt64)
 	DoneNotify() <-chan struct{}
@@ -1219,6 +1824,11 @@ type WorkerOfPushFloat32ThenInt64 interface {
 type WorkOfFloat32ThenInt8 struct {
 	Argument float32
 	ReturnCh chan<- *ReturnOfInt8
+}
+
+type WorkWithContextOfFloat32ThenInt8 struct {
+	context.Context
+	*WorkOfFloat32ThenInt8
 }
 
 type WorkerOfPushFloat32ThenInt8 interface {
@@ -1231,6 +1841,11 @@ type WorkOfFloat32ThenRune struct {
 	ReturnCh chan<- *ReturnOfRune
 }
 
+type WorkWithContextOfFloat32ThenRune struct {
+	context.Context
+	*WorkOfFloat32ThenRune
+}
+
 type WorkerOfPushFloat32ThenRune interface {
 	Push(context.Context, *WorkOfFloat32ThenRune)
 	DoneNotify() <-chan struct{}
@@ -1239,6 +1854,11 @@ type WorkerOfPushFloat32ThenRune interface {
 type WorkOfFloat32ThenString struct {
 	Argument float32
 	ReturnCh chan<- *ReturnOfString
+}
+
+type WorkWithContextOfFloat32ThenString struct {
+	context.Context
+	*WorkOfFloat32ThenString
 }
 
 type WorkerOfPushFloat32ThenString interface {
@@ -1251,6 +1871,11 @@ type WorkOfFloat32ThenUint struct {
 	ReturnCh chan<- *ReturnOfUint
 }
 
+type WorkWithContextOfFloat32ThenUint struct {
+	context.Context
+	*WorkOfFloat32ThenUint
+}
+
 type WorkerOfPushFloat32ThenUint interface {
 	Push(context.Context, *WorkOfFloat32ThenUint)
 	DoneNotify() <-chan struct{}
@@ -1259,6 +1884,11 @@ type WorkerOfPushFloat32ThenUint interface {
 type WorkOfFloat32ThenUint16 struct {
 	Argument float32
 	ReturnCh chan<- *ReturnOfUint16
+}
+
+type WorkWithContextOfFloat32ThenUint16 struct {
+	context.Context
+	*WorkOfFloat32ThenUint16
 }
 
 type WorkerOfPushFloat32ThenUint16 interface {
@@ -1271,6 +1901,11 @@ type WorkOfFloat32ThenUint32 struct {
 	ReturnCh chan<- *ReturnOfUint32
 }
 
+type WorkWithContextOfFloat32ThenUint32 struct {
+	context.Context
+	*WorkOfFloat32ThenUint32
+}
+
 type WorkerOfPushFloat32ThenUint32 interface {
 	Push(context.Context, *WorkOfFloat32ThenUint32)
 	DoneNotify() <-chan struct{}
@@ -1279,6 +1914,11 @@ type WorkerOfPushFloat32ThenUint32 interface {
 type WorkOfFloat32ThenUint64 struct {
 	Argument float32
 	ReturnCh chan<- *ReturnOfUint64
+}
+
+type WorkWithContextOfFloat32ThenUint64 struct {
+	context.Context
+	*WorkOfFloat32ThenUint64
 }
 
 type WorkerOfPushFloat32ThenUint64 interface {
@@ -1291,6 +1931,11 @@ type WorkOfFloat32ThenUint8 struct {
 	ReturnCh chan<- *ReturnOfUint8
 }
 
+type WorkWithContextOfFloat32ThenUint8 struct {
+	context.Context
+	*WorkOfFloat32ThenUint8
+}
+
 type WorkerOfPushFloat32ThenUint8 interface {
 	Push(context.Context, *WorkOfFloat32ThenUint8)
 	DoneNotify() <-chan struct{}
@@ -1299,6 +1944,11 @@ type WorkerOfPushFloat32ThenUint8 interface {
 type WorkOfFloat32ThenUintptr struct {
 	Argument float32
 	ReturnCh chan<- *ReturnOfUintptr
+}
+
+type WorkWithContextOfFloat32ThenUintptr struct {
+	context.Context
+	*WorkOfFloat32ThenUintptr
 }
 
 type WorkerOfPushFloat32ThenUintptr interface {
@@ -1311,6 +1961,11 @@ type WorkOfFloat32ThenInterface struct {
 	ReturnCh chan<- *ReturnOfInterface
 }
 
+type WorkWithContextOfFloat32ThenInterface struct {
+	context.Context
+	*WorkOfFloat32ThenInterface
+}
+
 type WorkerOfPushFloat32ThenInterface interface {
 	Push(context.Context, *WorkOfFloat32ThenInterface)
 	DoneNotify() <-chan struct{}
@@ -1319,6 +1974,11 @@ type WorkerOfPushFloat32ThenInterface interface {
 type WorkOfFloat32ThenStruct struct {
 	Argument float32
 	ReturnCh chan<- *ReturnOfStruct
+}
+
+type WorkWithContextOfFloat32ThenStruct struct {
+	context.Context
+	*WorkOfFloat32ThenStruct
 }
 
 type WorkerOfPushFloat32ThenStruct interface {
@@ -1331,6 +1991,11 @@ type WorkOfFloat64ThenBool struct {
 	ReturnCh chan<- *ReturnOfBool
 }
 
+type WorkWithContextOfFloat64ThenBool struct {
+	context.Context
+	*WorkOfFloat64ThenBool
+}
+
 type WorkerOfPushFloat64ThenBool interface {
 	Push(context.Context, *WorkOfFloat64ThenBool)
 	DoneNotify() <-chan struct{}
@@ -1339,6 +2004,11 @@ type WorkerOfPushFloat64ThenBool interface {
 type WorkOfFloat64ThenByte struct {
 	Argument float64
 	ReturnCh chan<- *ReturnOfByte
+}
+
+type WorkWithContextOfFloat64ThenByte struct {
+	context.Context
+	*WorkOfFloat64ThenByte
 }
 
 type WorkerOfPushFloat64ThenByte interface {
@@ -1351,6 +2021,11 @@ type WorkOfFloat64ThenComplex128 struct {
 	ReturnCh chan<- *ReturnOfComplex128
 }
 
+type WorkWithContextOfFloat64ThenComplex128 struct {
+	context.Context
+	*WorkOfFloat64ThenComplex128
+}
+
 type WorkerOfPushFloat64ThenComplex128 interface {
 	Push(context.Context, *WorkOfFloat64ThenComplex128)
 	DoneNotify() <-chan struct{}
@@ -1359,6 +2034,11 @@ type WorkerOfPushFloat64ThenComplex128 interface {
 type WorkOfFloat64ThenComplex64 struct {
 	Argument float64
 	ReturnCh chan<- *ReturnOfComplex64
+}
+
+type WorkWithContextOfFloat64ThenComplex64 struct {
+	context.Context
+	*WorkOfFloat64ThenComplex64
 }
 
 type WorkerOfPushFloat64ThenComplex64 interface {
@@ -1371,6 +2051,11 @@ type WorkOfFloat64ThenError struct {
 	ReturnCh chan<- *ReturnOfError
 }
 
+type WorkWithContextOfFloat64ThenError struct {
+	context.Context
+	*WorkOfFloat64ThenError
+}
+
 type WorkerOfPushFloat64ThenError interface {
 	Push(context.Context, *WorkOfFloat64ThenError)
 	DoneNotify() <-chan struct{}
@@ -1379,6 +2064,11 @@ type WorkerOfPushFloat64ThenError interface {
 type WorkOfFloat64ThenFloat32 struct {
 	Argument float64
 	ReturnCh chan<- *ReturnOfFloat32
+}
+
+type WorkWithContextOfFloat64ThenFloat32 struct {
+	context.Context
+	*WorkOfFloat64ThenFloat32
 }
 
 type WorkerOfPushFloat64ThenFloat32 interface {
@@ -1391,6 +2081,11 @@ type WorkOfFloat64ThenFloat64 struct {
 	ReturnCh chan<- *ReturnOfFloat64
 }
 
+type WorkWithContextOfFloat64ThenFloat64 struct {
+	context.Context
+	*WorkOfFloat64ThenFloat64
+}
+
 type WorkerOfPushFloat64ThenFloat64 interface {
 	Push(context.Context, *WorkOfFloat64ThenFloat64)
 	DoneNotify() <-chan struct{}
@@ -1399,6 +2094,11 @@ type WorkerOfPushFloat64ThenFloat64 interface {
 type WorkOfFloat64ThenInt struct {
 	Argument float64
 	ReturnCh chan<- *ReturnOfInt
+}
+
+type WorkWithContextOfFloat64ThenInt struct {
+	context.Context
+	*WorkOfFloat64ThenInt
 }
 
 type WorkerOfPushFloat64ThenInt interface {
@@ -1411,6 +2111,11 @@ type WorkOfFloat64ThenInt16 struct {
 	ReturnCh chan<- *ReturnOfInt16
 }
 
+type WorkWithContextOfFloat64ThenInt16 struct {
+	context.Context
+	*WorkOfFloat64ThenInt16
+}
+
 type WorkerOfPushFloat64ThenInt16 interface {
 	Push(context.Context, *WorkOfFloat64ThenInt16)
 	DoneNotify() <-chan struct{}
@@ -1419,6 +2124,11 @@ type WorkerOfPushFloat64ThenInt16 interface {
 type WorkOfFloat64ThenInt32 struct {
 	Argument float64
 	ReturnCh chan<- *ReturnOfInt32
+}
+
+type WorkWithContextOfFloat64ThenInt32 struct {
+	context.Context
+	*WorkOfFloat64ThenInt32
 }
 
 type WorkerOfPushFloat64ThenInt32 interface {
@@ -1431,6 +2141,11 @@ type WorkOfFloat64ThenInt64 struct {
 	ReturnCh chan<- *ReturnOfInt64
 }
 
+type WorkWithContextOfFloat64ThenInt64 struct {
+	context.Context
+	*WorkOfFloat64ThenInt64
+}
+
 type WorkerOfPushFloat64ThenInt64 interface {
 	Push(context.Context, *WorkOfFloat64ThenInt64)
 	DoneNotify() <-chan struct{}
@@ -1439,6 +2154,11 @@ type WorkerOfPushFloat64ThenInt64 interface {
 type WorkOfFloat64ThenInt8 struct {
 	Argument float64
 	ReturnCh chan<- *ReturnOfInt8
+}
+
+type WorkWithContextOfFloat64ThenInt8 struct {
+	context.Context
+	*WorkOfFloat64ThenInt8
 }
 
 type WorkerOfPushFloat64ThenInt8 interface {
@@ -1451,6 +2171,11 @@ type WorkOfFloat64ThenRune struct {
 	ReturnCh chan<- *ReturnOfRune
 }
 
+type WorkWithContextOfFloat64ThenRune struct {
+	context.Context
+	*WorkOfFloat64ThenRune
+}
+
 type WorkerOfPushFloat64ThenRune interface {
 	Push(context.Context, *WorkOfFloat64ThenRune)
 	DoneNotify() <-chan struct{}
@@ -1459,6 +2184,11 @@ type WorkerOfPushFloat64ThenRune interface {
 type WorkOfFloat64ThenString struct {
 	Argument float64
 	ReturnCh chan<- *ReturnOfString
+}
+
+type WorkWithContextOfFloat64ThenString struct {
+	context.Context
+	*WorkOfFloat64ThenString
 }
 
 type WorkerOfPushFloat64ThenString interface {
@@ -1471,6 +2201,11 @@ type WorkOfFloat64ThenUint struct {
 	ReturnCh chan<- *ReturnOfUint
 }
 
+type WorkWithContextOfFloat64ThenUint struct {
+	context.Context
+	*WorkOfFloat64ThenUint
+}
+
 type WorkerOfPushFloat64ThenUint interface {
 	Push(context.Context, *WorkOfFloat64ThenUint)
 	DoneNotify() <-chan struct{}
@@ -1479,6 +2214,11 @@ type WorkerOfPushFloat64ThenUint interface {
 type WorkOfFloat64ThenUint16 struct {
 	Argument float64
 	ReturnCh chan<- *ReturnOfUint16
+}
+
+type WorkWithContextOfFloat64ThenUint16 struct {
+	context.Context
+	*WorkOfFloat64ThenUint16
 }
 
 type WorkerOfPushFloat64ThenUint16 interface {
@@ -1491,6 +2231,11 @@ type WorkOfFloat64ThenUint32 struct {
 	ReturnCh chan<- *ReturnOfUint32
 }
 
+type WorkWithContextOfFloat64ThenUint32 struct {
+	context.Context
+	*WorkOfFloat64ThenUint32
+}
+
 type WorkerOfPushFloat64ThenUint32 interface {
 	Push(context.Context, *WorkOfFloat64ThenUint32)
 	DoneNotify() <-chan struct{}
@@ -1499,6 +2244,11 @@ type WorkerOfPushFloat64ThenUint32 interface {
 type WorkOfFloat64ThenUint64 struct {
 	Argument float64
 	ReturnCh chan<- *ReturnOfUint64
+}
+
+type WorkWithContextOfFloat64ThenUint64 struct {
+	context.Context
+	*WorkOfFloat64ThenUint64
 }
 
 type WorkerOfPushFloat64ThenUint64 interface {
@@ -1511,6 +2261,11 @@ type WorkOfFloat64ThenUint8 struct {
 	ReturnCh chan<- *ReturnOfUint8
 }
 
+type WorkWithContextOfFloat64ThenUint8 struct {
+	context.Context
+	*WorkOfFloat64ThenUint8
+}
+
 type WorkerOfPushFloat64ThenUint8 interface {
 	Push(context.Context, *WorkOfFloat64ThenUint8)
 	DoneNotify() <-chan struct{}
@@ -1519,6 +2274,11 @@ type WorkerOfPushFloat64ThenUint8 interface {
 type WorkOfFloat64ThenUintptr struct {
 	Argument float64
 	ReturnCh chan<- *ReturnOfUintptr
+}
+
+type WorkWithContextOfFloat64ThenUintptr struct {
+	context.Context
+	*WorkOfFloat64ThenUintptr
 }
 
 type WorkerOfPushFloat64ThenUintptr interface {
@@ -1531,6 +2291,11 @@ type WorkOfFloat64ThenInterface struct {
 	ReturnCh chan<- *ReturnOfInterface
 }
 
+type WorkWithContextOfFloat64ThenInterface struct {
+	context.Context
+	*WorkOfFloat64ThenInterface
+}
+
 type WorkerOfPushFloat64ThenInterface interface {
 	Push(context.Context, *WorkOfFloat64ThenInterface)
 	DoneNotify() <-chan struct{}
@@ -1539,6 +2304,11 @@ type WorkerOfPushFloat64ThenInterface interface {
 type WorkOfFloat64ThenStruct struct {
 	Argument float64
 	ReturnCh chan<- *ReturnOfStruct
+}
+
+type WorkWithContextOfFloat64ThenStruct struct {
+	context.Context
+	*WorkOfFloat64ThenStruct
 }
 
 type WorkerOfPushFloat64ThenStruct interface {
@@ -1551,6 +2321,11 @@ type WorkOfIntThenBool struct {
 	ReturnCh chan<- *ReturnOfBool
 }
 
+type WorkWithContextOfIntThenBool struct {
+	context.Context
+	*WorkOfIntThenBool
+}
+
 type WorkerOfPushIntThenBool interface {
 	Push(context.Context, *WorkOfIntThenBool)
 	DoneNotify() <-chan struct{}
@@ -1559,6 +2334,11 @@ type WorkerOfPushIntThenBool interface {
 type WorkOfIntThenByte struct {
 	Argument int
 	ReturnCh chan<- *ReturnOfByte
+}
+
+type WorkWithContextOfIntThenByte struct {
+	context.Context
+	*WorkOfIntThenByte
 }
 
 type WorkerOfPushIntThenByte interface {
@@ -1571,6 +2351,11 @@ type WorkOfIntThenComplex128 struct {
 	ReturnCh chan<- *ReturnOfComplex128
 }
 
+type WorkWithContextOfIntThenComplex128 struct {
+	context.Context
+	*WorkOfIntThenComplex128
+}
+
 type WorkerOfPushIntThenComplex128 interface {
 	Push(context.Context, *WorkOfIntThenComplex128)
 	DoneNotify() <-chan struct{}
@@ -1579,6 +2364,11 @@ type WorkerOfPushIntThenComplex128 interface {
 type WorkOfIntThenComplex64 struct {
 	Argument int
 	ReturnCh chan<- *ReturnOfComplex64
+}
+
+type WorkWithContextOfIntThenComplex64 struct {
+	context.Context
+	*WorkOfIntThenComplex64
 }
 
 type WorkerOfPushIntThenComplex64 interface {
@@ -1591,6 +2381,11 @@ type WorkOfIntThenError struct {
 	ReturnCh chan<- *ReturnOfError
 }
 
+type WorkWithContextOfIntThenError struct {
+	context.Context
+	*WorkOfIntThenError
+}
+
 type WorkerOfPushIntThenError interface {
 	Push(context.Context, *WorkOfIntThenError)
 	DoneNotify() <-chan struct{}
@@ -1599,6 +2394,11 @@ type WorkerOfPushIntThenError interface {
 type WorkOfIntThenFloat32 struct {
 	Argument int
 	ReturnCh chan<- *ReturnOfFloat32
+}
+
+type WorkWithContextOfIntThenFloat32 struct {
+	context.Context
+	*WorkOfIntThenFloat32
 }
 
 type WorkerOfPushIntThenFloat32 interface {
@@ -1611,6 +2411,11 @@ type WorkOfIntThenFloat64 struct {
 	ReturnCh chan<- *ReturnOfFloat64
 }
 
+type WorkWithContextOfIntThenFloat64 struct {
+	context.Context
+	*WorkOfIntThenFloat64
+}
+
 type WorkerOfPushIntThenFloat64 interface {
 	Push(context.Context, *WorkOfIntThenFloat64)
 	DoneNotify() <-chan struct{}
@@ -1619,6 +2424,11 @@ type WorkerOfPushIntThenFloat64 interface {
 type WorkOfIntThenInt struct {
 	Argument int
 	ReturnCh chan<- *ReturnOfInt
+}
+
+type WorkWithContextOfIntThenInt struct {
+	context.Context
+	*WorkOfIntThenInt
 }
 
 type WorkerOfPushIntThenInt interface {
@@ -1631,6 +2441,11 @@ type WorkOfIntThenInt16 struct {
 	ReturnCh chan<- *ReturnOfInt16
 }
 
+type WorkWithContextOfIntThenInt16 struct {
+	context.Context
+	*WorkOfIntThenInt16
+}
+
 type WorkerOfPushIntThenInt16 interface {
 	Push(context.Context, *WorkOfIntThenInt16)
 	DoneNotify() <-chan struct{}
@@ -1639,6 +2454,11 @@ type WorkerOfPushIntThenInt16 interface {
 type WorkOfIntThenInt32 struct {
 	Argument int
 	ReturnCh chan<- *ReturnOfInt32
+}
+
+type WorkWithContextOfIntThenInt32 struct {
+	context.Context
+	*WorkOfIntThenInt32
 }
 
 type WorkerOfPushIntThenInt32 interface {
@@ -1651,6 +2471,11 @@ type WorkOfIntThenInt64 struct {
 	ReturnCh chan<- *ReturnOfInt64
 }
 
+type WorkWithContextOfIntThenInt64 struct {
+	context.Context
+	*WorkOfIntThenInt64
+}
+
 type WorkerOfPushIntThenInt64 interface {
 	Push(context.Context, *WorkOfIntThenInt64)
 	DoneNotify() <-chan struct{}
@@ -1659,6 +2484,11 @@ type WorkerOfPushIntThenInt64 interface {
 type WorkOfIntThenInt8 struct {
 	Argument int
 	ReturnCh chan<- *ReturnOfInt8
+}
+
+type WorkWithContextOfIntThenInt8 struct {
+	context.Context
+	*WorkOfIntThenInt8
 }
 
 type WorkerOfPushIntThenInt8 interface {
@@ -1671,6 +2501,11 @@ type WorkOfIntThenRune struct {
 	ReturnCh chan<- *ReturnOfRune
 }
 
+type WorkWithContextOfIntThenRune struct {
+	context.Context
+	*WorkOfIntThenRune
+}
+
 type WorkerOfPushIntThenRune interface {
 	Push(context.Context, *WorkOfIntThenRune)
 	DoneNotify() <-chan struct{}
@@ -1679,6 +2514,11 @@ type WorkerOfPushIntThenRune interface {
 type WorkOfIntThenString struct {
 	Argument int
 	ReturnCh chan<- *ReturnOfString
+}
+
+type WorkWithContextOfIntThenString struct {
+	context.Context
+	*WorkOfIntThenString
 }
 
 type WorkerOfPushIntThenString interface {
@@ -1691,6 +2531,11 @@ type WorkOfIntThenUint struct {
 	ReturnCh chan<- *ReturnOfUint
 }
 
+type WorkWithContextOfIntThenUint struct {
+	context.Context
+	*WorkOfIntThenUint
+}
+
 type WorkerOfPushIntThenUint interface {
 	Push(context.Context, *WorkOfIntThenUint)
 	DoneNotify() <-chan struct{}
@@ -1699,6 +2544,11 @@ type WorkerOfPushIntThenUint interface {
 type WorkOfIntThenUint16 struct {
 	Argument int
 	ReturnCh chan<- *ReturnOfUint16
+}
+
+type WorkWithContextOfIntThenUint16 struct {
+	context.Context
+	*WorkOfIntThenUint16
 }
 
 type WorkerOfPushIntThenUint16 interface {
@@ -1711,6 +2561,11 @@ type WorkOfIntThenUint32 struct {
 	ReturnCh chan<- *ReturnOfUint32
 }
 
+type WorkWithContextOfIntThenUint32 struct {
+	context.Context
+	*WorkOfIntThenUint32
+}
+
 type WorkerOfPushIntThenUint32 interface {
 	Push(context.Context, *WorkOfIntThenUint32)
 	DoneNotify() <-chan struct{}
@@ -1719,6 +2574,11 @@ type WorkerOfPushIntThenUint32 interface {
 type WorkOfIntThenUint64 struct {
 	Argument int
 	ReturnCh chan<- *ReturnOfUint64
+}
+
+type WorkWithContextOfIntThenUint64 struct {
+	context.Context
+	*WorkOfIntThenUint64
 }
 
 type WorkerOfPushIntThenUint64 interface {
@@ -1731,6 +2591,11 @@ type WorkOfIntThenUint8 struct {
 	ReturnCh chan<- *ReturnOfUint8
 }
 
+type WorkWithContextOfIntThenUint8 struct {
+	context.Context
+	*WorkOfIntThenUint8
+}
+
 type WorkerOfPushIntThenUint8 interface {
 	Push(context.Context, *WorkOfIntThenUint8)
 	DoneNotify() <-chan struct{}
@@ -1739,6 +2604,11 @@ type WorkerOfPushIntThenUint8 interface {
 type WorkOfIntThenUintptr struct {
 	Argument int
 	ReturnCh chan<- *ReturnOfUintptr
+}
+
+type WorkWithContextOfIntThenUintptr struct {
+	context.Context
+	*WorkOfIntThenUintptr
 }
 
 type WorkerOfPushIntThenUintptr interface {
@@ -1751,6 +2621,11 @@ type WorkOfIntThenInterface struct {
 	ReturnCh chan<- *ReturnOfInterface
 }
 
+type WorkWithContextOfIntThenInterface struct {
+	context.Context
+	*WorkOfIntThenInterface
+}
+
 type WorkerOfPushIntThenInterface interface {
 	Push(context.Context, *WorkOfIntThenInterface)
 	DoneNotify() <-chan struct{}
@@ -1759,6 +2634,11 @@ type WorkerOfPushIntThenInterface interface {
 type WorkOfIntThenStruct struct {
 	Argument int
 	ReturnCh chan<- *ReturnOfStruct
+}
+
+type WorkWithContextOfIntThenStruct struct {
+	context.Context
+	*WorkOfIntThenStruct
 }
 
 type WorkerOfPushIntThenStruct interface {
@@ -1771,6 +2651,11 @@ type WorkOfInt16ThenBool struct {
 	ReturnCh chan<- *ReturnOfBool
 }
 
+type WorkWithContextOfInt16ThenBool struct {
+	context.Context
+	*WorkOfInt16ThenBool
+}
+
 type WorkerOfPushInt16ThenBool interface {
 	Push(context.Context, *WorkOfInt16ThenBool)
 	DoneNotify() <-chan struct{}
@@ -1779,6 +2664,11 @@ type WorkerOfPushInt16ThenBool interface {
 type WorkOfInt16ThenByte struct {
 	Argument int16
 	ReturnCh chan<- *ReturnOfByte
+}
+
+type WorkWithContextOfInt16ThenByte struct {
+	context.Context
+	*WorkOfInt16ThenByte
 }
 
 type WorkerOfPushInt16ThenByte interface {
@@ -1791,6 +2681,11 @@ type WorkOfInt16ThenComplex128 struct {
 	ReturnCh chan<- *ReturnOfComplex128
 }
 
+type WorkWithContextOfInt16ThenComplex128 struct {
+	context.Context
+	*WorkOfInt16ThenComplex128
+}
+
 type WorkerOfPushInt16ThenComplex128 interface {
 	Push(context.Context, *WorkOfInt16ThenComplex128)
 	DoneNotify() <-chan struct{}
@@ -1799,6 +2694,11 @@ type WorkerOfPushInt16ThenComplex128 interface {
 type WorkOfInt16ThenComplex64 struct {
 	Argument int16
 	ReturnCh chan<- *ReturnOfComplex64
+}
+
+type WorkWithContextOfInt16ThenComplex64 struct {
+	context.Context
+	*WorkOfInt16ThenComplex64
 }
 
 type WorkerOfPushInt16ThenComplex64 interface {
@@ -1811,6 +2711,11 @@ type WorkOfInt16ThenError struct {
 	ReturnCh chan<- *ReturnOfError
 }
 
+type WorkWithContextOfInt16ThenError struct {
+	context.Context
+	*WorkOfInt16ThenError
+}
+
 type WorkerOfPushInt16ThenError interface {
 	Push(context.Context, *WorkOfInt16ThenError)
 	DoneNotify() <-chan struct{}
@@ -1819,6 +2724,11 @@ type WorkerOfPushInt16ThenError interface {
 type WorkOfInt16ThenFloat32 struct {
 	Argument int16
 	ReturnCh chan<- *ReturnOfFloat32
+}
+
+type WorkWithContextOfInt16ThenFloat32 struct {
+	context.Context
+	*WorkOfInt16ThenFloat32
 }
 
 type WorkerOfPushInt16ThenFloat32 interface {
@@ -1831,6 +2741,11 @@ type WorkOfInt16ThenFloat64 struct {
 	ReturnCh chan<- *ReturnOfFloat64
 }
 
+type WorkWithContextOfInt16ThenFloat64 struct {
+	context.Context
+	*WorkOfInt16ThenFloat64
+}
+
 type WorkerOfPushInt16ThenFloat64 interface {
 	Push(context.Context, *WorkOfInt16ThenFloat64)
 	DoneNotify() <-chan struct{}
@@ -1839,6 +2754,11 @@ type WorkerOfPushInt16ThenFloat64 interface {
 type WorkOfInt16ThenInt struct {
 	Argument int16
 	ReturnCh chan<- *ReturnOfInt
+}
+
+type WorkWithContextOfInt16ThenInt struct {
+	context.Context
+	*WorkOfInt16ThenInt
 }
 
 type WorkerOfPushInt16ThenInt interface {
@@ -1851,6 +2771,11 @@ type WorkOfInt16ThenInt16 struct {
 	ReturnCh chan<- *ReturnOfInt16
 }
 
+type WorkWithContextOfInt16ThenInt16 struct {
+	context.Context
+	*WorkOfInt16ThenInt16
+}
+
 type WorkerOfPushInt16ThenInt16 interface {
 	Push(context.Context, *WorkOfInt16ThenInt16)
 	DoneNotify() <-chan struct{}
@@ -1859,6 +2784,11 @@ type WorkerOfPushInt16ThenInt16 interface {
 type WorkOfInt16ThenInt32 struct {
 	Argument int16
 	ReturnCh chan<- *ReturnOfInt32
+}
+
+type WorkWithContextOfInt16ThenInt32 struct {
+	context.Context
+	*WorkOfInt16ThenInt32
 }
 
 type WorkerOfPushInt16ThenInt32 interface {
@@ -1871,6 +2801,11 @@ type WorkOfInt16ThenInt64 struct {
 	ReturnCh chan<- *ReturnOfInt64
 }
 
+type WorkWithContextOfInt16ThenInt64 struct {
+	context.Context
+	*WorkOfInt16ThenInt64
+}
+
 type WorkerOfPushInt16ThenInt64 interface {
 	Push(context.Context, *WorkOfInt16ThenInt64)
 	DoneNotify() <-chan struct{}
@@ -1879,6 +2814,11 @@ type WorkerOfPushInt16ThenInt64 interface {
 type WorkOfInt16ThenInt8 struct {
 	Argument int16
 	ReturnCh chan<- *ReturnOfInt8
+}
+
+type WorkWithContextOfInt16ThenInt8 struct {
+	context.Context
+	*WorkOfInt16ThenInt8
 }
 
 type WorkerOfPushInt16ThenInt8 interface {
@@ -1891,6 +2831,11 @@ type WorkOfInt16ThenRune struct {
 	ReturnCh chan<- *ReturnOfRune
 }
 
+type WorkWithContextOfInt16ThenRune struct {
+	context.Context
+	*WorkOfInt16ThenRune
+}
+
 type WorkerOfPushInt16ThenRune interface {
 	Push(context.Context, *WorkOfInt16ThenRune)
 	DoneNotify() <-chan struct{}
@@ -1899,6 +2844,11 @@ type WorkerOfPushInt16ThenRune interface {
 type WorkOfInt16ThenString struct {
 	Argument int16
 	ReturnCh chan<- *ReturnOfString
+}
+
+type WorkWithContextOfInt16ThenString struct {
+	context.Context
+	*WorkOfInt16ThenString
 }
 
 type WorkerOfPushInt16ThenString interface {
@@ -1911,6 +2861,11 @@ type WorkOfInt16ThenUint struct {
 	ReturnCh chan<- *ReturnOfUint
 }
 
+type WorkWithContextOfInt16ThenUint struct {
+	context.Context
+	*WorkOfInt16ThenUint
+}
+
 type WorkerOfPushInt16ThenUint interface {
 	Push(context.Context, *WorkOfInt16ThenUint)
 	DoneNotify() <-chan struct{}
@@ -1919,6 +2874,11 @@ type WorkerOfPushInt16ThenUint interface {
 type WorkOfInt16ThenUint16 struct {
 	Argument int16
 	ReturnCh chan<- *ReturnOfUint16
+}
+
+type WorkWithContextOfInt16ThenUint16 struct {
+	context.Context
+	*WorkOfInt16ThenUint16
 }
 
 type WorkerOfPushInt16ThenUint16 interface {
@@ -1931,6 +2891,11 @@ type WorkOfInt16ThenUint32 struct {
 	ReturnCh chan<- *ReturnOfUint32
 }
 
+type WorkWithContextOfInt16ThenUint32 struct {
+	context.Context
+	*WorkOfInt16ThenUint32
+}
+
 type WorkerOfPushInt16ThenUint32 interface {
 	Push(context.Context, *WorkOfInt16ThenUint32)
 	DoneNotify() <-chan struct{}
@@ -1939,6 +2904,11 @@ type WorkerOfPushInt16ThenUint32 interface {
 type WorkOfInt16ThenUint64 struct {
 	Argument int16
 	ReturnCh chan<- *ReturnOfUint64
+}
+
+type WorkWithContextOfInt16ThenUint64 struct {
+	context.Context
+	*WorkOfInt16ThenUint64
 }
 
 type WorkerOfPushInt16ThenUint64 interface {
@@ -1951,6 +2921,11 @@ type WorkOfInt16ThenUint8 struct {
 	ReturnCh chan<- *ReturnOfUint8
 }
 
+type WorkWithContextOfInt16ThenUint8 struct {
+	context.Context
+	*WorkOfInt16ThenUint8
+}
+
 type WorkerOfPushInt16ThenUint8 interface {
 	Push(context.Context, *WorkOfInt16ThenUint8)
 	DoneNotify() <-chan struct{}
@@ -1959,6 +2934,11 @@ type WorkerOfPushInt16ThenUint8 interface {
 type WorkOfInt16ThenUintptr struct {
 	Argument int16
 	ReturnCh chan<- *ReturnOfUintptr
+}
+
+type WorkWithContextOfInt16ThenUintptr struct {
+	context.Context
+	*WorkOfInt16ThenUintptr
 }
 
 type WorkerOfPushInt16ThenUintptr interface {
@@ -1971,6 +2951,11 @@ type WorkOfInt16ThenInterface struct {
 	ReturnCh chan<- *ReturnOfInterface
 }
 
+type WorkWithContextOfInt16ThenInterface struct {
+	context.Context
+	*WorkOfInt16ThenInterface
+}
+
 type WorkerOfPushInt16ThenInterface interface {
 	Push(context.Context, *WorkOfInt16ThenInterface)
 	DoneNotify() <-chan struct{}
@@ -1979,6 +2964,11 @@ type WorkerOfPushInt16ThenInterface interface {
 type WorkOfInt16ThenStruct struct {
 	Argument int16
 	ReturnCh chan<- *ReturnOfStruct
+}
+
+type WorkWithContextOfInt16ThenStruct struct {
+	context.Context
+	*WorkOfInt16ThenStruct
 }
 
 type WorkerOfPushInt16ThenStruct interface {
@@ -1991,6 +2981,11 @@ type WorkOfInt32ThenBool struct {
 	ReturnCh chan<- *ReturnOfBool
 }
 
+type WorkWithContextOfInt32ThenBool struct {
+	context.Context
+	*WorkOfInt32ThenBool
+}
+
 type WorkerOfPushInt32ThenBool interface {
 	Push(context.Context, *WorkOfInt32ThenBool)
 	DoneNotify() <-chan struct{}
@@ -1999,6 +2994,11 @@ type WorkerOfPushInt32ThenBool interface {
 type WorkOfInt32ThenByte struct {
 	Argument int32
 	ReturnCh chan<- *ReturnOfByte
+}
+
+type WorkWithContextOfInt32ThenByte struct {
+	context.Context
+	*WorkOfInt32ThenByte
 }
 
 type WorkerOfPushInt32ThenByte interface {
@@ -2011,6 +3011,11 @@ type WorkOfInt32ThenComplex128 struct {
 	ReturnCh chan<- *ReturnOfComplex128
 }
 
+type WorkWithContextOfInt32ThenComplex128 struct {
+	context.Context
+	*WorkOfInt32ThenComplex128
+}
+
 type WorkerOfPushInt32ThenComplex128 interface {
 	Push(context.Context, *WorkOfInt32ThenComplex128)
 	DoneNotify() <-chan struct{}
@@ -2019,6 +3024,11 @@ type WorkerOfPushInt32ThenComplex128 interface {
 type WorkOfInt32ThenComplex64 struct {
 	Argument int32
 	ReturnCh chan<- *ReturnOfComplex64
+}
+
+type WorkWithContextOfInt32ThenComplex64 struct {
+	context.Context
+	*WorkOfInt32ThenComplex64
 }
 
 type WorkerOfPushInt32ThenComplex64 interface {
@@ -2031,6 +3041,11 @@ type WorkOfInt32ThenError struct {
 	ReturnCh chan<- *ReturnOfError
 }
 
+type WorkWithContextOfInt32ThenError struct {
+	context.Context
+	*WorkOfInt32ThenError
+}
+
 type WorkerOfPushInt32ThenError interface {
 	Push(context.Context, *WorkOfInt32ThenError)
 	DoneNotify() <-chan struct{}
@@ -2039,6 +3054,11 @@ type WorkerOfPushInt32ThenError interface {
 type WorkOfInt32ThenFloat32 struct {
 	Argument int32
 	ReturnCh chan<- *ReturnOfFloat32
+}
+
+type WorkWithContextOfInt32ThenFloat32 struct {
+	context.Context
+	*WorkOfInt32ThenFloat32
 }
 
 type WorkerOfPushInt32ThenFloat32 interface {
@@ -2051,6 +3071,11 @@ type WorkOfInt32ThenFloat64 struct {
 	ReturnCh chan<- *ReturnOfFloat64
 }
 
+type WorkWithContextOfInt32ThenFloat64 struct {
+	context.Context
+	*WorkOfInt32ThenFloat64
+}
+
 type WorkerOfPushInt32ThenFloat64 interface {
 	Push(context.Context, *WorkOfInt32ThenFloat64)
 	DoneNotify() <-chan struct{}
@@ -2059,6 +3084,11 @@ type WorkerOfPushInt32ThenFloat64 interface {
 type WorkOfInt32ThenInt struct {
 	Argument int32
 	ReturnCh chan<- *ReturnOfInt
+}
+
+type WorkWithContextOfInt32ThenInt struct {
+	context.Context
+	*WorkOfInt32ThenInt
 }
 
 type WorkerOfPushInt32ThenInt interface {
@@ -2071,6 +3101,11 @@ type WorkOfInt32ThenInt16 struct {
 	ReturnCh chan<- *ReturnOfInt16
 }
 
+type WorkWithContextOfInt32ThenInt16 struct {
+	context.Context
+	*WorkOfInt32ThenInt16
+}
+
 type WorkerOfPushInt32ThenInt16 interface {
 	Push(context.Context, *WorkOfInt32ThenInt16)
 	DoneNotify() <-chan struct{}
@@ -2079,6 +3114,11 @@ type WorkerOfPushInt32ThenInt16 interface {
 type WorkOfInt32ThenInt32 struct {
 	Argument int32
 	ReturnCh chan<- *ReturnOfInt32
+}
+
+type WorkWithContextOfInt32ThenInt32 struct {
+	context.Context
+	*WorkOfInt32ThenInt32
 }
 
 type WorkerOfPushInt32ThenInt32 interface {
@@ -2091,6 +3131,11 @@ type WorkOfInt32ThenInt64 struct {
 	ReturnCh chan<- *ReturnOfInt64
 }
 
+type WorkWithContextOfInt32ThenInt64 struct {
+	context.Context
+	*WorkOfInt32ThenInt64
+}
+
 type WorkerOfPushInt32ThenInt64 interface {
 	Push(context.Context, *WorkOfInt32ThenInt64)
 	DoneNotify() <-chan struct{}
@@ -2099,6 +3144,11 @@ type WorkerOfPushInt32ThenInt64 interface {
 type WorkOfInt32ThenInt8 struct {
 	Argument int32
 	ReturnCh chan<- *ReturnOfInt8
+}
+
+type WorkWithContextOfInt32ThenInt8 struct {
+	context.Context
+	*WorkOfInt32ThenInt8
 }
 
 type WorkerOfPushInt32ThenInt8 interface {
@@ -2111,6 +3161,11 @@ type WorkOfInt32ThenRune struct {
 	ReturnCh chan<- *ReturnOfRune
 }
 
+type WorkWithContextOfInt32ThenRune struct {
+	context.Context
+	*WorkOfInt32ThenRune
+}
+
 type WorkerOfPushInt32ThenRune interface {
 	Push(context.Context, *WorkOfInt32ThenRune)
 	DoneNotify() <-chan struct{}
@@ -2119,6 +3174,11 @@ type WorkerOfPushInt32ThenRune interface {
 type WorkOfInt32ThenString struct {
 	Argument int32
 	ReturnCh chan<- *ReturnOfString
+}
+
+type WorkWithContextOfInt32ThenString struct {
+	context.Context
+	*WorkOfInt32ThenString
 }
 
 type WorkerOfPushInt32ThenString interface {
@@ -2131,6 +3191,11 @@ type WorkOfInt32ThenUint struct {
 	ReturnCh chan<- *ReturnOfUint
 }
 
+type WorkWithContextOfInt32ThenUint struct {
+	context.Context
+	*WorkOfInt32ThenUint
+}
+
 type WorkerOfPushInt32ThenUint interface {
 	Push(context.Context, *WorkOfInt32ThenUint)
 	DoneNotify() <-chan struct{}
@@ -2139,6 +3204,11 @@ type WorkerOfPushInt32ThenUint interface {
 type WorkOfInt32ThenUint16 struct {
 	Argument int32
 	ReturnCh chan<- *ReturnOfUint16
+}
+
+type WorkWithContextOfInt32ThenUint16 struct {
+	context.Context
+	*WorkOfInt32ThenUint16
 }
 
 type WorkerOfPushInt32ThenUint16 interface {
@@ -2151,6 +3221,11 @@ type WorkOfInt32ThenUint32 struct {
 	ReturnCh chan<- *ReturnOfUint32
 }
 
+type WorkWithContextOfInt32ThenUint32 struct {
+	context.Context
+	*WorkOfInt32ThenUint32
+}
+
 type WorkerOfPushInt32ThenUint32 interface {
 	Push(context.Context, *WorkOfInt32ThenUint32)
 	DoneNotify() <-chan struct{}
@@ -2159,6 +3234,11 @@ type WorkerOfPushInt32ThenUint32 interface {
 type WorkOfInt32ThenUint64 struct {
 	Argument int32
 	ReturnCh chan<- *ReturnOfUint64
+}
+
+type WorkWithContextOfInt32ThenUint64 struct {
+	context.Context
+	*WorkOfInt32ThenUint64
 }
 
 type WorkerOfPushInt32ThenUint64 interface {
@@ -2171,6 +3251,11 @@ type WorkOfInt32ThenUint8 struct {
 	ReturnCh chan<- *ReturnOfUint8
 }
 
+type WorkWithContextOfInt32ThenUint8 struct {
+	context.Context
+	*WorkOfInt32ThenUint8
+}
+
 type WorkerOfPushInt32ThenUint8 interface {
 	Push(context.Context, *WorkOfInt32ThenUint8)
 	DoneNotify() <-chan struct{}
@@ -2179,6 +3264,11 @@ type WorkerOfPushInt32ThenUint8 interface {
 type WorkOfInt32ThenUintptr struct {
 	Argument int32
 	ReturnCh chan<- *ReturnOfUintptr
+}
+
+type WorkWithContextOfInt32ThenUintptr struct {
+	context.Context
+	*WorkOfInt32ThenUintptr
 }
 
 type WorkerOfPushInt32ThenUintptr interface {
@@ -2191,6 +3281,11 @@ type WorkOfInt32ThenInterface struct {
 	ReturnCh chan<- *ReturnOfInterface
 }
 
+type WorkWithContextOfInt32ThenInterface struct {
+	context.Context
+	*WorkOfInt32ThenInterface
+}
+
 type WorkerOfPushInt32ThenInterface interface {
 	Push(context.Context, *WorkOfInt32ThenInterface)
 	DoneNotify() <-chan struct{}
@@ -2199,6 +3294,11 @@ type WorkerOfPushInt32ThenInterface interface {
 type WorkOfInt32ThenStruct struct {
 	Argument int32
 	ReturnCh chan<- *ReturnOfStruct
+}
+
+type WorkWithContextOfInt32ThenStruct struct {
+	context.Context
+	*WorkOfInt32ThenStruct
 }
 
 type WorkerOfPushInt32ThenStruct interface {
@@ -2211,6 +3311,11 @@ type WorkOfInt64ThenBool struct {
 	ReturnCh chan<- *ReturnOfBool
 }
 
+type WorkWithContextOfInt64ThenBool struct {
+	context.Context
+	*WorkOfInt64ThenBool
+}
+
 type WorkerOfPushInt64ThenBool interface {
 	Push(context.Context, *WorkOfInt64ThenBool)
 	DoneNotify() <-chan struct{}
@@ -2219,6 +3324,11 @@ type WorkerOfPushInt64ThenBool interface {
 type WorkOfInt64ThenByte struct {
 	Argument int64
 	ReturnCh chan<- *ReturnOfByte
+}
+
+type WorkWithContextOfInt64ThenByte struct {
+	context.Context
+	*WorkOfInt64ThenByte
 }
 
 type WorkerOfPushInt64ThenByte interface {
@@ -2231,6 +3341,11 @@ type WorkOfInt64ThenComplex128 struct {
 	ReturnCh chan<- *ReturnOfComplex128
 }
 
+type WorkWithContextOfInt64ThenComplex128 struct {
+	context.Context
+	*WorkOfInt64ThenComplex128
+}
+
 type WorkerOfPushInt64ThenComplex128 interface {
 	Push(context.Context, *WorkOfInt64ThenComplex128)
 	DoneNotify() <-chan struct{}
@@ -2239,6 +3354,11 @@ type WorkerOfPushInt64ThenComplex128 interface {
 type WorkOfInt64ThenComplex64 struct {
 	Argument int64
 	ReturnCh chan<- *ReturnOfComplex64
+}
+
+type WorkWithContextOfInt64ThenComplex64 struct {
+	context.Context
+	*WorkOfInt64ThenComplex64
 }
 
 type WorkerOfPushInt64ThenComplex64 interface {
@@ -2251,6 +3371,11 @@ type WorkOfInt64ThenError struct {
 	ReturnCh chan<- *ReturnOfError
 }
 
+type WorkWithContextOfInt64ThenError struct {
+	context.Context
+	*WorkOfInt64ThenError
+}
+
 type WorkerOfPushInt64ThenError interface {
 	Push(context.Context, *WorkOfInt64ThenError)
 	DoneNotify() <-chan struct{}
@@ -2259,6 +3384,11 @@ type WorkerOfPushInt64ThenError interface {
 type WorkOfInt64ThenFloat32 struct {
 	Argument int64
 	ReturnCh chan<- *ReturnOfFloat32
+}
+
+type WorkWithContextOfInt64ThenFloat32 struct {
+	context.Context
+	*WorkOfInt64ThenFloat32
 }
 
 type WorkerOfPushInt64ThenFloat32 interface {
@@ -2271,6 +3401,11 @@ type WorkOfInt64ThenFloat64 struct {
 	ReturnCh chan<- *ReturnOfFloat64
 }
 
+type WorkWithContextOfInt64ThenFloat64 struct {
+	context.Context
+	*WorkOfInt64ThenFloat64
+}
+
 type WorkerOfPushInt64ThenFloat64 interface {
 	Push(context.Context, *WorkOfInt64ThenFloat64)
 	DoneNotify() <-chan struct{}
@@ -2279,6 +3414,11 @@ type WorkerOfPushInt64ThenFloat64 interface {
 type WorkOfInt64ThenInt struct {
 	Argument int64
 	ReturnCh chan<- *ReturnOfInt
+}
+
+type WorkWithContextOfInt64ThenInt struct {
+	context.Context
+	*WorkOfInt64ThenInt
 }
 
 type WorkerOfPushInt64ThenInt interface {
@@ -2291,6 +3431,11 @@ type WorkOfInt64ThenInt16 struct {
 	ReturnCh chan<- *ReturnOfInt16
 }
 
+type WorkWithContextOfInt64ThenInt16 struct {
+	context.Context
+	*WorkOfInt64ThenInt16
+}
+
 type WorkerOfPushInt64ThenInt16 interface {
 	Push(context.Context, *WorkOfInt64ThenInt16)
 	DoneNotify() <-chan struct{}
@@ -2299,6 +3444,11 @@ type WorkerOfPushInt64ThenInt16 interface {
 type WorkOfInt64ThenInt32 struct {
 	Argument int64
 	ReturnCh chan<- *ReturnOfInt32
+}
+
+type WorkWithContextOfInt64ThenInt32 struct {
+	context.Context
+	*WorkOfInt64ThenInt32
 }
 
 type WorkerOfPushInt64ThenInt32 interface {
@@ -2311,6 +3461,11 @@ type WorkOfInt64ThenInt64 struct {
 	ReturnCh chan<- *ReturnOfInt64
 }
 
+type WorkWithContextOfInt64ThenInt64 struct {
+	context.Context
+	*WorkOfInt64ThenInt64
+}
+
 type WorkerOfPushInt64ThenInt64 interface {
 	Push(context.Context, *WorkOfInt64ThenInt64)
 	DoneNotify() <-chan struct{}
@@ -2319,6 +3474,11 @@ type WorkerOfPushInt64ThenInt64 interface {
 type WorkOfInt64ThenInt8 struct {
 	Argument int64
 	ReturnCh chan<- *ReturnOfInt8
+}
+
+type WorkWithContextOfInt64ThenInt8 struct {
+	context.Context
+	*WorkOfInt64ThenInt8
 }
 
 type WorkerOfPushInt64ThenInt8 interface {
@@ -2331,6 +3491,11 @@ type WorkOfInt64ThenRune struct {
 	ReturnCh chan<- *ReturnOfRune
 }
 
+type WorkWithContextOfInt64ThenRune struct {
+	context.Context
+	*WorkOfInt64ThenRune
+}
+
 type WorkerOfPushInt64ThenRune interface {
 	Push(context.Context, *WorkOfInt64ThenRune)
 	DoneNotify() <-chan struct{}
@@ -2339,6 +3504,11 @@ type WorkerOfPushInt64ThenRune interface {
 type WorkOfInt64ThenString struct {
 	Argument int64
 	ReturnCh chan<- *ReturnOfString
+}
+
+type WorkWithContextOfInt64ThenString struct {
+	context.Context
+	*WorkOfInt64ThenString
 }
 
 type WorkerOfPushInt64ThenString interface {
@@ -2351,6 +3521,11 @@ type WorkOfInt64ThenUint struct {
 	ReturnCh chan<- *ReturnOfUint
 }
 
+type WorkWithContextOfInt64ThenUint struct {
+	context.Context
+	*WorkOfInt64ThenUint
+}
+
 type WorkerOfPushInt64ThenUint interface {
 	Push(context.Context, *WorkOfInt64ThenUint)
 	DoneNotify() <-chan struct{}
@@ -2359,6 +3534,11 @@ type WorkerOfPushInt64ThenUint interface {
 type WorkOfInt64ThenUint16 struct {
 	Argument int64
 	ReturnCh chan<- *ReturnOfUint16
+}
+
+type WorkWithContextOfInt64ThenUint16 struct {
+	context.Context
+	*WorkOfInt64ThenUint16
 }
 
 type WorkerOfPushInt64ThenUint16 interface {
@@ -2371,6 +3551,11 @@ type WorkOfInt64ThenUint32 struct {
 	ReturnCh chan<- *ReturnOfUint32
 }
 
+type WorkWithContextOfInt64ThenUint32 struct {
+	context.Context
+	*WorkOfInt64ThenUint32
+}
+
 type WorkerOfPushInt64ThenUint32 interface {
 	Push(context.Context, *WorkOfInt64ThenUint32)
 	DoneNotify() <-chan struct{}
@@ -2379,6 +3564,11 @@ type WorkerOfPushInt64ThenUint32 interface {
 type WorkOfInt64ThenUint64 struct {
 	Argument int64
 	ReturnCh chan<- *ReturnOfUint64
+}
+
+type WorkWithContextOfInt64ThenUint64 struct {
+	context.Context
+	*WorkOfInt64ThenUint64
 }
 
 type WorkerOfPushInt64ThenUint64 interface {
@@ -2391,6 +3581,11 @@ type WorkOfInt64ThenUint8 struct {
 	ReturnCh chan<- *ReturnOfUint8
 }
 
+type WorkWithContextOfInt64ThenUint8 struct {
+	context.Context
+	*WorkOfInt64ThenUint8
+}
+
 type WorkerOfPushInt64ThenUint8 interface {
 	Push(context.Context, *WorkOfInt64ThenUint8)
 	DoneNotify() <-chan struct{}
@@ -2399,6 +3594,11 @@ type WorkerOfPushInt64ThenUint8 interface {
 type WorkOfInt64ThenUintptr struct {
 	Argument int64
 	ReturnCh chan<- *ReturnOfUintptr
+}
+
+type WorkWithContextOfInt64ThenUintptr struct {
+	context.Context
+	*WorkOfInt64ThenUintptr
 }
 
 type WorkerOfPushInt64ThenUintptr interface {
@@ -2411,6 +3611,11 @@ type WorkOfInt64ThenInterface struct {
 	ReturnCh chan<- *ReturnOfInterface
 }
 
+type WorkWithContextOfInt64ThenInterface struct {
+	context.Context
+	*WorkOfInt64ThenInterface
+}
+
 type WorkerOfPushInt64ThenInterface interface {
 	Push(context.Context, *WorkOfInt64ThenInterface)
 	DoneNotify() <-chan struct{}
@@ -2419,6 +3624,11 @@ type WorkerOfPushInt64ThenInterface interface {
 type WorkOfInt64ThenStruct struct {
 	Argument int64
 	ReturnCh chan<- *ReturnOfStruct
+}
+
+type WorkWithContextOfInt64ThenStruct struct {
+	context.Context
+	*WorkOfInt64ThenStruct
 }
 
 type WorkerOfPushInt64ThenStruct interface {
@@ -2431,6 +3641,11 @@ type WorkOfInt8ThenBool struct {
 	ReturnCh chan<- *ReturnOfBool
 }
 
+type WorkWithContextOfInt8ThenBool struct {
+	context.Context
+	*WorkOfInt8ThenBool
+}
+
 type WorkerOfPushInt8ThenBool interface {
 	Push(context.Context, *WorkOfInt8ThenBool)
 	DoneNotify() <-chan struct{}
@@ -2439,6 +3654,11 @@ type WorkerOfPushInt8ThenBool interface {
 type WorkOfInt8ThenByte struct {
 	Argument int8
 	ReturnCh chan<- *ReturnOfByte
+}
+
+type WorkWithContextOfInt8ThenByte struct {
+	context.Context
+	*WorkOfInt8ThenByte
 }
 
 type WorkerOfPushInt8ThenByte interface {
@@ -2451,6 +3671,11 @@ type WorkOfInt8ThenComplex128 struct {
 	ReturnCh chan<- *ReturnOfComplex128
 }
 
+type WorkWithContextOfInt8ThenComplex128 struct {
+	context.Context
+	*WorkOfInt8ThenComplex128
+}
+
 type WorkerOfPushInt8ThenComplex128 interface {
 	Push(context.Context, *WorkOfInt8ThenComplex128)
 	DoneNotify() <-chan struct{}
@@ -2459,6 +3684,11 @@ type WorkerOfPushInt8ThenComplex128 interface {
 type WorkOfInt8ThenComplex64 struct {
 	Argument int8
 	ReturnCh chan<- *ReturnOfComplex64
+}
+
+type WorkWithContextOfInt8ThenComplex64 struct {
+	context.Context
+	*WorkOfInt8ThenComplex64
 }
 
 type WorkerOfPushInt8ThenComplex64 interface {
@@ -2471,6 +3701,11 @@ type WorkOfInt8ThenError struct {
 	ReturnCh chan<- *ReturnOfError
 }
 
+type WorkWithContextOfInt8ThenError struct {
+	context.Context
+	*WorkOfInt8ThenError
+}
+
 type WorkerOfPushInt8ThenError interface {
 	Push(context.Context, *WorkOfInt8ThenError)
 	DoneNotify() <-chan struct{}
@@ -2479,6 +3714,11 @@ type WorkerOfPushInt8ThenError interface {
 type WorkOfInt8ThenFloat32 struct {
 	Argument int8
 	ReturnCh chan<- *ReturnOfFloat32
+}
+
+type WorkWithContextOfInt8ThenFloat32 struct {
+	context.Context
+	*WorkOfInt8ThenFloat32
 }
 
 type WorkerOfPushInt8ThenFloat32 interface {
@@ -2491,6 +3731,11 @@ type WorkOfInt8ThenFloat64 struct {
 	ReturnCh chan<- *ReturnOfFloat64
 }
 
+type WorkWithContextOfInt8ThenFloat64 struct {
+	context.Context
+	*WorkOfInt8ThenFloat64
+}
+
 type WorkerOfPushInt8ThenFloat64 interface {
 	Push(context.Context, *WorkOfInt8ThenFloat64)
 	DoneNotify() <-chan struct{}
@@ -2499,6 +3744,11 @@ type WorkerOfPushInt8ThenFloat64 interface {
 type WorkOfInt8ThenInt struct {
 	Argument int8
 	ReturnCh chan<- *ReturnOfInt
+}
+
+type WorkWithContextOfInt8ThenInt struct {
+	context.Context
+	*WorkOfInt8ThenInt
 }
 
 type WorkerOfPushInt8ThenInt interface {
@@ -2511,6 +3761,11 @@ type WorkOfInt8ThenInt16 struct {
 	ReturnCh chan<- *ReturnOfInt16
 }
 
+type WorkWithContextOfInt8ThenInt16 struct {
+	context.Context
+	*WorkOfInt8ThenInt16
+}
+
 type WorkerOfPushInt8ThenInt16 interface {
 	Push(context.Context, *WorkOfInt8ThenInt16)
 	DoneNotify() <-chan struct{}
@@ -2519,6 +3774,11 @@ type WorkerOfPushInt8ThenInt16 interface {
 type WorkOfInt8ThenInt32 struct {
 	Argument int8
 	ReturnCh chan<- *ReturnOfInt32
+}
+
+type WorkWithContextOfInt8ThenInt32 struct {
+	context.Context
+	*WorkOfInt8ThenInt32
 }
 
 type WorkerOfPushInt8ThenInt32 interface {
@@ -2531,6 +3791,11 @@ type WorkOfInt8ThenInt64 struct {
 	ReturnCh chan<- *ReturnOfInt64
 }
 
+type WorkWithContextOfInt8ThenInt64 struct {
+	context.Context
+	*WorkOfInt8ThenInt64
+}
+
 type WorkerOfPushInt8ThenInt64 interface {
 	Push(context.Context, *WorkOfInt8ThenInt64)
 	DoneNotify() <-chan struct{}
@@ -2539,6 +3804,11 @@ type WorkerOfPushInt8ThenInt64 interface {
 type WorkOfInt8ThenInt8 struct {
 	Argument int8
 	ReturnCh chan<- *ReturnOfInt8
+}
+
+type WorkWithContextOfInt8ThenInt8 struct {
+	context.Context
+	*WorkOfInt8ThenInt8
 }
 
 type WorkerOfPushInt8ThenInt8 interface {
@@ -2551,6 +3821,11 @@ type WorkOfInt8ThenRune struct {
 	ReturnCh chan<- *ReturnOfRune
 }
 
+type WorkWithContextOfInt8ThenRune struct {
+	context.Context
+	*WorkOfInt8ThenRune
+}
+
 type WorkerOfPushInt8ThenRune interface {
 	Push(context.Context, *WorkOfInt8ThenRune)
 	DoneNotify() <-chan struct{}
@@ -2559,6 +3834,11 @@ type WorkerOfPushInt8ThenRune interface {
 type WorkOfInt8ThenString struct {
 	Argument int8
 	ReturnCh chan<- *ReturnOfString
+}
+
+type WorkWithContextOfInt8ThenString struct {
+	context.Context
+	*WorkOfInt8ThenString
 }
 
 type WorkerOfPushInt8ThenString interface {
@@ -2571,6 +3851,11 @@ type WorkOfInt8ThenUint struct {
 	ReturnCh chan<- *ReturnOfUint
 }
 
+type WorkWithContextOfInt8ThenUint struct {
+	context.Context
+	*WorkOfInt8ThenUint
+}
+
 type WorkerOfPushInt8ThenUint interface {
 	Push(context.Context, *WorkOfInt8ThenUint)
 	DoneNotify() <-chan struct{}
@@ -2579,6 +3864,11 @@ type WorkerOfPushInt8ThenUint interface {
 type WorkOfInt8ThenUint16 struct {
 	Argument int8
 	ReturnCh chan<- *ReturnOfUint16
+}
+
+type WorkWithContextOfInt8ThenUint16 struct {
+	context.Context
+	*WorkOfInt8ThenUint16
 }
 
 type WorkerOfPushInt8ThenUint16 interface {
@@ -2591,6 +3881,11 @@ type WorkOfInt8ThenUint32 struct {
 	ReturnCh chan<- *ReturnOfUint32
 }
 
+type WorkWithContextOfInt8ThenUint32 struct {
+	context.Context
+	*WorkOfInt8ThenUint32
+}
+
 type WorkerOfPushInt8ThenUint32 interface {
 	Push(context.Context, *WorkOfInt8ThenUint32)
 	DoneNotify() <-chan struct{}
@@ -2599,6 +3894,11 @@ type WorkerOfPushInt8ThenUint32 interface {
 type WorkOfInt8ThenUint64 struct {
 	Argument int8
 	ReturnCh chan<- *ReturnOfUint64
+}
+
+type WorkWithContextOfInt8ThenUint64 struct {
+	context.Context
+	*WorkOfInt8ThenUint64
 }
 
 type WorkerOfPushInt8ThenUint64 interface {
@@ -2611,6 +3911,11 @@ type WorkOfInt8ThenUint8 struct {
 	ReturnCh chan<- *ReturnOfUint8
 }
 
+type WorkWithContextOfInt8ThenUint8 struct {
+	context.Context
+	*WorkOfInt8ThenUint8
+}
+
 type WorkerOfPushInt8ThenUint8 interface {
 	Push(context.Context, *WorkOfInt8ThenUint8)
 	DoneNotify() <-chan struct{}
@@ -2619,6 +3924,11 @@ type WorkerOfPushInt8ThenUint8 interface {
 type WorkOfInt8ThenUintptr struct {
 	Argument int8
 	ReturnCh chan<- *ReturnOfUintptr
+}
+
+type WorkWithContextOfInt8ThenUintptr struct {
+	context.Context
+	*WorkOfInt8ThenUintptr
 }
 
 type WorkerOfPushInt8ThenUintptr interface {
@@ -2631,6 +3941,11 @@ type WorkOfInt8ThenInterface struct {
 	ReturnCh chan<- *ReturnOfInterface
 }
 
+type WorkWithContextOfInt8ThenInterface struct {
+	context.Context
+	*WorkOfInt8ThenInterface
+}
+
 type WorkerOfPushInt8ThenInterface interface {
 	Push(context.Context, *WorkOfInt8ThenInterface)
 	DoneNotify() <-chan struct{}
@@ -2639,6 +3954,11 @@ type WorkerOfPushInt8ThenInterface interface {
 type WorkOfInt8ThenStruct struct {
 	Argument int8
 	ReturnCh chan<- *ReturnOfStruct
+}
+
+type WorkWithContextOfInt8ThenStruct struct {
+	context.Context
+	*WorkOfInt8ThenStruct
 }
 
 type WorkerOfPushInt8ThenStruct interface {
@@ -2651,6 +3971,11 @@ type WorkOfRuneThenBool struct {
 	ReturnCh chan<- *ReturnOfBool
 }
 
+type WorkWithContextOfRuneThenBool struct {
+	context.Context
+	*WorkOfRuneThenBool
+}
+
 type WorkerOfPushRuneThenBool interface {
 	Push(context.Context, *WorkOfRuneThenBool)
 	DoneNotify() <-chan struct{}
@@ -2659,6 +3984,11 @@ type WorkerOfPushRuneThenBool interface {
 type WorkOfRuneThenByte struct {
 	Argument rune
 	ReturnCh chan<- *ReturnOfByte
+}
+
+type WorkWithContextOfRuneThenByte struct {
+	context.Context
+	*WorkOfRuneThenByte
 }
 
 type WorkerOfPushRuneThenByte interface {
@@ -2671,6 +4001,11 @@ type WorkOfRuneThenComplex128 struct {
 	ReturnCh chan<- *ReturnOfComplex128
 }
 
+type WorkWithContextOfRuneThenComplex128 struct {
+	context.Context
+	*WorkOfRuneThenComplex128
+}
+
 type WorkerOfPushRuneThenComplex128 interface {
 	Push(context.Context, *WorkOfRuneThenComplex128)
 	DoneNotify() <-chan struct{}
@@ -2679,6 +4014,11 @@ type WorkerOfPushRuneThenComplex128 interface {
 type WorkOfRuneThenComplex64 struct {
 	Argument rune
 	ReturnCh chan<- *ReturnOfComplex64
+}
+
+type WorkWithContextOfRuneThenComplex64 struct {
+	context.Context
+	*WorkOfRuneThenComplex64
 }
 
 type WorkerOfPushRuneThenComplex64 interface {
@@ -2691,6 +4031,11 @@ type WorkOfRuneThenError struct {
 	ReturnCh chan<- *ReturnOfError
 }
 
+type WorkWithContextOfRuneThenError struct {
+	context.Context
+	*WorkOfRuneThenError
+}
+
 type WorkerOfPushRuneThenError interface {
 	Push(context.Context, *WorkOfRuneThenError)
 	DoneNotify() <-chan struct{}
@@ -2699,6 +4044,11 @@ type WorkerOfPushRuneThenError interface {
 type WorkOfRuneThenFloat32 struct {
 	Argument rune
 	ReturnCh chan<- *ReturnOfFloat32
+}
+
+type WorkWithContextOfRuneThenFloat32 struct {
+	context.Context
+	*WorkOfRuneThenFloat32
 }
 
 type WorkerOfPushRuneThenFloat32 interface {
@@ -2711,6 +4061,11 @@ type WorkOfRuneThenFloat64 struct {
 	ReturnCh chan<- *ReturnOfFloat64
 }
 
+type WorkWithContextOfRuneThenFloat64 struct {
+	context.Context
+	*WorkOfRuneThenFloat64
+}
+
 type WorkerOfPushRuneThenFloat64 interface {
 	Push(context.Context, *WorkOfRuneThenFloat64)
 	DoneNotify() <-chan struct{}
@@ -2719,6 +4074,11 @@ type WorkerOfPushRuneThenFloat64 interface {
 type WorkOfRuneThenInt struct {
 	Argument rune
 	ReturnCh chan<- *ReturnOfInt
+}
+
+type WorkWithContextOfRuneThenInt struct {
+	context.Context
+	*WorkOfRuneThenInt
 }
 
 type WorkerOfPushRuneThenInt interface {
@@ -2731,6 +4091,11 @@ type WorkOfRuneThenInt16 struct {
 	ReturnCh chan<- *ReturnOfInt16
 }
 
+type WorkWithContextOfRuneThenInt16 struct {
+	context.Context
+	*WorkOfRuneThenInt16
+}
+
 type WorkerOfPushRuneThenInt16 interface {
 	Push(context.Context, *WorkOfRuneThenInt16)
 	DoneNotify() <-chan struct{}
@@ -2739,6 +4104,11 @@ type WorkerOfPushRuneThenInt16 interface {
 type WorkOfRuneThenInt32 struct {
 	Argument rune
 	ReturnCh chan<- *ReturnOfInt32
+}
+
+type WorkWithContextOfRuneThenInt32 struct {
+	context.Context
+	*WorkOfRuneThenInt32
 }
 
 type WorkerOfPushRuneThenInt32 interface {
@@ -2751,6 +4121,11 @@ type WorkOfRuneThenInt64 struct {
 	ReturnCh chan<- *ReturnOfInt64
 }
 
+type WorkWithContextOfRuneThenInt64 struct {
+	context.Context
+	*WorkOfRuneThenInt64
+}
+
 type WorkerOfPushRuneThenInt64 interface {
 	Push(context.Context, *WorkOfRuneThenInt64)
 	DoneNotify() <-chan struct{}
@@ -2759,6 +4134,11 @@ type WorkerOfPushRuneThenInt64 interface {
 type WorkOfRuneThenInt8 struct {
 	Argument rune
 	ReturnCh chan<- *ReturnOfInt8
+}
+
+type WorkWithContextOfRuneThenInt8 struct {
+	context.Context
+	*WorkOfRuneThenInt8
 }
 
 type WorkerOfPushRuneThenInt8 interface {
@@ -2771,6 +4151,11 @@ type WorkOfRuneThenRune struct {
 	ReturnCh chan<- *ReturnOfRune
 }
 
+type WorkWithContextOfRuneThenRune struct {
+	context.Context
+	*WorkOfRuneThenRune
+}
+
 type WorkerOfPushRuneThenRune interface {
 	Push(context.Context, *WorkOfRuneThenRune)
 	DoneNotify() <-chan struct{}
@@ -2779,6 +4164,11 @@ type WorkerOfPushRuneThenRune interface {
 type WorkOfRuneThenString struct {
 	Argument rune
 	ReturnCh chan<- *ReturnOfString
+}
+
+type WorkWithContextOfRuneThenString struct {
+	context.Context
+	*WorkOfRuneThenString
 }
 
 type WorkerOfPushRuneThenString interface {
@@ -2791,6 +4181,11 @@ type WorkOfRuneThenUint struct {
 	ReturnCh chan<- *ReturnOfUint
 }
 
+type WorkWithContextOfRuneThenUint struct {
+	context.Context
+	*WorkOfRuneThenUint
+}
+
 type WorkerOfPushRuneThenUint interface {
 	Push(context.Context, *WorkOfRuneThenUint)
 	DoneNotify() <-chan struct{}
@@ -2799,6 +4194,11 @@ type WorkerOfPushRuneThenUint interface {
 type WorkOfRuneThenUint16 struct {
 	Argument rune
 	ReturnCh chan<- *ReturnOfUint16
+}
+
+type WorkWithContextOfRuneThenUint16 struct {
+	context.Context
+	*WorkOfRuneThenUint16
 }
 
 type WorkerOfPushRuneThenUint16 interface {
@@ -2811,6 +4211,11 @@ type WorkOfRuneThenUint32 struct {
 	ReturnCh chan<- *ReturnOfUint32
 }
 
+type WorkWithContextOfRuneThenUint32 struct {
+	context.Context
+	*WorkOfRuneThenUint32
+}
+
 type WorkerOfPushRuneThenUint32 interface {
 	Push(context.Context, *WorkOfRuneThenUint32)
 	DoneNotify() <-chan struct{}
@@ -2819,6 +4224,11 @@ type WorkerOfPushRuneThenUint32 interface {
 type WorkOfRuneThenUint64 struct {
 	Argument rune
 	ReturnCh chan<- *ReturnOfUint64
+}
+
+type WorkWithContextOfRuneThenUint64 struct {
+	context.Context
+	*WorkOfRuneThenUint64
 }
 
 type WorkerOfPushRuneThenUint64 interface {
@@ -2831,6 +4241,11 @@ type WorkOfRuneThenUint8 struct {
 	ReturnCh chan<- *ReturnOfUint8
 }
 
+type WorkWithContextOfRuneThenUint8 struct {
+	context.Context
+	*WorkOfRuneThenUint8
+}
+
 type WorkerOfPushRuneThenUint8 interface {
 	Push(context.Context, *WorkOfRuneThenUint8)
 	DoneNotify() <-chan struct{}
@@ -2839,6 +4254,11 @@ type WorkerOfPushRuneThenUint8 interface {
 type WorkOfRuneThenUintptr struct {
 	Argument rune
 	ReturnCh chan<- *ReturnOfUintptr
+}
+
+type WorkWithContextOfRuneThenUintptr struct {
+	context.Context
+	*WorkOfRuneThenUintptr
 }
 
 type WorkerOfPushRuneThenUintptr interface {
@@ -2851,6 +4271,11 @@ type WorkOfRuneThenInterface struct {
 	ReturnCh chan<- *ReturnOfInterface
 }
 
+type WorkWithContextOfRuneThenInterface struct {
+	context.Context
+	*WorkOfRuneThenInterface
+}
+
 type WorkerOfPushRuneThenInterface interface {
 	Push(context.Context, *WorkOfRuneThenInterface)
 	DoneNotify() <-chan struct{}
@@ -2859,6 +4284,11 @@ type WorkerOfPushRuneThenInterface interface {
 type WorkOfRuneThenStruct struct {
 	Argument rune
 	ReturnCh chan<- *ReturnOfStruct
+}
+
+type WorkWithContextOfRuneThenStruct struct {
+	context.Context
+	*WorkOfRuneThenStruct
 }
 
 type WorkerOfPushRuneThenStruct interface {
@@ -2871,6 +4301,11 @@ type WorkOfStringThenBool struct {
 	ReturnCh chan<- *ReturnOfBool
 }
 
+type WorkWithContextOfStringThenBool struct {
+	context.Context
+	*WorkOfStringThenBool
+}
+
 type WorkerOfPushStringThenBool interface {
 	Push(context.Context, *WorkOfStringThenBool)
 	DoneNotify() <-chan struct{}
@@ -2879,6 +4314,11 @@ type WorkerOfPushStringThenBool interface {
 type WorkOfStringThenByte struct {
 	Argument string
 	ReturnCh chan<- *ReturnOfByte
+}
+
+type WorkWithContextOfStringThenByte struct {
+	context.Context
+	*WorkOfStringThenByte
 }
 
 type WorkerOfPushStringThenByte interface {
@@ -2891,6 +4331,11 @@ type WorkOfStringThenComplex128 struct {
 	ReturnCh chan<- *ReturnOfComplex128
 }
 
+type WorkWithContextOfStringThenComplex128 struct {
+	context.Context
+	*WorkOfStringThenComplex128
+}
+
 type WorkerOfPushStringThenComplex128 interface {
 	Push(context.Context, *WorkOfStringThenComplex128)
 	DoneNotify() <-chan struct{}
@@ -2899,6 +4344,11 @@ type WorkerOfPushStringThenComplex128 interface {
 type WorkOfStringThenComplex64 struct {
 	Argument string
 	ReturnCh chan<- *ReturnOfComplex64
+}
+
+type WorkWithContextOfStringThenComplex64 struct {
+	context.Context
+	*WorkOfStringThenComplex64
 }
 
 type WorkerOfPushStringThenComplex64 interface {
@@ -2911,6 +4361,11 @@ type WorkOfStringThenError struct {
 	ReturnCh chan<- *ReturnOfError
 }
 
+type WorkWithContextOfStringThenError struct {
+	context.Context
+	*WorkOfStringThenError
+}
+
 type WorkerOfPushStringThenError interface {
 	Push(context.Context, *WorkOfStringThenError)
 	DoneNotify() <-chan struct{}
@@ -2919,6 +4374,11 @@ type WorkerOfPushStringThenError interface {
 type WorkOfStringThenFloat32 struct {
 	Argument string
 	ReturnCh chan<- *ReturnOfFloat32
+}
+
+type WorkWithContextOfStringThenFloat32 struct {
+	context.Context
+	*WorkOfStringThenFloat32
 }
 
 type WorkerOfPushStringThenFloat32 interface {
@@ -2931,6 +4391,11 @@ type WorkOfStringThenFloat64 struct {
 	ReturnCh chan<- *ReturnOfFloat64
 }
 
+type WorkWithContextOfStringThenFloat64 struct {
+	context.Context
+	*WorkOfStringThenFloat64
+}
+
 type WorkerOfPushStringThenFloat64 interface {
 	Push(context.Context, *WorkOfStringThenFloat64)
 	DoneNotify() <-chan struct{}
@@ -2939,6 +4404,11 @@ type WorkerOfPushStringThenFloat64 interface {
 type WorkOfStringThenInt struct {
 	Argument string
 	ReturnCh chan<- *ReturnOfInt
+}
+
+type WorkWithContextOfStringThenInt struct {
+	context.Context
+	*WorkOfStringThenInt
 }
 
 type WorkerOfPushStringThenInt interface {
@@ -2951,6 +4421,11 @@ type WorkOfStringThenInt16 struct {
 	ReturnCh chan<- *ReturnOfInt16
 }
 
+type WorkWithContextOfStringThenInt16 struct {
+	context.Context
+	*WorkOfStringThenInt16
+}
+
 type WorkerOfPushStringThenInt16 interface {
 	Push(context.Context, *WorkOfStringThenInt16)
 	DoneNotify() <-chan struct{}
@@ -2959,6 +4434,11 @@ type WorkerOfPushStringThenInt16 interface {
 type WorkOfStringThenInt32 struct {
 	Argument string
 	ReturnCh chan<- *ReturnOfInt32
+}
+
+type WorkWithContextOfStringThenInt32 struct {
+	context.Context
+	*WorkOfStringThenInt32
 }
 
 type WorkerOfPushStringThenInt32 interface {
@@ -2971,6 +4451,11 @@ type WorkOfStringThenInt64 struct {
 	ReturnCh chan<- *ReturnOfInt64
 }
 
+type WorkWithContextOfStringThenInt64 struct {
+	context.Context
+	*WorkOfStringThenInt64
+}
+
 type WorkerOfPushStringThenInt64 interface {
 	Push(context.Context, *WorkOfStringThenInt64)
 	DoneNotify() <-chan struct{}
@@ -2979,6 +4464,11 @@ type WorkerOfPushStringThenInt64 interface {
 type WorkOfStringThenInt8 struct {
 	Argument string
 	ReturnCh chan<- *ReturnOfInt8
+}
+
+type WorkWithContextOfStringThenInt8 struct {
+	context.Context
+	*WorkOfStringThenInt8
 }
 
 type WorkerOfPushStringThenInt8 interface {
@@ -2991,6 +4481,11 @@ type WorkOfStringThenRune struct {
 	ReturnCh chan<- *ReturnOfRune
 }
 
+type WorkWithContextOfStringThenRune struct {
+	context.Context
+	*WorkOfStringThenRune
+}
+
 type WorkerOfPushStringThenRune interface {
 	Push(context.Context, *WorkOfStringThenRune)
 	DoneNotify() <-chan struct{}
@@ -2999,6 +4494,11 @@ type WorkerOfPushStringThenRune interface {
 type WorkOfStringThenString struct {
 	Argument string
 	ReturnCh chan<- *ReturnOfString
+}
+
+type WorkWithContextOfStringThenString struct {
+	context.Context
+	*WorkOfStringThenString
 }
 
 type WorkerOfPushStringThenString interface {
@@ -3011,6 +4511,11 @@ type WorkOfStringThenUint struct {
 	ReturnCh chan<- *ReturnOfUint
 }
 
+type WorkWithContextOfStringThenUint struct {
+	context.Context
+	*WorkOfStringThenUint
+}
+
 type WorkerOfPushStringThenUint interface {
 	Push(context.Context, *WorkOfStringThenUint)
 	DoneNotify() <-chan struct{}
@@ -3019,6 +4524,11 @@ type WorkerOfPushStringThenUint interface {
 type WorkOfStringThenUint16 struct {
 	Argument string
 	ReturnCh chan<- *ReturnOfUint16
+}
+
+type WorkWithContextOfStringThenUint16 struct {
+	context.Context
+	*WorkOfStringThenUint16
 }
 
 type WorkerOfPushStringThenUint16 interface {
@@ -3031,6 +4541,11 @@ type WorkOfStringThenUint32 struct {
 	ReturnCh chan<- *ReturnOfUint32
 }
 
+type WorkWithContextOfStringThenUint32 struct {
+	context.Context
+	*WorkOfStringThenUint32
+}
+
 type WorkerOfPushStringThenUint32 interface {
 	Push(context.Context, *WorkOfStringThenUint32)
 	DoneNotify() <-chan struct{}
@@ -3039,6 +4554,11 @@ type WorkerOfPushStringThenUint32 interface {
 type WorkOfStringThenUint64 struct {
 	Argument string
 	ReturnCh chan<- *ReturnOfUint64
+}
+
+type WorkWithContextOfStringThenUint64 struct {
+	context.Context
+	*WorkOfStringThenUint64
 }
 
 type WorkerOfPushStringThenUint64 interface {
@@ -3051,6 +4571,11 @@ type WorkOfStringThenUint8 struct {
 	ReturnCh chan<- *ReturnOfUint8
 }
 
+type WorkWithContextOfStringThenUint8 struct {
+	context.Context
+	*WorkOfStringThenUint8
+}
+
 type WorkerOfPushStringThenUint8 interface {
 	Push(context.Context, *WorkOfStringThenUint8)
 	DoneNotify() <-chan struct{}
@@ -3059,6 +4584,11 @@ type WorkerOfPushStringThenUint8 interface {
 type WorkOfStringThenUintptr struct {
 	Argument string
 	ReturnCh chan<- *ReturnOfUintptr
+}
+
+type WorkWithContextOfStringThenUintptr struct {
+	context.Context
+	*WorkOfStringThenUintptr
 }
 
 type WorkerOfPushStringThenUintptr interface {
@@ -3071,6 +4601,11 @@ type WorkOfStringThenInterface struct {
 	ReturnCh chan<- *ReturnOfInterface
 }
 
+type WorkWithContextOfStringThenInterface struct {
+	context.Context
+	*WorkOfStringThenInterface
+}
+
 type WorkerOfPushStringThenInterface interface {
 	Push(context.Context, *WorkOfStringThenInterface)
 	DoneNotify() <-chan struct{}
@@ -3079,6 +4614,11 @@ type WorkerOfPushStringThenInterface interface {
 type WorkOfStringThenStruct struct {
 	Argument string
 	ReturnCh chan<- *ReturnOfStruct
+}
+
+type WorkWithContextOfStringThenStruct struct {
+	context.Context
+	*WorkOfStringThenStruct
 }
 
 type WorkerOfPushStringThenStruct interface {
@@ -3091,6 +4631,11 @@ type WorkOfUintThenBool struct {
 	ReturnCh chan<- *ReturnOfBool
 }
 
+type WorkWithContextOfUintThenBool struct {
+	context.Context
+	*WorkOfUintThenBool
+}
+
 type WorkerOfPushUintThenBool interface {
 	Push(context.Context, *WorkOfUintThenBool)
 	DoneNotify() <-chan struct{}
@@ -3099,6 +4644,11 @@ type WorkerOfPushUintThenBool interface {
 type WorkOfUintThenByte struct {
 	Argument uint
 	ReturnCh chan<- *ReturnOfByte
+}
+
+type WorkWithContextOfUintThenByte struct {
+	context.Context
+	*WorkOfUintThenByte
 }
 
 type WorkerOfPushUintThenByte interface {
@@ -3111,6 +4661,11 @@ type WorkOfUintThenComplex128 struct {
 	ReturnCh chan<- *ReturnOfComplex128
 }
 
+type WorkWithContextOfUintThenComplex128 struct {
+	context.Context
+	*WorkOfUintThenComplex128
+}
+
 type WorkerOfPushUintThenComplex128 interface {
 	Push(context.Context, *WorkOfUintThenComplex128)
 	DoneNotify() <-chan struct{}
@@ -3119,6 +4674,11 @@ type WorkerOfPushUintThenComplex128 interface {
 type WorkOfUintThenComplex64 struct {
 	Argument uint
 	ReturnCh chan<- *ReturnOfComplex64
+}
+
+type WorkWithContextOfUintThenComplex64 struct {
+	context.Context
+	*WorkOfUintThenComplex64
 }
 
 type WorkerOfPushUintThenComplex64 interface {
@@ -3131,6 +4691,11 @@ type WorkOfUintThenError struct {
 	ReturnCh chan<- *ReturnOfError
 }
 
+type WorkWithContextOfUintThenError struct {
+	context.Context
+	*WorkOfUintThenError
+}
+
 type WorkerOfPushUintThenError interface {
 	Push(context.Context, *WorkOfUintThenError)
 	DoneNotify() <-chan struct{}
@@ -3139,6 +4704,11 @@ type WorkerOfPushUintThenError interface {
 type WorkOfUintThenFloat32 struct {
 	Argument uint
 	ReturnCh chan<- *ReturnOfFloat32
+}
+
+type WorkWithContextOfUintThenFloat32 struct {
+	context.Context
+	*WorkOfUintThenFloat32
 }
 
 type WorkerOfPushUintThenFloat32 interface {
@@ -3151,6 +4721,11 @@ type WorkOfUintThenFloat64 struct {
 	ReturnCh chan<- *ReturnOfFloat64
 }
 
+type WorkWithContextOfUintThenFloat64 struct {
+	context.Context
+	*WorkOfUintThenFloat64
+}
+
 type WorkerOfPushUintThenFloat64 interface {
 	Push(context.Context, *WorkOfUintThenFloat64)
 	DoneNotify() <-chan struct{}
@@ -3159,6 +4734,11 @@ type WorkerOfPushUintThenFloat64 interface {
 type WorkOfUintThenInt struct {
 	Argument uint
 	ReturnCh chan<- *ReturnOfInt
+}
+
+type WorkWithContextOfUintThenInt struct {
+	context.Context
+	*WorkOfUintThenInt
 }
 
 type WorkerOfPushUintThenInt interface {
@@ -3171,6 +4751,11 @@ type WorkOfUintThenInt16 struct {
 	ReturnCh chan<- *ReturnOfInt16
 }
 
+type WorkWithContextOfUintThenInt16 struct {
+	context.Context
+	*WorkOfUintThenInt16
+}
+
 type WorkerOfPushUintThenInt16 interface {
 	Push(context.Context, *WorkOfUintThenInt16)
 	DoneNotify() <-chan struct{}
@@ -3179,6 +4764,11 @@ type WorkerOfPushUintThenInt16 interface {
 type WorkOfUintThenInt32 struct {
 	Argument uint
 	ReturnCh chan<- *ReturnOfInt32
+}
+
+type WorkWithContextOfUintThenInt32 struct {
+	context.Context
+	*WorkOfUintThenInt32
 }
 
 type WorkerOfPushUintThenInt32 interface {
@@ -3191,6 +4781,11 @@ type WorkOfUintThenInt64 struct {
 	ReturnCh chan<- *ReturnOfInt64
 }
 
+type WorkWithContextOfUintThenInt64 struct {
+	context.Context
+	*WorkOfUintThenInt64
+}
+
 type WorkerOfPushUintThenInt64 interface {
 	Push(context.Context, *WorkOfUintThenInt64)
 	DoneNotify() <-chan struct{}
@@ -3199,6 +4794,11 @@ type WorkerOfPushUintThenInt64 interface {
 type WorkOfUintThenInt8 struct {
 	Argument uint
 	ReturnCh chan<- *ReturnOfInt8
+}
+
+type WorkWithContextOfUintThenInt8 struct {
+	context.Context
+	*WorkOfUintThenInt8
 }
 
 type WorkerOfPushUintThenInt8 interface {
@@ -3211,6 +4811,11 @@ type WorkOfUintThenRune struct {
 	ReturnCh chan<- *ReturnOfRune
 }
 
+type WorkWithContextOfUintThenRune struct {
+	context.Context
+	*WorkOfUintThenRune
+}
+
 type WorkerOfPushUintThenRune interface {
 	Push(context.Context, *WorkOfUintThenRune)
 	DoneNotify() <-chan struct{}
@@ -3219,6 +4824,11 @@ type WorkerOfPushUintThenRune interface {
 type WorkOfUintThenString struct {
 	Argument uint
 	ReturnCh chan<- *ReturnOfString
+}
+
+type WorkWithContextOfUintThenString struct {
+	context.Context
+	*WorkOfUintThenString
 }
 
 type WorkerOfPushUintThenString interface {
@@ -3231,6 +4841,11 @@ type WorkOfUintThenUint struct {
 	ReturnCh chan<- *ReturnOfUint
 }
 
+type WorkWithContextOfUintThenUint struct {
+	context.Context
+	*WorkOfUintThenUint
+}
+
 type WorkerOfPushUintThenUint interface {
 	Push(context.Context, *WorkOfUintThenUint)
 	DoneNotify() <-chan struct{}
@@ -3239,6 +4854,11 @@ type WorkerOfPushUintThenUint interface {
 type WorkOfUintThenUint16 struct {
 	Argument uint
 	ReturnCh chan<- *ReturnOfUint16
+}
+
+type WorkWithContextOfUintThenUint16 struct {
+	context.Context
+	*WorkOfUintThenUint16
 }
 
 type WorkerOfPushUintThenUint16 interface {
@@ -3251,6 +4871,11 @@ type WorkOfUintThenUint32 struct {
 	ReturnCh chan<- *ReturnOfUint32
 }
 
+type WorkWithContextOfUintThenUint32 struct {
+	context.Context
+	*WorkOfUintThenUint32
+}
+
 type WorkerOfPushUintThenUint32 interface {
 	Push(context.Context, *WorkOfUintThenUint32)
 	DoneNotify() <-chan struct{}
@@ -3259,6 +4884,11 @@ type WorkerOfPushUintThenUint32 interface {
 type WorkOfUintThenUint64 struct {
 	Argument uint
 	ReturnCh chan<- *ReturnOfUint64
+}
+
+type WorkWithContextOfUintThenUint64 struct {
+	context.Context
+	*WorkOfUintThenUint64
 }
 
 type WorkerOfPushUintThenUint64 interface {
@@ -3271,6 +4901,11 @@ type WorkOfUintThenUint8 struct {
 	ReturnCh chan<- *ReturnOfUint8
 }
 
+type WorkWithContextOfUintThenUint8 struct {
+	context.Context
+	*WorkOfUintThenUint8
+}
+
 type WorkerOfPushUintThenUint8 interface {
 	Push(context.Context, *WorkOfUintThenUint8)
 	DoneNotify() <-chan struct{}
@@ -3279,6 +4914,11 @@ type WorkerOfPushUintThenUint8 interface {
 type WorkOfUintThenUintptr struct {
 	Argument uint
 	ReturnCh chan<- *ReturnOfUintptr
+}
+
+type WorkWithContextOfUintThenUintptr struct {
+	context.Context
+	*WorkOfUintThenUintptr
 }
 
 type WorkerOfPushUintThenUintptr interface {
@@ -3291,6 +4931,11 @@ type WorkOfUintThenInterface struct {
 	ReturnCh chan<- *ReturnOfInterface
 }
 
+type WorkWithContextOfUintThenInterface struct {
+	context.Context
+	*WorkOfUintThenInterface
+}
+
 type WorkerOfPushUintThenInterface interface {
 	Push(context.Context, *WorkOfUintThenInterface)
 	DoneNotify() <-chan struct{}
@@ -3299,6 +4944,11 @@ type WorkerOfPushUintThenInterface interface {
 type WorkOfUintThenStruct struct {
 	Argument uint
 	ReturnCh chan<- *ReturnOfStruct
+}
+
+type WorkWithContextOfUintThenStruct struct {
+	context.Context
+	*WorkOfUintThenStruct
 }
 
 type WorkerOfPushUintThenStruct interface {
@@ -3311,6 +4961,11 @@ type WorkOfUint16ThenBool struct {
 	ReturnCh chan<- *ReturnOfBool
 }
 
+type WorkWithContextOfUint16ThenBool struct {
+	context.Context
+	*WorkOfUint16ThenBool
+}
+
 type WorkerOfPushUint16ThenBool interface {
 	Push(context.Context, *WorkOfUint16ThenBool)
 	DoneNotify() <-chan struct{}
@@ -3319,6 +4974,11 @@ type WorkerOfPushUint16ThenBool interface {
 type WorkOfUint16ThenByte struct {
 	Argument uint16
 	ReturnCh chan<- *ReturnOfByte
+}
+
+type WorkWithContextOfUint16ThenByte struct {
+	context.Context
+	*WorkOfUint16ThenByte
 }
 
 type WorkerOfPushUint16ThenByte interface {
@@ -3331,6 +4991,11 @@ type WorkOfUint16ThenComplex128 struct {
 	ReturnCh chan<- *ReturnOfComplex128
 }
 
+type WorkWithContextOfUint16ThenComplex128 struct {
+	context.Context
+	*WorkOfUint16ThenComplex128
+}
+
 type WorkerOfPushUint16ThenComplex128 interface {
 	Push(context.Context, *WorkOfUint16ThenComplex128)
 	DoneNotify() <-chan struct{}
@@ -3339,6 +5004,11 @@ type WorkerOfPushUint16ThenComplex128 interface {
 type WorkOfUint16ThenComplex64 struct {
 	Argument uint16
 	ReturnCh chan<- *ReturnOfComplex64
+}
+
+type WorkWithContextOfUint16ThenComplex64 struct {
+	context.Context
+	*WorkOfUint16ThenComplex64
 }
 
 type WorkerOfPushUint16ThenComplex64 interface {
@@ -3351,6 +5021,11 @@ type WorkOfUint16ThenError struct {
 	ReturnCh chan<- *ReturnOfError
 }
 
+type WorkWithContextOfUint16ThenError struct {
+	context.Context
+	*WorkOfUint16ThenError
+}
+
 type WorkerOfPushUint16ThenError interface {
 	Push(context.Context, *WorkOfUint16ThenError)
 	DoneNotify() <-chan struct{}
@@ -3359,6 +5034,11 @@ type WorkerOfPushUint16ThenError interface {
 type WorkOfUint16ThenFloat32 struct {
 	Argument uint16
 	ReturnCh chan<- *ReturnOfFloat32
+}
+
+type WorkWithContextOfUint16ThenFloat32 struct {
+	context.Context
+	*WorkOfUint16ThenFloat32
 }
 
 type WorkerOfPushUint16ThenFloat32 interface {
@@ -3371,6 +5051,11 @@ type WorkOfUint16ThenFloat64 struct {
 	ReturnCh chan<- *ReturnOfFloat64
 }
 
+type WorkWithContextOfUint16ThenFloat64 struct {
+	context.Context
+	*WorkOfUint16ThenFloat64
+}
+
 type WorkerOfPushUint16ThenFloat64 interface {
 	Push(context.Context, *WorkOfUint16ThenFloat64)
 	DoneNotify() <-chan struct{}
@@ -3379,6 +5064,11 @@ type WorkerOfPushUint16ThenFloat64 interface {
 type WorkOfUint16ThenInt struct {
 	Argument uint16
 	ReturnCh chan<- *ReturnOfInt
+}
+
+type WorkWithContextOfUint16ThenInt struct {
+	context.Context
+	*WorkOfUint16ThenInt
 }
 
 type WorkerOfPushUint16ThenInt interface {
@@ -3391,6 +5081,11 @@ type WorkOfUint16ThenInt16 struct {
 	ReturnCh chan<- *ReturnOfInt16
 }
 
+type WorkWithContextOfUint16ThenInt16 struct {
+	context.Context
+	*WorkOfUint16ThenInt16
+}
+
 type WorkerOfPushUint16ThenInt16 interface {
 	Push(context.Context, *WorkOfUint16ThenInt16)
 	DoneNotify() <-chan struct{}
@@ -3399,6 +5094,11 @@ type WorkerOfPushUint16ThenInt16 interface {
 type WorkOfUint16ThenInt32 struct {
 	Argument uint16
 	ReturnCh chan<- *ReturnOfInt32
+}
+
+type WorkWithContextOfUint16ThenInt32 struct {
+	context.Context
+	*WorkOfUint16ThenInt32
 }
 
 type WorkerOfPushUint16ThenInt32 interface {
@@ -3411,6 +5111,11 @@ type WorkOfUint16ThenInt64 struct {
 	ReturnCh chan<- *ReturnOfInt64
 }
 
+type WorkWithContextOfUint16ThenInt64 struct {
+	context.Context
+	*WorkOfUint16ThenInt64
+}
+
 type WorkerOfPushUint16ThenInt64 interface {
 	Push(context.Context, *WorkOfUint16ThenInt64)
 	DoneNotify() <-chan struct{}
@@ -3419,6 +5124,11 @@ type WorkerOfPushUint16ThenInt64 interface {
 type WorkOfUint16ThenInt8 struct {
 	Argument uint16
 	ReturnCh chan<- *ReturnOfInt8
+}
+
+type WorkWithContextOfUint16ThenInt8 struct {
+	context.Context
+	*WorkOfUint16ThenInt8
 }
 
 type WorkerOfPushUint16ThenInt8 interface {
@@ -3431,6 +5141,11 @@ type WorkOfUint16ThenRune struct {
 	ReturnCh chan<- *ReturnOfRune
 }
 
+type WorkWithContextOfUint16ThenRune struct {
+	context.Context
+	*WorkOfUint16ThenRune
+}
+
 type WorkerOfPushUint16ThenRune interface {
 	Push(context.Context, *WorkOfUint16ThenRune)
 	DoneNotify() <-chan struct{}
@@ -3439,6 +5154,11 @@ type WorkerOfPushUint16ThenRune interface {
 type WorkOfUint16ThenString struct {
 	Argument uint16
 	ReturnCh chan<- *ReturnOfString
+}
+
+type WorkWithContextOfUint16ThenString struct {
+	context.Context
+	*WorkOfUint16ThenString
 }
 
 type WorkerOfPushUint16ThenString interface {
@@ -3451,6 +5171,11 @@ type WorkOfUint16ThenUint struct {
 	ReturnCh chan<- *ReturnOfUint
 }
 
+type WorkWithContextOfUint16ThenUint struct {
+	context.Context
+	*WorkOfUint16ThenUint
+}
+
 type WorkerOfPushUint16ThenUint interface {
 	Push(context.Context, *WorkOfUint16ThenUint)
 	DoneNotify() <-chan struct{}
@@ -3459,6 +5184,11 @@ type WorkerOfPushUint16ThenUint interface {
 type WorkOfUint16ThenUint16 struct {
 	Argument uint16
 	ReturnCh chan<- *ReturnOfUint16
+}
+
+type WorkWithContextOfUint16ThenUint16 struct {
+	context.Context
+	*WorkOfUint16ThenUint16
 }
 
 type WorkerOfPushUint16ThenUint16 interface {
@@ -3471,6 +5201,11 @@ type WorkOfUint16ThenUint32 struct {
 	ReturnCh chan<- *ReturnOfUint32
 }
 
+type WorkWithContextOfUint16ThenUint32 struct {
+	context.Context
+	*WorkOfUint16ThenUint32
+}
+
 type WorkerOfPushUint16ThenUint32 interface {
 	Push(context.Context, *WorkOfUint16ThenUint32)
 	DoneNotify() <-chan struct{}
@@ -3479,6 +5214,11 @@ type WorkerOfPushUint16ThenUint32 interface {
 type WorkOfUint16ThenUint64 struct {
 	Argument uint16
 	ReturnCh chan<- *ReturnOfUint64
+}
+
+type WorkWithContextOfUint16ThenUint64 struct {
+	context.Context
+	*WorkOfUint16ThenUint64
 }
 
 type WorkerOfPushUint16ThenUint64 interface {
@@ -3491,6 +5231,11 @@ type WorkOfUint16ThenUint8 struct {
 	ReturnCh chan<- *ReturnOfUint8
 }
 
+type WorkWithContextOfUint16ThenUint8 struct {
+	context.Context
+	*WorkOfUint16ThenUint8
+}
+
 type WorkerOfPushUint16ThenUint8 interface {
 	Push(context.Context, *WorkOfUint16ThenUint8)
 	DoneNotify() <-chan struct{}
@@ -3499,6 +5244,11 @@ type WorkerOfPushUint16ThenUint8 interface {
 type WorkOfUint16ThenUintptr struct {
 	Argument uint16
 	ReturnCh chan<- *ReturnOfUintptr
+}
+
+type WorkWithContextOfUint16ThenUintptr struct {
+	context.Context
+	*WorkOfUint16ThenUintptr
 }
 
 type WorkerOfPushUint16ThenUintptr interface {
@@ -3511,6 +5261,11 @@ type WorkOfUint16ThenInterface struct {
 	ReturnCh chan<- *ReturnOfInterface
 }
 
+type WorkWithContextOfUint16ThenInterface struct {
+	context.Context
+	*WorkOfUint16ThenInterface
+}
+
 type WorkerOfPushUint16ThenInterface interface {
 	Push(context.Context, *WorkOfUint16ThenInterface)
 	DoneNotify() <-chan struct{}
@@ -3519,6 +5274,11 @@ type WorkerOfPushUint16ThenInterface interface {
 type WorkOfUint16ThenStruct struct {
 	Argument uint16
 	ReturnCh chan<- *ReturnOfStruct
+}
+
+type WorkWithContextOfUint16ThenStruct struct {
+	context.Context
+	*WorkOfUint16ThenStruct
 }
 
 type WorkerOfPushUint16ThenStruct interface {
@@ -3531,6 +5291,11 @@ type WorkOfUint32ThenBool struct {
 	ReturnCh chan<- *ReturnOfBool
 }
 
+type WorkWithContextOfUint32ThenBool struct {
+	context.Context
+	*WorkOfUint32ThenBool
+}
+
 type WorkerOfPushUint32ThenBool interface {
 	Push(context.Context, *WorkOfUint32ThenBool)
 	DoneNotify() <-chan struct{}
@@ -3539,6 +5304,11 @@ type WorkerOfPushUint32ThenBool interface {
 type WorkOfUint32ThenByte struct {
 	Argument uint32
 	ReturnCh chan<- *ReturnOfByte
+}
+
+type WorkWithContextOfUint32ThenByte struct {
+	context.Context
+	*WorkOfUint32ThenByte
 }
 
 type WorkerOfPushUint32ThenByte interface {
@@ -3551,6 +5321,11 @@ type WorkOfUint32ThenComplex128 struct {
 	ReturnCh chan<- *ReturnOfComplex128
 }
 
+type WorkWithContextOfUint32ThenComplex128 struct {
+	context.Context
+	*WorkOfUint32ThenComplex128
+}
+
 type WorkerOfPushUint32ThenComplex128 interface {
 	Push(context.Context, *WorkOfUint32ThenComplex128)
 	DoneNotify() <-chan struct{}
@@ -3559,6 +5334,11 @@ type WorkerOfPushUint32ThenComplex128 interface {
 type WorkOfUint32ThenComplex64 struct {
 	Argument uint32
 	ReturnCh chan<- *ReturnOfComplex64
+}
+
+type WorkWithContextOfUint32ThenComplex64 struct {
+	context.Context
+	*WorkOfUint32ThenComplex64
 }
 
 type WorkerOfPushUint32ThenComplex64 interface {
@@ -3571,6 +5351,11 @@ type WorkOfUint32ThenError struct {
 	ReturnCh chan<- *ReturnOfError
 }
 
+type WorkWithContextOfUint32ThenError struct {
+	context.Context
+	*WorkOfUint32ThenError
+}
+
 type WorkerOfPushUint32ThenError interface {
 	Push(context.Context, *WorkOfUint32ThenError)
 	DoneNotify() <-chan struct{}
@@ -3579,6 +5364,11 @@ type WorkerOfPushUint32ThenError interface {
 type WorkOfUint32ThenFloat32 struct {
 	Argument uint32
 	ReturnCh chan<- *ReturnOfFloat32
+}
+
+type WorkWithContextOfUint32ThenFloat32 struct {
+	context.Context
+	*WorkOfUint32ThenFloat32
 }
 
 type WorkerOfPushUint32ThenFloat32 interface {
@@ -3591,6 +5381,11 @@ type WorkOfUint32ThenFloat64 struct {
 	ReturnCh chan<- *ReturnOfFloat64
 }
 
+type WorkWithContextOfUint32ThenFloat64 struct {
+	context.Context
+	*WorkOfUint32ThenFloat64
+}
+
 type WorkerOfPushUint32ThenFloat64 interface {
 	Push(context.Context, *WorkOfUint32ThenFloat64)
 	DoneNotify() <-chan struct{}
@@ -3599,6 +5394,11 @@ type WorkerOfPushUint32ThenFloat64 interface {
 type WorkOfUint32ThenInt struct {
 	Argument uint32
 	ReturnCh chan<- *ReturnOfInt
+}
+
+type WorkWithContextOfUint32ThenInt struct {
+	context.Context
+	*WorkOfUint32ThenInt
 }
 
 type WorkerOfPushUint32ThenInt interface {
@@ -3611,6 +5411,11 @@ type WorkOfUint32ThenInt16 struct {
 	ReturnCh chan<- *ReturnOfInt16
 }
 
+type WorkWithContextOfUint32ThenInt16 struct {
+	context.Context
+	*WorkOfUint32ThenInt16
+}
+
 type WorkerOfPushUint32ThenInt16 interface {
 	Push(context.Context, *WorkOfUint32ThenInt16)
 	DoneNotify() <-chan struct{}
@@ -3619,6 +5424,11 @@ type WorkerOfPushUint32ThenInt16 interface {
 type WorkOfUint32ThenInt32 struct {
 	Argument uint32
 	ReturnCh chan<- *ReturnOfInt32
+}
+
+type WorkWithContextOfUint32ThenInt32 struct {
+	context.Context
+	*WorkOfUint32ThenInt32
 }
 
 type WorkerOfPushUint32ThenInt32 interface {
@@ -3631,6 +5441,11 @@ type WorkOfUint32ThenInt64 struct {
 	ReturnCh chan<- *ReturnOfInt64
 }
 
+type WorkWithContextOfUint32ThenInt64 struct {
+	context.Context
+	*WorkOfUint32ThenInt64
+}
+
 type WorkerOfPushUint32ThenInt64 interface {
 	Push(context.Context, *WorkOfUint32ThenInt64)
 	DoneNotify() <-chan struct{}
@@ -3639,6 +5454,11 @@ type WorkerOfPushUint32ThenInt64 interface {
 type WorkOfUint32ThenInt8 struct {
 	Argument uint32
 	ReturnCh chan<- *ReturnOfInt8
+}
+
+type WorkWithContextOfUint32ThenInt8 struct {
+	context.Context
+	*WorkOfUint32ThenInt8
 }
 
 type WorkerOfPushUint32ThenInt8 interface {
@@ -3651,6 +5471,11 @@ type WorkOfUint32ThenRune struct {
 	ReturnCh chan<- *ReturnOfRune
 }
 
+type WorkWithContextOfUint32ThenRune struct {
+	context.Context
+	*WorkOfUint32ThenRune
+}
+
 type WorkerOfPushUint32ThenRune interface {
 	Push(context.Context, *WorkOfUint32ThenRune)
 	DoneNotify() <-chan struct{}
@@ -3659,6 +5484,11 @@ type WorkerOfPushUint32ThenRune interface {
 type WorkOfUint32ThenString struct {
 	Argument uint32
 	ReturnCh chan<- *ReturnOfString
+}
+
+type WorkWithContextOfUint32ThenString struct {
+	context.Context
+	*WorkOfUint32ThenString
 }
 
 type WorkerOfPushUint32ThenString interface {
@@ -3671,6 +5501,11 @@ type WorkOfUint32ThenUint struct {
 	ReturnCh chan<- *ReturnOfUint
 }
 
+type WorkWithContextOfUint32ThenUint struct {
+	context.Context
+	*WorkOfUint32ThenUint
+}
+
 type WorkerOfPushUint32ThenUint interface {
 	Push(context.Context, *WorkOfUint32ThenUint)
 	DoneNotify() <-chan struct{}
@@ -3679,6 +5514,11 @@ type WorkerOfPushUint32ThenUint interface {
 type WorkOfUint32ThenUint16 struct {
 	Argument uint32
 	ReturnCh chan<- *ReturnOfUint16
+}
+
+type WorkWithContextOfUint32ThenUint16 struct {
+	context.Context
+	*WorkOfUint32ThenUint16
 }
 
 type WorkerOfPushUint32ThenUint16 interface {
@@ -3691,6 +5531,11 @@ type WorkOfUint32ThenUint32 struct {
 	ReturnCh chan<- *ReturnOfUint32
 }
 
+type WorkWithContextOfUint32ThenUint32 struct {
+	context.Context
+	*WorkOfUint32ThenUint32
+}
+
 type WorkerOfPushUint32ThenUint32 interface {
 	Push(context.Context, *WorkOfUint32ThenUint32)
 	DoneNotify() <-chan struct{}
@@ -3699,6 +5544,11 @@ type WorkerOfPushUint32ThenUint32 interface {
 type WorkOfUint32ThenUint64 struct {
 	Argument uint32
 	ReturnCh chan<- *ReturnOfUint64
+}
+
+type WorkWithContextOfUint32ThenUint64 struct {
+	context.Context
+	*WorkOfUint32ThenUint64
 }
 
 type WorkerOfPushUint32ThenUint64 interface {
@@ -3711,6 +5561,11 @@ type WorkOfUint32ThenUint8 struct {
 	ReturnCh chan<- *ReturnOfUint8
 }
 
+type WorkWithContextOfUint32ThenUint8 struct {
+	context.Context
+	*WorkOfUint32ThenUint8
+}
+
 type WorkerOfPushUint32ThenUint8 interface {
 	Push(context.Context, *WorkOfUint32ThenUint8)
 	DoneNotify() <-chan struct{}
@@ -3719,6 +5574,11 @@ type WorkerOfPushUint32ThenUint8 interface {
 type WorkOfUint32ThenUintptr struct {
 	Argument uint32
 	ReturnCh chan<- *ReturnOfUintptr
+}
+
+type WorkWithContextOfUint32ThenUintptr struct {
+	context.Context
+	*WorkOfUint32ThenUintptr
 }
 
 type WorkerOfPushUint32ThenUintptr interface {
@@ -3731,6 +5591,11 @@ type WorkOfUint32ThenInterface struct {
 	ReturnCh chan<- *ReturnOfInterface
 }
 
+type WorkWithContextOfUint32ThenInterface struct {
+	context.Context
+	*WorkOfUint32ThenInterface
+}
+
 type WorkerOfPushUint32ThenInterface interface {
 	Push(context.Context, *WorkOfUint32ThenInterface)
 	DoneNotify() <-chan struct{}
@@ -3739,6 +5604,11 @@ type WorkerOfPushUint32ThenInterface interface {
 type WorkOfUint32ThenStruct struct {
 	Argument uint32
 	ReturnCh chan<- *ReturnOfStruct
+}
+
+type WorkWithContextOfUint32ThenStruct struct {
+	context.Context
+	*WorkOfUint32ThenStruct
 }
 
 type WorkerOfPushUint32ThenStruct interface {
@@ -3751,6 +5621,11 @@ type WorkOfUint64ThenBool struct {
 	ReturnCh chan<- *ReturnOfBool
 }
 
+type WorkWithContextOfUint64ThenBool struct {
+	context.Context
+	*WorkOfUint64ThenBool
+}
+
 type WorkerOfPushUint64ThenBool interface {
 	Push(context.Context, *WorkOfUint64ThenBool)
 	DoneNotify() <-chan struct{}
@@ -3759,6 +5634,11 @@ type WorkerOfPushUint64ThenBool interface {
 type WorkOfUint64ThenByte struct {
 	Argument uint64
 	ReturnCh chan<- *ReturnOfByte
+}
+
+type WorkWithContextOfUint64ThenByte struct {
+	context.Context
+	*WorkOfUint64ThenByte
 }
 
 type WorkerOfPushUint64ThenByte interface {
@@ -3771,6 +5651,11 @@ type WorkOfUint64ThenComplex128 struct {
 	ReturnCh chan<- *ReturnOfComplex128
 }
 
+type WorkWithContextOfUint64ThenComplex128 struct {
+	context.Context
+	*WorkOfUint64ThenComplex128
+}
+
 type WorkerOfPushUint64ThenComplex128 interface {
 	Push(context.Context, *WorkOfUint64ThenComplex128)
 	DoneNotify() <-chan struct{}
@@ -3779,6 +5664,11 @@ type WorkerOfPushUint64ThenComplex128 interface {
 type WorkOfUint64ThenComplex64 struct {
 	Argument uint64
 	ReturnCh chan<- *ReturnOfComplex64
+}
+
+type WorkWithContextOfUint64ThenComplex64 struct {
+	context.Context
+	*WorkOfUint64ThenComplex64
 }
 
 type WorkerOfPushUint64ThenComplex64 interface {
@@ -3791,6 +5681,11 @@ type WorkOfUint64ThenError struct {
 	ReturnCh chan<- *ReturnOfError
 }
 
+type WorkWithContextOfUint64ThenError struct {
+	context.Context
+	*WorkOfUint64ThenError
+}
+
 type WorkerOfPushUint64ThenError interface {
 	Push(context.Context, *WorkOfUint64ThenError)
 	DoneNotify() <-chan struct{}
@@ -3799,6 +5694,11 @@ type WorkerOfPushUint64ThenError interface {
 type WorkOfUint64ThenFloat32 struct {
 	Argument uint64
 	ReturnCh chan<- *ReturnOfFloat32
+}
+
+type WorkWithContextOfUint64ThenFloat32 struct {
+	context.Context
+	*WorkOfUint64ThenFloat32
 }
 
 type WorkerOfPushUint64ThenFloat32 interface {
@@ -3811,6 +5711,11 @@ type WorkOfUint64ThenFloat64 struct {
 	ReturnCh chan<- *ReturnOfFloat64
 }
 
+type WorkWithContextOfUint64ThenFloat64 struct {
+	context.Context
+	*WorkOfUint64ThenFloat64
+}
+
 type WorkerOfPushUint64ThenFloat64 interface {
 	Push(context.Context, *WorkOfUint64ThenFloat64)
 	DoneNotify() <-chan struct{}
@@ -3819,6 +5724,11 @@ type WorkerOfPushUint64ThenFloat64 interface {
 type WorkOfUint64ThenInt struct {
 	Argument uint64
 	ReturnCh chan<- *ReturnOfInt
+}
+
+type WorkWithContextOfUint64ThenInt struct {
+	context.Context
+	*WorkOfUint64ThenInt
 }
 
 type WorkerOfPushUint64ThenInt interface {
@@ -3831,6 +5741,11 @@ type WorkOfUint64ThenInt16 struct {
 	ReturnCh chan<- *ReturnOfInt16
 }
 
+type WorkWithContextOfUint64ThenInt16 struct {
+	context.Context
+	*WorkOfUint64ThenInt16
+}
+
 type WorkerOfPushUint64ThenInt16 interface {
 	Push(context.Context, *WorkOfUint64ThenInt16)
 	DoneNotify() <-chan struct{}
@@ -3839,6 +5754,11 @@ type WorkerOfPushUint64ThenInt16 interface {
 type WorkOfUint64ThenInt32 struct {
 	Argument uint64
 	ReturnCh chan<- *ReturnOfInt32
+}
+
+type WorkWithContextOfUint64ThenInt32 struct {
+	context.Context
+	*WorkOfUint64ThenInt32
 }
 
 type WorkerOfPushUint64ThenInt32 interface {
@@ -3851,6 +5771,11 @@ type WorkOfUint64ThenInt64 struct {
 	ReturnCh chan<- *ReturnOfInt64
 }
 
+type WorkWithContextOfUint64ThenInt64 struct {
+	context.Context
+	*WorkOfUint64ThenInt64
+}
+
 type WorkerOfPushUint64ThenInt64 interface {
 	Push(context.Context, *WorkOfUint64ThenInt64)
 	DoneNotify() <-chan struct{}
@@ -3859,6 +5784,11 @@ type WorkerOfPushUint64ThenInt64 interface {
 type WorkOfUint64ThenInt8 struct {
 	Argument uint64
 	ReturnCh chan<- *ReturnOfInt8
+}
+
+type WorkWithContextOfUint64ThenInt8 struct {
+	context.Context
+	*WorkOfUint64ThenInt8
 }
 
 type WorkerOfPushUint64ThenInt8 interface {
@@ -3871,6 +5801,11 @@ type WorkOfUint64ThenRune struct {
 	ReturnCh chan<- *ReturnOfRune
 }
 
+type WorkWithContextOfUint64ThenRune struct {
+	context.Context
+	*WorkOfUint64ThenRune
+}
+
 type WorkerOfPushUint64ThenRune interface {
 	Push(context.Context, *WorkOfUint64ThenRune)
 	DoneNotify() <-chan struct{}
@@ -3879,6 +5814,11 @@ type WorkerOfPushUint64ThenRune interface {
 type WorkOfUint64ThenString struct {
 	Argument uint64
 	ReturnCh chan<- *ReturnOfString
+}
+
+type WorkWithContextOfUint64ThenString struct {
+	context.Context
+	*WorkOfUint64ThenString
 }
 
 type WorkerOfPushUint64ThenString interface {
@@ -3891,6 +5831,11 @@ type WorkOfUint64ThenUint struct {
 	ReturnCh chan<- *ReturnOfUint
 }
 
+type WorkWithContextOfUint64ThenUint struct {
+	context.Context
+	*WorkOfUint64ThenUint
+}
+
 type WorkerOfPushUint64ThenUint interface {
 	Push(context.Context, *WorkOfUint64ThenUint)
 	DoneNotify() <-chan struct{}
@@ -3899,6 +5844,11 @@ type WorkerOfPushUint64ThenUint interface {
 type WorkOfUint64ThenUint16 struct {
 	Argument uint64
 	ReturnCh chan<- *ReturnOfUint16
+}
+
+type WorkWithContextOfUint64ThenUint16 struct {
+	context.Context
+	*WorkOfUint64ThenUint16
 }
 
 type WorkerOfPushUint64ThenUint16 interface {
@@ -3911,6 +5861,11 @@ type WorkOfUint64ThenUint32 struct {
 	ReturnCh chan<- *ReturnOfUint32
 }
 
+type WorkWithContextOfUint64ThenUint32 struct {
+	context.Context
+	*WorkOfUint64ThenUint32
+}
+
 type WorkerOfPushUint64ThenUint32 interface {
 	Push(context.Context, *WorkOfUint64ThenUint32)
 	DoneNotify() <-chan struct{}
@@ -3919,6 +5874,11 @@ type WorkerOfPushUint64ThenUint32 interface {
 type WorkOfUint64ThenUint64 struct {
 	Argument uint64
 	ReturnCh chan<- *ReturnOfUint64
+}
+
+type WorkWithContextOfUint64ThenUint64 struct {
+	context.Context
+	*WorkOfUint64ThenUint64
 }
 
 type WorkerOfPushUint64ThenUint64 interface {
@@ -3931,6 +5891,11 @@ type WorkOfUint64ThenUint8 struct {
 	ReturnCh chan<- *ReturnOfUint8
 }
 
+type WorkWithContextOfUint64ThenUint8 struct {
+	context.Context
+	*WorkOfUint64ThenUint8
+}
+
 type WorkerOfPushUint64ThenUint8 interface {
 	Push(context.Context, *WorkOfUint64ThenUint8)
 	DoneNotify() <-chan struct{}
@@ -3939,6 +5904,11 @@ type WorkerOfPushUint64ThenUint8 interface {
 type WorkOfUint64ThenUintptr struct {
 	Argument uint64
 	ReturnCh chan<- *ReturnOfUintptr
+}
+
+type WorkWithContextOfUint64ThenUintptr struct {
+	context.Context
+	*WorkOfUint64ThenUintptr
 }
 
 type WorkerOfPushUint64ThenUintptr interface {
@@ -3951,6 +5921,11 @@ type WorkOfUint64ThenInterface struct {
 	ReturnCh chan<- *ReturnOfInterface
 }
 
+type WorkWithContextOfUint64ThenInterface struct {
+	context.Context
+	*WorkOfUint64ThenInterface
+}
+
 type WorkerOfPushUint64ThenInterface interface {
 	Push(context.Context, *WorkOfUint64ThenInterface)
 	DoneNotify() <-chan struct{}
@@ -3959,6 +5934,11 @@ type WorkerOfPushUint64ThenInterface interface {
 type WorkOfUint64ThenStruct struct {
 	Argument uint64
 	ReturnCh chan<- *ReturnOfStruct
+}
+
+type WorkWithContextOfUint64ThenStruct struct {
+	context.Context
+	*WorkOfUint64ThenStruct
 }
 
 type WorkerOfPushUint64ThenStruct interface {
@@ -3971,6 +5951,11 @@ type WorkOfUint8ThenBool struct {
 	ReturnCh chan<- *ReturnOfBool
 }
 
+type WorkWithContextOfUint8ThenBool struct {
+	context.Context
+	*WorkOfUint8ThenBool
+}
+
 type WorkerOfPushUint8ThenBool interface {
 	Push(context.Context, *WorkOfUint8ThenBool)
 	DoneNotify() <-chan struct{}
@@ -3979,6 +5964,11 @@ type WorkerOfPushUint8ThenBool interface {
 type WorkOfUint8ThenByte struct {
 	Argument uint8
 	ReturnCh chan<- *ReturnOfByte
+}
+
+type WorkWithContextOfUint8ThenByte struct {
+	context.Context
+	*WorkOfUint8ThenByte
 }
 
 type WorkerOfPushUint8ThenByte interface {
@@ -3991,6 +5981,11 @@ type WorkOfUint8ThenComplex128 struct {
 	ReturnCh chan<- *ReturnOfComplex128
 }
 
+type WorkWithContextOfUint8ThenComplex128 struct {
+	context.Context
+	*WorkOfUint8ThenComplex128
+}
+
 type WorkerOfPushUint8ThenComplex128 interface {
 	Push(context.Context, *WorkOfUint8ThenComplex128)
 	DoneNotify() <-chan struct{}
@@ -3999,6 +5994,11 @@ type WorkerOfPushUint8ThenComplex128 interface {
 type WorkOfUint8ThenComplex64 struct {
 	Argument uint8
 	ReturnCh chan<- *ReturnOfComplex64
+}
+
+type WorkWithContextOfUint8ThenComplex64 struct {
+	context.Context
+	*WorkOfUint8ThenComplex64
 }
 
 type WorkerOfPushUint8ThenComplex64 interface {
@@ -4011,6 +6011,11 @@ type WorkOfUint8ThenError struct {
 	ReturnCh chan<- *ReturnOfError
 }
 
+type WorkWithContextOfUint8ThenError struct {
+	context.Context
+	*WorkOfUint8ThenError
+}
+
 type WorkerOfPushUint8ThenError interface {
 	Push(context.Context, *WorkOfUint8ThenError)
 	DoneNotify() <-chan struct{}
@@ -4019,6 +6024,11 @@ type WorkerOfPushUint8ThenError interface {
 type WorkOfUint8ThenFloat32 struct {
 	Argument uint8
 	ReturnCh chan<- *ReturnOfFloat32
+}
+
+type WorkWithContextOfUint8ThenFloat32 struct {
+	context.Context
+	*WorkOfUint8ThenFloat32
 }
 
 type WorkerOfPushUint8ThenFloat32 interface {
@@ -4031,6 +6041,11 @@ type WorkOfUint8ThenFloat64 struct {
 	ReturnCh chan<- *ReturnOfFloat64
 }
 
+type WorkWithContextOfUint8ThenFloat64 struct {
+	context.Context
+	*WorkOfUint8ThenFloat64
+}
+
 type WorkerOfPushUint8ThenFloat64 interface {
 	Push(context.Context, *WorkOfUint8ThenFloat64)
 	DoneNotify() <-chan struct{}
@@ -4039,6 +6054,11 @@ type WorkerOfPushUint8ThenFloat64 interface {
 type WorkOfUint8ThenInt struct {
 	Argument uint8
 	ReturnCh chan<- *ReturnOfInt
+}
+
+type WorkWithContextOfUint8ThenInt struct {
+	context.Context
+	*WorkOfUint8ThenInt
 }
 
 type WorkerOfPushUint8ThenInt interface {
@@ -4051,6 +6071,11 @@ type WorkOfUint8ThenInt16 struct {
 	ReturnCh chan<- *ReturnOfInt16
 }
 
+type WorkWithContextOfUint8ThenInt16 struct {
+	context.Context
+	*WorkOfUint8ThenInt16
+}
+
 type WorkerOfPushUint8ThenInt16 interface {
 	Push(context.Context, *WorkOfUint8ThenInt16)
 	DoneNotify() <-chan struct{}
@@ -4059,6 +6084,11 @@ type WorkerOfPushUint8ThenInt16 interface {
 type WorkOfUint8ThenInt32 struct {
 	Argument uint8
 	ReturnCh chan<- *ReturnOfInt32
+}
+
+type WorkWithContextOfUint8ThenInt32 struct {
+	context.Context
+	*WorkOfUint8ThenInt32
 }
 
 type WorkerOfPushUint8ThenInt32 interface {
@@ -4071,6 +6101,11 @@ type WorkOfUint8ThenInt64 struct {
 	ReturnCh chan<- *ReturnOfInt64
 }
 
+type WorkWithContextOfUint8ThenInt64 struct {
+	context.Context
+	*WorkOfUint8ThenInt64
+}
+
 type WorkerOfPushUint8ThenInt64 interface {
 	Push(context.Context, *WorkOfUint8ThenInt64)
 	DoneNotify() <-chan struct{}
@@ -4079,6 +6114,11 @@ type WorkerOfPushUint8ThenInt64 interface {
 type WorkOfUint8ThenInt8 struct {
 	Argument uint8
 	ReturnCh chan<- *ReturnOfInt8
+}
+
+type WorkWithContextOfUint8ThenInt8 struct {
+	context.Context
+	*WorkOfUint8ThenInt8
 }
 
 type WorkerOfPushUint8ThenInt8 interface {
@@ -4091,6 +6131,11 @@ type WorkOfUint8ThenRune struct {
 	ReturnCh chan<- *ReturnOfRune
 }
 
+type WorkWithContextOfUint8ThenRune struct {
+	context.Context
+	*WorkOfUint8ThenRune
+}
+
 type WorkerOfPushUint8ThenRune interface {
 	Push(context.Context, *WorkOfUint8ThenRune)
 	DoneNotify() <-chan struct{}
@@ -4099,6 +6144,11 @@ type WorkerOfPushUint8ThenRune interface {
 type WorkOfUint8ThenString struct {
 	Argument uint8
 	ReturnCh chan<- *ReturnOfString
+}
+
+type WorkWithContextOfUint8ThenString struct {
+	context.Context
+	*WorkOfUint8ThenString
 }
 
 type WorkerOfPushUint8ThenString interface {
@@ -4111,6 +6161,11 @@ type WorkOfUint8ThenUint struct {
 	ReturnCh chan<- *ReturnOfUint
 }
 
+type WorkWithContextOfUint8ThenUint struct {
+	context.Context
+	*WorkOfUint8ThenUint
+}
+
 type WorkerOfPushUint8ThenUint interface {
 	Push(context.Context, *WorkOfUint8ThenUint)
 	DoneNotify() <-chan struct{}
@@ -4119,6 +6174,11 @@ type WorkerOfPushUint8ThenUint interface {
 type WorkOfUint8ThenUint16 struct {
 	Argument uint8
 	ReturnCh chan<- *ReturnOfUint16
+}
+
+type WorkWithContextOfUint8ThenUint16 struct {
+	context.Context
+	*WorkOfUint8ThenUint16
 }
 
 type WorkerOfPushUint8ThenUint16 interface {
@@ -4131,6 +6191,11 @@ type WorkOfUint8ThenUint32 struct {
 	ReturnCh chan<- *ReturnOfUint32
 }
 
+type WorkWithContextOfUint8ThenUint32 struct {
+	context.Context
+	*WorkOfUint8ThenUint32
+}
+
 type WorkerOfPushUint8ThenUint32 interface {
 	Push(context.Context, *WorkOfUint8ThenUint32)
 	DoneNotify() <-chan struct{}
@@ -4139,6 +6204,11 @@ type WorkerOfPushUint8ThenUint32 interface {
 type WorkOfUint8ThenUint64 struct {
 	Argument uint8
 	ReturnCh chan<- *ReturnOfUint64
+}
+
+type WorkWithContextOfUint8ThenUint64 struct {
+	context.Context
+	*WorkOfUint8ThenUint64
 }
 
 type WorkerOfPushUint8ThenUint64 interface {
@@ -4151,6 +6221,11 @@ type WorkOfUint8ThenUint8 struct {
 	ReturnCh chan<- *ReturnOfUint8
 }
 
+type WorkWithContextOfUint8ThenUint8 struct {
+	context.Context
+	*WorkOfUint8ThenUint8
+}
+
 type WorkerOfPushUint8ThenUint8 interface {
 	Push(context.Context, *WorkOfUint8ThenUint8)
 	DoneNotify() <-chan struct{}
@@ -4159,6 +6234,11 @@ type WorkerOfPushUint8ThenUint8 interface {
 type WorkOfUint8ThenUintptr struct {
 	Argument uint8
 	ReturnCh chan<- *ReturnOfUintptr
+}
+
+type WorkWithContextOfUint8ThenUintptr struct {
+	context.Context
+	*WorkOfUint8ThenUintptr
 }
 
 type WorkerOfPushUint8ThenUintptr interface {
@@ -4171,6 +6251,11 @@ type WorkOfUint8ThenInterface struct {
 	ReturnCh chan<- *ReturnOfInterface
 }
 
+type WorkWithContextOfUint8ThenInterface struct {
+	context.Context
+	*WorkOfUint8ThenInterface
+}
+
 type WorkerOfPushUint8ThenInterface interface {
 	Push(context.Context, *WorkOfUint8ThenInterface)
 	DoneNotify() <-chan struct{}
@@ -4179,6 +6264,11 @@ type WorkerOfPushUint8ThenInterface interface {
 type WorkOfUint8ThenStruct struct {
 	Argument uint8
 	ReturnCh chan<- *ReturnOfStruct
+}
+
+type WorkWithContextOfUint8ThenStruct struct {
+	context.Context
+	*WorkOfUint8ThenStruct
 }
 
 type WorkerOfPushUint8ThenStruct interface {
@@ -4191,6 +6281,11 @@ type WorkOfUintptrThenBool struct {
 	ReturnCh chan<- *ReturnOfBool
 }
 
+type WorkWithContextOfUintptrThenBool struct {
+	context.Context
+	*WorkOfUintptrThenBool
+}
+
 type WorkerOfPushUintptrThenBool interface {
 	Push(context.Context, *WorkOfUintptrThenBool)
 	DoneNotify() <-chan struct{}
@@ -4199,6 +6294,11 @@ type WorkerOfPushUintptrThenBool interface {
 type WorkOfUintptrThenByte struct {
 	Argument uintptr
 	ReturnCh chan<- *ReturnOfByte
+}
+
+type WorkWithContextOfUintptrThenByte struct {
+	context.Context
+	*WorkOfUintptrThenByte
 }
 
 type WorkerOfPushUintptrThenByte interface {
@@ -4211,6 +6311,11 @@ type WorkOfUintptrThenComplex128 struct {
 	ReturnCh chan<- *ReturnOfComplex128
 }
 
+type WorkWithContextOfUintptrThenComplex128 struct {
+	context.Context
+	*WorkOfUintptrThenComplex128
+}
+
 type WorkerOfPushUintptrThenComplex128 interface {
 	Push(context.Context, *WorkOfUintptrThenComplex128)
 	DoneNotify() <-chan struct{}
@@ -4219,6 +6324,11 @@ type WorkerOfPushUintptrThenComplex128 interface {
 type WorkOfUintptrThenComplex64 struct {
 	Argument uintptr
 	ReturnCh chan<- *ReturnOfComplex64
+}
+
+type WorkWithContextOfUintptrThenComplex64 struct {
+	context.Context
+	*WorkOfUintptrThenComplex64
 }
 
 type WorkerOfPushUintptrThenComplex64 interface {
@@ -4231,6 +6341,11 @@ type WorkOfUintptrThenError struct {
 	ReturnCh chan<- *ReturnOfError
 }
 
+type WorkWithContextOfUintptrThenError struct {
+	context.Context
+	*WorkOfUintptrThenError
+}
+
 type WorkerOfPushUintptrThenError interface {
 	Push(context.Context, *WorkOfUintptrThenError)
 	DoneNotify() <-chan struct{}
@@ -4239,6 +6354,11 @@ type WorkerOfPushUintptrThenError interface {
 type WorkOfUintptrThenFloat32 struct {
 	Argument uintptr
 	ReturnCh chan<- *ReturnOfFloat32
+}
+
+type WorkWithContextOfUintptrThenFloat32 struct {
+	context.Context
+	*WorkOfUintptrThenFloat32
 }
 
 type WorkerOfPushUintptrThenFloat32 interface {
@@ -4251,6 +6371,11 @@ type WorkOfUintptrThenFloat64 struct {
 	ReturnCh chan<- *ReturnOfFloat64
 }
 
+type WorkWithContextOfUintptrThenFloat64 struct {
+	context.Context
+	*WorkOfUintptrThenFloat64
+}
+
 type WorkerOfPushUintptrThenFloat64 interface {
 	Push(context.Context, *WorkOfUintptrThenFloat64)
 	DoneNotify() <-chan struct{}
@@ -4259,6 +6384,11 @@ type WorkerOfPushUintptrThenFloat64 interface {
 type WorkOfUintptrThenInt struct {
 	Argument uintptr
 	ReturnCh chan<- *ReturnOfInt
+}
+
+type WorkWithContextOfUintptrThenInt struct {
+	context.Context
+	*WorkOfUintptrThenInt
 }
 
 type WorkerOfPushUintptrThenInt interface {
@@ -4271,6 +6401,11 @@ type WorkOfUintptrThenInt16 struct {
 	ReturnCh chan<- *ReturnOfInt16
 }
 
+type WorkWithContextOfUintptrThenInt16 struct {
+	context.Context
+	*WorkOfUintptrThenInt16
+}
+
 type WorkerOfPushUintptrThenInt16 interface {
 	Push(context.Context, *WorkOfUintptrThenInt16)
 	DoneNotify() <-chan struct{}
@@ -4279,6 +6414,11 @@ type WorkerOfPushUintptrThenInt16 interface {
 type WorkOfUintptrThenInt32 struct {
 	Argument uintptr
 	ReturnCh chan<- *ReturnOfInt32
+}
+
+type WorkWithContextOfUintptrThenInt32 struct {
+	context.Context
+	*WorkOfUintptrThenInt32
 }
 
 type WorkerOfPushUintptrThenInt32 interface {
@@ -4291,6 +6431,11 @@ type WorkOfUintptrThenInt64 struct {
 	ReturnCh chan<- *ReturnOfInt64
 }
 
+type WorkWithContextOfUintptrThenInt64 struct {
+	context.Context
+	*WorkOfUintptrThenInt64
+}
+
 type WorkerOfPushUintptrThenInt64 interface {
 	Push(context.Context, *WorkOfUintptrThenInt64)
 	DoneNotify() <-chan struct{}
@@ -4299,6 +6444,11 @@ type WorkerOfPushUintptrThenInt64 interface {
 type WorkOfUintptrThenInt8 struct {
 	Argument uintptr
 	ReturnCh chan<- *ReturnOfInt8
+}
+
+type WorkWithContextOfUintptrThenInt8 struct {
+	context.Context
+	*WorkOfUintptrThenInt8
 }
 
 type WorkerOfPushUintptrThenInt8 interface {
@@ -4311,6 +6461,11 @@ type WorkOfUintptrThenRune struct {
 	ReturnCh chan<- *ReturnOfRune
 }
 
+type WorkWithContextOfUintptrThenRune struct {
+	context.Context
+	*WorkOfUintptrThenRune
+}
+
 type WorkerOfPushUintptrThenRune interface {
 	Push(context.Context, *WorkOfUintptrThenRune)
 	DoneNotify() <-chan struct{}
@@ -4319,6 +6474,11 @@ type WorkerOfPushUintptrThenRune interface {
 type WorkOfUintptrThenString struct {
 	Argument uintptr
 	ReturnCh chan<- *ReturnOfString
+}
+
+type WorkWithContextOfUintptrThenString struct {
+	context.Context
+	*WorkOfUintptrThenString
 }
 
 type WorkerOfPushUintptrThenString interface {
@@ -4331,6 +6491,11 @@ type WorkOfUintptrThenUint struct {
 	ReturnCh chan<- *ReturnOfUint
 }
 
+type WorkWithContextOfUintptrThenUint struct {
+	context.Context
+	*WorkOfUintptrThenUint
+}
+
 type WorkerOfPushUintptrThenUint interface {
 	Push(context.Context, *WorkOfUintptrThenUint)
 	DoneNotify() <-chan struct{}
@@ -4339,6 +6504,11 @@ type WorkerOfPushUintptrThenUint interface {
 type WorkOfUintptrThenUint16 struct {
 	Argument uintptr
 	ReturnCh chan<- *ReturnOfUint16
+}
+
+type WorkWithContextOfUintptrThenUint16 struct {
+	context.Context
+	*WorkOfUintptrThenUint16
 }
 
 type WorkerOfPushUintptrThenUint16 interface {
@@ -4351,6 +6521,11 @@ type WorkOfUintptrThenUint32 struct {
 	ReturnCh chan<- *ReturnOfUint32
 }
 
+type WorkWithContextOfUintptrThenUint32 struct {
+	context.Context
+	*WorkOfUintptrThenUint32
+}
+
 type WorkerOfPushUintptrThenUint32 interface {
 	Push(context.Context, *WorkOfUintptrThenUint32)
 	DoneNotify() <-chan struct{}
@@ -4359,6 +6534,11 @@ type WorkerOfPushUintptrThenUint32 interface {
 type WorkOfUintptrThenUint64 struct {
 	Argument uintptr
 	ReturnCh chan<- *ReturnOfUint64
+}
+
+type WorkWithContextOfUintptrThenUint64 struct {
+	context.Context
+	*WorkOfUintptrThenUint64
 }
 
 type WorkerOfPushUintptrThenUint64 interface {
@@ -4371,6 +6551,11 @@ type WorkOfUintptrThenUint8 struct {
 	ReturnCh chan<- *ReturnOfUint8
 }
 
+type WorkWithContextOfUintptrThenUint8 struct {
+	context.Context
+	*WorkOfUintptrThenUint8
+}
+
 type WorkerOfPushUintptrThenUint8 interface {
 	Push(context.Context, *WorkOfUintptrThenUint8)
 	DoneNotify() <-chan struct{}
@@ -4379,6 +6564,11 @@ type WorkerOfPushUintptrThenUint8 interface {
 type WorkOfUintptrThenUintptr struct {
 	Argument uintptr
 	ReturnCh chan<- *ReturnOfUintptr
+}
+
+type WorkWithContextOfUintptrThenUintptr struct {
+	context.Context
+	*WorkOfUintptrThenUintptr
 }
 
 type WorkerOfPushUintptrThenUintptr interface {
@@ -4391,6 +6581,11 @@ type WorkOfUintptrThenInterface struct {
 	ReturnCh chan<- *ReturnOfInterface
 }
 
+type WorkWithContextOfUintptrThenInterface struct {
+	context.Context
+	*WorkOfUintptrThenInterface
+}
+
 type WorkerOfPushUintptrThenInterface interface {
 	Push(context.Context, *WorkOfUintptrThenInterface)
 	DoneNotify() <-chan struct{}
@@ -4399,6 +6594,11 @@ type WorkerOfPushUintptrThenInterface interface {
 type WorkOfUintptrThenStruct struct {
 	Argument uintptr
 	ReturnCh chan<- *ReturnOfStruct
+}
+
+type WorkWithContextOfUintptrThenStruct struct {
+	context.Context
+	*WorkOfUintptrThenStruct
 }
 
 type WorkerOfPushUintptrThenStruct interface {
@@ -4411,6 +6611,11 @@ type WorkOfInterfaceThenBool struct {
 	ReturnCh chan<- *ReturnOfBool
 }
 
+type WorkWithContextOfInterfaceThenBool struct {
+	context.Context
+	*WorkOfInterfaceThenBool
+}
+
 type WorkerOfPushInterfaceThenBool interface {
 	Push(context.Context, *WorkOfInterfaceThenBool)
 	DoneNotify() <-chan struct{}
@@ -4419,6 +6624,11 @@ type WorkerOfPushInterfaceThenBool interface {
 type WorkOfInterfaceThenByte struct {
 	Argument interface{}
 	ReturnCh chan<- *ReturnOfByte
+}
+
+type WorkWithContextOfInterfaceThenByte struct {
+	context.Context
+	*WorkOfInterfaceThenByte
 }
 
 type WorkerOfPushInterfaceThenByte interface {
@@ -4431,6 +6641,11 @@ type WorkOfInterfaceThenComplex128 struct {
 	ReturnCh chan<- *ReturnOfComplex128
 }
 
+type WorkWithContextOfInterfaceThenComplex128 struct {
+	context.Context
+	*WorkOfInterfaceThenComplex128
+}
+
 type WorkerOfPushInterfaceThenComplex128 interface {
 	Push(context.Context, *WorkOfInterfaceThenComplex128)
 	DoneNotify() <-chan struct{}
@@ -4439,6 +6654,11 @@ type WorkerOfPushInterfaceThenComplex128 interface {
 type WorkOfInterfaceThenComplex64 struct {
 	Argument interface{}
 	ReturnCh chan<- *ReturnOfComplex64
+}
+
+type WorkWithContextOfInterfaceThenComplex64 struct {
+	context.Context
+	*WorkOfInterfaceThenComplex64
 }
 
 type WorkerOfPushInterfaceThenComplex64 interface {
@@ -4451,6 +6671,11 @@ type WorkOfInterfaceThenError struct {
 	ReturnCh chan<- *ReturnOfError
 }
 
+type WorkWithContextOfInterfaceThenError struct {
+	context.Context
+	*WorkOfInterfaceThenError
+}
+
 type WorkerOfPushInterfaceThenError interface {
 	Push(context.Context, *WorkOfInterfaceThenError)
 	DoneNotify() <-chan struct{}
@@ -4459,6 +6684,11 @@ type WorkerOfPushInterfaceThenError interface {
 type WorkOfInterfaceThenFloat32 struct {
 	Argument interface{}
 	ReturnCh chan<- *ReturnOfFloat32
+}
+
+type WorkWithContextOfInterfaceThenFloat32 struct {
+	context.Context
+	*WorkOfInterfaceThenFloat32
 }
 
 type WorkerOfPushInterfaceThenFloat32 interface {
@@ -4471,6 +6701,11 @@ type WorkOfInterfaceThenFloat64 struct {
 	ReturnCh chan<- *ReturnOfFloat64
 }
 
+type WorkWithContextOfInterfaceThenFloat64 struct {
+	context.Context
+	*WorkOfInterfaceThenFloat64
+}
+
 type WorkerOfPushInterfaceThenFloat64 interface {
 	Push(context.Context, *WorkOfInterfaceThenFloat64)
 	DoneNotify() <-chan struct{}
@@ -4479,6 +6714,11 @@ type WorkerOfPushInterfaceThenFloat64 interface {
 type WorkOfInterfaceThenInt struct {
 	Argument interface{}
 	ReturnCh chan<- *ReturnOfInt
+}
+
+type WorkWithContextOfInterfaceThenInt struct {
+	context.Context
+	*WorkOfInterfaceThenInt
 }
 
 type WorkerOfPushInterfaceThenInt interface {
@@ -4491,6 +6731,11 @@ type WorkOfInterfaceThenInt16 struct {
 	ReturnCh chan<- *ReturnOfInt16
 }
 
+type WorkWithContextOfInterfaceThenInt16 struct {
+	context.Context
+	*WorkOfInterfaceThenInt16
+}
+
 type WorkerOfPushInterfaceThenInt16 interface {
 	Push(context.Context, *WorkOfInterfaceThenInt16)
 	DoneNotify() <-chan struct{}
@@ -4499,6 +6744,11 @@ type WorkerOfPushInterfaceThenInt16 interface {
 type WorkOfInterfaceThenInt32 struct {
 	Argument interface{}
 	ReturnCh chan<- *ReturnOfInt32
+}
+
+type WorkWithContextOfInterfaceThenInt32 struct {
+	context.Context
+	*WorkOfInterfaceThenInt32
 }
 
 type WorkerOfPushInterfaceThenInt32 interface {
@@ -4511,6 +6761,11 @@ type WorkOfInterfaceThenInt64 struct {
 	ReturnCh chan<- *ReturnOfInt64
 }
 
+type WorkWithContextOfInterfaceThenInt64 struct {
+	context.Context
+	*WorkOfInterfaceThenInt64
+}
+
 type WorkerOfPushInterfaceThenInt64 interface {
 	Push(context.Context, *WorkOfInterfaceThenInt64)
 	DoneNotify() <-chan struct{}
@@ -4519,6 +6774,11 @@ type WorkerOfPushInterfaceThenInt64 interface {
 type WorkOfInterfaceThenInt8 struct {
 	Argument interface{}
 	ReturnCh chan<- *ReturnOfInt8
+}
+
+type WorkWithContextOfInterfaceThenInt8 struct {
+	context.Context
+	*WorkOfInterfaceThenInt8
 }
 
 type WorkerOfPushInterfaceThenInt8 interface {
@@ -4531,6 +6791,11 @@ type WorkOfInterfaceThenRune struct {
 	ReturnCh chan<- *ReturnOfRune
 }
 
+type WorkWithContextOfInterfaceThenRune struct {
+	context.Context
+	*WorkOfInterfaceThenRune
+}
+
 type WorkerOfPushInterfaceThenRune interface {
 	Push(context.Context, *WorkOfInterfaceThenRune)
 	DoneNotify() <-chan struct{}
@@ -4539,6 +6804,11 @@ type WorkerOfPushInterfaceThenRune interface {
 type WorkOfInterfaceThenString struct {
 	Argument interface{}
 	ReturnCh chan<- *ReturnOfString
+}
+
+type WorkWithContextOfInterfaceThenString struct {
+	context.Context
+	*WorkOfInterfaceThenString
 }
 
 type WorkerOfPushInterfaceThenString interface {
@@ -4551,6 +6821,11 @@ type WorkOfInterfaceThenUint struct {
 	ReturnCh chan<- *ReturnOfUint
 }
 
+type WorkWithContextOfInterfaceThenUint struct {
+	context.Context
+	*WorkOfInterfaceThenUint
+}
+
 type WorkerOfPushInterfaceThenUint interface {
 	Push(context.Context, *WorkOfInterfaceThenUint)
 	DoneNotify() <-chan struct{}
@@ -4559,6 +6834,11 @@ type WorkerOfPushInterfaceThenUint interface {
 type WorkOfInterfaceThenUint16 struct {
 	Argument interface{}
 	ReturnCh chan<- *ReturnOfUint16
+}
+
+type WorkWithContextOfInterfaceThenUint16 struct {
+	context.Context
+	*WorkOfInterfaceThenUint16
 }
 
 type WorkerOfPushInterfaceThenUint16 interface {
@@ -4571,6 +6851,11 @@ type WorkOfInterfaceThenUint32 struct {
 	ReturnCh chan<- *ReturnOfUint32
 }
 
+type WorkWithContextOfInterfaceThenUint32 struct {
+	context.Context
+	*WorkOfInterfaceThenUint32
+}
+
 type WorkerOfPushInterfaceThenUint32 interface {
 	Push(context.Context, *WorkOfInterfaceThenUint32)
 	DoneNotify() <-chan struct{}
@@ -4579,6 +6864,11 @@ type WorkerOfPushInterfaceThenUint32 interface {
 type WorkOfInterfaceThenUint64 struct {
 	Argument interface{}
 	ReturnCh chan<- *ReturnOfUint64
+}
+
+type WorkWithContextOfInterfaceThenUint64 struct {
+	context.Context
+	*WorkOfInterfaceThenUint64
 }
 
 type WorkerOfPushInterfaceThenUint64 interface {
@@ -4591,6 +6881,11 @@ type WorkOfInterfaceThenUint8 struct {
 	ReturnCh chan<- *ReturnOfUint8
 }
 
+type WorkWithContextOfInterfaceThenUint8 struct {
+	context.Context
+	*WorkOfInterfaceThenUint8
+}
+
 type WorkerOfPushInterfaceThenUint8 interface {
 	Push(context.Context, *WorkOfInterfaceThenUint8)
 	DoneNotify() <-chan struct{}
@@ -4599,6 +6894,11 @@ type WorkerOfPushInterfaceThenUint8 interface {
 type WorkOfInterfaceThenUintptr struct {
 	Argument interface{}
 	ReturnCh chan<- *ReturnOfUintptr
+}
+
+type WorkWithContextOfInterfaceThenUintptr struct {
+	context.Context
+	*WorkOfInterfaceThenUintptr
 }
 
 type WorkerOfPushInterfaceThenUintptr interface {
@@ -4611,6 +6911,11 @@ type WorkOfInterfaceThenInterface struct {
 	ReturnCh chan<- *ReturnOfInterface
 }
 
+type WorkWithContextOfInterfaceThenInterface struct {
+	context.Context
+	*WorkOfInterfaceThenInterface
+}
+
 type WorkerOfPushInterfaceThenInterface interface {
 	Push(context.Context, *WorkOfInterfaceThenInterface)
 	DoneNotify() <-chan struct{}
@@ -4619,6 +6924,11 @@ type WorkerOfPushInterfaceThenInterface interface {
 type WorkOfInterfaceThenStruct struct {
 	Argument interface{}
 	ReturnCh chan<- *ReturnOfStruct
+}
+
+type WorkWithContextOfInterfaceThenStruct struct {
+	context.Context
+	*WorkOfInterfaceThenStruct
 }
 
 type WorkerOfPushInterfaceThenStruct interface {
@@ -4631,6 +6941,11 @@ type WorkOfStructThenBool struct {
 	ReturnCh chan<- *ReturnOfBool
 }
 
+type WorkWithContextOfStructThenBool struct {
+	context.Context
+	*WorkOfStructThenBool
+}
+
 type WorkerOfPushStructThenBool interface {
 	Push(context.Context, *WorkOfStructThenBool)
 	DoneNotify() <-chan struct{}
@@ -4639,6 +6954,11 @@ type WorkerOfPushStructThenBool interface {
 type WorkOfStructThenByte struct {
 	Argument struct{}
 	ReturnCh chan<- *ReturnOfByte
+}
+
+type WorkWithContextOfStructThenByte struct {
+	context.Context
+	*WorkOfStructThenByte
 }
 
 type WorkerOfPushStructThenByte interface {
@@ -4651,6 +6971,11 @@ type WorkOfStructThenComplex128 struct {
 	ReturnCh chan<- *ReturnOfComplex128
 }
 
+type WorkWithContextOfStructThenComplex128 struct {
+	context.Context
+	*WorkOfStructThenComplex128
+}
+
 type WorkerOfPushStructThenComplex128 interface {
 	Push(context.Context, *WorkOfStructThenComplex128)
 	DoneNotify() <-chan struct{}
@@ -4659,6 +6984,11 @@ type WorkerOfPushStructThenComplex128 interface {
 type WorkOfStructThenComplex64 struct {
 	Argument struct{}
 	ReturnCh chan<- *ReturnOfComplex64
+}
+
+type WorkWithContextOfStructThenComplex64 struct {
+	context.Context
+	*WorkOfStructThenComplex64
 }
 
 type WorkerOfPushStructThenComplex64 interface {
@@ -4671,6 +7001,11 @@ type WorkOfStructThenError struct {
 	ReturnCh chan<- *ReturnOfError
 }
 
+type WorkWithContextOfStructThenError struct {
+	context.Context
+	*WorkOfStructThenError
+}
+
 type WorkerOfPushStructThenError interface {
 	Push(context.Context, *WorkOfStructThenError)
 	DoneNotify() <-chan struct{}
@@ -4679,6 +7014,11 @@ type WorkerOfPushStructThenError interface {
 type WorkOfStructThenFloat32 struct {
 	Argument struct{}
 	ReturnCh chan<- *ReturnOfFloat32
+}
+
+type WorkWithContextOfStructThenFloat32 struct {
+	context.Context
+	*WorkOfStructThenFloat32
 }
 
 type WorkerOfPushStructThenFloat32 interface {
@@ -4691,6 +7031,11 @@ type WorkOfStructThenFloat64 struct {
 	ReturnCh chan<- *ReturnOfFloat64
 }
 
+type WorkWithContextOfStructThenFloat64 struct {
+	context.Context
+	*WorkOfStructThenFloat64
+}
+
 type WorkerOfPushStructThenFloat64 interface {
 	Push(context.Context, *WorkOfStructThenFloat64)
 	DoneNotify() <-chan struct{}
@@ -4699,6 +7044,11 @@ type WorkerOfPushStructThenFloat64 interface {
 type WorkOfStructThenInt struct {
 	Argument struct{}
 	ReturnCh chan<- *ReturnOfInt
+}
+
+type WorkWithContextOfStructThenInt struct {
+	context.Context
+	*WorkOfStructThenInt
 }
 
 type WorkerOfPushStructThenInt interface {
@@ -4711,6 +7061,11 @@ type WorkOfStructThenInt16 struct {
 	ReturnCh chan<- *ReturnOfInt16
 }
 
+type WorkWithContextOfStructThenInt16 struct {
+	context.Context
+	*WorkOfStructThenInt16
+}
+
 type WorkerOfPushStructThenInt16 interface {
 	Push(context.Context, *WorkOfStructThenInt16)
 	DoneNotify() <-chan struct{}
@@ -4719,6 +7074,11 @@ type WorkerOfPushStructThenInt16 interface {
 type WorkOfStructThenInt32 struct {
 	Argument struct{}
 	ReturnCh chan<- *ReturnOfInt32
+}
+
+type WorkWithContextOfStructThenInt32 struct {
+	context.Context
+	*WorkOfStructThenInt32
 }
 
 type WorkerOfPushStructThenInt32 interface {
@@ -4731,6 +7091,11 @@ type WorkOfStructThenInt64 struct {
 	ReturnCh chan<- *ReturnOfInt64
 }
 
+type WorkWithContextOfStructThenInt64 struct {
+	context.Context
+	*WorkOfStructThenInt64
+}
+
 type WorkerOfPushStructThenInt64 interface {
 	Push(context.Context, *WorkOfStructThenInt64)
 	DoneNotify() <-chan struct{}
@@ -4739,6 +7104,11 @@ type WorkerOfPushStructThenInt64 interface {
 type WorkOfStructThenInt8 struct {
 	Argument struct{}
 	ReturnCh chan<- *ReturnOfInt8
+}
+
+type WorkWithContextOfStructThenInt8 struct {
+	context.Context
+	*WorkOfStructThenInt8
 }
 
 type WorkerOfPushStructThenInt8 interface {
@@ -4751,6 +7121,11 @@ type WorkOfStructThenRune struct {
 	ReturnCh chan<- *ReturnOfRune
 }
 
+type WorkWithContextOfStructThenRune struct {
+	context.Context
+	*WorkOfStructThenRune
+}
+
 type WorkerOfPushStructThenRune interface {
 	Push(context.Context, *WorkOfStructThenRune)
 	DoneNotify() <-chan struct{}
@@ -4759,6 +7134,11 @@ type WorkerOfPushStructThenRune interface {
 type WorkOfStructThenString struct {
 	Argument struct{}
 	ReturnCh chan<- *ReturnOfString
+}
+
+type WorkWithContextOfStructThenString struct {
+	context.Context
+	*WorkOfStructThenString
 }
 
 type WorkerOfPushStructThenString interface {
@@ -4771,6 +7151,11 @@ type WorkOfStructThenUint struct {
 	ReturnCh chan<- *ReturnOfUint
 }
 
+type WorkWithContextOfStructThenUint struct {
+	context.Context
+	*WorkOfStructThenUint
+}
+
 type WorkerOfPushStructThenUint interface {
 	Push(context.Context, *WorkOfStructThenUint)
 	DoneNotify() <-chan struct{}
@@ -4779,6 +7164,11 @@ type WorkerOfPushStructThenUint interface {
 type WorkOfStructThenUint16 struct {
 	Argument struct{}
 	ReturnCh chan<- *ReturnOfUint16
+}
+
+type WorkWithContextOfStructThenUint16 struct {
+	context.Context
+	*WorkOfStructThenUint16
 }
 
 type WorkerOfPushStructThenUint16 interface {
@@ -4791,6 +7181,11 @@ type WorkOfStructThenUint32 struct {
 	ReturnCh chan<- *ReturnOfUint32
 }
 
+type WorkWithContextOfStructThenUint32 struct {
+	context.Context
+	*WorkOfStructThenUint32
+}
+
 type WorkerOfPushStructThenUint32 interface {
 	Push(context.Context, *WorkOfStructThenUint32)
 	DoneNotify() <-chan struct{}
@@ -4799,6 +7194,11 @@ type WorkerOfPushStructThenUint32 interface {
 type WorkOfStructThenUint64 struct {
 	Argument struct{}
 	ReturnCh chan<- *ReturnOfUint64
+}
+
+type WorkWithContextOfStructThenUint64 struct {
+	context.Context
+	*WorkOfStructThenUint64
 }
 
 type WorkerOfPushStructThenUint64 interface {
@@ -4811,6 +7211,11 @@ type WorkOfStructThenUint8 struct {
 	ReturnCh chan<- *ReturnOfUint8
 }
 
+type WorkWithContextOfStructThenUint8 struct {
+	context.Context
+	*WorkOfStructThenUint8
+}
+
 type WorkerOfPushStructThenUint8 interface {
 	Push(context.Context, *WorkOfStructThenUint8)
 	DoneNotify() <-chan struct{}
@@ -4819,6 +7224,11 @@ type WorkerOfPushStructThenUint8 interface {
 type WorkOfStructThenUintptr struct {
 	Argument struct{}
 	ReturnCh chan<- *ReturnOfUintptr
+}
+
+type WorkWithContextOfStructThenUintptr struct {
+	context.Context
+	*WorkOfStructThenUintptr
 }
 
 type WorkerOfPushStructThenUintptr interface {
@@ -4831,6 +7241,11 @@ type WorkOfStructThenInterface struct {
 	ReturnCh chan<- *ReturnOfInterface
 }
 
+type WorkWithContextOfStructThenInterface struct {
+	context.Context
+	*WorkOfStructThenInterface
+}
+
 type WorkerOfPushStructThenInterface interface {
 	Push(context.Context, *WorkOfStructThenInterface)
 	DoneNotify() <-chan struct{}
@@ -4839,6 +7254,11 @@ type WorkerOfPushStructThenInterface interface {
 type WorkOfStructThenStruct struct {
 	Argument struct{}
 	ReturnCh chan<- *ReturnOfStruct
+}
+
+type WorkWithContextOfStructThenStruct struct {
+	context.Context
+	*WorkOfStructThenStruct
 }
 
 type WorkerOfPushStructThenStruct interface {

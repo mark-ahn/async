@@ -4,12 +4,17 @@ import (
 	"context"
 )
 
-type _Prefix_WorkOfSomeThenOther struct {
+type WorkOfSomeThenOther struct {
 	Argument Some
-	ReturnCh chan<- *_Prefix_ReturnOfOther
+	ReturnCh chan<- *ReturnOfOther
 }
 
-type _Prefix_WorkerOfPushSomeThenOther interface {
-	Push(context.Context, *_Prefix_WorkOfSomeThenOther)
+type WorkWithContextOfSomeThenOther struct {
+	context.Context
+	*WorkOfSomeThenOther
+}
+
+type WorkerOfPushSomeThenOther interface {
+	Push(context.Context, *WorkOfSomeThenOther)
 	DoneNotify() <-chan struct{}
 }
