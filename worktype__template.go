@@ -14,7 +14,10 @@ type WorkWithContextOfSomeThenOther struct {
 	*WorkOfSomeThenOther
 }
 
+type WorkerOfCallSomeThenOther interface {
+	Call(context.Context, Some) (Other, error)
+}
+
 type WorkerOfPushSomeThenOther interface {
 	Push(context.Context, *WorkOfSomeThenOther)
-	DoneNotify() <-chan struct{}
 }

@@ -16,9 +16,12 @@ type WorkWithContextOfBytesThenBytes struct {
 	*WorkOfBytesThenBytes
 }
 
+type WorkerOfCallBytesThenBytes interface {
+	Call(context.Context, Bytes) (Bytes, error)
+}
+
 type WorkerOfPushBytesThenBytes interface {
 	Push(context.Context, *WorkOfBytesThenBytes)
-	DoneNotify() <-chan struct{}
 }
 
 type WorkOfBytesThenString struct {
@@ -31,9 +34,12 @@ type WorkWithContextOfBytesThenString struct {
 	*WorkOfBytesThenString
 }
 
+type WorkerOfCallBytesThenString interface {
+	Call(context.Context, Bytes) (string, error)
+}
+
 type WorkerOfPushBytesThenString interface {
 	Push(context.Context, *WorkOfBytesThenString)
-	DoneNotify() <-chan struct{}
 }
 
 type WorkOfBytesThenInterface struct {
@@ -46,9 +52,12 @@ type WorkWithContextOfBytesThenInterface struct {
 	*WorkOfBytesThenInterface
 }
 
+type WorkerOfCallBytesThenInterface interface {
+	Call(context.Context, Bytes) (interface{}, error)
+}
+
 type WorkerOfPushBytesThenInterface interface {
 	Push(context.Context, *WorkOfBytesThenInterface)
-	DoneNotify() <-chan struct{}
 }
 
 type WorkOfStringThenBytes struct {
@@ -61,9 +70,12 @@ type WorkWithContextOfStringThenBytes struct {
 	*WorkOfStringThenBytes
 }
 
+type WorkerOfCallStringThenBytes interface {
+	Call(context.Context, string) (Bytes, error)
+}
+
 type WorkerOfPushStringThenBytes interface {
 	Push(context.Context, *WorkOfStringThenBytes)
-	DoneNotify() <-chan struct{}
 }
 
 type WorkOfStringThenString struct {
@@ -76,9 +88,12 @@ type WorkWithContextOfStringThenString struct {
 	*WorkOfStringThenString
 }
 
+type WorkerOfCallStringThenString interface {
+	Call(context.Context, string) (string, error)
+}
+
 type WorkerOfPushStringThenString interface {
 	Push(context.Context, *WorkOfStringThenString)
-	DoneNotify() <-chan struct{}
 }
 
 type WorkOfStringThenInterface struct {
@@ -91,9 +106,12 @@ type WorkWithContextOfStringThenInterface struct {
 	*WorkOfStringThenInterface
 }
 
+type WorkerOfCallStringThenInterface interface {
+	Call(context.Context, string) (interface{}, error)
+}
+
 type WorkerOfPushStringThenInterface interface {
 	Push(context.Context, *WorkOfStringThenInterface)
-	DoneNotify() <-chan struct{}
 }
 
 type WorkOfInterfaceThenBytes struct {
@@ -106,9 +124,12 @@ type WorkWithContextOfInterfaceThenBytes struct {
 	*WorkOfInterfaceThenBytes
 }
 
+type WorkerOfCallInterfaceThenBytes interface {
+	Call(context.Context, interface{}) (Bytes, error)
+}
+
 type WorkerOfPushInterfaceThenBytes interface {
 	Push(context.Context, *WorkOfInterfaceThenBytes)
-	DoneNotify() <-chan struct{}
 }
 
 type WorkOfInterfaceThenString struct {
@@ -121,9 +142,12 @@ type WorkWithContextOfInterfaceThenString struct {
 	*WorkOfInterfaceThenString
 }
 
+type WorkerOfCallInterfaceThenString interface {
+	Call(context.Context, interface{}) (string, error)
+}
+
 type WorkerOfPushInterfaceThenString interface {
 	Push(context.Context, *WorkOfInterfaceThenString)
-	DoneNotify() <-chan struct{}
 }
 
 type WorkOfInterfaceThenInterface struct {
@@ -136,7 +160,10 @@ type WorkWithContextOfInterfaceThenInterface struct {
 	*WorkOfInterfaceThenInterface
 }
 
+type WorkerOfCallInterfaceThenInterface interface {
+	Call(context.Context, interface{}) (interface{}, error)
+}
+
 type WorkerOfPushInterfaceThenInterface interface {
 	Push(context.Context, *WorkOfInterfaceThenInterface)
-	DoneNotify() <-chan struct{}
 }

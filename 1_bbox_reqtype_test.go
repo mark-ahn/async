@@ -8,9 +8,14 @@ import (
 	"github.com/mark-ahn/async"
 )
 
+type worker interface {
+	async.WorkerOfPushStringThenString
+	async.DoneNotifier
+}
+
 func TestReqtype(t *testing.T) {
 	worker_ctx, stop_worker := context.WithCancel(context.Background())
-	var worker async.WorkerOfPushStringThenString = new_some_worker(worker_ctx)
+	var worker worker = new_some_worker(worker_ctx)
 
 	res_ch := make(chan *async.ReturnOfString, 2)
 	worker.Push(worker_ctx, &async.WorkOfStringThenString{
