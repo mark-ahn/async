@@ -114,21 +114,29 @@ func (__ *ApiDecouplerOfBytesThenBytes) ReturnError(rtn_ch chan<- *ReturnOfBytes
 	rtn_ch <- rtn
 }
 
+func (__ *ApiDecouplerOfBytesThenBytes) ReturnValue(rtn_ch chan<- *ReturnOfBytes, value Bytes) {
+	rtn := __.pool.GetReturnOfBytes()
+	rtn.Value = value
+	rtn.Error = nil
+	rtn_ch <- rtn
+}
+
 func (__ *ApiDecouplerOfBytesThenBytes) Handle(ctx context.Context, req *WorkOfBytesThenBytes, h func(ctx context.Context, arg Bytes) (Bytes, error), defered func()) {
 	defer defered()
 
-	rtn := __.pool.GetReturnOfBytes()
+	// rtn := __.pool.GetReturnOfBytes()
 
 	res, err := h(ctx, req.Argument)
 	if err != nil {
-		rtn.Error = err
-		req.ReturnCh <- rtn
+		// 	rtn.Error = err
+		// 	req.ReturnCh <- rtn
+		__.ReturnError(req.ReturnCh, err)
 		return
 	}
-
-	rtn.Value = res
-	rtn.Error = nil
-	req.ReturnCh <- rtn
+	__.ReturnValue(req.ReturnCh, res)
+	// rtn.Value = res
+	// rtn.Error = nil
+	// req.ReturnCh <- rtn
 }
 
 func (__ *ApiDecouplerOfBytesThenBytes) Call(ctx context.Context, push func(context.Context, *WorkOfBytesThenBytes), arg Bytes) (Bytes, error) {
@@ -377,21 +385,29 @@ func (__ *ApiDecouplerOfBytesThenString) ReturnError(rtn_ch chan<- *ReturnOfStri
 	rtn_ch <- rtn
 }
 
+func (__ *ApiDecouplerOfBytesThenString) ReturnValue(rtn_ch chan<- *ReturnOfString, value string) {
+	rtn := __.pool.GetReturnOfString()
+	rtn.Value = value
+	rtn.Error = nil
+	rtn_ch <- rtn
+}
+
 func (__ *ApiDecouplerOfBytesThenString) Handle(ctx context.Context, req *WorkOfBytesThenString, h func(ctx context.Context, arg Bytes) (string, error), defered func()) {
 	defer defered()
 
-	rtn := __.pool.GetReturnOfString()
+	// rtn := __.pool.GetReturnOfString()
 
 	res, err := h(ctx, req.Argument)
 	if err != nil {
-		rtn.Error = err
-		req.ReturnCh <- rtn
+		// 	rtn.Error = err
+		// 	req.ReturnCh <- rtn
+		__.ReturnError(req.ReturnCh, err)
 		return
 	}
-
-	rtn.Value = res
-	rtn.Error = nil
-	req.ReturnCh <- rtn
+	__.ReturnValue(req.ReturnCh, res)
+	// rtn.Value = res
+	// rtn.Error = nil
+	// req.ReturnCh <- rtn
 }
 
 func (__ *ApiDecouplerOfBytesThenString) Call(ctx context.Context, push func(context.Context, *WorkOfBytesThenString), arg Bytes) (string, error) {
@@ -640,21 +656,29 @@ func (__ *ApiDecouplerOfBytesThenInterface) ReturnError(rtn_ch chan<- *ReturnOfI
 	rtn_ch <- rtn
 }
 
+func (__ *ApiDecouplerOfBytesThenInterface) ReturnValue(rtn_ch chan<- *ReturnOfInterface, value interface{}) {
+	rtn := __.pool.GetReturnOfInterface()
+	rtn.Value = value
+	rtn.Error = nil
+	rtn_ch <- rtn
+}
+
 func (__ *ApiDecouplerOfBytesThenInterface) Handle(ctx context.Context, req *WorkOfBytesThenInterface, h func(ctx context.Context, arg Bytes) (interface{}, error), defered func()) {
 	defer defered()
 
-	rtn := __.pool.GetReturnOfInterface()
+	// rtn := __.pool.GetReturnOfInterface()
 
 	res, err := h(ctx, req.Argument)
 	if err != nil {
-		rtn.Error = err
-		req.ReturnCh <- rtn
+		// 	rtn.Error = err
+		// 	req.ReturnCh <- rtn
+		__.ReturnError(req.ReturnCh, err)
 		return
 	}
-
-	rtn.Value = res
-	rtn.Error = nil
-	req.ReturnCh <- rtn
+	__.ReturnValue(req.ReturnCh, res)
+	// rtn.Value = res
+	// rtn.Error = nil
+	// req.ReturnCh <- rtn
 }
 
 func (__ *ApiDecouplerOfBytesThenInterface) Call(ctx context.Context, push func(context.Context, *WorkOfBytesThenInterface), arg Bytes) (interface{}, error) {
@@ -903,21 +927,29 @@ func (__ *ApiDecouplerOfStringThenBytes) ReturnError(rtn_ch chan<- *ReturnOfByte
 	rtn_ch <- rtn
 }
 
+func (__ *ApiDecouplerOfStringThenBytes) ReturnValue(rtn_ch chan<- *ReturnOfBytes, value Bytes) {
+	rtn := __.pool.GetReturnOfBytes()
+	rtn.Value = value
+	rtn.Error = nil
+	rtn_ch <- rtn
+}
+
 func (__ *ApiDecouplerOfStringThenBytes) Handle(ctx context.Context, req *WorkOfStringThenBytes, h func(ctx context.Context, arg string) (Bytes, error), defered func()) {
 	defer defered()
 
-	rtn := __.pool.GetReturnOfBytes()
+	// rtn := __.pool.GetReturnOfBytes()
 
 	res, err := h(ctx, req.Argument)
 	if err != nil {
-		rtn.Error = err
-		req.ReturnCh <- rtn
+		// 	rtn.Error = err
+		// 	req.ReturnCh <- rtn
+		__.ReturnError(req.ReturnCh, err)
 		return
 	}
-
-	rtn.Value = res
-	rtn.Error = nil
-	req.ReturnCh <- rtn
+	__.ReturnValue(req.ReturnCh, res)
+	// rtn.Value = res
+	// rtn.Error = nil
+	// req.ReturnCh <- rtn
 }
 
 func (__ *ApiDecouplerOfStringThenBytes) Call(ctx context.Context, push func(context.Context, *WorkOfStringThenBytes), arg string) (Bytes, error) {
@@ -1166,21 +1198,29 @@ func (__ *ApiDecouplerOfStringThenString) ReturnError(rtn_ch chan<- *ReturnOfStr
 	rtn_ch <- rtn
 }
 
+func (__ *ApiDecouplerOfStringThenString) ReturnValue(rtn_ch chan<- *ReturnOfString, value string) {
+	rtn := __.pool.GetReturnOfString()
+	rtn.Value = value
+	rtn.Error = nil
+	rtn_ch <- rtn
+}
+
 func (__ *ApiDecouplerOfStringThenString) Handle(ctx context.Context, req *WorkOfStringThenString, h func(ctx context.Context, arg string) (string, error), defered func()) {
 	defer defered()
 
-	rtn := __.pool.GetReturnOfString()
+	// rtn := __.pool.GetReturnOfString()
 
 	res, err := h(ctx, req.Argument)
 	if err != nil {
-		rtn.Error = err
-		req.ReturnCh <- rtn
+		// 	rtn.Error = err
+		// 	req.ReturnCh <- rtn
+		__.ReturnError(req.ReturnCh, err)
 		return
 	}
-
-	rtn.Value = res
-	rtn.Error = nil
-	req.ReturnCh <- rtn
+	__.ReturnValue(req.ReturnCh, res)
+	// rtn.Value = res
+	// rtn.Error = nil
+	// req.ReturnCh <- rtn
 }
 
 func (__ *ApiDecouplerOfStringThenString) Call(ctx context.Context, push func(context.Context, *WorkOfStringThenString), arg string) (string, error) {
@@ -1429,21 +1469,29 @@ func (__ *ApiDecouplerOfStringThenInterface) ReturnError(rtn_ch chan<- *ReturnOf
 	rtn_ch <- rtn
 }
 
+func (__ *ApiDecouplerOfStringThenInterface) ReturnValue(rtn_ch chan<- *ReturnOfInterface, value interface{}) {
+	rtn := __.pool.GetReturnOfInterface()
+	rtn.Value = value
+	rtn.Error = nil
+	rtn_ch <- rtn
+}
+
 func (__ *ApiDecouplerOfStringThenInterface) Handle(ctx context.Context, req *WorkOfStringThenInterface, h func(ctx context.Context, arg string) (interface{}, error), defered func()) {
 	defer defered()
 
-	rtn := __.pool.GetReturnOfInterface()
+	// rtn := __.pool.GetReturnOfInterface()
 
 	res, err := h(ctx, req.Argument)
 	if err != nil {
-		rtn.Error = err
-		req.ReturnCh <- rtn
+		// 	rtn.Error = err
+		// 	req.ReturnCh <- rtn
+		__.ReturnError(req.ReturnCh, err)
 		return
 	}
-
-	rtn.Value = res
-	rtn.Error = nil
-	req.ReturnCh <- rtn
+	__.ReturnValue(req.ReturnCh, res)
+	// rtn.Value = res
+	// rtn.Error = nil
+	// req.ReturnCh <- rtn
 }
 
 func (__ *ApiDecouplerOfStringThenInterface) Call(ctx context.Context, push func(context.Context, *WorkOfStringThenInterface), arg string) (interface{}, error) {
@@ -1692,21 +1740,29 @@ func (__ *ApiDecouplerOfInterfaceThenBytes) ReturnError(rtn_ch chan<- *ReturnOfB
 	rtn_ch <- rtn
 }
 
+func (__ *ApiDecouplerOfInterfaceThenBytes) ReturnValue(rtn_ch chan<- *ReturnOfBytes, value Bytes) {
+	rtn := __.pool.GetReturnOfBytes()
+	rtn.Value = value
+	rtn.Error = nil
+	rtn_ch <- rtn
+}
+
 func (__ *ApiDecouplerOfInterfaceThenBytes) Handle(ctx context.Context, req *WorkOfInterfaceThenBytes, h func(ctx context.Context, arg interface{}) (Bytes, error), defered func()) {
 	defer defered()
 
-	rtn := __.pool.GetReturnOfBytes()
+	// rtn := __.pool.GetReturnOfBytes()
 
 	res, err := h(ctx, req.Argument)
 	if err != nil {
-		rtn.Error = err
-		req.ReturnCh <- rtn
+		// 	rtn.Error = err
+		// 	req.ReturnCh <- rtn
+		__.ReturnError(req.ReturnCh, err)
 		return
 	}
-
-	rtn.Value = res
-	rtn.Error = nil
-	req.ReturnCh <- rtn
+	__.ReturnValue(req.ReturnCh, res)
+	// rtn.Value = res
+	// rtn.Error = nil
+	// req.ReturnCh <- rtn
 }
 
 func (__ *ApiDecouplerOfInterfaceThenBytes) Call(ctx context.Context, push func(context.Context, *WorkOfInterfaceThenBytes), arg interface{}) (Bytes, error) {
@@ -1955,21 +2011,29 @@ func (__ *ApiDecouplerOfInterfaceThenString) ReturnError(rtn_ch chan<- *ReturnOf
 	rtn_ch <- rtn
 }
 
+func (__ *ApiDecouplerOfInterfaceThenString) ReturnValue(rtn_ch chan<- *ReturnOfString, value string) {
+	rtn := __.pool.GetReturnOfString()
+	rtn.Value = value
+	rtn.Error = nil
+	rtn_ch <- rtn
+}
+
 func (__ *ApiDecouplerOfInterfaceThenString) Handle(ctx context.Context, req *WorkOfInterfaceThenString, h func(ctx context.Context, arg interface{}) (string, error), defered func()) {
 	defer defered()
 
-	rtn := __.pool.GetReturnOfString()
+	// rtn := __.pool.GetReturnOfString()
 
 	res, err := h(ctx, req.Argument)
 	if err != nil {
-		rtn.Error = err
-		req.ReturnCh <- rtn
+		// 	rtn.Error = err
+		// 	req.ReturnCh <- rtn
+		__.ReturnError(req.ReturnCh, err)
 		return
 	}
-
-	rtn.Value = res
-	rtn.Error = nil
-	req.ReturnCh <- rtn
+	__.ReturnValue(req.ReturnCh, res)
+	// rtn.Value = res
+	// rtn.Error = nil
+	// req.ReturnCh <- rtn
 }
 
 func (__ *ApiDecouplerOfInterfaceThenString) Call(ctx context.Context, push func(context.Context, *WorkOfInterfaceThenString), arg interface{}) (string, error) {
@@ -2218,21 +2282,29 @@ func (__ *ApiDecouplerOfInterfaceThenInterface) ReturnError(rtn_ch chan<- *Retur
 	rtn_ch <- rtn
 }
 
+func (__ *ApiDecouplerOfInterfaceThenInterface) ReturnValue(rtn_ch chan<- *ReturnOfInterface, value interface{}) {
+	rtn := __.pool.GetReturnOfInterface()
+	rtn.Value = value
+	rtn.Error = nil
+	rtn_ch <- rtn
+}
+
 func (__ *ApiDecouplerOfInterfaceThenInterface) Handle(ctx context.Context, req *WorkOfInterfaceThenInterface, h func(ctx context.Context, arg interface{}) (interface{}, error), defered func()) {
 	defer defered()
 
-	rtn := __.pool.GetReturnOfInterface()
+	// rtn := __.pool.GetReturnOfInterface()
 
 	res, err := h(ctx, req.Argument)
 	if err != nil {
-		rtn.Error = err
-		req.ReturnCh <- rtn
+		// 	rtn.Error = err
+		// 	req.ReturnCh <- rtn
+		__.ReturnError(req.ReturnCh, err)
 		return
 	}
-
-	rtn.Value = res
-	rtn.Error = nil
-	req.ReturnCh <- rtn
+	__.ReturnValue(req.ReturnCh, res)
+	// rtn.Value = res
+	// rtn.Error = nil
+	// req.ReturnCh <- rtn
 }
 
 func (__ *ApiDecouplerOfInterfaceThenInterface) Call(ctx context.Context, push func(context.Context, *WorkOfInterfaceThenInterface), arg interface{}) (interface{}, error) {

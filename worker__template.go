@@ -110,21 +110,29 @@ func (__ *ApiDecouplerOfSomeThenOther) ReturnError(rtn_ch chan<- *ReturnOfOther,
 	rtn_ch <- rtn
 }
 
+func (__ *ApiDecouplerOfSomeThenOther) ReturnValue(rtn_ch chan<- *ReturnOfOther, value Other) {
+	rtn := __.pool.GetReturnOfOther()
+	rtn.Value = value
+	rtn.Error = nil
+	rtn_ch <- rtn
+}
+
 func (__ *ApiDecouplerOfSomeThenOther) Handle(ctx context.Context, req *WorkOfSomeThenOther, h func(ctx context.Context, arg Some) (Other, error), defered func()) {
 	defer defered()
 
-	rtn := __.pool.GetReturnOfOther()
+	// rtn := __.pool.GetReturnOfOther()
 
 	res, err := h(ctx, req.Argument)
 	if err != nil {
-		rtn.Error = err
-		req.ReturnCh <- rtn
+		// 	rtn.Error = err
+		// 	req.ReturnCh <- rtn
+		__.ReturnError(req.ReturnCh, err)
 		return
 	}
-
-	rtn.Value = res
-	rtn.Error = nil
-	req.ReturnCh <- rtn
+	__.ReturnValue(req.ReturnCh, res)
+	// rtn.Value = res
+	// rtn.Error = nil
+	// req.ReturnCh <- rtn
 }
 
 func (__ *ApiDecouplerOfSomeThenOther) Call(ctx context.Context, push func(context.Context, *WorkOfSomeThenOther), arg Some) (Other, error) {
