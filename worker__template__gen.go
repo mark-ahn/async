@@ -131,7 +131,7 @@ func (__ *ApiDecouplerOfBytesThenBytes) Handle(ctx context.Context, req *WorkOfB
 	req.ReturnCh <- rtn
 }
 
-func (__ *ApiDecouplerOfBytesThenBytes) Call(ctx context.Context, worker WorkerOfPushBytesThenBytes, arg Bytes) (Bytes, error) {
+func (__ *ApiDecouplerOfBytesThenBytes) Call(ctx context.Context, push func(context.Context, *WorkOfBytesThenBytes), arg Bytes) (Bytes, error) {
 	ch := __.pool.GetChReturnOfBytes()
 	defer __.pool.PutChReturnOfBytes(ch)
 
@@ -139,7 +139,8 @@ func (__ *ApiDecouplerOfBytesThenBytes) Call(ctx context.Context, worker WorkerO
 	req.Argument = arg
 	req.ReturnCh = ch
 
-	worker.Push(ctx, req)
+	// worker.Push(ctx, req)
+	push(ctx, req)
 	defer func() {
 		req.ReturnCh = nil
 		__.pool.PutWorkOfBytesThenBytes(req)
@@ -269,7 +270,7 @@ func (__ *WorkerOfBytesThenBytes) Reset(ctx context.Context) <-chan error {
 }
 
 func (__ *WorkerOfBytesThenBytes) Call(ctx context.Context, arg Bytes) (Bytes, error) {
-	return __.api_syncer.Call(ctx, __, arg)
+	return __.api_syncer.Call(ctx, __.Push, arg)
 }
 
 type PoolOfBytesThenString interface {
@@ -393,7 +394,7 @@ func (__ *ApiDecouplerOfBytesThenString) Handle(ctx context.Context, req *WorkOf
 	req.ReturnCh <- rtn
 }
 
-func (__ *ApiDecouplerOfBytesThenString) Call(ctx context.Context, worker WorkerOfPushBytesThenString, arg Bytes) (string, error) {
+func (__ *ApiDecouplerOfBytesThenString) Call(ctx context.Context, push func(context.Context, *WorkOfBytesThenString), arg Bytes) (string, error) {
 	ch := __.pool.GetChReturnOfString()
 	defer __.pool.PutChReturnOfString(ch)
 
@@ -401,7 +402,8 @@ func (__ *ApiDecouplerOfBytesThenString) Call(ctx context.Context, worker Worker
 	req.Argument = arg
 	req.ReturnCh = ch
 
-	worker.Push(ctx, req)
+	// worker.Push(ctx, req)
+	push(ctx, req)
 	defer func() {
 		req.ReturnCh = nil
 		__.pool.PutWorkOfBytesThenString(req)
@@ -531,7 +533,7 @@ func (__ *WorkerOfBytesThenString) Reset(ctx context.Context) <-chan error {
 }
 
 func (__ *WorkerOfBytesThenString) Call(ctx context.Context, arg Bytes) (string, error) {
-	return __.api_syncer.Call(ctx, __, arg)
+	return __.api_syncer.Call(ctx, __.Push, arg)
 }
 
 type PoolOfBytesThenInterface interface {
@@ -655,7 +657,7 @@ func (__ *ApiDecouplerOfBytesThenInterface) Handle(ctx context.Context, req *Wor
 	req.ReturnCh <- rtn
 }
 
-func (__ *ApiDecouplerOfBytesThenInterface) Call(ctx context.Context, worker WorkerOfPushBytesThenInterface, arg Bytes) (interface{}, error) {
+func (__ *ApiDecouplerOfBytesThenInterface) Call(ctx context.Context, push func(context.Context, *WorkOfBytesThenInterface), arg Bytes) (interface{}, error) {
 	ch := __.pool.GetChReturnOfInterface()
 	defer __.pool.PutChReturnOfInterface(ch)
 
@@ -663,7 +665,8 @@ func (__ *ApiDecouplerOfBytesThenInterface) Call(ctx context.Context, worker Wor
 	req.Argument = arg
 	req.ReturnCh = ch
 
-	worker.Push(ctx, req)
+	// worker.Push(ctx, req)
+	push(ctx, req)
 	defer func() {
 		req.ReturnCh = nil
 		__.pool.PutWorkOfBytesThenInterface(req)
@@ -793,7 +796,7 @@ func (__ *WorkerOfBytesThenInterface) Reset(ctx context.Context) <-chan error {
 }
 
 func (__ *WorkerOfBytesThenInterface) Call(ctx context.Context, arg Bytes) (interface{}, error) {
-	return __.api_syncer.Call(ctx, __, arg)
+	return __.api_syncer.Call(ctx, __.Push, arg)
 }
 
 type PoolOfStringThenBytes interface {
@@ -917,7 +920,7 @@ func (__ *ApiDecouplerOfStringThenBytes) Handle(ctx context.Context, req *WorkOf
 	req.ReturnCh <- rtn
 }
 
-func (__ *ApiDecouplerOfStringThenBytes) Call(ctx context.Context, worker WorkerOfPushStringThenBytes, arg string) (Bytes, error) {
+func (__ *ApiDecouplerOfStringThenBytes) Call(ctx context.Context, push func(context.Context, *WorkOfStringThenBytes), arg string) (Bytes, error) {
 	ch := __.pool.GetChReturnOfBytes()
 	defer __.pool.PutChReturnOfBytes(ch)
 
@@ -925,7 +928,8 @@ func (__ *ApiDecouplerOfStringThenBytes) Call(ctx context.Context, worker Worker
 	req.Argument = arg
 	req.ReturnCh = ch
 
-	worker.Push(ctx, req)
+	// worker.Push(ctx, req)
+	push(ctx, req)
 	defer func() {
 		req.ReturnCh = nil
 		__.pool.PutWorkOfStringThenBytes(req)
@@ -1055,7 +1059,7 @@ func (__ *WorkerOfStringThenBytes) Reset(ctx context.Context) <-chan error {
 }
 
 func (__ *WorkerOfStringThenBytes) Call(ctx context.Context, arg string) (Bytes, error) {
-	return __.api_syncer.Call(ctx, __, arg)
+	return __.api_syncer.Call(ctx, __.Push, arg)
 }
 
 type PoolOfStringThenString interface {
@@ -1179,7 +1183,7 @@ func (__ *ApiDecouplerOfStringThenString) Handle(ctx context.Context, req *WorkO
 	req.ReturnCh <- rtn
 }
 
-func (__ *ApiDecouplerOfStringThenString) Call(ctx context.Context, worker WorkerOfPushStringThenString, arg string) (string, error) {
+func (__ *ApiDecouplerOfStringThenString) Call(ctx context.Context, push func(context.Context, *WorkOfStringThenString), arg string) (string, error) {
 	ch := __.pool.GetChReturnOfString()
 	defer __.pool.PutChReturnOfString(ch)
 
@@ -1187,7 +1191,8 @@ func (__ *ApiDecouplerOfStringThenString) Call(ctx context.Context, worker Worke
 	req.Argument = arg
 	req.ReturnCh = ch
 
-	worker.Push(ctx, req)
+	// worker.Push(ctx, req)
+	push(ctx, req)
 	defer func() {
 		req.ReturnCh = nil
 		__.pool.PutWorkOfStringThenString(req)
@@ -1317,7 +1322,7 @@ func (__ *WorkerOfStringThenString) Reset(ctx context.Context) <-chan error {
 }
 
 func (__ *WorkerOfStringThenString) Call(ctx context.Context, arg string) (string, error) {
-	return __.api_syncer.Call(ctx, __, arg)
+	return __.api_syncer.Call(ctx, __.Push, arg)
 }
 
 type PoolOfStringThenInterface interface {
@@ -1441,7 +1446,7 @@ func (__ *ApiDecouplerOfStringThenInterface) Handle(ctx context.Context, req *Wo
 	req.ReturnCh <- rtn
 }
 
-func (__ *ApiDecouplerOfStringThenInterface) Call(ctx context.Context, worker WorkerOfPushStringThenInterface, arg string) (interface{}, error) {
+func (__ *ApiDecouplerOfStringThenInterface) Call(ctx context.Context, push func(context.Context, *WorkOfStringThenInterface), arg string) (interface{}, error) {
 	ch := __.pool.GetChReturnOfInterface()
 	defer __.pool.PutChReturnOfInterface(ch)
 
@@ -1449,7 +1454,8 @@ func (__ *ApiDecouplerOfStringThenInterface) Call(ctx context.Context, worker Wo
 	req.Argument = arg
 	req.ReturnCh = ch
 
-	worker.Push(ctx, req)
+	// worker.Push(ctx, req)
+	push(ctx, req)
 	defer func() {
 		req.ReturnCh = nil
 		__.pool.PutWorkOfStringThenInterface(req)
@@ -1579,7 +1585,7 @@ func (__ *WorkerOfStringThenInterface) Reset(ctx context.Context) <-chan error {
 }
 
 func (__ *WorkerOfStringThenInterface) Call(ctx context.Context, arg string) (interface{}, error) {
-	return __.api_syncer.Call(ctx, __, arg)
+	return __.api_syncer.Call(ctx, __.Push, arg)
 }
 
 type PoolOfInterfaceThenBytes interface {
@@ -1703,7 +1709,7 @@ func (__ *ApiDecouplerOfInterfaceThenBytes) Handle(ctx context.Context, req *Wor
 	req.ReturnCh <- rtn
 }
 
-func (__ *ApiDecouplerOfInterfaceThenBytes) Call(ctx context.Context, worker WorkerOfPushInterfaceThenBytes, arg interface{}) (Bytes, error) {
+func (__ *ApiDecouplerOfInterfaceThenBytes) Call(ctx context.Context, push func(context.Context, *WorkOfInterfaceThenBytes), arg interface{}) (Bytes, error) {
 	ch := __.pool.GetChReturnOfBytes()
 	defer __.pool.PutChReturnOfBytes(ch)
 
@@ -1711,7 +1717,8 @@ func (__ *ApiDecouplerOfInterfaceThenBytes) Call(ctx context.Context, worker Wor
 	req.Argument = arg
 	req.ReturnCh = ch
 
-	worker.Push(ctx, req)
+	// worker.Push(ctx, req)
+	push(ctx, req)
 	defer func() {
 		req.ReturnCh = nil
 		__.pool.PutWorkOfInterfaceThenBytes(req)
@@ -1841,7 +1848,7 @@ func (__ *WorkerOfInterfaceThenBytes) Reset(ctx context.Context) <-chan error {
 }
 
 func (__ *WorkerOfInterfaceThenBytes) Call(ctx context.Context, arg interface{}) (Bytes, error) {
-	return __.api_syncer.Call(ctx, __, arg)
+	return __.api_syncer.Call(ctx, __.Push, arg)
 }
 
 type PoolOfInterfaceThenString interface {
@@ -1965,7 +1972,7 @@ func (__ *ApiDecouplerOfInterfaceThenString) Handle(ctx context.Context, req *Wo
 	req.ReturnCh <- rtn
 }
 
-func (__ *ApiDecouplerOfInterfaceThenString) Call(ctx context.Context, worker WorkerOfPushInterfaceThenString, arg interface{}) (string, error) {
+func (__ *ApiDecouplerOfInterfaceThenString) Call(ctx context.Context, push func(context.Context, *WorkOfInterfaceThenString), arg interface{}) (string, error) {
 	ch := __.pool.GetChReturnOfString()
 	defer __.pool.PutChReturnOfString(ch)
 
@@ -1973,7 +1980,8 @@ func (__ *ApiDecouplerOfInterfaceThenString) Call(ctx context.Context, worker Wo
 	req.Argument = arg
 	req.ReturnCh = ch
 
-	worker.Push(ctx, req)
+	// worker.Push(ctx, req)
+	push(ctx, req)
 	defer func() {
 		req.ReturnCh = nil
 		__.pool.PutWorkOfInterfaceThenString(req)
@@ -2103,7 +2111,7 @@ func (__ *WorkerOfInterfaceThenString) Reset(ctx context.Context) <-chan error {
 }
 
 func (__ *WorkerOfInterfaceThenString) Call(ctx context.Context, arg interface{}) (string, error) {
-	return __.api_syncer.Call(ctx, __, arg)
+	return __.api_syncer.Call(ctx, __.Push, arg)
 }
 
 type PoolOfInterfaceThenInterface interface {
@@ -2227,7 +2235,7 @@ func (__ *ApiDecouplerOfInterfaceThenInterface) Handle(ctx context.Context, req 
 	req.ReturnCh <- rtn
 }
 
-func (__ *ApiDecouplerOfInterfaceThenInterface) Call(ctx context.Context, worker WorkerOfPushInterfaceThenInterface, arg interface{}) (interface{}, error) {
+func (__ *ApiDecouplerOfInterfaceThenInterface) Call(ctx context.Context, push func(context.Context, *WorkOfInterfaceThenInterface), arg interface{}) (interface{}, error) {
 	ch := __.pool.GetChReturnOfInterface()
 	defer __.pool.PutChReturnOfInterface(ch)
 
@@ -2235,7 +2243,8 @@ func (__ *ApiDecouplerOfInterfaceThenInterface) Call(ctx context.Context, worker
 	req.Argument = arg
 	req.ReturnCh = ch
 
-	worker.Push(ctx, req)
+	// worker.Push(ctx, req)
+	push(ctx, req)
 	defer func() {
 		req.ReturnCh = nil
 		__.pool.PutWorkOfInterfaceThenInterface(req)
@@ -2365,5 +2374,5 @@ func (__ *WorkerOfInterfaceThenInterface) Reset(ctx context.Context) <-chan erro
 }
 
 func (__ *WorkerOfInterfaceThenInterface) Call(ctx context.Context, arg interface{}) (interface{}, error) {
-	return __.api_syncer.Call(ctx, __, arg)
+	return __.api_syncer.Call(ctx, __.Push, arg)
 }

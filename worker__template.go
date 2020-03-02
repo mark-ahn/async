@@ -127,7 +127,7 @@ func (__ *ApiDecouplerOfSomeThenOther) Handle(ctx context.Context, req *WorkOfSo
 	req.ReturnCh <- rtn
 }
 
-func (__ *ApiDecouplerOfSomeThenOther) Call(ctx context.Context, worker WorkerOfPushSomeThenOther, arg Some) (Other, error) {
+func (__ *ApiDecouplerOfSomeThenOther) Call(ctx context.Context, push func(context.Context, *WorkOfSomeThenOther), arg Some) (Other, error) {
 	ch := __.pool.GetChReturnOfOther()
 	defer __.pool.PutChReturnOfOther(ch)
 
@@ -135,7 +135,8 @@ func (__ *ApiDecouplerOfSomeThenOther) Call(ctx context.Context, worker WorkerOf
 	req.Argument = arg
 	req.ReturnCh = ch
 
-	worker.Push(ctx, req)
+	// worker.Push(ctx, req)
+	push(ctx, req)
 	defer func() {
 		req.ReturnCh = nil
 		__.pool.PutWorkOfSomeThenOther(req)
@@ -265,5 +266,5 @@ func (__ *WorkerOfSomeThenOther) Reset(ctx context.Context) <-chan error {
 }
 
 func (__ *WorkerOfSomeThenOther) Call(ctx context.Context, arg Some) (Other, error) {
-	return __.api_syncer.Call(ctx, __, arg)
+	return __.api_syncer.Call(ctx, __.Push, arg)
 }
