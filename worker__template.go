@@ -110,7 +110,7 @@ func (__ *ApiDecouplerOfSomeThenOther) ReturnError(rtn_ch chan<- *ReturnOfOther,
 	rtn_ch <- rtn
 }
 
-func (__ *ApiDecouplerOfSomeThenOther) HandleOfSomeThenOther(ctx context.Context, req *WorkOfSomeThenOther, h func(ctx context.Context, arg Some) (Other, error), defered func()) {
+func (__ *ApiDecouplerOfSomeThenOther) Handle(ctx context.Context, req *WorkOfSomeThenOther, h func(ctx context.Context, arg Some) (Other, error), defered func()) {
 	defer defered()
 
 	rtn := __.pool.GetReturnOfOther()
@@ -127,8 +127,7 @@ func (__ *ApiDecouplerOfSomeThenOther) HandleOfSomeThenOther(ctx context.Context
 	req.ReturnCh <- rtn
 }
 
-func (__ *ApiDecouplerOfSomeThenOther) DoOfSomeThenOther(ctx context.Context, worker WorkerOfPushSomeThenOther, arg Some) (Other, error) {
-	// ch := make(chan *ReturnOfOther, 1)
+func (__ *ApiDecouplerOfSomeThenOther) Call(ctx context.Context, worker WorkerOfPushSomeThenOther, arg Some) (Other, error) {
 	ch := __.pool.GetChReturnOfOther()
 	defer __.pool.PutChReturnOfOther(ch)
 
@@ -152,9 +151,9 @@ func (__ *ApiDecouplerOfSomeThenOther) DoOfSomeThenOther(ctx context.Context, wo
 
 type WorkHandlerOfSomeThenOther = func(ctx context.Context, arg Some) (Other, error)
 
-type CallerOfSomeThenOther interface {
-	Call(ctx context.Context, arg Some) (Other, error)
-}
+// type CallerOfSomeThenOther interface {
+// 	Call(ctx context.Context, arg Some) (Other, error)
+// }
 
 type WorkerOfSomeThenOther struct {
 	api_syncer *ApiDecouplerOfSomeThenOther
@@ -207,7 +206,7 @@ func NewWorkerOfSomeThenOther(ctx context.Context, h WorkHandlerOfSomeThenOther,
 				break loop
 			case req := <-__.req_ch:
 				__.threads.Add(1)
-				go __.api_syncer.HandleOfSomeThenOther(req.Context, req.WorkOfSomeThenOther, __.handler, func() {
+				go __.api_syncer.Handle(req.Context, req.WorkOfSomeThenOther, __.handler, func() {
 					__.pool.Put(req)
 					__.threads.Done()
 				})
@@ -266,5 +265,5 @@ func (__ *WorkerOfSomeThenOther) Reset(ctx context.Context) <-chan error {
 }
 
 func (__ *WorkerOfSomeThenOther) Call(ctx context.Context, arg Some) (Other, error) {
-	return __.api_syncer.DoOfSomeThenOther(ctx, __, arg)
+	return __.api_syncer.Call(ctx, __, arg)
 }

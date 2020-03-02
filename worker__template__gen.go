@@ -114,7 +114,7 @@ func (__ *ApiDecouplerOfBytesThenBytes) ReturnError(rtn_ch chan<- *ReturnOfBytes
 	rtn_ch <- rtn
 }
 
-func (__ *ApiDecouplerOfBytesThenBytes) HandleOfBytesThenBytes(ctx context.Context, req *WorkOfBytesThenBytes, h func(ctx context.Context, arg Bytes) (Bytes, error), defered func()) {
+func (__ *ApiDecouplerOfBytesThenBytes) Handle(ctx context.Context, req *WorkOfBytesThenBytes, h func(ctx context.Context, arg Bytes) (Bytes, error), defered func()) {
 	defer defered()
 
 	rtn := __.pool.GetReturnOfBytes()
@@ -131,8 +131,7 @@ func (__ *ApiDecouplerOfBytesThenBytes) HandleOfBytesThenBytes(ctx context.Conte
 	req.ReturnCh <- rtn
 }
 
-func (__ *ApiDecouplerOfBytesThenBytes) DoOfBytesThenBytes(ctx context.Context, worker WorkerOfPushBytesThenBytes, arg Bytes) (Bytes, error) {
-	// ch := make(chan *ReturnOfBytes, 1)
+func (__ *ApiDecouplerOfBytesThenBytes) Call(ctx context.Context, worker WorkerOfPushBytesThenBytes, arg Bytes) (Bytes, error) {
 	ch := __.pool.GetChReturnOfBytes()
 	defer __.pool.PutChReturnOfBytes(ch)
 
@@ -156,9 +155,9 @@ func (__ *ApiDecouplerOfBytesThenBytes) DoOfBytesThenBytes(ctx context.Context, 
 
 type WorkHandlerOfBytesThenBytes = func(ctx context.Context, arg Bytes) (Bytes, error)
 
-type CallerOfBytesThenBytes interface {
-	Call(ctx context.Context, arg Bytes) (Bytes, error)
-}
+// type CallerOfBytesThenBytes interface {
+// Call(ctx context.Context, arg Bytes) (Bytes, error)
+// }
 
 type WorkerOfBytesThenBytes struct {
 	api_syncer *ApiDecouplerOfBytesThenBytes
@@ -211,7 +210,7 @@ func NewWorkerOfBytesThenBytes(ctx context.Context, h WorkHandlerOfBytesThenByte
 				break loop
 			case req := <-__.req_ch:
 				__.threads.Add(1)
-				go __.api_syncer.HandleOfBytesThenBytes(req.Context, req.WorkOfBytesThenBytes, __.handler, func() {
+				go __.api_syncer.Handle(req.Context, req.WorkOfBytesThenBytes, __.handler, func() {
 					__.pool.Put(req)
 					__.threads.Done()
 				})
@@ -270,7 +269,7 @@ func (__ *WorkerOfBytesThenBytes) Reset(ctx context.Context) <-chan error {
 }
 
 func (__ *WorkerOfBytesThenBytes) Call(ctx context.Context, arg Bytes) (Bytes, error) {
-	return __.api_syncer.DoOfBytesThenBytes(ctx, __, arg)
+	return __.api_syncer.Call(ctx, __, arg)
 }
 
 type PoolOfBytesThenString interface {
@@ -377,7 +376,7 @@ func (__ *ApiDecouplerOfBytesThenString) ReturnError(rtn_ch chan<- *ReturnOfStri
 	rtn_ch <- rtn
 }
 
-func (__ *ApiDecouplerOfBytesThenString) HandleOfBytesThenString(ctx context.Context, req *WorkOfBytesThenString, h func(ctx context.Context, arg Bytes) (string, error), defered func()) {
+func (__ *ApiDecouplerOfBytesThenString) Handle(ctx context.Context, req *WorkOfBytesThenString, h func(ctx context.Context, arg Bytes) (string, error), defered func()) {
 	defer defered()
 
 	rtn := __.pool.GetReturnOfString()
@@ -394,8 +393,7 @@ func (__ *ApiDecouplerOfBytesThenString) HandleOfBytesThenString(ctx context.Con
 	req.ReturnCh <- rtn
 }
 
-func (__ *ApiDecouplerOfBytesThenString) DoOfBytesThenString(ctx context.Context, worker WorkerOfPushBytesThenString, arg Bytes) (string, error) {
-	// ch := make(chan *ReturnOfString, 1)
+func (__ *ApiDecouplerOfBytesThenString) Call(ctx context.Context, worker WorkerOfPushBytesThenString, arg Bytes) (string, error) {
 	ch := __.pool.GetChReturnOfString()
 	defer __.pool.PutChReturnOfString(ch)
 
@@ -419,9 +417,9 @@ func (__ *ApiDecouplerOfBytesThenString) DoOfBytesThenString(ctx context.Context
 
 type WorkHandlerOfBytesThenString = func(ctx context.Context, arg Bytes) (string, error)
 
-type CallerOfBytesThenString interface {
-	Call(ctx context.Context, arg Bytes) (string, error)
-}
+// type CallerOfBytesThenString interface {
+// Call(ctx context.Context, arg Bytes) (String, error)
+// }
 
 type WorkerOfBytesThenString struct {
 	api_syncer *ApiDecouplerOfBytesThenString
@@ -474,7 +472,7 @@ func NewWorkerOfBytesThenString(ctx context.Context, h WorkHandlerOfBytesThenStr
 				break loop
 			case req := <-__.req_ch:
 				__.threads.Add(1)
-				go __.api_syncer.HandleOfBytesThenString(req.Context, req.WorkOfBytesThenString, __.handler, func() {
+				go __.api_syncer.Handle(req.Context, req.WorkOfBytesThenString, __.handler, func() {
 					__.pool.Put(req)
 					__.threads.Done()
 				})
@@ -533,7 +531,7 @@ func (__ *WorkerOfBytesThenString) Reset(ctx context.Context) <-chan error {
 }
 
 func (__ *WorkerOfBytesThenString) Call(ctx context.Context, arg Bytes) (string, error) {
-	return __.api_syncer.DoOfBytesThenString(ctx, __, arg)
+	return __.api_syncer.Call(ctx, __, arg)
 }
 
 type PoolOfBytesThenInterface interface {
@@ -640,7 +638,7 @@ func (__ *ApiDecouplerOfBytesThenInterface) ReturnError(rtn_ch chan<- *ReturnOfI
 	rtn_ch <- rtn
 }
 
-func (__ *ApiDecouplerOfBytesThenInterface) HandleOfBytesThenInterface(ctx context.Context, req *WorkOfBytesThenInterface, h func(ctx context.Context, arg Bytes) (interface{}, error), defered func()) {
+func (__ *ApiDecouplerOfBytesThenInterface) Handle(ctx context.Context, req *WorkOfBytesThenInterface, h func(ctx context.Context, arg Bytes) (interface{}, error), defered func()) {
 	defer defered()
 
 	rtn := __.pool.GetReturnOfInterface()
@@ -657,8 +655,7 @@ func (__ *ApiDecouplerOfBytesThenInterface) HandleOfBytesThenInterface(ctx conte
 	req.ReturnCh <- rtn
 }
 
-func (__ *ApiDecouplerOfBytesThenInterface) DoOfBytesThenInterface(ctx context.Context, worker WorkerOfPushBytesThenInterface, arg Bytes) (interface{}, error) {
-	// ch := make(chan *ReturnOfInterface, 1)
+func (__ *ApiDecouplerOfBytesThenInterface) Call(ctx context.Context, worker WorkerOfPushBytesThenInterface, arg Bytes) (interface{}, error) {
 	ch := __.pool.GetChReturnOfInterface()
 	defer __.pool.PutChReturnOfInterface(ch)
 
@@ -682,9 +679,9 @@ func (__ *ApiDecouplerOfBytesThenInterface) DoOfBytesThenInterface(ctx context.C
 
 type WorkHandlerOfBytesThenInterface = func(ctx context.Context, arg Bytes) (interface{}, error)
 
-type CallerOfBytesThenInterface interface {
-	Call(ctx context.Context, arg Bytes) (interface{}, error)
-}
+// type CallerOfBytesThenInterface interface {
+// Call(ctx context.Context, arg Bytes) (Interface, error)
+// }
 
 type WorkerOfBytesThenInterface struct {
 	api_syncer *ApiDecouplerOfBytesThenInterface
@@ -737,7 +734,7 @@ func NewWorkerOfBytesThenInterface(ctx context.Context, h WorkHandlerOfBytesThen
 				break loop
 			case req := <-__.req_ch:
 				__.threads.Add(1)
-				go __.api_syncer.HandleOfBytesThenInterface(req.Context, req.WorkOfBytesThenInterface, __.handler, func() {
+				go __.api_syncer.Handle(req.Context, req.WorkOfBytesThenInterface, __.handler, func() {
 					__.pool.Put(req)
 					__.threads.Done()
 				})
@@ -796,7 +793,7 @@ func (__ *WorkerOfBytesThenInterface) Reset(ctx context.Context) <-chan error {
 }
 
 func (__ *WorkerOfBytesThenInterface) Call(ctx context.Context, arg Bytes) (interface{}, error) {
-	return __.api_syncer.DoOfBytesThenInterface(ctx, __, arg)
+	return __.api_syncer.Call(ctx, __, arg)
 }
 
 type PoolOfStringThenBytes interface {
@@ -903,7 +900,7 @@ func (__ *ApiDecouplerOfStringThenBytes) ReturnError(rtn_ch chan<- *ReturnOfByte
 	rtn_ch <- rtn
 }
 
-func (__ *ApiDecouplerOfStringThenBytes) HandleOfStringThenBytes(ctx context.Context, req *WorkOfStringThenBytes, h func(ctx context.Context, arg string) (Bytes, error), defered func()) {
+func (__ *ApiDecouplerOfStringThenBytes) Handle(ctx context.Context, req *WorkOfStringThenBytes, h func(ctx context.Context, arg string) (Bytes, error), defered func()) {
 	defer defered()
 
 	rtn := __.pool.GetReturnOfBytes()
@@ -920,8 +917,7 @@ func (__ *ApiDecouplerOfStringThenBytes) HandleOfStringThenBytes(ctx context.Con
 	req.ReturnCh <- rtn
 }
 
-func (__ *ApiDecouplerOfStringThenBytes) DoOfStringThenBytes(ctx context.Context, worker WorkerOfPushStringThenBytes, arg string) (Bytes, error) {
-	// ch := make(chan *ReturnOfBytes, 1)
+func (__ *ApiDecouplerOfStringThenBytes) Call(ctx context.Context, worker WorkerOfPushStringThenBytes, arg string) (Bytes, error) {
 	ch := __.pool.GetChReturnOfBytes()
 	defer __.pool.PutChReturnOfBytes(ch)
 
@@ -945,9 +941,9 @@ func (__ *ApiDecouplerOfStringThenBytes) DoOfStringThenBytes(ctx context.Context
 
 type WorkHandlerOfStringThenBytes = func(ctx context.Context, arg string) (Bytes, error)
 
-type CallerOfStringThenBytes interface {
-	Call(ctx context.Context, arg string) (Bytes, error)
-}
+// type CallerOfStringThenBytes interface {
+// Call(ctx context.Context, arg String) (Bytes, error)
+// }
 
 type WorkerOfStringThenBytes struct {
 	api_syncer *ApiDecouplerOfStringThenBytes
@@ -1000,7 +996,7 @@ func NewWorkerOfStringThenBytes(ctx context.Context, h WorkHandlerOfStringThenBy
 				break loop
 			case req := <-__.req_ch:
 				__.threads.Add(1)
-				go __.api_syncer.HandleOfStringThenBytes(req.Context, req.WorkOfStringThenBytes, __.handler, func() {
+				go __.api_syncer.Handle(req.Context, req.WorkOfStringThenBytes, __.handler, func() {
 					__.pool.Put(req)
 					__.threads.Done()
 				})
@@ -1059,7 +1055,7 @@ func (__ *WorkerOfStringThenBytes) Reset(ctx context.Context) <-chan error {
 }
 
 func (__ *WorkerOfStringThenBytes) Call(ctx context.Context, arg string) (Bytes, error) {
-	return __.api_syncer.DoOfStringThenBytes(ctx, __, arg)
+	return __.api_syncer.Call(ctx, __, arg)
 }
 
 type PoolOfStringThenString interface {
@@ -1166,7 +1162,7 @@ func (__ *ApiDecouplerOfStringThenString) ReturnError(rtn_ch chan<- *ReturnOfStr
 	rtn_ch <- rtn
 }
 
-func (__ *ApiDecouplerOfStringThenString) HandleOfStringThenString(ctx context.Context, req *WorkOfStringThenString, h func(ctx context.Context, arg string) (string, error), defered func()) {
+func (__ *ApiDecouplerOfStringThenString) Handle(ctx context.Context, req *WorkOfStringThenString, h func(ctx context.Context, arg string) (string, error), defered func()) {
 	defer defered()
 
 	rtn := __.pool.GetReturnOfString()
@@ -1183,8 +1179,7 @@ func (__ *ApiDecouplerOfStringThenString) HandleOfStringThenString(ctx context.C
 	req.ReturnCh <- rtn
 }
 
-func (__ *ApiDecouplerOfStringThenString) DoOfStringThenString(ctx context.Context, worker WorkerOfPushStringThenString, arg string) (string, error) {
-	// ch := make(chan *ReturnOfString, 1)
+func (__ *ApiDecouplerOfStringThenString) Call(ctx context.Context, worker WorkerOfPushStringThenString, arg string) (string, error) {
 	ch := __.pool.GetChReturnOfString()
 	defer __.pool.PutChReturnOfString(ch)
 
@@ -1208,9 +1203,9 @@ func (__ *ApiDecouplerOfStringThenString) DoOfStringThenString(ctx context.Conte
 
 type WorkHandlerOfStringThenString = func(ctx context.Context, arg string) (string, error)
 
-type CallerOfStringThenString interface {
-	Call(ctx context.Context, arg string) (string, error)
-}
+// type CallerOfStringThenString interface {
+// Call(ctx context.Context, arg String) (String, error)
+// }
 
 type WorkerOfStringThenString struct {
 	api_syncer *ApiDecouplerOfStringThenString
@@ -1263,7 +1258,7 @@ func NewWorkerOfStringThenString(ctx context.Context, h WorkHandlerOfStringThenS
 				break loop
 			case req := <-__.req_ch:
 				__.threads.Add(1)
-				go __.api_syncer.HandleOfStringThenString(req.Context, req.WorkOfStringThenString, __.handler, func() {
+				go __.api_syncer.Handle(req.Context, req.WorkOfStringThenString, __.handler, func() {
 					__.pool.Put(req)
 					__.threads.Done()
 				})
@@ -1322,7 +1317,7 @@ func (__ *WorkerOfStringThenString) Reset(ctx context.Context) <-chan error {
 }
 
 func (__ *WorkerOfStringThenString) Call(ctx context.Context, arg string) (string, error) {
-	return __.api_syncer.DoOfStringThenString(ctx, __, arg)
+	return __.api_syncer.Call(ctx, __, arg)
 }
 
 type PoolOfStringThenInterface interface {
@@ -1429,7 +1424,7 @@ func (__ *ApiDecouplerOfStringThenInterface) ReturnError(rtn_ch chan<- *ReturnOf
 	rtn_ch <- rtn
 }
 
-func (__ *ApiDecouplerOfStringThenInterface) HandleOfStringThenInterface(ctx context.Context, req *WorkOfStringThenInterface, h func(ctx context.Context, arg string) (interface{}, error), defered func()) {
+func (__ *ApiDecouplerOfStringThenInterface) Handle(ctx context.Context, req *WorkOfStringThenInterface, h func(ctx context.Context, arg string) (interface{}, error), defered func()) {
 	defer defered()
 
 	rtn := __.pool.GetReturnOfInterface()
@@ -1446,8 +1441,7 @@ func (__ *ApiDecouplerOfStringThenInterface) HandleOfStringThenInterface(ctx con
 	req.ReturnCh <- rtn
 }
 
-func (__ *ApiDecouplerOfStringThenInterface) DoOfStringThenInterface(ctx context.Context, worker WorkerOfPushStringThenInterface, arg string) (interface{}, error) {
-	// ch := make(chan *ReturnOfInterface, 1)
+func (__ *ApiDecouplerOfStringThenInterface) Call(ctx context.Context, worker WorkerOfPushStringThenInterface, arg string) (interface{}, error) {
 	ch := __.pool.GetChReturnOfInterface()
 	defer __.pool.PutChReturnOfInterface(ch)
 
@@ -1471,9 +1465,9 @@ func (__ *ApiDecouplerOfStringThenInterface) DoOfStringThenInterface(ctx context
 
 type WorkHandlerOfStringThenInterface = func(ctx context.Context, arg string) (interface{}, error)
 
-type CallerOfStringThenInterface interface {
-	Call(ctx context.Context, arg string) (interface{}, error)
-}
+// type CallerOfStringThenInterface interface {
+// Call(ctx context.Context, arg String) (Interface, error)
+// }
 
 type WorkerOfStringThenInterface struct {
 	api_syncer *ApiDecouplerOfStringThenInterface
@@ -1526,7 +1520,7 @@ func NewWorkerOfStringThenInterface(ctx context.Context, h WorkHandlerOfStringTh
 				break loop
 			case req := <-__.req_ch:
 				__.threads.Add(1)
-				go __.api_syncer.HandleOfStringThenInterface(req.Context, req.WorkOfStringThenInterface, __.handler, func() {
+				go __.api_syncer.Handle(req.Context, req.WorkOfStringThenInterface, __.handler, func() {
 					__.pool.Put(req)
 					__.threads.Done()
 				})
@@ -1585,7 +1579,7 @@ func (__ *WorkerOfStringThenInterface) Reset(ctx context.Context) <-chan error {
 }
 
 func (__ *WorkerOfStringThenInterface) Call(ctx context.Context, arg string) (interface{}, error) {
-	return __.api_syncer.DoOfStringThenInterface(ctx, __, arg)
+	return __.api_syncer.Call(ctx, __, arg)
 }
 
 type PoolOfInterfaceThenBytes interface {
@@ -1692,7 +1686,7 @@ func (__ *ApiDecouplerOfInterfaceThenBytes) ReturnError(rtn_ch chan<- *ReturnOfB
 	rtn_ch <- rtn
 }
 
-func (__ *ApiDecouplerOfInterfaceThenBytes) HandleOfInterfaceThenBytes(ctx context.Context, req *WorkOfInterfaceThenBytes, h func(ctx context.Context, arg interface{}) (Bytes, error), defered func()) {
+func (__ *ApiDecouplerOfInterfaceThenBytes) Handle(ctx context.Context, req *WorkOfInterfaceThenBytes, h func(ctx context.Context, arg interface{}) (Bytes, error), defered func()) {
 	defer defered()
 
 	rtn := __.pool.GetReturnOfBytes()
@@ -1709,8 +1703,7 @@ func (__ *ApiDecouplerOfInterfaceThenBytes) HandleOfInterfaceThenBytes(ctx conte
 	req.ReturnCh <- rtn
 }
 
-func (__ *ApiDecouplerOfInterfaceThenBytes) DoOfInterfaceThenBytes(ctx context.Context, worker WorkerOfPushInterfaceThenBytes, arg interface{}) (Bytes, error) {
-	// ch := make(chan *ReturnOfBytes, 1)
+func (__ *ApiDecouplerOfInterfaceThenBytes) Call(ctx context.Context, worker WorkerOfPushInterfaceThenBytes, arg interface{}) (Bytes, error) {
 	ch := __.pool.GetChReturnOfBytes()
 	defer __.pool.PutChReturnOfBytes(ch)
 
@@ -1734,9 +1727,9 @@ func (__ *ApiDecouplerOfInterfaceThenBytes) DoOfInterfaceThenBytes(ctx context.C
 
 type WorkHandlerOfInterfaceThenBytes = func(ctx context.Context, arg interface{}) (Bytes, error)
 
-type CallerOfInterfaceThenBytes interface {
-	Call(ctx context.Context, arg interface{}) (Bytes, error)
-}
+// type CallerOfInterfaceThenBytes interface {
+// Call(ctx context.Context, arg Interface) (Bytes, error)
+// }
 
 type WorkerOfInterfaceThenBytes struct {
 	api_syncer *ApiDecouplerOfInterfaceThenBytes
@@ -1789,7 +1782,7 @@ func NewWorkerOfInterfaceThenBytes(ctx context.Context, h WorkHandlerOfInterface
 				break loop
 			case req := <-__.req_ch:
 				__.threads.Add(1)
-				go __.api_syncer.HandleOfInterfaceThenBytes(req.Context, req.WorkOfInterfaceThenBytes, __.handler, func() {
+				go __.api_syncer.Handle(req.Context, req.WorkOfInterfaceThenBytes, __.handler, func() {
 					__.pool.Put(req)
 					__.threads.Done()
 				})
@@ -1848,7 +1841,7 @@ func (__ *WorkerOfInterfaceThenBytes) Reset(ctx context.Context) <-chan error {
 }
 
 func (__ *WorkerOfInterfaceThenBytes) Call(ctx context.Context, arg interface{}) (Bytes, error) {
-	return __.api_syncer.DoOfInterfaceThenBytes(ctx, __, arg)
+	return __.api_syncer.Call(ctx, __, arg)
 }
 
 type PoolOfInterfaceThenString interface {
@@ -1955,7 +1948,7 @@ func (__ *ApiDecouplerOfInterfaceThenString) ReturnError(rtn_ch chan<- *ReturnOf
 	rtn_ch <- rtn
 }
 
-func (__ *ApiDecouplerOfInterfaceThenString) HandleOfInterfaceThenString(ctx context.Context, req *WorkOfInterfaceThenString, h func(ctx context.Context, arg interface{}) (string, error), defered func()) {
+func (__ *ApiDecouplerOfInterfaceThenString) Handle(ctx context.Context, req *WorkOfInterfaceThenString, h func(ctx context.Context, arg interface{}) (string, error), defered func()) {
 	defer defered()
 
 	rtn := __.pool.GetReturnOfString()
@@ -1972,8 +1965,7 @@ func (__ *ApiDecouplerOfInterfaceThenString) HandleOfInterfaceThenString(ctx con
 	req.ReturnCh <- rtn
 }
 
-func (__ *ApiDecouplerOfInterfaceThenString) DoOfInterfaceThenString(ctx context.Context, worker WorkerOfPushInterfaceThenString, arg interface{}) (string, error) {
-	// ch := make(chan *ReturnOfString, 1)
+func (__ *ApiDecouplerOfInterfaceThenString) Call(ctx context.Context, worker WorkerOfPushInterfaceThenString, arg interface{}) (string, error) {
 	ch := __.pool.GetChReturnOfString()
 	defer __.pool.PutChReturnOfString(ch)
 
@@ -1997,9 +1989,9 @@ func (__ *ApiDecouplerOfInterfaceThenString) DoOfInterfaceThenString(ctx context
 
 type WorkHandlerOfInterfaceThenString = func(ctx context.Context, arg interface{}) (string, error)
 
-type CallerOfInterfaceThenString interface {
-	Call(ctx context.Context, arg interface{}) (string, error)
-}
+// type CallerOfInterfaceThenString interface {
+// Call(ctx context.Context, arg Interface) (String, error)
+// }
 
 type WorkerOfInterfaceThenString struct {
 	api_syncer *ApiDecouplerOfInterfaceThenString
@@ -2052,7 +2044,7 @@ func NewWorkerOfInterfaceThenString(ctx context.Context, h WorkHandlerOfInterfac
 				break loop
 			case req := <-__.req_ch:
 				__.threads.Add(1)
-				go __.api_syncer.HandleOfInterfaceThenString(req.Context, req.WorkOfInterfaceThenString, __.handler, func() {
+				go __.api_syncer.Handle(req.Context, req.WorkOfInterfaceThenString, __.handler, func() {
 					__.pool.Put(req)
 					__.threads.Done()
 				})
@@ -2111,7 +2103,7 @@ func (__ *WorkerOfInterfaceThenString) Reset(ctx context.Context) <-chan error {
 }
 
 func (__ *WorkerOfInterfaceThenString) Call(ctx context.Context, arg interface{}) (string, error) {
-	return __.api_syncer.DoOfInterfaceThenString(ctx, __, arg)
+	return __.api_syncer.Call(ctx, __, arg)
 }
 
 type PoolOfInterfaceThenInterface interface {
@@ -2218,7 +2210,7 @@ func (__ *ApiDecouplerOfInterfaceThenInterface) ReturnError(rtn_ch chan<- *Retur
 	rtn_ch <- rtn
 }
 
-func (__ *ApiDecouplerOfInterfaceThenInterface) HandleOfInterfaceThenInterface(ctx context.Context, req *WorkOfInterfaceThenInterface, h func(ctx context.Context, arg interface{}) (interface{}, error), defered func()) {
+func (__ *ApiDecouplerOfInterfaceThenInterface) Handle(ctx context.Context, req *WorkOfInterfaceThenInterface, h func(ctx context.Context, arg interface{}) (interface{}, error), defered func()) {
 	defer defered()
 
 	rtn := __.pool.GetReturnOfInterface()
@@ -2235,8 +2227,7 @@ func (__ *ApiDecouplerOfInterfaceThenInterface) HandleOfInterfaceThenInterface(c
 	req.ReturnCh <- rtn
 }
 
-func (__ *ApiDecouplerOfInterfaceThenInterface) DoOfInterfaceThenInterface(ctx context.Context, worker WorkerOfPushInterfaceThenInterface, arg interface{}) (interface{}, error) {
-	// ch := make(chan *ReturnOfInterface, 1)
+func (__ *ApiDecouplerOfInterfaceThenInterface) Call(ctx context.Context, worker WorkerOfPushInterfaceThenInterface, arg interface{}) (interface{}, error) {
 	ch := __.pool.GetChReturnOfInterface()
 	defer __.pool.PutChReturnOfInterface(ch)
 
@@ -2260,9 +2251,9 @@ func (__ *ApiDecouplerOfInterfaceThenInterface) DoOfInterfaceThenInterface(ctx c
 
 type WorkHandlerOfInterfaceThenInterface = func(ctx context.Context, arg interface{}) (interface{}, error)
 
-type CallerOfInterfaceThenInterface interface {
-	Call(ctx context.Context, arg interface{}) (interface{}, error)
-}
+// type CallerOfInterfaceThenInterface interface {
+// Call(ctx context.Context, arg Interface) (Interface, error)
+// }
 
 type WorkerOfInterfaceThenInterface struct {
 	api_syncer *ApiDecouplerOfInterfaceThenInterface
@@ -2315,7 +2306,7 @@ func NewWorkerOfInterfaceThenInterface(ctx context.Context, h WorkHandlerOfInter
 				break loop
 			case req := <-__.req_ch:
 				__.threads.Add(1)
-				go __.api_syncer.HandleOfInterfaceThenInterface(req.Context, req.WorkOfInterfaceThenInterface, __.handler, func() {
+				go __.api_syncer.Handle(req.Context, req.WorkOfInterfaceThenInterface, __.handler, func() {
 					__.pool.Put(req)
 					__.threads.Done()
 				})
@@ -2374,5 +2365,5 @@ func (__ *WorkerOfInterfaceThenInterface) Reset(ctx context.Context) <-chan erro
 }
 
 func (__ *WorkerOfInterfaceThenInterface) Call(ctx context.Context, arg interface{}) (interface{}, error) {
-	return __.api_syncer.DoOfInterfaceThenInterface(ctx, __, arg)
+	return __.api_syncer.Call(ctx, __, arg)
 }
