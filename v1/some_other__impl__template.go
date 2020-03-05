@@ -50,8 +50,10 @@ func NewFuncWorkerOfSomeToOther(ctx context.Context, h func(context.Context, Som
 				go SomeToOther.CallAsAsync(work.Context, work.WorkOfSomeToOther.Value, work.WorkOfSomeToOther.ReturnCh, __.handler, func() {
 					__.threads.Done()
 				})
-				SomeToOther.PutWork(work.WorkOfSomeToOther)
-				SomeToOther.PutWorkContext(work)
+				SomeToOther.Pool.Work.Put(work.WorkOfSomeToOther)
+				SomeToOther.Pool.WorkContext.Put(work)
+				// SomeToOther.PutWork(work.WorkOfSomeToOther)
+				// SomeToOther.PutWorkContext(work)
 			case reset_done_ch := <-__.reset_ch:
 				__.reset_queue()
 				close(reset_done_ch)
@@ -65,7 +67,8 @@ func NewFuncWorkerOfSomeToOther(ctx context.Context, h func(context.Context, Som
 func (__ *FuncWorkerOfSomeToOther) reset_queue() {
 	for i := 0; i < len(__.work_ch); i += 1 {
 		req := <-__.work_ch
-		rtn := SomeToOther.GetReturn()
+		// rtn := SomeToOther.GetReturn()
+		rtn := Others.Pool.Return.Get()
 		rtn.Error = fmt.Errorf("canceled by reset")
 		req.ReturnCh <- rtn
 	}
@@ -75,7 +78,8 @@ func (__ *FuncWorkerOfSomeToOther) Push(ctx context.Context, value Some, returnC
 	__.threads.Add(1)
 	defer __.threads.Done()
 
-	work_ctx := SomeToOther.GetWorkContextWith(ctx, SomeToOther.GetWorkWith(value, returnCh))
+	// work_ctx := SomeToOther.GetWorkContextWith(ctx, SomeToOther.GetWorkWith(value, returnCh))
+	work_ctx := SomeToOther.Pool.WorkContext.GetWith(ctx, SomeToOther.Pool.Work.GetWith(value, returnCh))
 	__.work_ch <- work_ctx
 }
 

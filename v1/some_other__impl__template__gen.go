@@ -54,8 +54,10 @@ func NewFuncWorkerOfBytesToBytes(ctx context.Context, h func(context.Context, By
 				go BytesToBytes.CallAsAsync(work.Context, work.WorkOfBytesToBytes.Value, work.WorkOfBytesToBytes.ReturnCh, __.handler, func() {
 					__.threads.Done()
 				})
-				BytesToBytes.PutWork(work.WorkOfBytesToBytes)
-				BytesToBytes.PutWorkContext(work)
+				BytesToBytes.Pool.Work.Put(work.WorkOfBytesToBytes)
+				BytesToBytes.Pool.WorkContext.Put(work)
+				// BytesToBytes.PutWork(work.WorkOfBytesToBytes)
+				// BytesToBytes.PutWorkContext(work)
 			case reset_done_ch := <-__.reset_ch:
 				__.reset_queue()
 				close(reset_done_ch)
@@ -69,7 +71,8 @@ func NewFuncWorkerOfBytesToBytes(ctx context.Context, h func(context.Context, By
 func (__ *FuncWorkerOfBytesToBytes) reset_queue() {
 	for i := 0; i < len(__.work_ch); i += 1 {
 		req := <-__.work_ch
-		rtn := BytesToBytes.GetReturn()
+		// rtn := BytesToBytes.GetReturn()
+		rtn := Bytess.Pool.Return.Get()
 		rtn.Error = fmt.Errorf("canceled by reset")
 		req.ReturnCh <- rtn
 	}
@@ -79,7 +82,8 @@ func (__ *FuncWorkerOfBytesToBytes) Push(ctx context.Context, value Bytes, retur
 	__.threads.Add(1)
 	defer __.threads.Done()
 
-	work_ctx := BytesToBytes.GetWorkContextWith(ctx, BytesToBytes.GetWorkWith(value, returnCh))
+	// work_ctx := BytesToBytes.GetWorkContextWith(ctx, BytesToBytes.GetWorkWith(value, returnCh))
+	work_ctx := BytesToBytes.Pool.WorkContext.GetWith(ctx, BytesToBytes.Pool.Work.GetWith(value, returnCh))
 	__.work_ch <- work_ctx
 }
 
@@ -147,8 +151,10 @@ func NewFuncWorkerOfBytesToString(ctx context.Context, h func(context.Context, B
 				go BytesToString.CallAsAsync(work.Context, work.WorkOfBytesToString.Value, work.WorkOfBytesToString.ReturnCh, __.handler, func() {
 					__.threads.Done()
 				})
-				BytesToString.PutWork(work.WorkOfBytesToString)
-				BytesToString.PutWorkContext(work)
+				BytesToString.Pool.Work.Put(work.WorkOfBytesToString)
+				BytesToString.Pool.WorkContext.Put(work)
+				// BytesToString.PutWork(work.WorkOfBytesToString)
+				// BytesToString.PutWorkContext(work)
 			case reset_done_ch := <-__.reset_ch:
 				__.reset_queue()
 				close(reset_done_ch)
@@ -162,7 +168,8 @@ func NewFuncWorkerOfBytesToString(ctx context.Context, h func(context.Context, B
 func (__ *FuncWorkerOfBytesToString) reset_queue() {
 	for i := 0; i < len(__.work_ch); i += 1 {
 		req := <-__.work_ch
-		rtn := BytesToString.GetReturn()
+		// rtn := BytesToString.GetReturn()
+		rtn := Strings.Pool.Return.Get()
 		rtn.Error = fmt.Errorf("canceled by reset")
 		req.ReturnCh <- rtn
 	}
@@ -172,7 +179,8 @@ func (__ *FuncWorkerOfBytesToString) Push(ctx context.Context, value Bytes, retu
 	__.threads.Add(1)
 	defer __.threads.Done()
 
-	work_ctx := BytesToString.GetWorkContextWith(ctx, BytesToString.GetWorkWith(value, returnCh))
+	// work_ctx := BytesToString.GetWorkContextWith(ctx, BytesToString.GetWorkWith(value, returnCh))
+	work_ctx := BytesToString.Pool.WorkContext.GetWith(ctx, BytesToString.Pool.Work.GetWith(value, returnCh))
 	__.work_ch <- work_ctx
 }
 
@@ -240,8 +248,10 @@ func NewFuncWorkerOfBytesToInterface(ctx context.Context, h func(context.Context
 				go BytesToInterface.CallAsAsync(work.Context, work.WorkOfBytesToInterface.Value, work.WorkOfBytesToInterface.ReturnCh, __.handler, func() {
 					__.threads.Done()
 				})
-				BytesToInterface.PutWork(work.WorkOfBytesToInterface)
-				BytesToInterface.PutWorkContext(work)
+				BytesToInterface.Pool.Work.Put(work.WorkOfBytesToInterface)
+				BytesToInterface.Pool.WorkContext.Put(work)
+				// BytesToInterface.PutWork(work.WorkOfBytesToInterface)
+				// BytesToInterface.PutWorkContext(work)
 			case reset_done_ch := <-__.reset_ch:
 				__.reset_queue()
 				close(reset_done_ch)
@@ -255,7 +265,8 @@ func NewFuncWorkerOfBytesToInterface(ctx context.Context, h func(context.Context
 func (__ *FuncWorkerOfBytesToInterface) reset_queue() {
 	for i := 0; i < len(__.work_ch); i += 1 {
 		req := <-__.work_ch
-		rtn := BytesToInterface.GetReturn()
+		// rtn := BytesToInterface.GetReturn()
+		rtn := Interfaces.Pool.Return.Get()
 		rtn.Error = fmt.Errorf("canceled by reset")
 		req.ReturnCh <- rtn
 	}
@@ -265,7 +276,8 @@ func (__ *FuncWorkerOfBytesToInterface) Push(ctx context.Context, value Bytes, r
 	__.threads.Add(1)
 	defer __.threads.Done()
 
-	work_ctx := BytesToInterface.GetWorkContextWith(ctx, BytesToInterface.GetWorkWith(value, returnCh))
+	// work_ctx := BytesToInterface.GetWorkContextWith(ctx, BytesToInterface.GetWorkWith(value, returnCh))
+	work_ctx := BytesToInterface.Pool.WorkContext.GetWith(ctx, BytesToInterface.Pool.Work.GetWith(value, returnCh))
 	__.work_ch <- work_ctx
 }
 
@@ -333,8 +345,10 @@ func NewFuncWorkerOfStringToBytes(ctx context.Context, h func(context.Context, s
 				go StringToBytes.CallAsAsync(work.Context, work.WorkOfStringToBytes.Value, work.WorkOfStringToBytes.ReturnCh, __.handler, func() {
 					__.threads.Done()
 				})
-				StringToBytes.PutWork(work.WorkOfStringToBytes)
-				StringToBytes.PutWorkContext(work)
+				StringToBytes.Pool.Work.Put(work.WorkOfStringToBytes)
+				StringToBytes.Pool.WorkContext.Put(work)
+				// StringToBytes.PutWork(work.WorkOfStringToBytes)
+				// StringToBytes.PutWorkContext(work)
 			case reset_done_ch := <-__.reset_ch:
 				__.reset_queue()
 				close(reset_done_ch)
@@ -348,7 +362,8 @@ func NewFuncWorkerOfStringToBytes(ctx context.Context, h func(context.Context, s
 func (__ *FuncWorkerOfStringToBytes) reset_queue() {
 	for i := 0; i < len(__.work_ch); i += 1 {
 		req := <-__.work_ch
-		rtn := StringToBytes.GetReturn()
+		// rtn := StringToBytes.GetReturn()
+		rtn := Bytess.Pool.Return.Get()
 		rtn.Error = fmt.Errorf("canceled by reset")
 		req.ReturnCh <- rtn
 	}
@@ -358,7 +373,8 @@ func (__ *FuncWorkerOfStringToBytes) Push(ctx context.Context, value string, ret
 	__.threads.Add(1)
 	defer __.threads.Done()
 
-	work_ctx := StringToBytes.GetWorkContextWith(ctx, StringToBytes.GetWorkWith(value, returnCh))
+	// work_ctx := StringToBytes.GetWorkContextWith(ctx, StringToBytes.GetWorkWith(value, returnCh))
+	work_ctx := StringToBytes.Pool.WorkContext.GetWith(ctx, StringToBytes.Pool.Work.GetWith(value, returnCh))
 	__.work_ch <- work_ctx
 }
 
@@ -426,8 +442,10 @@ func NewFuncWorkerOfStringToString(ctx context.Context, h func(context.Context, 
 				go StringToString.CallAsAsync(work.Context, work.WorkOfStringToString.Value, work.WorkOfStringToString.ReturnCh, __.handler, func() {
 					__.threads.Done()
 				})
-				StringToString.PutWork(work.WorkOfStringToString)
-				StringToString.PutWorkContext(work)
+				StringToString.Pool.Work.Put(work.WorkOfStringToString)
+				StringToString.Pool.WorkContext.Put(work)
+				// StringToString.PutWork(work.WorkOfStringToString)
+				// StringToString.PutWorkContext(work)
 			case reset_done_ch := <-__.reset_ch:
 				__.reset_queue()
 				close(reset_done_ch)
@@ -441,7 +459,8 @@ func NewFuncWorkerOfStringToString(ctx context.Context, h func(context.Context, 
 func (__ *FuncWorkerOfStringToString) reset_queue() {
 	for i := 0; i < len(__.work_ch); i += 1 {
 		req := <-__.work_ch
-		rtn := StringToString.GetReturn()
+		// rtn := StringToString.GetReturn()
+		rtn := Strings.Pool.Return.Get()
 		rtn.Error = fmt.Errorf("canceled by reset")
 		req.ReturnCh <- rtn
 	}
@@ -451,7 +470,8 @@ func (__ *FuncWorkerOfStringToString) Push(ctx context.Context, value string, re
 	__.threads.Add(1)
 	defer __.threads.Done()
 
-	work_ctx := StringToString.GetWorkContextWith(ctx, StringToString.GetWorkWith(value, returnCh))
+	// work_ctx := StringToString.GetWorkContextWith(ctx, StringToString.GetWorkWith(value, returnCh))
+	work_ctx := StringToString.Pool.WorkContext.GetWith(ctx, StringToString.Pool.Work.GetWith(value, returnCh))
 	__.work_ch <- work_ctx
 }
 
@@ -519,8 +539,10 @@ func NewFuncWorkerOfStringToInterface(ctx context.Context, h func(context.Contex
 				go StringToInterface.CallAsAsync(work.Context, work.WorkOfStringToInterface.Value, work.WorkOfStringToInterface.ReturnCh, __.handler, func() {
 					__.threads.Done()
 				})
-				StringToInterface.PutWork(work.WorkOfStringToInterface)
-				StringToInterface.PutWorkContext(work)
+				StringToInterface.Pool.Work.Put(work.WorkOfStringToInterface)
+				StringToInterface.Pool.WorkContext.Put(work)
+				// StringToInterface.PutWork(work.WorkOfStringToInterface)
+				// StringToInterface.PutWorkContext(work)
 			case reset_done_ch := <-__.reset_ch:
 				__.reset_queue()
 				close(reset_done_ch)
@@ -534,7 +556,8 @@ func NewFuncWorkerOfStringToInterface(ctx context.Context, h func(context.Contex
 func (__ *FuncWorkerOfStringToInterface) reset_queue() {
 	for i := 0; i < len(__.work_ch); i += 1 {
 		req := <-__.work_ch
-		rtn := StringToInterface.GetReturn()
+		// rtn := StringToInterface.GetReturn()
+		rtn := Interfaces.Pool.Return.Get()
 		rtn.Error = fmt.Errorf("canceled by reset")
 		req.ReturnCh <- rtn
 	}
@@ -544,7 +567,8 @@ func (__ *FuncWorkerOfStringToInterface) Push(ctx context.Context, value string,
 	__.threads.Add(1)
 	defer __.threads.Done()
 
-	work_ctx := StringToInterface.GetWorkContextWith(ctx, StringToInterface.GetWorkWith(value, returnCh))
+	// work_ctx := StringToInterface.GetWorkContextWith(ctx, StringToInterface.GetWorkWith(value, returnCh))
+	work_ctx := StringToInterface.Pool.WorkContext.GetWith(ctx, StringToInterface.Pool.Work.GetWith(value, returnCh))
 	__.work_ch <- work_ctx
 }
 
@@ -612,8 +636,10 @@ func NewFuncWorkerOfInterfaceToBytes(ctx context.Context, h func(context.Context
 				go InterfaceToBytes.CallAsAsync(work.Context, work.WorkOfInterfaceToBytes.Value, work.WorkOfInterfaceToBytes.ReturnCh, __.handler, func() {
 					__.threads.Done()
 				})
-				InterfaceToBytes.PutWork(work.WorkOfInterfaceToBytes)
-				InterfaceToBytes.PutWorkContext(work)
+				InterfaceToBytes.Pool.Work.Put(work.WorkOfInterfaceToBytes)
+				InterfaceToBytes.Pool.WorkContext.Put(work)
+				// InterfaceToBytes.PutWork(work.WorkOfInterfaceToBytes)
+				// InterfaceToBytes.PutWorkContext(work)
 			case reset_done_ch := <-__.reset_ch:
 				__.reset_queue()
 				close(reset_done_ch)
@@ -627,7 +653,8 @@ func NewFuncWorkerOfInterfaceToBytes(ctx context.Context, h func(context.Context
 func (__ *FuncWorkerOfInterfaceToBytes) reset_queue() {
 	for i := 0; i < len(__.work_ch); i += 1 {
 		req := <-__.work_ch
-		rtn := InterfaceToBytes.GetReturn()
+		// rtn := InterfaceToBytes.GetReturn()
+		rtn := Bytess.Pool.Return.Get()
 		rtn.Error = fmt.Errorf("canceled by reset")
 		req.ReturnCh <- rtn
 	}
@@ -637,7 +664,8 @@ func (__ *FuncWorkerOfInterfaceToBytes) Push(ctx context.Context, value interfac
 	__.threads.Add(1)
 	defer __.threads.Done()
 
-	work_ctx := InterfaceToBytes.GetWorkContextWith(ctx, InterfaceToBytes.GetWorkWith(value, returnCh))
+	// work_ctx := InterfaceToBytes.GetWorkContextWith(ctx, InterfaceToBytes.GetWorkWith(value, returnCh))
+	work_ctx := InterfaceToBytes.Pool.WorkContext.GetWith(ctx, InterfaceToBytes.Pool.Work.GetWith(value, returnCh))
 	__.work_ch <- work_ctx
 }
 
@@ -705,8 +733,10 @@ func NewFuncWorkerOfInterfaceToString(ctx context.Context, h func(context.Contex
 				go InterfaceToString.CallAsAsync(work.Context, work.WorkOfInterfaceToString.Value, work.WorkOfInterfaceToString.ReturnCh, __.handler, func() {
 					__.threads.Done()
 				})
-				InterfaceToString.PutWork(work.WorkOfInterfaceToString)
-				InterfaceToString.PutWorkContext(work)
+				InterfaceToString.Pool.Work.Put(work.WorkOfInterfaceToString)
+				InterfaceToString.Pool.WorkContext.Put(work)
+				// InterfaceToString.PutWork(work.WorkOfInterfaceToString)
+				// InterfaceToString.PutWorkContext(work)
 			case reset_done_ch := <-__.reset_ch:
 				__.reset_queue()
 				close(reset_done_ch)
@@ -720,7 +750,8 @@ func NewFuncWorkerOfInterfaceToString(ctx context.Context, h func(context.Contex
 func (__ *FuncWorkerOfInterfaceToString) reset_queue() {
 	for i := 0; i < len(__.work_ch); i += 1 {
 		req := <-__.work_ch
-		rtn := InterfaceToString.GetReturn()
+		// rtn := InterfaceToString.GetReturn()
+		rtn := Strings.Pool.Return.Get()
 		rtn.Error = fmt.Errorf("canceled by reset")
 		req.ReturnCh <- rtn
 	}
@@ -730,7 +761,8 @@ func (__ *FuncWorkerOfInterfaceToString) Push(ctx context.Context, value interfa
 	__.threads.Add(1)
 	defer __.threads.Done()
 
-	work_ctx := InterfaceToString.GetWorkContextWith(ctx, InterfaceToString.GetWorkWith(value, returnCh))
+	// work_ctx := InterfaceToString.GetWorkContextWith(ctx, InterfaceToString.GetWorkWith(value, returnCh))
+	work_ctx := InterfaceToString.Pool.WorkContext.GetWith(ctx, InterfaceToString.Pool.Work.GetWith(value, returnCh))
 	__.work_ch <- work_ctx
 }
 
@@ -798,8 +830,10 @@ func NewFuncWorkerOfInterfaceToInterface(ctx context.Context, h func(context.Con
 				go InterfaceToInterface.CallAsAsync(work.Context, work.WorkOfInterfaceToInterface.Value, work.WorkOfInterfaceToInterface.ReturnCh, __.handler, func() {
 					__.threads.Done()
 				})
-				InterfaceToInterface.PutWork(work.WorkOfInterfaceToInterface)
-				InterfaceToInterface.PutWorkContext(work)
+				InterfaceToInterface.Pool.Work.Put(work.WorkOfInterfaceToInterface)
+				InterfaceToInterface.Pool.WorkContext.Put(work)
+				// InterfaceToInterface.PutWork(work.WorkOfInterfaceToInterface)
+				// InterfaceToInterface.PutWorkContext(work)
 			case reset_done_ch := <-__.reset_ch:
 				__.reset_queue()
 				close(reset_done_ch)
@@ -813,7 +847,8 @@ func NewFuncWorkerOfInterfaceToInterface(ctx context.Context, h func(context.Con
 func (__ *FuncWorkerOfInterfaceToInterface) reset_queue() {
 	for i := 0; i < len(__.work_ch); i += 1 {
 		req := <-__.work_ch
-		rtn := InterfaceToInterface.GetReturn()
+		// rtn := InterfaceToInterface.GetReturn()
+		rtn := Interfaces.Pool.Return.Get()
 		rtn.Error = fmt.Errorf("canceled by reset")
 		req.ReturnCh <- rtn
 	}
@@ -823,7 +858,8 @@ func (__ *FuncWorkerOfInterfaceToInterface) Push(ctx context.Context, value inte
 	__.threads.Add(1)
 	defer __.threads.Done()
 
-	work_ctx := InterfaceToInterface.GetWorkContextWith(ctx, InterfaceToInterface.GetWorkWith(value, returnCh))
+	// work_ctx := InterfaceToInterface.GetWorkContextWith(ctx, InterfaceToInterface.GetWorkWith(value, returnCh))
+	work_ctx := InterfaceToInterface.Pool.WorkContext.GetWith(ctx, InterfaceToInterface.Pool.Work.GetWith(value, returnCh))
 	__.work_ch <- work_ctx
 }
 

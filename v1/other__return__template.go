@@ -30,40 +30,56 @@ var (
 	}
 )
 
-func getReturnOfOther() *ReturnOfOther {
+type pool_ReturnOfOther struct{}
+
+func (_ pool_ReturnOfOther) Get() *ReturnOfOther {
 	return pool_of_ReturnOfOther.Get().(*ReturnOfOther)
 }
-func putReturnOfOther(d *ReturnOfOther) {
+func (_ pool_ReturnOfOther) Put(d *ReturnOfOther) {
 	d.Context = nil
 	d.Value = zero_of_ReturnOfOther_value
 	d.Error = nil
 	pool_of_ReturnOfOther.Put(d)
 }
 
-func getReturnChOfOther() chan *ReturnOfOther {
+func (__ pool_ReturnOfOther) GetWith(ctx context.Context, value Other, err error) *ReturnOfOther {
+	rtn := __.Get()
+	rtn.Context = ctx
+	rtn.Value = value
+	rtn.Error = err
+	return rtn
+}
+
+// var ReturnOfOtherPool = pool_ReturnOfOther{}
+
+type pool_ChanReturnOfOther struct{}
+
+func (_ pool_ChanReturnOfOther) Get() chan *ReturnOfOther {
 	return pool_of_ReturnOfOther_ch.Get().(chan *ReturnOfOther)
 }
-func putReturnChOfOther(d chan *ReturnOfOther) {
+func (_ pool_ChanReturnOfOther) Put(d chan *ReturnOfOther) {
 	pool_of_ReturnOfOther_ch.Put(d)
 }
 
-type StackOfReturnChOfOther struct {
+// var ChanReturnOfOtherPool = pool_ChanReturnOfOther{}
+
+type StackOfChanReturnOfOther struct {
 	chans []chan<- *ReturnOfOther
 	sync.Mutex
 }
 
-func NewStackOfReturnChOfOther(n int) *StackOfReturnChOfOther {
-	return &StackOfReturnChOfOther{
+func NewStackOfChanReturnOfOther(n int) *StackOfChanReturnOfOther {
+	return &StackOfChanReturnOfOther{
 		chans: make([]chan<- *ReturnOfOther, 0, n),
 	}
 }
 
-func (__ *StackOfReturnChOfOther) Push(ch chan<- *ReturnOfOther) {
+func (__ *StackOfChanReturnOfOther) Push(ch chan<- *ReturnOfOther) {
 	__.Lock()
 	__.chans = append(__.chans, ch)
 	__.Unlock()
 }
-func (__ *StackOfReturnChOfOther) Pop() chan<- *ReturnOfOther {
+func (__ *StackOfChanReturnOfOther) Pop() chan<- *ReturnOfOther {
 	var ch chan<- *ReturnOfOther
 	__.Lock()
 	defer __.Unlock()
@@ -75,7 +91,7 @@ func (__ *StackOfReturnChOfOther) Pop() chan<- *ReturnOfOther {
 	return ch
 }
 
-func (__ *StackOfReturnChOfOther) Top() chan<- *ReturnOfOther {
+func (__ *StackOfChanReturnOfOther) Top() chan<- *ReturnOfOther {
 	var ch chan<- *ReturnOfOther
 	__.Lock()
 	defer __.Unlock()
@@ -92,32 +108,72 @@ const (
 	async_key_for_Other_return_ch_stack async_key_for_Other = iota
 )
 
-func insertStackOfReturnChOfOther(ctx context.Context, n int) context.Context {
-	stack := NewStackOfReturnChOfOther(n)
+type chanReturnOfOther struct{}
+
+func (_ chanReturnOfOther) WithStack(ctx context.Context, n int) context.Context {
+	stack := NewStackOfChanReturnOfOther(n)
 	return context.WithValue(ctx, async_key_for_Other_return_ch_stack, stack)
 }
 
-func popReturnChOfOther(ctx Valuable) chan<- *ReturnOfOther {
-	stack, ok := ctx.Value(async_key_for_Other_return_ch_stack).(*StackOfReturnChOfOther)
+func (_ chanReturnOfOther) Pop(ctx Valuable) chan<- *ReturnOfOther {
+	stack, ok := ctx.Value(async_key_for_Other_return_ch_stack).(*StackOfChanReturnOfOther)
 	if !ok {
 		return nil
 	}
 	return stack.Pop()
 }
 
-func topReturnChOfOther(ctx Valuable) chan<- *ReturnOfOther {
-	stack, ok := ctx.Value(async_key_for_Other_return_ch_stack).(*StackOfReturnChOfOther)
+func (_ chanReturnOfOther) Top(ctx Valuable) chan<- *ReturnOfOther {
+	stack, ok := ctx.Value(async_key_for_Other_return_ch_stack).(*StackOfChanReturnOfOther)
 	if !ok {
 		return nil
 	}
 	return stack.Top()
 }
 
-func pushReturnChOfOther(ctx Valuable, ch chan<- *ReturnOfOther) bool {
-	stack, ok := ctx.Value(async_key_for_Other_return_ch_stack).(*StackOfReturnChOfOther)
+func (_ chanReturnOfOther) Push(ctx Valuable, ch chan<- *ReturnOfOther) bool {
+	stack, ok := ctx.Value(async_key_for_Other_return_ch_stack).(*StackOfChanReturnOfOther)
 	if !ok {
 		return false
 	}
 	stack.Push(ch)
 	return true
 }
+
+func (__ chanReturnOfOther) Notify(ctx Valuable, rtn *ReturnOfOther) bool {
+	ch := __.Top(ctx)
+	if ch == nil {
+		return false
+	}
+	ch <- rtn
+	return true
+}
+
+// func (__ _SomeToOther) WithReturnChStack(ctx context.Context, n int) context.Context {
+// 	return insertStackOfReturnChOfOther(ctx, n)
+// }
+
+// func (__ _SomeToOther) PopReturnCh(ctx Valuable) chan<- *ReturnOfOther {
+// 	return popReturnChOfOther(ctx)
+// }
+
+// func (__ _SomeToOther) TopReturnCh(ctx Valuable) chan<- *ReturnOfOther {
+// 	return topReturnChOfOther(ctx)
+// }
+
+// func (__ _SomeToOther) PushReturnCh(ctx Valuable, ch chan<- *ReturnOfOther) {
+// 	pushReturnChOfOther(ctx, ch)
+// }
+type _Other struct {
+	Pool struct {
+		Return     pool_ReturnOfOther
+		ChanReturn pool_ChanReturnOfOther
+	}
+	Context struct {
+		ChanReturn chanReturnOfOther
+	}
+}
+
+var Others = _Other{}
+
+// var ContextOfChanReturnOfOther = chanReturnOfOther{}

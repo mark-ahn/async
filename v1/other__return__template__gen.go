@@ -34,40 +34,56 @@ var (
 	}
 )
 
-func getReturnOfBytes() *ReturnOfBytes {
+type pool_ReturnOfBytes struct{}
+
+func (_ pool_ReturnOfBytes) Get() *ReturnOfBytes {
 	return pool_of_ReturnOfBytes.Get().(*ReturnOfBytes)
 }
-func putReturnOfBytes(d *ReturnOfBytes) {
+func (_ pool_ReturnOfBytes) Put(d *ReturnOfBytes) {
 	d.Context = nil
 	d.Value = zero_of_ReturnOfBytes_value
 	d.Error = nil
 	pool_of_ReturnOfBytes.Put(d)
 }
 
-func getReturnChOfBytes() chan *ReturnOfBytes {
+func (__ pool_ReturnOfBytes) GetWith(ctx context.Context, value Bytes, err error) *ReturnOfBytes {
+	rtn := __.Get()
+	rtn.Context = ctx
+	rtn.Value = value
+	rtn.Error = err
+	return rtn
+}
+
+// var ReturnOfBytesPool = pool_ReturnOfBytes{}
+
+type pool_ChanReturnOfBytes struct{}
+
+func (_ pool_ChanReturnOfBytes) Get() chan *ReturnOfBytes {
 	return pool_of_ReturnOfBytes_ch.Get().(chan *ReturnOfBytes)
 }
-func putReturnChOfBytes(d chan *ReturnOfBytes) {
+func (_ pool_ChanReturnOfBytes) Put(d chan *ReturnOfBytes) {
 	pool_of_ReturnOfBytes_ch.Put(d)
 }
 
-type StackOfReturnChOfBytes struct {
+// var ChanReturnOfBytesPool = pool_ChanReturnOfBytes{}
+
+type StackOfChanReturnOfBytes struct {
 	chans []chan<- *ReturnOfBytes
 	sync.Mutex
 }
 
-func NewStackOfReturnChOfBytes(n int) *StackOfReturnChOfBytes {
-	return &StackOfReturnChOfBytes{
+func NewStackOfChanReturnOfBytes(n int) *StackOfChanReturnOfBytes {
+	return &StackOfChanReturnOfBytes{
 		chans: make([]chan<- *ReturnOfBytes, 0, n),
 	}
 }
 
-func (__ *StackOfReturnChOfBytes) Push(ch chan<- *ReturnOfBytes) {
+func (__ *StackOfChanReturnOfBytes) Push(ch chan<- *ReturnOfBytes) {
 	__.Lock()
 	__.chans = append(__.chans, ch)
 	__.Unlock()
 }
-func (__ *StackOfReturnChOfBytes) Pop() chan<- *ReturnOfBytes {
+func (__ *StackOfChanReturnOfBytes) Pop() chan<- *ReturnOfBytes {
 	var ch chan<- *ReturnOfBytes
 	__.Lock()
 	defer __.Unlock()
@@ -79,7 +95,7 @@ func (__ *StackOfReturnChOfBytes) Pop() chan<- *ReturnOfBytes {
 	return ch
 }
 
-func (__ *StackOfReturnChOfBytes) Top() chan<- *ReturnOfBytes {
+func (__ *StackOfChanReturnOfBytes) Top() chan<- *ReturnOfBytes {
 	var ch chan<- *ReturnOfBytes
 	__.Lock()
 	defer __.Unlock()
@@ -96,35 +112,73 @@ const (
 	async_key_for_Bytes_return_ch_stack async_key_for_Bytes = iota
 )
 
-func insertStackOfReturnChOfBytes(ctx context.Context, n int) context.Context {
-	stack := NewStackOfReturnChOfBytes(n)
+type chanReturnOfBytes struct{}
+
+func (_ chanReturnOfBytes) WithStack(ctx context.Context, n int) context.Context {
+	stack := NewStackOfChanReturnOfBytes(n)
 	return context.WithValue(ctx, async_key_for_Bytes_return_ch_stack, stack)
 }
 
-func popReturnChOfBytes(ctx Valuable) chan<- *ReturnOfBytes {
-	stack, ok := ctx.Value(async_key_for_Bytes_return_ch_stack).(*StackOfReturnChOfBytes)
+func (_ chanReturnOfBytes) Pop(ctx Valuable) chan<- *ReturnOfBytes {
+	stack, ok := ctx.Value(async_key_for_Bytes_return_ch_stack).(*StackOfChanReturnOfBytes)
 	if !ok {
 		return nil
 	}
 	return stack.Pop()
 }
 
-func topReturnChOfBytes(ctx Valuable) chan<- *ReturnOfBytes {
-	stack, ok := ctx.Value(async_key_for_Bytes_return_ch_stack).(*StackOfReturnChOfBytes)
+func (_ chanReturnOfBytes) Top(ctx Valuable) chan<- *ReturnOfBytes {
+	stack, ok := ctx.Value(async_key_for_Bytes_return_ch_stack).(*StackOfChanReturnOfBytes)
 	if !ok {
 		return nil
 	}
 	return stack.Top()
 }
 
-func pushReturnChOfBytes(ctx Valuable, ch chan<- *ReturnOfBytes) bool {
-	stack, ok := ctx.Value(async_key_for_Bytes_return_ch_stack).(*StackOfReturnChOfBytes)
+func (_ chanReturnOfBytes) Push(ctx Valuable, ch chan<- *ReturnOfBytes) bool {
+	stack, ok := ctx.Value(async_key_for_Bytes_return_ch_stack).(*StackOfChanReturnOfBytes)
 	if !ok {
 		return false
 	}
 	stack.Push(ch)
 	return true
 }
+
+func (__ chanReturnOfBytes) Notify(ctx Valuable, rtn *ReturnOfBytes) bool {
+	ch := __.Top(ctx)
+	if ch == nil {
+		return false
+	}
+	ch <- rtn
+	return true
+}
+
+// func (__ _SomeToBytes) WithReturnChStack(ctx context.Context, n int) context.Context {
+// return insertStackOfReturnChOfBytes(ctx, n)
+// }
+
+// func (__ _SomeToBytes) PopReturnCh(ctx Valuable) chan<- *ReturnOfBytes {
+// return popReturnChOfBytes(ctx)
+// }
+
+// func (__ _SomeToBytes) TopReturnCh(ctx Valuable) chan<- *ReturnOfBytes {
+// return topReturnChOfBytes(ctx)
+// }
+
+// func (__ _SomeToBytes) PushReturnCh(ctx Valuable, ch chan<- *ReturnOfBytes) {
+// pushReturnChOfBytes(ctx, ch)
+// }
+type _Bytes struct {
+	Pool struct {
+		Return     pool_ReturnOfBytes
+		ChanReturn pool_ChanReturnOfBytes
+	}
+	Context struct {
+		ChanReturn chanReturnOfBytes
+	}
+}
+
+var Bytess = _Bytes{}
 
 type ReturnOfString struct {
 	Context context.Context
@@ -151,40 +205,56 @@ var (
 	}
 )
 
-func getReturnOfString() *ReturnOfString {
+type pool_ReturnOfString struct{}
+
+func (_ pool_ReturnOfString) Get() *ReturnOfString {
 	return pool_of_ReturnOfString.Get().(*ReturnOfString)
 }
-func putReturnOfString(d *ReturnOfString) {
+func (_ pool_ReturnOfString) Put(d *ReturnOfString) {
 	d.Context = nil
 	d.Value = zero_of_ReturnOfString_value
 	d.Error = nil
 	pool_of_ReturnOfString.Put(d)
 }
 
-func getReturnChOfString() chan *ReturnOfString {
+func (__ pool_ReturnOfString) GetWith(ctx context.Context, value string, err error) *ReturnOfString {
+	rtn := __.Get()
+	rtn.Context = ctx
+	rtn.Value = value
+	rtn.Error = err
+	return rtn
+}
+
+// var ReturnOfStringPool = pool_ReturnOfString{}
+
+type pool_ChanReturnOfString struct{}
+
+func (_ pool_ChanReturnOfString) Get() chan *ReturnOfString {
 	return pool_of_ReturnOfString_ch.Get().(chan *ReturnOfString)
 }
-func putReturnChOfString(d chan *ReturnOfString) {
+func (_ pool_ChanReturnOfString) Put(d chan *ReturnOfString) {
 	pool_of_ReturnOfString_ch.Put(d)
 }
 
-type StackOfReturnChOfString struct {
+// var ChanReturnOfStringPool = pool_ChanReturnOfString{}
+
+type StackOfChanReturnOfString struct {
 	chans []chan<- *ReturnOfString
 	sync.Mutex
 }
 
-func NewStackOfReturnChOfString(n int) *StackOfReturnChOfString {
-	return &StackOfReturnChOfString{
+func NewStackOfChanReturnOfString(n int) *StackOfChanReturnOfString {
+	return &StackOfChanReturnOfString{
 		chans: make([]chan<- *ReturnOfString, 0, n),
 	}
 }
 
-func (__ *StackOfReturnChOfString) Push(ch chan<- *ReturnOfString) {
+func (__ *StackOfChanReturnOfString) Push(ch chan<- *ReturnOfString) {
 	__.Lock()
 	__.chans = append(__.chans, ch)
 	__.Unlock()
 }
-func (__ *StackOfReturnChOfString) Pop() chan<- *ReturnOfString {
+func (__ *StackOfChanReturnOfString) Pop() chan<- *ReturnOfString {
 	var ch chan<- *ReturnOfString
 	__.Lock()
 	defer __.Unlock()
@@ -196,7 +266,7 @@ func (__ *StackOfReturnChOfString) Pop() chan<- *ReturnOfString {
 	return ch
 }
 
-func (__ *StackOfReturnChOfString) Top() chan<- *ReturnOfString {
+func (__ *StackOfChanReturnOfString) Top() chan<- *ReturnOfString {
 	var ch chan<- *ReturnOfString
 	__.Lock()
 	defer __.Unlock()
@@ -213,35 +283,73 @@ const (
 	async_key_for_String_return_ch_stack async_key_for_String = iota
 )
 
-func insertStackOfReturnChOfString(ctx context.Context, n int) context.Context {
-	stack := NewStackOfReturnChOfString(n)
+type chanReturnOfString struct{}
+
+func (_ chanReturnOfString) WithStack(ctx context.Context, n int) context.Context {
+	stack := NewStackOfChanReturnOfString(n)
 	return context.WithValue(ctx, async_key_for_String_return_ch_stack, stack)
 }
 
-func popReturnChOfString(ctx Valuable) chan<- *ReturnOfString {
-	stack, ok := ctx.Value(async_key_for_String_return_ch_stack).(*StackOfReturnChOfString)
+func (_ chanReturnOfString) Pop(ctx Valuable) chan<- *ReturnOfString {
+	stack, ok := ctx.Value(async_key_for_String_return_ch_stack).(*StackOfChanReturnOfString)
 	if !ok {
 		return nil
 	}
 	return stack.Pop()
 }
 
-func topReturnChOfString(ctx Valuable) chan<- *ReturnOfString {
-	stack, ok := ctx.Value(async_key_for_String_return_ch_stack).(*StackOfReturnChOfString)
+func (_ chanReturnOfString) Top(ctx Valuable) chan<- *ReturnOfString {
+	stack, ok := ctx.Value(async_key_for_String_return_ch_stack).(*StackOfChanReturnOfString)
 	if !ok {
 		return nil
 	}
 	return stack.Top()
 }
 
-func pushReturnChOfString(ctx Valuable, ch chan<- *ReturnOfString) bool {
-	stack, ok := ctx.Value(async_key_for_String_return_ch_stack).(*StackOfReturnChOfString)
+func (_ chanReturnOfString) Push(ctx Valuable, ch chan<- *ReturnOfString) bool {
+	stack, ok := ctx.Value(async_key_for_String_return_ch_stack).(*StackOfChanReturnOfString)
 	if !ok {
 		return false
 	}
 	stack.Push(ch)
 	return true
 }
+
+func (__ chanReturnOfString) Notify(ctx Valuable, rtn *ReturnOfString) bool {
+	ch := __.Top(ctx)
+	if ch == nil {
+		return false
+	}
+	ch <- rtn
+	return true
+}
+
+// func (__ _SomeToString) WithReturnChStack(ctx context.Context, n int) context.Context {
+// return insertStackOfReturnChOfString(ctx, n)
+// }
+
+// func (__ _SomeToString) PopReturnCh(ctx Valuable) chan<- *ReturnOfString {
+// return popReturnChOfString(ctx)
+// }
+
+// func (__ _SomeToString) TopReturnCh(ctx Valuable) chan<- *ReturnOfString {
+// return topReturnChOfString(ctx)
+// }
+
+// func (__ _SomeToString) PushReturnCh(ctx Valuable, ch chan<- *ReturnOfString) {
+// pushReturnChOfString(ctx, ch)
+// }
+type _String struct {
+	Pool struct {
+		Return     pool_ReturnOfString
+		ChanReturn pool_ChanReturnOfString
+	}
+	Context struct {
+		ChanReturn chanReturnOfString
+	}
+}
+
+var Strings = _String{}
 
 type ReturnOfInterface struct {
 	Context context.Context
@@ -268,40 +376,56 @@ var (
 	}
 )
 
-func getReturnOfInterface() *ReturnOfInterface {
+type pool_ReturnOfInterface struct{}
+
+func (_ pool_ReturnOfInterface) Get() *ReturnOfInterface {
 	return pool_of_ReturnOfInterface.Get().(*ReturnOfInterface)
 }
-func putReturnOfInterface(d *ReturnOfInterface) {
+func (_ pool_ReturnOfInterface) Put(d *ReturnOfInterface) {
 	d.Context = nil
 	d.Value = zero_of_ReturnOfInterface_value
 	d.Error = nil
 	pool_of_ReturnOfInterface.Put(d)
 }
 
-func getReturnChOfInterface() chan *ReturnOfInterface {
+func (__ pool_ReturnOfInterface) GetWith(ctx context.Context, value interface{}, err error) *ReturnOfInterface {
+	rtn := __.Get()
+	rtn.Context = ctx
+	rtn.Value = value
+	rtn.Error = err
+	return rtn
+}
+
+// var ReturnOfInterfacePool = pool_ReturnOfInterface{}
+
+type pool_ChanReturnOfInterface struct{}
+
+func (_ pool_ChanReturnOfInterface) Get() chan *ReturnOfInterface {
 	return pool_of_ReturnOfInterface_ch.Get().(chan *ReturnOfInterface)
 }
-func putReturnChOfInterface(d chan *ReturnOfInterface) {
+func (_ pool_ChanReturnOfInterface) Put(d chan *ReturnOfInterface) {
 	pool_of_ReturnOfInterface_ch.Put(d)
 }
 
-type StackOfReturnChOfInterface struct {
+// var ChanReturnOfInterfacePool = pool_ChanReturnOfInterface{}
+
+type StackOfChanReturnOfInterface struct {
 	chans []chan<- *ReturnOfInterface
 	sync.Mutex
 }
 
-func NewStackOfReturnChOfInterface(n int) *StackOfReturnChOfInterface {
-	return &StackOfReturnChOfInterface{
+func NewStackOfChanReturnOfInterface(n int) *StackOfChanReturnOfInterface {
+	return &StackOfChanReturnOfInterface{
 		chans: make([]chan<- *ReturnOfInterface, 0, n),
 	}
 }
 
-func (__ *StackOfReturnChOfInterface) Push(ch chan<- *ReturnOfInterface) {
+func (__ *StackOfChanReturnOfInterface) Push(ch chan<- *ReturnOfInterface) {
 	__.Lock()
 	__.chans = append(__.chans, ch)
 	__.Unlock()
 }
-func (__ *StackOfReturnChOfInterface) Pop() chan<- *ReturnOfInterface {
+func (__ *StackOfChanReturnOfInterface) Pop() chan<- *ReturnOfInterface {
 	var ch chan<- *ReturnOfInterface
 	__.Lock()
 	defer __.Unlock()
@@ -313,7 +437,7 @@ func (__ *StackOfReturnChOfInterface) Pop() chan<- *ReturnOfInterface {
 	return ch
 }
 
-func (__ *StackOfReturnChOfInterface) Top() chan<- *ReturnOfInterface {
+func (__ *StackOfChanReturnOfInterface) Top() chan<- *ReturnOfInterface {
 	var ch chan<- *ReturnOfInterface
 	__.Lock()
 	defer __.Unlock()
@@ -330,32 +454,70 @@ const (
 	async_key_for_Interface_return_ch_stack async_key_for_Interface = iota
 )
 
-func insertStackOfReturnChOfInterface(ctx context.Context, n int) context.Context {
-	stack := NewStackOfReturnChOfInterface(n)
+type chanReturnOfInterface struct{}
+
+func (_ chanReturnOfInterface) WithStack(ctx context.Context, n int) context.Context {
+	stack := NewStackOfChanReturnOfInterface(n)
 	return context.WithValue(ctx, async_key_for_Interface_return_ch_stack, stack)
 }
 
-func popReturnChOfInterface(ctx Valuable) chan<- *ReturnOfInterface {
-	stack, ok := ctx.Value(async_key_for_Interface_return_ch_stack).(*StackOfReturnChOfInterface)
+func (_ chanReturnOfInterface) Pop(ctx Valuable) chan<- *ReturnOfInterface {
+	stack, ok := ctx.Value(async_key_for_Interface_return_ch_stack).(*StackOfChanReturnOfInterface)
 	if !ok {
 		return nil
 	}
 	return stack.Pop()
 }
 
-func topReturnChOfInterface(ctx Valuable) chan<- *ReturnOfInterface {
-	stack, ok := ctx.Value(async_key_for_Interface_return_ch_stack).(*StackOfReturnChOfInterface)
+func (_ chanReturnOfInterface) Top(ctx Valuable) chan<- *ReturnOfInterface {
+	stack, ok := ctx.Value(async_key_for_Interface_return_ch_stack).(*StackOfChanReturnOfInterface)
 	if !ok {
 		return nil
 	}
 	return stack.Top()
 }
 
-func pushReturnChOfInterface(ctx Valuable, ch chan<- *ReturnOfInterface) bool {
-	stack, ok := ctx.Value(async_key_for_Interface_return_ch_stack).(*StackOfReturnChOfInterface)
+func (_ chanReturnOfInterface) Push(ctx Valuable, ch chan<- *ReturnOfInterface) bool {
+	stack, ok := ctx.Value(async_key_for_Interface_return_ch_stack).(*StackOfChanReturnOfInterface)
 	if !ok {
 		return false
 	}
 	stack.Push(ch)
 	return true
 }
+
+func (__ chanReturnOfInterface) Notify(ctx Valuable, rtn *ReturnOfInterface) bool {
+	ch := __.Top(ctx)
+	if ch == nil {
+		return false
+	}
+	ch <- rtn
+	return true
+}
+
+// func (__ _SomeToInterface) WithReturnChStack(ctx context.Context, n int) context.Context {
+// return insertStackOfReturnChOfInterface(ctx, n)
+// }
+
+// func (__ _SomeToInterface) PopReturnCh(ctx Valuable) chan<- *ReturnOfInterface {
+// return popReturnChOfInterface(ctx)
+// }
+
+// func (__ _SomeToInterface) TopReturnCh(ctx Valuable) chan<- *ReturnOfInterface {
+// return topReturnChOfInterface(ctx)
+// }
+
+// func (__ _SomeToInterface) PushReturnCh(ctx Valuable, ch chan<- *ReturnOfInterface) {
+// pushReturnChOfInterface(ctx, ch)
+// }
+type _Interface struct {
+	Pool struct {
+		Return     pool_ReturnOfInterface
+		ChanReturn pool_ChanReturnOfInterface
+	}
+	Context struct {
+		ChanReturn chanReturnOfInterface
+	}
+}
+
+var Interfaces = _Interface{}

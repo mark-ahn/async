@@ -28,7 +28,7 @@ func TestBasic(t *testing.T) {
 }
 
 func push(ctx context.Context, value interface{}, rtnCh chan<- *async.ReturnOfInterface) *async.WorkContextOfInterfaceToInterface {
-	return async.InterfaceToInterface.GetWorkContextWith(ctx, async.InterfaceToInterface.GetWorkWith(value, rtnCh))
+	return async.InterfaceToInterface.Pool.WorkContext.GetWith(ctx, async.InterfaceToInterface.Pool.Work.GetWith(value, rtnCh))
 }
 
 func TestAsyncLogic(t *testing.T) {
@@ -38,11 +38,11 @@ func TestAsyncLogic(t *testing.T) {
 
 	requests := make(chan *async.WorkContextOfInterfaceToInterface, 2)
 	go func() {
-		squared := async.InterfaceToInterface.GetReturnCh()
-		rounded := async.InterfaceToInterface.GetReturnCh()
+		squared := async.Interfaces.Pool.ChanReturn.Get()
+		rounded := async.Interfaces.Pool.ChanReturn.Get()
 		defer func() {
-			async.InterfaceToInterface.PutReturnCh(squared)
-			async.InterfaceToInterface.PutReturnCh(rounded)
+			async.Interfaces.Pool.ChanReturn.Put(squared)
+			async.Interfaces.Pool.ChanReturn.Put(rounded)
 			fmt.Println("exit thread")
 		}()
 	loop:
@@ -51,26 +51,26 @@ func TestAsyncLogic(t *testing.T) {
 			case request := <-requests:
 				func() {
 					ctx, value, returnCh := request.Unpack()
-					defer async.InterfaceToInterface.PutWorkContext(request)
-					ctx = async.InterfaceToInterface.WithReturnChStack(ctx, 2)
-					async.InterfaceToInterface.PushReturnCh(ctx, returnCh)
+					defer async.InterfaceToInterface.Pool.WorkContext.Put(request)
+					ctx = async.Interfaces.Context.ChanReturn.WithStack(ctx, 2)
+					async.Interfaces.Context.ChanReturn.Push(ctx, returnCh)
 					square.Push(ctx, value, squared)
 				}()
 			case square := <-squared:
 				ctx, value, err := square.Unpack()
 				if err != nil {
-					async.InterfaceToInterface.NotifyOnReturnCh(ctx, square)
+					async.Interfaces.Context.ChanReturn.Notify(ctx, square)
 					continue
 				}
-				async.InterfaceToInterface.PutReturn(square)
+				async.Interfaces.Pool.Return.Put(square)
 				round.Push(ctx, value, rounded)
 			case round := <-rounded:
 				ctx, _, err := round.Unpack()
 				if err != nil {
-					async.InterfaceToInterface.NotifyOnReturnCh(ctx, round)
+					async.Interfaces.Context.ChanReturn.Notify(ctx, round)
 					continue
 				}
-				rtn_ch := async.InterfaceToInterface.TopReturnCh(ctx)
+				rtn_ch := async.Interfaces.Context.ChanReturn.Top(ctx)
 				rtn_ch <- round
 
 			case <-worker_ctx.Done():
@@ -80,7 +80,7 @@ func TestAsyncLogic(t *testing.T) {
 	}()
 
 	expect := "([50])"
-	rtn_ch := async.InterfaceToInterface.GetReturnCh()
+	rtn_ch := async.Interfaces.Pool.ChanReturn.Get()
 	// requests <- async.InterfaceToInterface.GetWorkContextWith(context.TODO(), async.InterfaceToInterface.GetWorkWith("50", rtn_ch))
 	requests <- push(context.TODO(), "50", rtn_ch)
 	rtn := <-rtn_ch
