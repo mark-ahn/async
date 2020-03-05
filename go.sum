@@ -1,2 +1,11 @@
 github.com/cheekybits/genny v1.0.0 h1:uGGa4nei+j20rOSeDeP5Of12XVm7TGUd4dJA9RDitfE=
 github.com/cheekybits/genny v1.0.0/go.mod h1:+tQajlRqAUrPI7DOSpB0XAqZYtQakVtB7wXkRAgjxjQ=
+github.com/mark-ahn/async v0.0.0-20200302071459-0917eff3fd38/go.mod h1:2diCMk4pXXdd3yzu9Q5+W0W0GdDRXOPODpvSMkKjGZE=
+github.com/mark-ahn/chans v0.0.0-20200209150955-ec8de808afab/go.mod h1:N64OM1xyl4uo3Lxn0Vj/rHTNYRVLEQ2WE0qE2zEnPhE=
+github.com/mark-ahn/hexa v0.0.0-20190530133308-5fc44b8f4ab2 h1:+AgmXvwYaI1CdLWeBzIiv3MmS4twf0KUyQttqBFILHs=
+github.com/mark-ahn/hexa v0.0.0-20190530133308-5fc44b8f4ab2/go.mod h1:ew26qPqaOjJ9f/3sdgU0UEydTrFngVR5ahJFOFKkPWI=
+github.com/mark-ahn/net-conn v0.0.0-20200302071548-e4465eb08278 h1:08T3ObdMYHyviAalcSQjRq2I4WwnsV3XL0pXSqWjA6M=
+github.com/mark-ahn/net-conn v0.0.0-20200302071548-e4465eb08278/go.mod h1:e9tTHPK5SpglBLbbRQ5MTH+74/E44F3sk6XOOzs2/0w=
+github.com/mark-ahn/reflects v0.0.0-20200209163344-5dfffb7f68f1 h1:3rLzFqqBqP2JEH0X4nkSIGbt3cegyfP0jHoM6K79vcw=
+github.com/mark-ahn/reflects v0.0.0-20200209163344-5dfffb7f68f1/go.mod h1:X9uqnOgH7qTULqN2e796DydWZXXEUf1bExyrtioMtVk=
+github.com/mark-ahn/syncs v0.0.0-20200207072501-85363bf040cd/go.mod h1:VcVYKQHG7v5eNnBCCY0TJO12FdCjHJ/Lm//fqkj6ZXs=

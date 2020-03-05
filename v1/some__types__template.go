@@ -6,7 +6,7 @@ import (
 )
 
 type WorkerOfSomeToOther interface {
-	Push(ctx context.Context, value *Some, returnCh chan<- *ReturnOfOther)
+	Push(ctx context.Context, value Some, returnCh chan<- *ReturnOfOther)
 }
 
 type WorkOfSomeToOther struct {
