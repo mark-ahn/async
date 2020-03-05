@@ -69,7 +69,7 @@ func NewFuncWorkerOfBytesToBytes(ctx context.Context, h func(context.Context, By
 func (__ *FuncWorkerOfBytesToBytes) reset_queue() {
 	for i := 0; i < len(__.work_ch); i += 1 {
 		req := <-__.work_ch
-		rtn := Bytess.Pool.Return.Get()
+		rtn := Bytess.Return.Pool.Get()
 		rtn.Error = fmt.Errorf("canceled by reset")
 		req.ReturnCh <- rtn
 	}
@@ -162,7 +162,7 @@ func NewFuncWorkerOfBytesToString(ctx context.Context, h func(context.Context, B
 func (__ *FuncWorkerOfBytesToString) reset_queue() {
 	for i := 0; i < len(__.work_ch); i += 1 {
 		req := <-__.work_ch
-		rtn := Strings.Pool.Return.Get()
+		rtn := Strings.Return.Pool.Get()
 		rtn.Error = fmt.Errorf("canceled by reset")
 		req.ReturnCh <- rtn
 	}
@@ -255,7 +255,7 @@ func NewFuncWorkerOfBytesToInterface(ctx context.Context, h func(context.Context
 func (__ *FuncWorkerOfBytesToInterface) reset_queue() {
 	for i := 0; i < len(__.work_ch); i += 1 {
 		req := <-__.work_ch
-		rtn := Interfaces.Pool.Return.Get()
+		rtn := Interfaces.Return.Pool.Get()
 		rtn.Error = fmt.Errorf("canceled by reset")
 		req.ReturnCh <- rtn
 	}
@@ -348,7 +348,7 @@ func NewFuncWorkerOfStringToBytes(ctx context.Context, h func(context.Context, s
 func (__ *FuncWorkerOfStringToBytes) reset_queue() {
 	for i := 0; i < len(__.work_ch); i += 1 {
 		req := <-__.work_ch
-		rtn := Bytess.Pool.Return.Get()
+		rtn := Bytess.Return.Pool.Get()
 		rtn.Error = fmt.Errorf("canceled by reset")
 		req.ReturnCh <- rtn
 	}
@@ -441,7 +441,7 @@ func NewFuncWorkerOfStringToString(ctx context.Context, h func(context.Context, 
 func (__ *FuncWorkerOfStringToString) reset_queue() {
 	for i := 0; i < len(__.work_ch); i += 1 {
 		req := <-__.work_ch
-		rtn := Strings.Pool.Return.Get()
+		rtn := Strings.Return.Pool.Get()
 		rtn.Error = fmt.Errorf("canceled by reset")
 		req.ReturnCh <- rtn
 	}
@@ -534,7 +534,7 @@ func NewFuncWorkerOfStringToInterface(ctx context.Context, h func(context.Contex
 func (__ *FuncWorkerOfStringToInterface) reset_queue() {
 	for i := 0; i < len(__.work_ch); i += 1 {
 		req := <-__.work_ch
-		rtn := Interfaces.Pool.Return.Get()
+		rtn := Interfaces.Return.Pool.Get()
 		rtn.Error = fmt.Errorf("canceled by reset")
 		req.ReturnCh <- rtn
 	}
@@ -627,7 +627,7 @@ func NewFuncWorkerOfInterfaceToBytes(ctx context.Context, h func(context.Context
 func (__ *FuncWorkerOfInterfaceToBytes) reset_queue() {
 	for i := 0; i < len(__.work_ch); i += 1 {
 		req := <-__.work_ch
-		rtn := Bytess.Pool.Return.Get()
+		rtn := Bytess.Return.Pool.Get()
 		rtn.Error = fmt.Errorf("canceled by reset")
 		req.ReturnCh <- rtn
 	}
@@ -720,7 +720,7 @@ func NewFuncWorkerOfInterfaceToString(ctx context.Context, h func(context.Contex
 func (__ *FuncWorkerOfInterfaceToString) reset_queue() {
 	for i := 0; i < len(__.work_ch); i += 1 {
 		req := <-__.work_ch
-		rtn := Strings.Pool.Return.Get()
+		rtn := Strings.Return.Pool.Get()
 		rtn.Error = fmt.Errorf("canceled by reset")
 		req.ReturnCh <- rtn
 	}
@@ -813,7 +813,7 @@ func NewFuncWorkerOfInterfaceToInterface(ctx context.Context, h func(context.Con
 func (__ *FuncWorkerOfInterfaceToInterface) reset_queue() {
 	for i := 0; i < len(__.work_ch); i += 1 {
 		req := <-__.work_ch
-		rtn := Interfaces.Pool.Return.Get()
+		rtn := Interfaces.Return.Pool.Get()
 		rtn.Error = fmt.Errorf("canceled by reset")
 		req.ReturnCh <- rtn
 	}

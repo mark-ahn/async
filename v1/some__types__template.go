@@ -83,8 +83,8 @@ type _SomeToOther struct {
 }
 
 func (__ _SomeToOther) CallAsSync(ctx context.Context, value Some, push func(ctx context.Context, value Some, returnCh chan<- *ReturnOfOther)) (context.Context, Other, error) {
-	ch := Others.Pool.ChanReturn.Get()
-	defer Others.Pool.ChanReturn.Put(ch)
+	ch := Others.ChanReturn.Pool.Get()
+	defer Others.ChanReturn.Pool.Put(ch)
 
 	push(ctx, value, ch)
 	rtn := <-ch
@@ -96,7 +96,7 @@ func (__ _SomeToOther) CallAsAsync(ctx context.Context, value Some, returnCh cha
 		defer defered()
 
 		res, err := h(ctx, value)
-		rtn := Others.Pool.Return.GetWith(ctx, res, err)
+		rtn := Others.Return.Pool.GetWith(ctx, res, err)
 		returnCh <- rtn
 	}()
 }

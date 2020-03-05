@@ -65,7 +65,7 @@ func NewFuncWorkerOfSomeToOther(ctx context.Context, h func(context.Context, Som
 func (__ *FuncWorkerOfSomeToOther) reset_queue() {
 	for i := 0; i < len(__.work_ch); i += 1 {
 		req := <-__.work_ch
-		rtn := Others.Pool.Return.Get()
+		rtn := Others.Return.Pool.Get()
 		rtn.Error = fmt.Errorf("canceled by reset")
 		req.ReturnCh <- rtn
 	}

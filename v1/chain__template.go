@@ -39,7 +39,7 @@ func (__ *ChainOfInterface) Push(ctx context.Context, value interface{}, returnC
 	select {
 	case <-__.ctx.Done():
 		defer __.threads.Done()
-		rtn := Interfaces.Pool.Return.GetWith(ctx, nil, context.Canceled)
+		rtn := Interfaces.Return.Pool.GetWith(ctx, nil, context.Canceled)
 		returnCh <- rtn
 		return
 	default:
@@ -62,8 +62,8 @@ func (__ *ChainOfInterface) Push(ctx context.Context, value interface{}, returnC
 
 		var err error
 		arg := value
-		ch := Interfaces.Pool.ChanReturn.Get()
-		defer Interfaces.Pool.ChanReturn.Put(ch)
+		ch := Interfaces.ChanReturn.Pool.Get()
+		defer Interfaces.ChanReturn.Pool.Put(ch)
 		for _, worker := range __.chains {
 			worker.Push(ctx, arg, ch)
 			rtn := <-ch
@@ -72,9 +72,9 @@ func (__ *ChainOfInterface) Push(ctx context.Context, value interface{}, returnC
 				returnCh <- rtn
 				return
 			}
-			Interfaces.Pool.Return.Put(rtn)
+			Interfaces.Return.Pool.Put(rtn)
 		}
-		rtn := Interfaces.Pool.Return.GetWith(ctx, arg, err)
+		rtn := Interfaces.Return.Pool.GetWith(ctx, arg, err)
 		returnCh <- rtn
 	}()
 }

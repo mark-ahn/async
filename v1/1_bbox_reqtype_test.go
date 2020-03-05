@@ -38,11 +38,11 @@ func TestAsyncLogic(t *testing.T) {
 
 	requests := make(chan *async.WorkContextOfInterfaceToInterface, 2)
 	go func() {
-		squared := async.Interfaces.Pool.ChanReturn.Get()
-		rounded := async.Interfaces.Pool.ChanReturn.Get()
+		squared := async.Interfaces.ChanReturn.Pool.Get()
+		rounded := async.Interfaces.ChanReturn.Pool.Get()
 		defer func() {
-			async.Interfaces.Pool.ChanReturn.Put(squared)
-			async.Interfaces.Pool.ChanReturn.Put(rounded)
+			async.Interfaces.ChanReturn.Pool.Put(squared)
+			async.Interfaces.ChanReturn.Pool.Put(rounded)
 			fmt.Println("exit thread")
 		}()
 	loop:
@@ -52,25 +52,25 @@ func TestAsyncLogic(t *testing.T) {
 				func() {
 					ctx, value, returnCh := request.Unpack()
 					defer async.InterfaceToInterface.Pool.WorkContext.Put(request)
-					ctx = async.Interfaces.Context.ChanReturn.WithStack(ctx, 2)
-					async.Interfaces.Context.ChanReturn.Push(ctx, returnCh)
+					ctx = async.Interfaces.ChanReturn.Context.WithStack(ctx, 2)
+					async.Interfaces.ChanReturn.Context.Push(ctx, returnCh)
 					square.Push(ctx, value, squared)
 				}()
 			case square := <-squared:
 				ctx, value, err := square.Unpack()
 				if err != nil {
-					async.Interfaces.Context.ChanReturn.Notify(ctx, square)
+					async.Interfaces.ChanReturn.Context.Notify(ctx, square)
 					continue
 				}
-				async.Interfaces.Pool.Return.Put(square)
+				async.Interfaces.Return.Pool.Put(square)
 				round.Push(ctx, value, rounded)
 			case round := <-rounded:
 				ctx, _, err := round.Unpack()
 				if err != nil {
-					async.Interfaces.Context.ChanReturn.Notify(ctx, round)
+					async.Interfaces.ChanReturn.Context.Notify(ctx, round)
 					continue
 				}
-				rtn_ch := async.Interfaces.Context.ChanReturn.Top(ctx)
+				rtn_ch := async.Interfaces.ChanReturn.Context.Top(ctx)
 				rtn_ch <- round
 
 			case <-worker_ctx.Done():
@@ -80,7 +80,7 @@ func TestAsyncLogic(t *testing.T) {
 	}()
 
 	expect := "([50])"
-	rtn_ch := async.Interfaces.Pool.ChanReturn.Get()
+	rtn_ch := async.Interfaces.ChanReturn.Pool.Get()
 	// requests <- async.InterfaceToInterface.GetWorkContextWith(context.TODO(), async.InterfaceToInterface.GetWorkWith("50", rtn_ch))
 	requests <- push(context.TODO(), "50", rtn_ch)
 	rtn := <-rtn_ch

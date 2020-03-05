@@ -150,13 +150,20 @@ func (__ chanReturnOfBytes) Notify(ctx Valuable, rtn *ReturnOfBytes) bool {
 }
 
 type _Bytes struct {
-	Pool struct {
-		Return     pool_ReturnOfBytes
-		ChanReturn pool_ChanReturnOfBytes
+	Return struct {
+		Pool pool_ReturnOfBytes
 	}
-	Context struct {
-		ChanReturn chanReturnOfBytes
+	ChanReturn struct {
+		Pool    pool_ChanReturnOfBytes
+		Context chanReturnOfBytes
 	}
+	// Pool struct {
+	// Return pool_ReturnOfBytes
+	// ChanReturn pool_ChanReturnOfBytes
+	// }
+	// Context struct {
+	// ChanReturn chanReturnOfBytes
+	// }
 }
 
 var Bytess = _Bytes{}
@@ -302,13 +309,20 @@ func (__ chanReturnOfString) Notify(ctx Valuable, rtn *ReturnOfString) bool {
 }
 
 type _String struct {
-	Pool struct {
-		Return     pool_ReturnOfString
-		ChanReturn pool_ChanReturnOfString
+	Return struct {
+		Pool pool_ReturnOfString
 	}
-	Context struct {
-		ChanReturn chanReturnOfString
+	ChanReturn struct {
+		Pool    pool_ChanReturnOfString
+		Context chanReturnOfString
 	}
+	// Pool struct {
+	// Return pool_ReturnOfString
+	// ChanReturn pool_ChanReturnOfString
+	// }
+	// Context struct {
+	// ChanReturn chanReturnOfString
+	// }
 }
 
 var Strings = _String{}
@@ -454,13 +468,20 @@ func (__ chanReturnOfInterface) Notify(ctx Valuable, rtn *ReturnOfInterface) boo
 }
 
 type _Interface struct {
-	Pool struct {
-		Return     pool_ReturnOfInterface
-		ChanReturn pool_ChanReturnOfInterface
+	Return struct {
+		Pool pool_ReturnOfInterface
 	}
-	Context struct {
-		ChanReturn chanReturnOfInterface
+	ChanReturn struct {
+		Pool    pool_ChanReturnOfInterface
+		Context chanReturnOfInterface
 	}
+	// Pool struct {
+	// Return pool_ReturnOfInterface
+	// ChanReturn pool_ChanReturnOfInterface
+	// }
+	// Context struct {
+	// ChanReturn chanReturnOfInterface
+	// }
 }
 
 var Interfaces = _Interface{}

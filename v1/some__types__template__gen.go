@@ -87,8 +87,8 @@ type _BytesToBytes struct {
 }
 
 func (__ _BytesToBytes) CallAsSync(ctx context.Context, value Bytes, push func(ctx context.Context, value Bytes, returnCh chan<- *ReturnOfBytes)) (context.Context, Bytes, error) {
-	ch := Bytess.Pool.ChanReturn.Get()
-	defer Bytess.Pool.ChanReturn.Put(ch)
+	ch := Bytess.ChanReturn.Pool.Get()
+	defer Bytess.ChanReturn.Pool.Put(ch)
 
 	push(ctx, value, ch)
 	rtn := <-ch
@@ -100,7 +100,7 @@ func (__ _BytesToBytes) CallAsAsync(ctx context.Context, value Bytes, returnCh c
 		defer defered()
 
 		res, err := h(ctx, value)
-		rtn := Bytess.Pool.Return.GetWith(ctx, res, err)
+		rtn := Bytess.Return.Pool.GetWith(ctx, res, err)
 		returnCh <- rtn
 	}()
 }
@@ -185,8 +185,8 @@ type _BytesToString struct {
 }
 
 func (__ _BytesToString) CallAsSync(ctx context.Context, value Bytes, push func(ctx context.Context, value Bytes, returnCh chan<- *ReturnOfString)) (context.Context, string, error) {
-	ch := Strings.Pool.ChanReturn.Get()
-	defer Strings.Pool.ChanReturn.Put(ch)
+	ch := Strings.ChanReturn.Pool.Get()
+	defer Strings.ChanReturn.Pool.Put(ch)
 
 	push(ctx, value, ch)
 	rtn := <-ch
@@ -198,7 +198,7 @@ func (__ _BytesToString) CallAsAsync(ctx context.Context, value Bytes, returnCh 
 		defer defered()
 
 		res, err := h(ctx, value)
-		rtn := Strings.Pool.Return.GetWith(ctx, res, err)
+		rtn := Strings.Return.Pool.GetWith(ctx, res, err)
 		returnCh <- rtn
 	}()
 }
@@ -283,8 +283,8 @@ type _BytesToInterface struct {
 }
 
 func (__ _BytesToInterface) CallAsSync(ctx context.Context, value Bytes, push func(ctx context.Context, value Bytes, returnCh chan<- *ReturnOfInterface)) (context.Context, interface{}, error) {
-	ch := Interfaces.Pool.ChanReturn.Get()
-	defer Interfaces.Pool.ChanReturn.Put(ch)
+	ch := Interfaces.ChanReturn.Pool.Get()
+	defer Interfaces.ChanReturn.Pool.Put(ch)
 
 	push(ctx, value, ch)
 	rtn := <-ch
@@ -296,7 +296,7 @@ func (__ _BytesToInterface) CallAsAsync(ctx context.Context, value Bytes, return
 		defer defered()
 
 		res, err := h(ctx, value)
-		rtn := Interfaces.Pool.Return.GetWith(ctx, res, err)
+		rtn := Interfaces.Return.Pool.GetWith(ctx, res, err)
 		returnCh <- rtn
 	}()
 }
@@ -381,8 +381,8 @@ type _StringToBytes struct {
 }
 
 func (__ _StringToBytes) CallAsSync(ctx context.Context, value string, push func(ctx context.Context, value string, returnCh chan<- *ReturnOfBytes)) (context.Context, Bytes, error) {
-	ch := Bytess.Pool.ChanReturn.Get()
-	defer Bytess.Pool.ChanReturn.Put(ch)
+	ch := Bytess.ChanReturn.Pool.Get()
+	defer Bytess.ChanReturn.Pool.Put(ch)
 
 	push(ctx, value, ch)
 	rtn := <-ch
@@ -394,7 +394,7 @@ func (__ _StringToBytes) CallAsAsync(ctx context.Context, value string, returnCh
 		defer defered()
 
 		res, err := h(ctx, value)
-		rtn := Bytess.Pool.Return.GetWith(ctx, res, err)
+		rtn := Bytess.Return.Pool.GetWith(ctx, res, err)
 		returnCh <- rtn
 	}()
 }
@@ -479,8 +479,8 @@ type _StringToString struct {
 }
 
 func (__ _StringToString) CallAsSync(ctx context.Context, value string, push func(ctx context.Context, value string, returnCh chan<- *ReturnOfString)) (context.Context, string, error) {
-	ch := Strings.Pool.ChanReturn.Get()
-	defer Strings.Pool.ChanReturn.Put(ch)
+	ch := Strings.ChanReturn.Pool.Get()
+	defer Strings.ChanReturn.Pool.Put(ch)
 
 	push(ctx, value, ch)
 	rtn := <-ch
@@ -492,7 +492,7 @@ func (__ _StringToString) CallAsAsync(ctx context.Context, value string, returnC
 		defer defered()
 
 		res, err := h(ctx, value)
-		rtn := Strings.Pool.Return.GetWith(ctx, res, err)
+		rtn := Strings.Return.Pool.GetWith(ctx, res, err)
 		returnCh <- rtn
 	}()
 }
@@ -577,8 +577,8 @@ type _StringToInterface struct {
 }
 
 func (__ _StringToInterface) CallAsSync(ctx context.Context, value string, push func(ctx context.Context, value string, returnCh chan<- *ReturnOfInterface)) (context.Context, interface{}, error) {
-	ch := Interfaces.Pool.ChanReturn.Get()
-	defer Interfaces.Pool.ChanReturn.Put(ch)
+	ch := Interfaces.ChanReturn.Pool.Get()
+	defer Interfaces.ChanReturn.Pool.Put(ch)
 
 	push(ctx, value, ch)
 	rtn := <-ch
@@ -590,7 +590,7 @@ func (__ _StringToInterface) CallAsAsync(ctx context.Context, value string, retu
 		defer defered()
 
 		res, err := h(ctx, value)
-		rtn := Interfaces.Pool.Return.GetWith(ctx, res, err)
+		rtn := Interfaces.Return.Pool.GetWith(ctx, res, err)
 		returnCh <- rtn
 	}()
 }
@@ -675,8 +675,8 @@ type _InterfaceToBytes struct {
 }
 
 func (__ _InterfaceToBytes) CallAsSync(ctx context.Context, value interface{}, push func(ctx context.Context, value interface{}, returnCh chan<- *ReturnOfBytes)) (context.Context, Bytes, error) {
-	ch := Bytess.Pool.ChanReturn.Get()
-	defer Bytess.Pool.ChanReturn.Put(ch)
+	ch := Bytess.ChanReturn.Pool.Get()
+	defer Bytess.ChanReturn.Pool.Put(ch)
 
 	push(ctx, value, ch)
 	rtn := <-ch
@@ -688,7 +688,7 @@ func (__ _InterfaceToBytes) CallAsAsync(ctx context.Context, value interface{}, 
 		defer defered()
 
 		res, err := h(ctx, value)
-		rtn := Bytess.Pool.Return.GetWith(ctx, res, err)
+		rtn := Bytess.Return.Pool.GetWith(ctx, res, err)
 		returnCh <- rtn
 	}()
 }
@@ -773,8 +773,8 @@ type _InterfaceToString struct {
 }
 
 func (__ _InterfaceToString) CallAsSync(ctx context.Context, value interface{}, push func(ctx context.Context, value interface{}, returnCh chan<- *ReturnOfString)) (context.Context, string, error) {
-	ch := Strings.Pool.ChanReturn.Get()
-	defer Strings.Pool.ChanReturn.Put(ch)
+	ch := Strings.ChanReturn.Pool.Get()
+	defer Strings.ChanReturn.Pool.Put(ch)
 
 	push(ctx, value, ch)
 	rtn := <-ch
@@ -786,7 +786,7 @@ func (__ _InterfaceToString) CallAsAsync(ctx context.Context, value interface{},
 		defer defered()
 
 		res, err := h(ctx, value)
-		rtn := Strings.Pool.Return.GetWith(ctx, res, err)
+		rtn := Strings.Return.Pool.GetWith(ctx, res, err)
 		returnCh <- rtn
 	}()
 }
@@ -871,8 +871,8 @@ type _InterfaceToInterface struct {
 }
 
 func (__ _InterfaceToInterface) CallAsSync(ctx context.Context, value interface{}, push func(ctx context.Context, value interface{}, returnCh chan<- *ReturnOfInterface)) (context.Context, interface{}, error) {
-	ch := Interfaces.Pool.ChanReturn.Get()
-	defer Interfaces.Pool.ChanReturn.Put(ch)
+	ch := Interfaces.ChanReturn.Pool.Get()
+	defer Interfaces.ChanReturn.Pool.Put(ch)
 
 	push(ctx, value, ch)
 	rtn := <-ch
@@ -884,7 +884,7 @@ func (__ _InterfaceToInterface) CallAsAsync(ctx context.Context, value interface
 		defer defered()
 
 		res, err := h(ctx, value)
-		rtn := Interfaces.Pool.Return.GetWith(ctx, res, err)
+		rtn := Interfaces.Return.Pool.GetWith(ctx, res, err)
 		returnCh <- rtn
 	}()
 }

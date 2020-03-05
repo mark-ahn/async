@@ -146,13 +146,20 @@ func (__ chanReturnOfOther) Notify(ctx Valuable, rtn *ReturnOfOther) bool {
 }
 
 type _Other struct {
-	Pool struct {
-		Return     pool_ReturnOfOther
-		ChanReturn pool_ChanReturnOfOther
+	Return struct {
+		Pool pool_ReturnOfOther
 	}
-	Context struct {
-		ChanReturn chanReturnOfOther
+	ChanReturn struct {
+		Pool    pool_ChanReturnOfOther
+		Context chanReturnOfOther
 	}
+	// Pool struct {
+	// 	Return     pool_ReturnOfOther
+	// 	ChanReturn pool_ChanReturnOfOther
+	// }
+	// Context struct {
+	// 	ChanReturn chanReturnOfOther
+	// }
 }
 
 var Others = _Other{}
