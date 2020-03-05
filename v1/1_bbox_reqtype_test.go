@@ -28,7 +28,7 @@ func TestBasic(t *testing.T) {
 }
 
 func push(ctx context.Context, value interface{}, rtnCh chan<- *async.ReturnOfInterface) *async.WorkContextOfInterfaceToInterface {
-	return async.InterfaceToInterface.Pool.WorkContext.GetWith(ctx, async.InterfaceToInterface.Pool.Work.GetWith(value, rtnCh))
+	return async.InterfaceToInterface.WorkContext.Pool.GetWith(ctx, async.InterfaceToInterface.Work.Pool.GetWith(value, rtnCh))
 }
 
 func TestAsyncLogic(t *testing.T) {
@@ -51,7 +51,7 @@ func TestAsyncLogic(t *testing.T) {
 			case request := <-requests:
 				func() {
 					ctx, value, returnCh := request.Unpack()
-					defer async.InterfaceToInterface.Pool.WorkContext.Put(request)
+					defer async.InterfaceToInterface.WorkContext.Pool.Put(request)
 					ctx = async.Interfaces.ChanReturn.Context.WithStack(ctx, 2)
 					async.Interfaces.ChanReturn.Context.Push(ctx, returnCh)
 					square.Push(ctx, value, squared)

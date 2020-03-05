@@ -75,11 +75,24 @@ func (__ pool_WorkContextOfSomeToOther) GetWith(ctx context.Context, work *WorkO
 	return work_ctx
 }
 
+type func_worker_SomeToOther struct{}
+
+func (_ func_worker_SomeToOther) New(ctx context.Context, h func(context.Context, Some) (Other, error), n int) *FuncWorkerOfSomeToOther {
+	return newFuncWorkerOfSomeToOther(ctx, h, n)
+}
+
 type _SomeToOther struct {
-	Pool struct {
-		Work        pool_WorkOfSomeToOther
-		WorkContext pool_WorkContextOfSomeToOther
+	Work struct {
+		Pool pool_WorkOfSomeToOther
 	}
+	WorkContext struct {
+		Pool pool_WorkContextOfSomeToOther
+	}
+	FuncWorker func_worker_SomeToOther
+	// Pool struct {
+	// 	Work        pool_WorkOfSomeToOther
+	// 	WorkContext pool_WorkContextOfSomeToOther
+	// }
 }
 
 func (__ _SomeToOther) CallAsSync(ctx context.Context, value Some, push func(ctx context.Context, value Some, returnCh chan<- *ReturnOfOther)) (context.Context, Other, error) {

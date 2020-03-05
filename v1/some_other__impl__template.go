@@ -17,7 +17,7 @@ type FuncWorkerOfSomeToOther struct {
 	reset_ch chan chan error
 }
 
-func NewFuncWorkerOfSomeToOther(ctx context.Context, h func(context.Context, Some) (Other, error), n int) *FuncWorkerOfSomeToOther {
+func newFuncWorkerOfSomeToOther(ctx context.Context, h func(context.Context, Some) (Other, error), n int) *FuncWorkerOfSomeToOther {
 	__ := &FuncWorkerOfSomeToOther{
 		handler: h,
 
@@ -50,8 +50,8 @@ func NewFuncWorkerOfSomeToOther(ctx context.Context, h func(context.Context, Som
 				go SomeToOther.CallAsAsync(work.Context, work.WorkOfSomeToOther.Value, work.WorkOfSomeToOther.ReturnCh, __.handler, func() {
 					__.threads.Done()
 				})
-				SomeToOther.Pool.Work.Put(work.WorkOfSomeToOther)
-				SomeToOther.Pool.WorkContext.Put(work)
+				SomeToOther.Work.Pool.Put(work.WorkOfSomeToOther)
+				SomeToOther.WorkContext.Pool.Put(work)
 			case reset_done_ch := <-__.reset_ch:
 				__.reset_queue()
 				close(reset_done_ch)
@@ -75,7 +75,7 @@ func (__ *FuncWorkerOfSomeToOther) Push(ctx context.Context, value Some, returnC
 	__.threads.Add(1)
 	defer __.threads.Done()
 
-	work_ctx := SomeToOther.Pool.WorkContext.GetWith(ctx, SomeToOther.Pool.Work.GetWith(value, returnCh))
+	work_ctx := SomeToOther.WorkContext.Pool.GetWith(ctx, SomeToOther.Work.Pool.GetWith(value, returnCh))
 	__.work_ch <- work_ctx
 }
 

@@ -79,11 +79,24 @@ func (__ pool_WorkContextOfBytesToBytes) GetWith(ctx context.Context, work *Work
 	return work_ctx
 }
 
+type func_worker_BytesToBytes struct{}
+
+func (_ func_worker_BytesToBytes) New(ctx context.Context, h func(context.Context, Bytes) (Bytes, error), n int) *FuncWorkerOfBytesToBytes {
+	return newFuncWorkerOfBytesToBytes(ctx, h, n)
+}
+
 type _BytesToBytes struct {
-	Pool struct {
-		Work        pool_WorkOfBytesToBytes
-		WorkContext pool_WorkContextOfBytesToBytes
+	Work struct {
+		Pool pool_WorkOfBytesToBytes
 	}
+	WorkContext struct {
+		Pool pool_WorkContextOfBytesToBytes
+	}
+	FuncWorker func_worker_BytesToBytes
+	// Pool struct {
+	// Work pool_WorkOfBytesToBytes
+	// WorkContext pool_WorkContextOfBytesToBytes
+	// }
 }
 
 func (__ _BytesToBytes) CallAsSync(ctx context.Context, value Bytes, push func(ctx context.Context, value Bytes, returnCh chan<- *ReturnOfBytes)) (context.Context, Bytes, error) {
@@ -177,11 +190,24 @@ func (__ pool_WorkContextOfBytesToString) GetWith(ctx context.Context, work *Wor
 	return work_ctx
 }
 
+type func_worker_BytesToString struct{}
+
+func (_ func_worker_BytesToString) New(ctx context.Context, h func(context.Context, Bytes) (string, error), n int) *FuncWorkerOfBytesToString {
+	return newFuncWorkerOfBytesToString(ctx, h, n)
+}
+
 type _BytesToString struct {
-	Pool struct {
-		Work        pool_WorkOfBytesToString
-		WorkContext pool_WorkContextOfBytesToString
+	Work struct {
+		Pool pool_WorkOfBytesToString
 	}
+	WorkContext struct {
+		Pool pool_WorkContextOfBytesToString
+	}
+	FuncWorker func_worker_BytesToString
+	// Pool struct {
+	// Work pool_WorkOfBytesToString
+	// WorkContext pool_WorkContextOfBytesToString
+	// }
 }
 
 func (__ _BytesToString) CallAsSync(ctx context.Context, value Bytes, push func(ctx context.Context, value Bytes, returnCh chan<- *ReturnOfString)) (context.Context, string, error) {
@@ -275,11 +301,24 @@ func (__ pool_WorkContextOfBytesToInterface) GetWith(ctx context.Context, work *
 	return work_ctx
 }
 
+type func_worker_BytesToInterface struct{}
+
+func (_ func_worker_BytesToInterface) New(ctx context.Context, h func(context.Context, Bytes) (interface{}, error), n int) *FuncWorkerOfBytesToInterface {
+	return newFuncWorkerOfBytesToInterface(ctx, h, n)
+}
+
 type _BytesToInterface struct {
-	Pool struct {
-		Work        pool_WorkOfBytesToInterface
-		WorkContext pool_WorkContextOfBytesToInterface
+	Work struct {
+		Pool pool_WorkOfBytesToInterface
 	}
+	WorkContext struct {
+		Pool pool_WorkContextOfBytesToInterface
+	}
+	FuncWorker func_worker_BytesToInterface
+	// Pool struct {
+	// Work pool_WorkOfBytesToInterface
+	// WorkContext pool_WorkContextOfBytesToInterface
+	// }
 }
 
 func (__ _BytesToInterface) CallAsSync(ctx context.Context, value Bytes, push func(ctx context.Context, value Bytes, returnCh chan<- *ReturnOfInterface)) (context.Context, interface{}, error) {
@@ -373,11 +412,24 @@ func (__ pool_WorkContextOfStringToBytes) GetWith(ctx context.Context, work *Wor
 	return work_ctx
 }
 
+type func_worker_StringToBytes struct{}
+
+func (_ func_worker_StringToBytes) New(ctx context.Context, h func(context.Context, string) (Bytes, error), n int) *FuncWorkerOfStringToBytes {
+	return newFuncWorkerOfStringToBytes(ctx, h, n)
+}
+
 type _StringToBytes struct {
-	Pool struct {
-		Work        pool_WorkOfStringToBytes
-		WorkContext pool_WorkContextOfStringToBytes
+	Work struct {
+		Pool pool_WorkOfStringToBytes
 	}
+	WorkContext struct {
+		Pool pool_WorkContextOfStringToBytes
+	}
+	FuncWorker func_worker_StringToBytes
+	// Pool struct {
+	// Work pool_WorkOfStringToBytes
+	// WorkContext pool_WorkContextOfStringToBytes
+	// }
 }
 
 func (__ _StringToBytes) CallAsSync(ctx context.Context, value string, push func(ctx context.Context, value string, returnCh chan<- *ReturnOfBytes)) (context.Context, Bytes, error) {
@@ -471,11 +523,24 @@ func (__ pool_WorkContextOfStringToString) GetWith(ctx context.Context, work *Wo
 	return work_ctx
 }
 
+type func_worker_StringToString struct{}
+
+func (_ func_worker_StringToString) New(ctx context.Context, h func(context.Context, string) (string, error), n int) *FuncWorkerOfStringToString {
+	return newFuncWorkerOfStringToString(ctx, h, n)
+}
+
 type _StringToString struct {
-	Pool struct {
-		Work        pool_WorkOfStringToString
-		WorkContext pool_WorkContextOfStringToString
+	Work struct {
+		Pool pool_WorkOfStringToString
 	}
+	WorkContext struct {
+		Pool pool_WorkContextOfStringToString
+	}
+	FuncWorker func_worker_StringToString
+	// Pool struct {
+	// Work pool_WorkOfStringToString
+	// WorkContext pool_WorkContextOfStringToString
+	// }
 }
 
 func (__ _StringToString) CallAsSync(ctx context.Context, value string, push func(ctx context.Context, value string, returnCh chan<- *ReturnOfString)) (context.Context, string, error) {
@@ -569,11 +634,24 @@ func (__ pool_WorkContextOfStringToInterface) GetWith(ctx context.Context, work 
 	return work_ctx
 }
 
+type func_worker_StringToInterface struct{}
+
+func (_ func_worker_StringToInterface) New(ctx context.Context, h func(context.Context, string) (interface{}, error), n int) *FuncWorkerOfStringToInterface {
+	return newFuncWorkerOfStringToInterface(ctx, h, n)
+}
+
 type _StringToInterface struct {
-	Pool struct {
-		Work        pool_WorkOfStringToInterface
-		WorkContext pool_WorkContextOfStringToInterface
+	Work struct {
+		Pool pool_WorkOfStringToInterface
 	}
+	WorkContext struct {
+		Pool pool_WorkContextOfStringToInterface
+	}
+	FuncWorker func_worker_StringToInterface
+	// Pool struct {
+	// Work pool_WorkOfStringToInterface
+	// WorkContext pool_WorkContextOfStringToInterface
+	// }
 }
 
 func (__ _StringToInterface) CallAsSync(ctx context.Context, value string, push func(ctx context.Context, value string, returnCh chan<- *ReturnOfInterface)) (context.Context, interface{}, error) {
@@ -667,11 +745,24 @@ func (__ pool_WorkContextOfInterfaceToBytes) GetWith(ctx context.Context, work *
 	return work_ctx
 }
 
+type func_worker_InterfaceToBytes struct{}
+
+func (_ func_worker_InterfaceToBytes) New(ctx context.Context, h func(context.Context, interface{}) (Bytes, error), n int) *FuncWorkerOfInterfaceToBytes {
+	return newFuncWorkerOfInterfaceToBytes(ctx, h, n)
+}
+
 type _InterfaceToBytes struct {
-	Pool struct {
-		Work        pool_WorkOfInterfaceToBytes
-		WorkContext pool_WorkContextOfInterfaceToBytes
+	Work struct {
+		Pool pool_WorkOfInterfaceToBytes
 	}
+	WorkContext struct {
+		Pool pool_WorkContextOfInterfaceToBytes
+	}
+	FuncWorker func_worker_InterfaceToBytes
+	// Pool struct {
+	// Work pool_WorkOfInterfaceToBytes
+	// WorkContext pool_WorkContextOfInterfaceToBytes
+	// }
 }
 
 func (__ _InterfaceToBytes) CallAsSync(ctx context.Context, value interface{}, push func(ctx context.Context, value interface{}, returnCh chan<- *ReturnOfBytes)) (context.Context, Bytes, error) {
@@ -765,11 +856,24 @@ func (__ pool_WorkContextOfInterfaceToString) GetWith(ctx context.Context, work 
 	return work_ctx
 }
 
+type func_worker_InterfaceToString struct{}
+
+func (_ func_worker_InterfaceToString) New(ctx context.Context, h func(context.Context, interface{}) (string, error), n int) *FuncWorkerOfInterfaceToString {
+	return newFuncWorkerOfInterfaceToString(ctx, h, n)
+}
+
 type _InterfaceToString struct {
-	Pool struct {
-		Work        pool_WorkOfInterfaceToString
-		WorkContext pool_WorkContextOfInterfaceToString
+	Work struct {
+		Pool pool_WorkOfInterfaceToString
 	}
+	WorkContext struct {
+		Pool pool_WorkContextOfInterfaceToString
+	}
+	FuncWorker func_worker_InterfaceToString
+	// Pool struct {
+	// Work pool_WorkOfInterfaceToString
+	// WorkContext pool_WorkContextOfInterfaceToString
+	// }
 }
 
 func (__ _InterfaceToString) CallAsSync(ctx context.Context, value interface{}, push func(ctx context.Context, value interface{}, returnCh chan<- *ReturnOfString)) (context.Context, string, error) {
@@ -863,11 +967,24 @@ func (__ pool_WorkContextOfInterfaceToInterface) GetWith(ctx context.Context, wo
 	return work_ctx
 }
 
+type func_worker_InterfaceToInterface struct{}
+
+func (_ func_worker_InterfaceToInterface) New(ctx context.Context, h func(context.Context, interface{}) (interface{}, error), n int) *FuncWorkerOfInterfaceToInterface {
+	return newFuncWorkerOfInterfaceToInterface(ctx, h, n)
+}
+
 type _InterfaceToInterface struct {
-	Pool struct {
-		Work        pool_WorkOfInterfaceToInterface
-		WorkContext pool_WorkContextOfInterfaceToInterface
+	Work struct {
+		Pool pool_WorkOfInterfaceToInterface
 	}
+	WorkContext struct {
+		Pool pool_WorkContextOfInterfaceToInterface
+	}
+	FuncWorker func_worker_InterfaceToInterface
+	// Pool struct {
+	// Work pool_WorkOfInterfaceToInterface
+	// WorkContext pool_WorkContextOfInterfaceToInterface
+	// }
 }
 
 func (__ _InterfaceToInterface) CallAsSync(ctx context.Context, value interface{}, push func(ctx context.Context, value interface{}, returnCh chan<- *ReturnOfInterface)) (context.Context, interface{}, error) {
