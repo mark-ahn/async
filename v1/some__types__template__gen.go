@@ -23,6 +23,10 @@ type WorkContextOfBytesToBytes struct {
 	*WorkOfBytesToBytes
 }
 
+func (__ *WorkContextOfBytesToBytes) Unpack() (context.Context, Bytes, chan<- *ReturnOfBytes) {
+	return __.Context, __.Value, __.ReturnCh
+}
+
 var (
 	zero_of_WorkOfBytesToBytes       WorkOfBytesToBytes
 	zero_of_WorkOfBytesToBytes_Value Bytes
@@ -130,6 +134,31 @@ func (__ _BytesToBytes) CallAsAsync(ctx context.Context, value Bytes, returnCh c
 	}()
 }
 
+func (__ _BytesToBytes) WithReturnChStack(ctx context.Context, n int) context.Context {
+	return insertStackOfReturnChOfBytes(ctx, n)
+}
+
+func (__ _BytesToBytes) PopReturnCh(ctx Valuable) chan<- *ReturnOfBytes {
+	return popReturnChOfBytes(ctx)
+}
+
+func (__ _BytesToBytes) TopReturnCh(ctx Valuable) chan<- *ReturnOfBytes {
+	return topReturnChOfBytes(ctx)
+}
+
+func (__ _BytesToBytes) PushReturnCh(ctx Valuable, ch chan<- *ReturnOfBytes) {
+	pushReturnChOfBytes(ctx, ch)
+}
+
+func (__ _BytesToBytes) NotifyOnReturnCh(ctx Valuable, rtn *ReturnOfBytes) bool {
+	ch := __.TopReturnCh(ctx)
+	if ch == nil {
+		return false
+	}
+	ch <- rtn
+	return true
+}
+
 var BytesToBytes = _BytesToBytes{}
 
 type WorkerOfBytesToString interface {
@@ -144,6 +173,10 @@ type WorkOfBytesToString struct {
 type WorkContextOfBytesToString struct {
 	Context context.Context
 	*WorkOfBytesToString
+}
+
+func (__ *WorkContextOfBytesToString) Unpack() (context.Context, Bytes, chan<- *ReturnOfString) {
+	return __.Context, __.Value, __.ReturnCh
 }
 
 var (
@@ -253,6 +286,31 @@ func (__ _BytesToString) CallAsAsync(ctx context.Context, value Bytes, returnCh 
 	}()
 }
 
+func (__ _BytesToString) WithReturnChStack(ctx context.Context, n int) context.Context {
+	return insertStackOfReturnChOfString(ctx, n)
+}
+
+func (__ _BytesToString) PopReturnCh(ctx Valuable) chan<- *ReturnOfString {
+	return popReturnChOfString(ctx)
+}
+
+func (__ _BytesToString) TopReturnCh(ctx Valuable) chan<- *ReturnOfString {
+	return topReturnChOfString(ctx)
+}
+
+func (__ _BytesToString) PushReturnCh(ctx Valuable, ch chan<- *ReturnOfString) {
+	pushReturnChOfString(ctx, ch)
+}
+
+func (__ _BytesToString) NotifyOnReturnCh(ctx Valuable, rtn *ReturnOfString) bool {
+	ch := __.TopReturnCh(ctx)
+	if ch == nil {
+		return false
+	}
+	ch <- rtn
+	return true
+}
+
 var BytesToString = _BytesToString{}
 
 type WorkerOfBytesToInterface interface {
@@ -267,6 +325,10 @@ type WorkOfBytesToInterface struct {
 type WorkContextOfBytesToInterface struct {
 	Context context.Context
 	*WorkOfBytesToInterface
+}
+
+func (__ *WorkContextOfBytesToInterface) Unpack() (context.Context, Bytes, chan<- *ReturnOfInterface) {
+	return __.Context, __.Value, __.ReturnCh
 }
 
 var (
@@ -376,6 +438,31 @@ func (__ _BytesToInterface) CallAsAsync(ctx context.Context, value Bytes, return
 	}()
 }
 
+func (__ _BytesToInterface) WithReturnChStack(ctx context.Context, n int) context.Context {
+	return insertStackOfReturnChOfInterface(ctx, n)
+}
+
+func (__ _BytesToInterface) PopReturnCh(ctx Valuable) chan<- *ReturnOfInterface {
+	return popReturnChOfInterface(ctx)
+}
+
+func (__ _BytesToInterface) TopReturnCh(ctx Valuable) chan<- *ReturnOfInterface {
+	return topReturnChOfInterface(ctx)
+}
+
+func (__ _BytesToInterface) PushReturnCh(ctx Valuable, ch chan<- *ReturnOfInterface) {
+	pushReturnChOfInterface(ctx, ch)
+}
+
+func (__ _BytesToInterface) NotifyOnReturnCh(ctx Valuable, rtn *ReturnOfInterface) bool {
+	ch := __.TopReturnCh(ctx)
+	if ch == nil {
+		return false
+	}
+	ch <- rtn
+	return true
+}
+
 var BytesToInterface = _BytesToInterface{}
 
 type WorkerOfStringToBytes interface {
@@ -390,6 +477,10 @@ type WorkOfStringToBytes struct {
 type WorkContextOfStringToBytes struct {
 	Context context.Context
 	*WorkOfStringToBytes
+}
+
+func (__ *WorkContextOfStringToBytes) Unpack() (context.Context, string, chan<- *ReturnOfBytes) {
+	return __.Context, __.Value, __.ReturnCh
 }
 
 var (
@@ -499,6 +590,31 @@ func (__ _StringToBytes) CallAsAsync(ctx context.Context, value string, returnCh
 	}()
 }
 
+func (__ _StringToBytes) WithReturnChStack(ctx context.Context, n int) context.Context {
+	return insertStackOfReturnChOfBytes(ctx, n)
+}
+
+func (__ _StringToBytes) PopReturnCh(ctx Valuable) chan<- *ReturnOfBytes {
+	return popReturnChOfBytes(ctx)
+}
+
+func (__ _StringToBytes) TopReturnCh(ctx Valuable) chan<- *ReturnOfBytes {
+	return topReturnChOfBytes(ctx)
+}
+
+func (__ _StringToBytes) PushReturnCh(ctx Valuable, ch chan<- *ReturnOfBytes) {
+	pushReturnChOfBytes(ctx, ch)
+}
+
+func (__ _StringToBytes) NotifyOnReturnCh(ctx Valuable, rtn *ReturnOfBytes) bool {
+	ch := __.TopReturnCh(ctx)
+	if ch == nil {
+		return false
+	}
+	ch <- rtn
+	return true
+}
+
 var StringToBytes = _StringToBytes{}
 
 type WorkerOfStringToString interface {
@@ -513,6 +629,10 @@ type WorkOfStringToString struct {
 type WorkContextOfStringToString struct {
 	Context context.Context
 	*WorkOfStringToString
+}
+
+func (__ *WorkContextOfStringToString) Unpack() (context.Context, string, chan<- *ReturnOfString) {
+	return __.Context, __.Value, __.ReturnCh
 }
 
 var (
@@ -622,6 +742,31 @@ func (__ _StringToString) CallAsAsync(ctx context.Context, value string, returnC
 	}()
 }
 
+func (__ _StringToString) WithReturnChStack(ctx context.Context, n int) context.Context {
+	return insertStackOfReturnChOfString(ctx, n)
+}
+
+func (__ _StringToString) PopReturnCh(ctx Valuable) chan<- *ReturnOfString {
+	return popReturnChOfString(ctx)
+}
+
+func (__ _StringToString) TopReturnCh(ctx Valuable) chan<- *ReturnOfString {
+	return topReturnChOfString(ctx)
+}
+
+func (__ _StringToString) PushReturnCh(ctx Valuable, ch chan<- *ReturnOfString) {
+	pushReturnChOfString(ctx, ch)
+}
+
+func (__ _StringToString) NotifyOnReturnCh(ctx Valuable, rtn *ReturnOfString) bool {
+	ch := __.TopReturnCh(ctx)
+	if ch == nil {
+		return false
+	}
+	ch <- rtn
+	return true
+}
+
 var StringToString = _StringToString{}
 
 type WorkerOfStringToInterface interface {
@@ -636,6 +781,10 @@ type WorkOfStringToInterface struct {
 type WorkContextOfStringToInterface struct {
 	Context context.Context
 	*WorkOfStringToInterface
+}
+
+func (__ *WorkContextOfStringToInterface) Unpack() (context.Context, string, chan<- *ReturnOfInterface) {
+	return __.Context, __.Value, __.ReturnCh
 }
 
 var (
@@ -745,6 +894,31 @@ func (__ _StringToInterface) CallAsAsync(ctx context.Context, value string, retu
 	}()
 }
 
+func (__ _StringToInterface) WithReturnChStack(ctx context.Context, n int) context.Context {
+	return insertStackOfReturnChOfInterface(ctx, n)
+}
+
+func (__ _StringToInterface) PopReturnCh(ctx Valuable) chan<- *ReturnOfInterface {
+	return popReturnChOfInterface(ctx)
+}
+
+func (__ _StringToInterface) TopReturnCh(ctx Valuable) chan<- *ReturnOfInterface {
+	return topReturnChOfInterface(ctx)
+}
+
+func (__ _StringToInterface) PushReturnCh(ctx Valuable, ch chan<- *ReturnOfInterface) {
+	pushReturnChOfInterface(ctx, ch)
+}
+
+func (__ _StringToInterface) NotifyOnReturnCh(ctx Valuable, rtn *ReturnOfInterface) bool {
+	ch := __.TopReturnCh(ctx)
+	if ch == nil {
+		return false
+	}
+	ch <- rtn
+	return true
+}
+
 var StringToInterface = _StringToInterface{}
 
 type WorkerOfInterfaceToBytes interface {
@@ -759,6 +933,10 @@ type WorkOfInterfaceToBytes struct {
 type WorkContextOfInterfaceToBytes struct {
 	Context context.Context
 	*WorkOfInterfaceToBytes
+}
+
+func (__ *WorkContextOfInterfaceToBytes) Unpack() (context.Context, interface{}, chan<- *ReturnOfBytes) {
+	return __.Context, __.Value, __.ReturnCh
 }
 
 var (
@@ -868,6 +1046,31 @@ func (__ _InterfaceToBytes) CallAsAsync(ctx context.Context, value interface{}, 
 	}()
 }
 
+func (__ _InterfaceToBytes) WithReturnChStack(ctx context.Context, n int) context.Context {
+	return insertStackOfReturnChOfBytes(ctx, n)
+}
+
+func (__ _InterfaceToBytes) PopReturnCh(ctx Valuable) chan<- *ReturnOfBytes {
+	return popReturnChOfBytes(ctx)
+}
+
+func (__ _InterfaceToBytes) TopReturnCh(ctx Valuable) chan<- *ReturnOfBytes {
+	return topReturnChOfBytes(ctx)
+}
+
+func (__ _InterfaceToBytes) PushReturnCh(ctx Valuable, ch chan<- *ReturnOfBytes) {
+	pushReturnChOfBytes(ctx, ch)
+}
+
+func (__ _InterfaceToBytes) NotifyOnReturnCh(ctx Valuable, rtn *ReturnOfBytes) bool {
+	ch := __.TopReturnCh(ctx)
+	if ch == nil {
+		return false
+	}
+	ch <- rtn
+	return true
+}
+
 var InterfaceToBytes = _InterfaceToBytes{}
 
 type WorkerOfInterfaceToString interface {
@@ -882,6 +1085,10 @@ type WorkOfInterfaceToString struct {
 type WorkContextOfInterfaceToString struct {
 	Context context.Context
 	*WorkOfInterfaceToString
+}
+
+func (__ *WorkContextOfInterfaceToString) Unpack() (context.Context, interface{}, chan<- *ReturnOfString) {
+	return __.Context, __.Value, __.ReturnCh
 }
 
 var (
@@ -991,6 +1198,31 @@ func (__ _InterfaceToString) CallAsAsync(ctx context.Context, value interface{},
 	}()
 }
 
+func (__ _InterfaceToString) WithReturnChStack(ctx context.Context, n int) context.Context {
+	return insertStackOfReturnChOfString(ctx, n)
+}
+
+func (__ _InterfaceToString) PopReturnCh(ctx Valuable) chan<- *ReturnOfString {
+	return popReturnChOfString(ctx)
+}
+
+func (__ _InterfaceToString) TopReturnCh(ctx Valuable) chan<- *ReturnOfString {
+	return topReturnChOfString(ctx)
+}
+
+func (__ _InterfaceToString) PushReturnCh(ctx Valuable, ch chan<- *ReturnOfString) {
+	pushReturnChOfString(ctx, ch)
+}
+
+func (__ _InterfaceToString) NotifyOnReturnCh(ctx Valuable, rtn *ReturnOfString) bool {
+	ch := __.TopReturnCh(ctx)
+	if ch == nil {
+		return false
+	}
+	ch <- rtn
+	return true
+}
+
 var InterfaceToString = _InterfaceToString{}
 
 type WorkerOfInterfaceToInterface interface {
@@ -1005,6 +1237,10 @@ type WorkOfInterfaceToInterface struct {
 type WorkContextOfInterfaceToInterface struct {
 	Context context.Context
 	*WorkOfInterfaceToInterface
+}
+
+func (__ *WorkContextOfInterfaceToInterface) Unpack() (context.Context, interface{}, chan<- *ReturnOfInterface) {
+	return __.Context, __.Value, __.ReturnCh
 }
 
 var (
@@ -1112,6 +1348,31 @@ func (__ _InterfaceToInterface) CallAsAsync(ctx context.Context, value interface
 		rtn := __.GetReturnWith(ctx, res, err)
 		returnCh <- rtn
 	}()
+}
+
+func (__ _InterfaceToInterface) WithReturnChStack(ctx context.Context, n int) context.Context {
+	return insertStackOfReturnChOfInterface(ctx, n)
+}
+
+func (__ _InterfaceToInterface) PopReturnCh(ctx Valuable) chan<- *ReturnOfInterface {
+	return popReturnChOfInterface(ctx)
+}
+
+func (__ _InterfaceToInterface) TopReturnCh(ctx Valuable) chan<- *ReturnOfInterface {
+	return topReturnChOfInterface(ctx)
+}
+
+func (__ _InterfaceToInterface) PushReturnCh(ctx Valuable, ch chan<- *ReturnOfInterface) {
+	pushReturnChOfInterface(ctx, ch)
+}
+
+func (__ _InterfaceToInterface) NotifyOnReturnCh(ctx Valuable, rtn *ReturnOfInterface) bool {
+	ch := __.TopReturnCh(ctx)
+	if ch == nil {
+		return false
+	}
+	ch <- rtn
+	return true
 }
 
 var InterfaceToInterface = _InterfaceToInterface{}

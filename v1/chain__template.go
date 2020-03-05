@@ -67,7 +67,7 @@ func (__ *ChainOfInterface) Push(ctx context.Context, value interface{}, returnC
 		for _, worker := range __.chains {
 			worker.Push(ctx, arg, ch)
 			rtn := <-ch
-			ctx, arg, err = rtn.Context, rtn.Value, rtn.Error
+			ctx, arg, err = rtn.Unpack()
 			if err != nil {
 				returnCh <- rtn
 				return

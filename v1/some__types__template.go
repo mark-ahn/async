@@ -19,6 +19,10 @@ type WorkContextOfSomeToOther struct {
 	*WorkOfSomeToOther
 }
 
+func (__ *WorkContextOfSomeToOther) Unpack() (context.Context, Some, chan<- *ReturnOfOther) {
+	return __.Context, __.Value, __.ReturnCh
+}
+
 var (
 	zero_of_WorkOfSomeToOther       WorkOfSomeToOther
 	zero_of_WorkOfSomeToOther_Value Some
@@ -124,6 +128,31 @@ func (__ _SomeToOther) CallAsAsync(ctx context.Context, value Some, returnCh cha
 		rtn := __.GetReturnWith(ctx, res, err)
 		returnCh <- rtn
 	}()
+}
+
+func (__ _SomeToOther) WithReturnChStack(ctx context.Context, n int) context.Context {
+	return insertStackOfReturnChOfOther(ctx, n)
+}
+
+func (__ _SomeToOther) PopReturnCh(ctx Valuable) chan<- *ReturnOfOther {
+	return popReturnChOfOther(ctx)
+}
+
+func (__ _SomeToOther) TopReturnCh(ctx Valuable) chan<- *ReturnOfOther {
+	return topReturnChOfOther(ctx)
+}
+
+func (__ _SomeToOther) PushReturnCh(ctx Valuable, ch chan<- *ReturnOfOther) {
+	pushReturnChOfOther(ctx, ch)
+}
+
+func (__ _SomeToOther) NotifyOnReturnCh(ctx Valuable, rtn *ReturnOfOther) bool {
+	ch := __.TopReturnCh(ctx)
+	if ch == nil {
+		return false
+	}
+	ch <- rtn
+	return true
 }
 
 var SomeToOther = _SomeToOther{}

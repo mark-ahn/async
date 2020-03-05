@@ -15,6 +15,10 @@ type ReturnOfBytes struct {
 	Error   error
 }
 
+func (__ *ReturnOfBytes) Unpack() (context.Context, Some, error) {
+	return __.Context, __.Value, __.Error
+}
+
 var (
 	zero_of_ReturnOfBytes       ReturnOfBytes
 	zero_of_ReturnOfBytes_value Bytes
@@ -47,10 +51,89 @@ func putReturnChOfBytes(d chan *ReturnOfBytes) {
 	pool_of_ReturnOfBytes_ch.Put(d)
 }
 
+type StackOfReturnChOfBytes struct {
+	chans []chan<- *ReturnOfBytes
+	sync.Mutex
+}
+
+func NewStackOfReturnChOfBytes(n int) *StackOfReturnChOfBytes {
+	return &StackOfReturnChOfBytes{
+		chans: make([]chan<- *ReturnOfBytes, 0, n),
+	}
+}
+
+func (__ *StackOfReturnChOfBytes) Push(ch chan<- *ReturnOfBytes) {
+	__.Lock()
+	__.chans = append(__.chans, ch)
+	__.Unlock()
+}
+func (__ *StackOfReturnChOfBytes) Pop() chan<- *ReturnOfBytes {
+	var ch chan<- *ReturnOfBytes
+	__.Lock()
+	defer __.Unlock()
+	last := len(__.chans) - 1
+	if last < 0 {
+		return ch
+	}
+	__.chans, ch = __.chans[:last], __.chans[last]
+	return ch
+}
+
+func (__ *StackOfReturnChOfBytes) Top() chan<- *ReturnOfBytes {
+	var ch chan<- *ReturnOfBytes
+	__.Lock()
+	defer __.Unlock()
+	last := len(__.chans) - 1
+	if last < 0 {
+		return ch
+	}
+	return __.chans[last]
+}
+
+type async_key_for_Bytes int
+
+const (
+	async_key_for_Bytes_return_ch_stack async_key_for_Bytes = iota
+)
+
+func insertStackOfReturnChOfBytes(ctx context.Context, n int) context.Context {
+	stack := NewStackOfReturnChOfBytes(n)
+	return context.WithValue(ctx, async_key_for_Bytes_return_ch_stack, stack)
+}
+
+func popReturnChOfBytes(ctx Valuable) chan<- *ReturnOfBytes {
+	stack, ok := ctx.Value(async_key_for_Bytes_return_ch_stack).(*StackOfReturnChOfBytes)
+	if !ok {
+		return nil
+	}
+	return stack.Pop()
+}
+
+func topReturnChOfBytes(ctx Valuable) chan<- *ReturnOfBytes {
+	stack, ok := ctx.Value(async_key_for_Bytes_return_ch_stack).(*StackOfReturnChOfBytes)
+	if !ok {
+		return nil
+	}
+	return stack.Top()
+}
+
+func pushReturnChOfBytes(ctx Valuable, ch chan<- *ReturnOfBytes) bool {
+	stack, ok := ctx.Value(async_key_for_Bytes_return_ch_stack).(*StackOfReturnChOfBytes)
+	if !ok {
+		return false
+	}
+	stack.Push(ch)
+	return true
+}
+
 type ReturnOfString struct {
 	Context context.Context
 	Value   string
 	Error   error
+}
+
+func (__ *ReturnOfString) Unpack() (context.Context, Some, error) {
+	return __.Context, __.Value, __.Error
 }
 
 var (
@@ -85,10 +168,89 @@ func putReturnChOfString(d chan *ReturnOfString) {
 	pool_of_ReturnOfString_ch.Put(d)
 }
 
+type StackOfReturnChOfString struct {
+	chans []chan<- *ReturnOfString
+	sync.Mutex
+}
+
+func NewStackOfReturnChOfString(n int) *StackOfReturnChOfString {
+	return &StackOfReturnChOfString{
+		chans: make([]chan<- *ReturnOfString, 0, n),
+	}
+}
+
+func (__ *StackOfReturnChOfString) Push(ch chan<- *ReturnOfString) {
+	__.Lock()
+	__.chans = append(__.chans, ch)
+	__.Unlock()
+}
+func (__ *StackOfReturnChOfString) Pop() chan<- *ReturnOfString {
+	var ch chan<- *ReturnOfString
+	__.Lock()
+	defer __.Unlock()
+	last := len(__.chans) - 1
+	if last < 0 {
+		return ch
+	}
+	__.chans, ch = __.chans[:last], __.chans[last]
+	return ch
+}
+
+func (__ *StackOfReturnChOfString) Top() chan<- *ReturnOfString {
+	var ch chan<- *ReturnOfString
+	__.Lock()
+	defer __.Unlock()
+	last := len(__.chans) - 1
+	if last < 0 {
+		return ch
+	}
+	return __.chans[last]
+}
+
+type async_key_for_String int
+
+const (
+	async_key_for_String_return_ch_stack async_key_for_String = iota
+)
+
+func insertStackOfReturnChOfString(ctx context.Context, n int) context.Context {
+	stack := NewStackOfReturnChOfString(n)
+	return context.WithValue(ctx, async_key_for_String_return_ch_stack, stack)
+}
+
+func popReturnChOfString(ctx Valuable) chan<- *ReturnOfString {
+	stack, ok := ctx.Value(async_key_for_String_return_ch_stack).(*StackOfReturnChOfString)
+	if !ok {
+		return nil
+	}
+	return stack.Pop()
+}
+
+func topReturnChOfString(ctx Valuable) chan<- *ReturnOfString {
+	stack, ok := ctx.Value(async_key_for_String_return_ch_stack).(*StackOfReturnChOfString)
+	if !ok {
+		return nil
+	}
+	return stack.Top()
+}
+
+func pushReturnChOfString(ctx Valuable, ch chan<- *ReturnOfString) bool {
+	stack, ok := ctx.Value(async_key_for_String_return_ch_stack).(*StackOfReturnChOfString)
+	if !ok {
+		return false
+	}
+	stack.Push(ch)
+	return true
+}
+
 type ReturnOfInterface struct {
 	Context context.Context
 	Value   interface{}
 	Error   error
+}
+
+func (__ *ReturnOfInterface) Unpack() (context.Context, Some, error) {
+	return __.Context, __.Value, __.Error
 }
 
 var (
@@ -121,4 +283,79 @@ func getReturnChOfInterface() chan *ReturnOfInterface {
 }
 func putReturnChOfInterface(d chan *ReturnOfInterface) {
 	pool_of_ReturnOfInterface_ch.Put(d)
+}
+
+type StackOfReturnChOfInterface struct {
+	chans []chan<- *ReturnOfInterface
+	sync.Mutex
+}
+
+func NewStackOfReturnChOfInterface(n int) *StackOfReturnChOfInterface {
+	return &StackOfReturnChOfInterface{
+		chans: make([]chan<- *ReturnOfInterface, 0, n),
+	}
+}
+
+func (__ *StackOfReturnChOfInterface) Push(ch chan<- *ReturnOfInterface) {
+	__.Lock()
+	__.chans = append(__.chans, ch)
+	__.Unlock()
+}
+func (__ *StackOfReturnChOfInterface) Pop() chan<- *ReturnOfInterface {
+	var ch chan<- *ReturnOfInterface
+	__.Lock()
+	defer __.Unlock()
+	last := len(__.chans) - 1
+	if last < 0 {
+		return ch
+	}
+	__.chans, ch = __.chans[:last], __.chans[last]
+	return ch
+}
+
+func (__ *StackOfReturnChOfInterface) Top() chan<- *ReturnOfInterface {
+	var ch chan<- *ReturnOfInterface
+	__.Lock()
+	defer __.Unlock()
+	last := len(__.chans) - 1
+	if last < 0 {
+		return ch
+	}
+	return __.chans[last]
+}
+
+type async_key_for_Interface int
+
+const (
+	async_key_for_Interface_return_ch_stack async_key_for_Interface = iota
+)
+
+func insertStackOfReturnChOfInterface(ctx context.Context, n int) context.Context {
+	stack := NewStackOfReturnChOfInterface(n)
+	return context.WithValue(ctx, async_key_for_Interface_return_ch_stack, stack)
+}
+
+func popReturnChOfInterface(ctx Valuable) chan<- *ReturnOfInterface {
+	stack, ok := ctx.Value(async_key_for_Interface_return_ch_stack).(*StackOfReturnChOfInterface)
+	if !ok {
+		return nil
+	}
+	return stack.Pop()
+}
+
+func topReturnChOfInterface(ctx Valuable) chan<- *ReturnOfInterface {
+	stack, ok := ctx.Value(async_key_for_Interface_return_ch_stack).(*StackOfReturnChOfInterface)
+	if !ok {
+		return nil
+	}
+	return stack.Top()
+}
+
+func pushReturnChOfInterface(ctx Valuable, ch chan<- *ReturnOfInterface) bool {
+	stack, ok := ctx.Value(async_key_for_Interface_return_ch_stack).(*StackOfReturnChOfInterface)
+	if !ok {
+		return false
+	}
+	stack.Push(ch)
+	return true
 }
