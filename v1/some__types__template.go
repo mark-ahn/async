@@ -56,8 +56,6 @@ func (__ pool_WorkOfSomeToOther) GetWith(value Some, returnCh chan<- *ReturnOfOt
 	return work
 }
 
-// var WorkOfSomeToOtherPool = pool_WorkOfSomeToOther{}
-
 type pool_WorkContextOfSomeToOther struct{}
 
 func (_ pool_WorkContextOfSomeToOther) Get() *WorkContextOfSomeToOther {
@@ -77,66 +75,12 @@ func (__ pool_WorkContextOfSomeToOther) GetWith(ctx context.Context, work *WorkO
 	return work_ctx
 }
 
-// var WorkContextOfSomeToOtherPool = pool_WorkContextOfSomeToOther{}
-
 type _SomeToOther struct {
 	Pool struct {
 		Work        pool_WorkOfSomeToOther
 		WorkContext pool_WorkContextOfSomeToOther
 	}
 }
-
-// func (_ _SomeToOther) GetWork() *WorkOfSomeToOther {
-// 	return getWorkOfSomeToOther()
-// }
-// func (__ _SomeToOther) GetWorkWith(value Some, returnCh chan<- *ReturnOfOther) *WorkOfSomeToOther {
-// 	work := __.GetWork()
-// 	work.Value = value
-// 	work.ReturnCh = returnCh
-// 	return work
-// }
-
-// func (_ _SomeToOther) PutWork(d *WorkOfSomeToOther) {
-// 	putWorkOfSomeToOther(d)
-// }
-
-// func (_ _SomeToOther) GetReturn() *ReturnOfOther {
-// 	return getReturnOfOther()
-// }
-
-// func (__ _SomeToOther) GetReturnWith(ctx context.Context, value Other, err error) *ReturnOfOther {
-// 	rtn := getReturnOfOther()
-// 	rtn.Context = ctx
-// 	rtn.Value = value
-// 	rtn.Error = err
-// 	return rtn
-// }
-
-// func (_ _SomeToOther) PutReturn(d *ReturnOfOther) {
-// 	putReturnOfOther(d)
-// }
-
-// func (_ _SomeToOther) GetReturnCh() chan *ReturnOfOther {
-// 	return getReturnChOfOther()
-// }
-
-// func (_ _SomeToOther) PutReturnCh(d chan *ReturnOfOther) {
-// 	putReturnChOfOther(d)
-// }
-
-// func (_ _SomeToOther) GetWorkContext() *WorkContextOfSomeToOther {
-// 	return getWorkContextOfSomeToOther()
-// }
-// func (__ _SomeToOther) GetWorkContextWith(ctx context.Context, work *WorkOfSomeToOther) *WorkContextOfSomeToOther {
-// 	work_ctx := __.GetWorkContext()
-// 	work_ctx.Context = ctx
-// 	work_ctx.WorkOfSomeToOther = work
-// 	return work_ctx
-// }
-
-// func (_ _SomeToOther) PutWorkContext(d *WorkContextOfSomeToOther) {
-// 	putWorkContextOfSomeToOther(d)
-// }
 
 func (__ _SomeToOther) CallAsSync(ctx context.Context, value Some, push func(ctx context.Context, value Some, returnCh chan<- *ReturnOfOther)) (context.Context, Other, error) {
 	ch := Others.Pool.ChanReturn.Get()

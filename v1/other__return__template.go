@@ -50,8 +50,6 @@ func (__ pool_ReturnOfOther) GetWith(ctx context.Context, value Other, err error
 	return rtn
 }
 
-// var ReturnOfOtherPool = pool_ReturnOfOther{}
-
 type pool_ChanReturnOfOther struct{}
 
 func (_ pool_ChanReturnOfOther) Get() chan *ReturnOfOther {
@@ -60,8 +58,6 @@ func (_ pool_ChanReturnOfOther) Get() chan *ReturnOfOther {
 func (_ pool_ChanReturnOfOther) Put(d chan *ReturnOfOther) {
 	pool_of_ReturnOfOther_ch.Put(d)
 }
-
-// var ChanReturnOfOtherPool = pool_ChanReturnOfOther{}
 
 type StackOfChanReturnOfOther struct {
 	chans []chan<- *ReturnOfOther
@@ -149,21 +145,6 @@ func (__ chanReturnOfOther) Notify(ctx Valuable, rtn *ReturnOfOther) bool {
 	return true
 }
 
-// func (__ _SomeToOther) WithReturnChStack(ctx context.Context, n int) context.Context {
-// 	return insertStackOfReturnChOfOther(ctx, n)
-// }
-
-// func (__ _SomeToOther) PopReturnCh(ctx Valuable) chan<- *ReturnOfOther {
-// 	return popReturnChOfOther(ctx)
-// }
-
-// func (__ _SomeToOther) TopReturnCh(ctx Valuable) chan<- *ReturnOfOther {
-// 	return topReturnChOfOther(ctx)
-// }
-
-// func (__ _SomeToOther) PushReturnCh(ctx Valuable, ch chan<- *ReturnOfOther) {
-// 	pushReturnChOfOther(ctx, ch)
-// }
 type _Other struct {
 	Pool struct {
 		Return     pool_ReturnOfOther
@@ -175,5 +156,3 @@ type _Other struct {
 }
 
 var Others = _Other{}
-
-// var ContextOfChanReturnOfOther = chanReturnOfOther{}

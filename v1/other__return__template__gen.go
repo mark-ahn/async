@@ -54,8 +54,6 @@ func (__ pool_ReturnOfBytes) GetWith(ctx context.Context, value Bytes, err error
 	return rtn
 }
 
-// var ReturnOfBytesPool = pool_ReturnOfBytes{}
-
 type pool_ChanReturnOfBytes struct{}
 
 func (_ pool_ChanReturnOfBytes) Get() chan *ReturnOfBytes {
@@ -64,8 +62,6 @@ func (_ pool_ChanReturnOfBytes) Get() chan *ReturnOfBytes {
 func (_ pool_ChanReturnOfBytes) Put(d chan *ReturnOfBytes) {
 	pool_of_ReturnOfBytes_ch.Put(d)
 }
-
-// var ChanReturnOfBytesPool = pool_ChanReturnOfBytes{}
 
 type StackOfChanReturnOfBytes struct {
 	chans []chan<- *ReturnOfBytes
@@ -153,21 +149,6 @@ func (__ chanReturnOfBytes) Notify(ctx Valuable, rtn *ReturnOfBytes) bool {
 	return true
 }
 
-// func (__ _SomeToBytes) WithReturnChStack(ctx context.Context, n int) context.Context {
-// return insertStackOfReturnChOfBytes(ctx, n)
-// }
-
-// func (__ _SomeToBytes) PopReturnCh(ctx Valuable) chan<- *ReturnOfBytes {
-// return popReturnChOfBytes(ctx)
-// }
-
-// func (__ _SomeToBytes) TopReturnCh(ctx Valuable) chan<- *ReturnOfBytes {
-// return topReturnChOfBytes(ctx)
-// }
-
-// func (__ _SomeToBytes) PushReturnCh(ctx Valuable, ch chan<- *ReturnOfBytes) {
-// pushReturnChOfBytes(ctx, ch)
-// }
 type _Bytes struct {
 	Pool struct {
 		Return     pool_ReturnOfBytes
@@ -225,8 +206,6 @@ func (__ pool_ReturnOfString) GetWith(ctx context.Context, value string, err err
 	return rtn
 }
 
-// var ReturnOfStringPool = pool_ReturnOfString{}
-
 type pool_ChanReturnOfString struct{}
 
 func (_ pool_ChanReturnOfString) Get() chan *ReturnOfString {
@@ -235,8 +214,6 @@ func (_ pool_ChanReturnOfString) Get() chan *ReturnOfString {
 func (_ pool_ChanReturnOfString) Put(d chan *ReturnOfString) {
 	pool_of_ReturnOfString_ch.Put(d)
 }
-
-// var ChanReturnOfStringPool = pool_ChanReturnOfString{}
 
 type StackOfChanReturnOfString struct {
 	chans []chan<- *ReturnOfString
@@ -324,21 +301,6 @@ func (__ chanReturnOfString) Notify(ctx Valuable, rtn *ReturnOfString) bool {
 	return true
 }
 
-// func (__ _SomeToString) WithReturnChStack(ctx context.Context, n int) context.Context {
-// return insertStackOfReturnChOfString(ctx, n)
-// }
-
-// func (__ _SomeToString) PopReturnCh(ctx Valuable) chan<- *ReturnOfString {
-// return popReturnChOfString(ctx)
-// }
-
-// func (__ _SomeToString) TopReturnCh(ctx Valuable) chan<- *ReturnOfString {
-// return topReturnChOfString(ctx)
-// }
-
-// func (__ _SomeToString) PushReturnCh(ctx Valuable, ch chan<- *ReturnOfString) {
-// pushReturnChOfString(ctx, ch)
-// }
 type _String struct {
 	Pool struct {
 		Return     pool_ReturnOfString
@@ -396,8 +358,6 @@ func (__ pool_ReturnOfInterface) GetWith(ctx context.Context, value interface{},
 	return rtn
 }
 
-// var ReturnOfInterfacePool = pool_ReturnOfInterface{}
-
 type pool_ChanReturnOfInterface struct{}
 
 func (_ pool_ChanReturnOfInterface) Get() chan *ReturnOfInterface {
@@ -406,8 +366,6 @@ func (_ pool_ChanReturnOfInterface) Get() chan *ReturnOfInterface {
 func (_ pool_ChanReturnOfInterface) Put(d chan *ReturnOfInterface) {
 	pool_of_ReturnOfInterface_ch.Put(d)
 }
-
-// var ChanReturnOfInterfacePool = pool_ChanReturnOfInterface{}
 
 type StackOfChanReturnOfInterface struct {
 	chans []chan<- *ReturnOfInterface
@@ -495,21 +453,6 @@ func (__ chanReturnOfInterface) Notify(ctx Valuable, rtn *ReturnOfInterface) boo
 	return true
 }
 
-// func (__ _SomeToInterface) WithReturnChStack(ctx context.Context, n int) context.Context {
-// return insertStackOfReturnChOfInterface(ctx, n)
-// }
-
-// func (__ _SomeToInterface) PopReturnCh(ctx Valuable) chan<- *ReturnOfInterface {
-// return popReturnChOfInterface(ctx)
-// }
-
-// func (__ _SomeToInterface) TopReturnCh(ctx Valuable) chan<- *ReturnOfInterface {
-// return topReturnChOfInterface(ctx)
-// }
-
-// func (__ _SomeToInterface) PushReturnCh(ctx Valuable, ch chan<- *ReturnOfInterface) {
-// pushReturnChOfInterface(ctx, ch)
-// }
 type _Interface struct {
 	Pool struct {
 		Return     pool_ReturnOfInterface

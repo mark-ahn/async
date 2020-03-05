@@ -60,8 +60,6 @@ func (__ pool_WorkOfBytesToBytes) GetWith(value Bytes, returnCh chan<- *ReturnOf
 	return work
 }
 
-// var WorkOfBytesToBytesPool = pool_WorkOfBytesToBytes{}
-
 type pool_WorkContextOfBytesToBytes struct{}
 
 func (_ pool_WorkContextOfBytesToBytes) Get() *WorkContextOfBytesToBytes {
@@ -81,66 +79,12 @@ func (__ pool_WorkContextOfBytesToBytes) GetWith(ctx context.Context, work *Work
 	return work_ctx
 }
 
-// var WorkContextOfBytesToBytesPool = pool_WorkContextOfBytesToBytes{}
-
 type _BytesToBytes struct {
 	Pool struct {
 		Work        pool_WorkOfBytesToBytes
 		WorkContext pool_WorkContextOfBytesToBytes
 	}
 }
-
-// func (_ _BytesToBytes) GetWork() *WorkOfBytesToBytes {
-// return getWorkOfBytesToBytes()
-// }
-// func (__ _BytesToBytes) GetWorkWith(value Bytes, returnCh chan<- *ReturnOfBytes) *WorkOfBytesToBytes {
-// 	work := __.GetWork()
-// 	work.Value = value
-// 	work.ReturnCh = returnCh
-// 	return work
-// }
-
-// func (_ _BytesToBytes) PutWork(d *WorkOfBytesToBytes) {
-// putWorkOfBytesToBytes(d)
-// }
-
-// func (_ _BytesToBytes) GetReturn() *ReturnOfBytes {
-// return getReturnOfBytes()
-// }
-
-// func (__ _BytesToBytes) GetReturnWith(ctx context.Context, value Bytes, err error) *ReturnOfBytes {
-// rtn := getReturnOfBytes()
-// 	rtn.Context = ctx
-// 	rtn.Value = value
-// 	rtn.Error = err
-// 	return rtn
-// }
-
-// func (_ _BytesToBytes) PutReturn(d *ReturnOfBytes) {
-// putReturnOfBytes(d)
-// }
-
-// func (_ _BytesToBytes) GetReturnCh() chan *ReturnOfBytes {
-// return getReturnChOfBytes()
-// }
-
-// func (_ _BytesToBytes) PutReturnCh(d chan *ReturnOfBytes) {
-// putReturnChOfBytes(d)
-// }
-
-// func (_ _BytesToBytes) GetWorkContext() *WorkContextOfBytesToBytes {
-// return getWorkContextOfBytesToBytes()
-// }
-// func (__ _BytesToBytes) GetWorkContextWith(ctx context.Context, work *WorkOfBytesToBytes) *WorkContextOfBytesToBytes {
-// 	work_ctx := __.GetWorkContext()
-// 	work_ctx.Context = ctx
-// work_ctx.WorkOfBytesToBytes = work
-// 	return work_ctx
-// }
-
-// func (_ _BytesToBytes) PutWorkContext(d *WorkContextOfBytesToBytes) {
-// putWorkContextOfBytesToBytes(d)
-// }
 
 func (__ _BytesToBytes) CallAsSync(ctx context.Context, value Bytes, push func(ctx context.Context, value Bytes, returnCh chan<- *ReturnOfBytes)) (context.Context, Bytes, error) {
 	ch := Bytess.Pool.ChanReturn.Get()
@@ -214,8 +158,6 @@ func (__ pool_WorkOfBytesToString) GetWith(value Bytes, returnCh chan<- *ReturnO
 	return work
 }
 
-// var WorkOfBytesToStringPool = pool_WorkOfBytesToString{}
-
 type pool_WorkContextOfBytesToString struct{}
 
 func (_ pool_WorkContextOfBytesToString) Get() *WorkContextOfBytesToString {
@@ -235,66 +177,12 @@ func (__ pool_WorkContextOfBytesToString) GetWith(ctx context.Context, work *Wor
 	return work_ctx
 }
 
-// var WorkContextOfBytesToStringPool = pool_WorkContextOfBytesToString{}
-
 type _BytesToString struct {
 	Pool struct {
 		Work        pool_WorkOfBytesToString
 		WorkContext pool_WorkContextOfBytesToString
 	}
 }
-
-// func (_ _BytesToString) GetWork() *WorkOfBytesToString {
-// return getWorkOfBytesToString()
-// }
-// func (__ _BytesToString) GetWorkWith(value Bytes, returnCh chan<- *ReturnOfString) *WorkOfBytesToString {
-// 	work := __.GetWork()
-// 	work.Value = value
-// 	work.ReturnCh = returnCh
-// 	return work
-// }
-
-// func (_ _BytesToString) PutWork(d *WorkOfBytesToString) {
-// putWorkOfBytesToString(d)
-// }
-
-// func (_ _BytesToString) GetReturn() *ReturnOfString {
-// return getReturnOfString()
-// }
-
-// func (__ _BytesToString) GetReturnWith(ctx context.Context, value String, err error) *ReturnOfString {
-// rtn := getReturnOfString()
-// 	rtn.Context = ctx
-// 	rtn.Value = value
-// 	rtn.Error = err
-// 	return rtn
-// }
-
-// func (_ _BytesToString) PutReturn(d *ReturnOfString) {
-// putReturnOfString(d)
-// }
-
-// func (_ _BytesToString) GetReturnCh() chan *ReturnOfString {
-// return getReturnChOfString()
-// }
-
-// func (_ _BytesToString) PutReturnCh(d chan *ReturnOfString) {
-// putReturnChOfString(d)
-// }
-
-// func (_ _BytesToString) GetWorkContext() *WorkContextOfBytesToString {
-// return getWorkContextOfBytesToString()
-// }
-// func (__ _BytesToString) GetWorkContextWith(ctx context.Context, work *WorkOfBytesToString) *WorkContextOfBytesToString {
-// 	work_ctx := __.GetWorkContext()
-// 	work_ctx.Context = ctx
-// work_ctx.WorkOfBytesToString = work
-// 	return work_ctx
-// }
-
-// func (_ _BytesToString) PutWorkContext(d *WorkContextOfBytesToString) {
-// putWorkContextOfBytesToString(d)
-// }
 
 func (__ _BytesToString) CallAsSync(ctx context.Context, value Bytes, push func(ctx context.Context, value Bytes, returnCh chan<- *ReturnOfString)) (context.Context, string, error) {
 	ch := Strings.Pool.ChanReturn.Get()
@@ -368,8 +256,6 @@ func (__ pool_WorkOfBytesToInterface) GetWith(value Bytes, returnCh chan<- *Retu
 	return work
 }
 
-// var WorkOfBytesToInterfacePool = pool_WorkOfBytesToInterface{}
-
 type pool_WorkContextOfBytesToInterface struct{}
 
 func (_ pool_WorkContextOfBytesToInterface) Get() *WorkContextOfBytesToInterface {
@@ -389,66 +275,12 @@ func (__ pool_WorkContextOfBytesToInterface) GetWith(ctx context.Context, work *
 	return work_ctx
 }
 
-// var WorkContextOfBytesToInterfacePool = pool_WorkContextOfBytesToInterface{}
-
 type _BytesToInterface struct {
 	Pool struct {
 		Work        pool_WorkOfBytesToInterface
 		WorkContext pool_WorkContextOfBytesToInterface
 	}
 }
-
-// func (_ _BytesToInterface) GetWork() *WorkOfBytesToInterface {
-// return getWorkOfBytesToInterface()
-// }
-// func (__ _BytesToInterface) GetWorkWith(value Bytes, returnCh chan<- *ReturnOfInterface) *WorkOfBytesToInterface {
-// 	work := __.GetWork()
-// 	work.Value = value
-// 	work.ReturnCh = returnCh
-// 	return work
-// }
-
-// func (_ _BytesToInterface) PutWork(d *WorkOfBytesToInterface) {
-// putWorkOfBytesToInterface(d)
-// }
-
-// func (_ _BytesToInterface) GetReturn() *ReturnOfInterface {
-// return getReturnOfInterface()
-// }
-
-// func (__ _BytesToInterface) GetReturnWith(ctx context.Context, value Interface, err error) *ReturnOfInterface {
-// rtn := getReturnOfInterface()
-// 	rtn.Context = ctx
-// 	rtn.Value = value
-// 	rtn.Error = err
-// 	return rtn
-// }
-
-// func (_ _BytesToInterface) PutReturn(d *ReturnOfInterface) {
-// putReturnOfInterface(d)
-// }
-
-// func (_ _BytesToInterface) GetReturnCh() chan *ReturnOfInterface {
-// return getReturnChOfInterface()
-// }
-
-// func (_ _BytesToInterface) PutReturnCh(d chan *ReturnOfInterface) {
-// putReturnChOfInterface(d)
-// }
-
-// func (_ _BytesToInterface) GetWorkContext() *WorkContextOfBytesToInterface {
-// return getWorkContextOfBytesToInterface()
-// }
-// func (__ _BytesToInterface) GetWorkContextWith(ctx context.Context, work *WorkOfBytesToInterface) *WorkContextOfBytesToInterface {
-// 	work_ctx := __.GetWorkContext()
-// 	work_ctx.Context = ctx
-// work_ctx.WorkOfBytesToInterface = work
-// 	return work_ctx
-// }
-
-// func (_ _BytesToInterface) PutWorkContext(d *WorkContextOfBytesToInterface) {
-// putWorkContextOfBytesToInterface(d)
-// }
 
 func (__ _BytesToInterface) CallAsSync(ctx context.Context, value Bytes, push func(ctx context.Context, value Bytes, returnCh chan<- *ReturnOfInterface)) (context.Context, interface{}, error) {
 	ch := Interfaces.Pool.ChanReturn.Get()
@@ -522,8 +354,6 @@ func (__ pool_WorkOfStringToBytes) GetWith(value string, returnCh chan<- *Return
 	return work
 }
 
-// var WorkOfStringToBytesPool = pool_WorkOfStringToBytes{}
-
 type pool_WorkContextOfStringToBytes struct{}
 
 func (_ pool_WorkContextOfStringToBytes) Get() *WorkContextOfStringToBytes {
@@ -543,66 +373,12 @@ func (__ pool_WorkContextOfStringToBytes) GetWith(ctx context.Context, work *Wor
 	return work_ctx
 }
 
-// var WorkContextOfStringToBytesPool = pool_WorkContextOfStringToBytes{}
-
 type _StringToBytes struct {
 	Pool struct {
 		Work        pool_WorkOfStringToBytes
 		WorkContext pool_WorkContextOfStringToBytes
 	}
 }
-
-// func (_ _StringToBytes) GetWork() *WorkOfStringToBytes {
-// return getWorkOfStringToBytes()
-// }
-// func (__ _StringToBytes) GetWorkWith(value String, returnCh chan<- *ReturnOfBytes) *WorkOfStringToBytes {
-// 	work := __.GetWork()
-// 	work.Value = value
-// 	work.ReturnCh = returnCh
-// 	return work
-// }
-
-// func (_ _StringToBytes) PutWork(d *WorkOfStringToBytes) {
-// putWorkOfStringToBytes(d)
-// }
-
-// func (_ _StringToBytes) GetReturn() *ReturnOfBytes {
-// return getReturnOfBytes()
-// }
-
-// func (__ _StringToBytes) GetReturnWith(ctx context.Context, value Bytes, err error) *ReturnOfBytes {
-// rtn := getReturnOfBytes()
-// 	rtn.Context = ctx
-// 	rtn.Value = value
-// 	rtn.Error = err
-// 	return rtn
-// }
-
-// func (_ _StringToBytes) PutReturn(d *ReturnOfBytes) {
-// putReturnOfBytes(d)
-// }
-
-// func (_ _StringToBytes) GetReturnCh() chan *ReturnOfBytes {
-// return getReturnChOfBytes()
-// }
-
-// func (_ _StringToBytes) PutReturnCh(d chan *ReturnOfBytes) {
-// putReturnChOfBytes(d)
-// }
-
-// func (_ _StringToBytes) GetWorkContext() *WorkContextOfStringToBytes {
-// return getWorkContextOfStringToBytes()
-// }
-// func (__ _StringToBytes) GetWorkContextWith(ctx context.Context, work *WorkOfStringToBytes) *WorkContextOfStringToBytes {
-// 	work_ctx := __.GetWorkContext()
-// 	work_ctx.Context = ctx
-// work_ctx.WorkOfStringToBytes = work
-// 	return work_ctx
-// }
-
-// func (_ _StringToBytes) PutWorkContext(d *WorkContextOfStringToBytes) {
-// putWorkContextOfStringToBytes(d)
-// }
 
 func (__ _StringToBytes) CallAsSync(ctx context.Context, value string, push func(ctx context.Context, value string, returnCh chan<- *ReturnOfBytes)) (context.Context, Bytes, error) {
 	ch := Bytess.Pool.ChanReturn.Get()
@@ -676,8 +452,6 @@ func (__ pool_WorkOfStringToString) GetWith(value string, returnCh chan<- *Retur
 	return work
 }
 
-// var WorkOfStringToStringPool = pool_WorkOfStringToString{}
-
 type pool_WorkContextOfStringToString struct{}
 
 func (_ pool_WorkContextOfStringToString) Get() *WorkContextOfStringToString {
@@ -697,66 +471,12 @@ func (__ pool_WorkContextOfStringToString) GetWith(ctx context.Context, work *Wo
 	return work_ctx
 }
 
-// var WorkContextOfStringToStringPool = pool_WorkContextOfStringToString{}
-
 type _StringToString struct {
 	Pool struct {
 		Work        pool_WorkOfStringToString
 		WorkContext pool_WorkContextOfStringToString
 	}
 }
-
-// func (_ _StringToString) GetWork() *WorkOfStringToString {
-// return getWorkOfStringToString()
-// }
-// func (__ _StringToString) GetWorkWith(value String, returnCh chan<- *ReturnOfString) *WorkOfStringToString {
-// 	work := __.GetWork()
-// 	work.Value = value
-// 	work.ReturnCh = returnCh
-// 	return work
-// }
-
-// func (_ _StringToString) PutWork(d *WorkOfStringToString) {
-// putWorkOfStringToString(d)
-// }
-
-// func (_ _StringToString) GetReturn() *ReturnOfString {
-// return getReturnOfString()
-// }
-
-// func (__ _StringToString) GetReturnWith(ctx context.Context, value String, err error) *ReturnOfString {
-// rtn := getReturnOfString()
-// 	rtn.Context = ctx
-// 	rtn.Value = value
-// 	rtn.Error = err
-// 	return rtn
-// }
-
-// func (_ _StringToString) PutReturn(d *ReturnOfString) {
-// putReturnOfString(d)
-// }
-
-// func (_ _StringToString) GetReturnCh() chan *ReturnOfString {
-// return getReturnChOfString()
-// }
-
-// func (_ _StringToString) PutReturnCh(d chan *ReturnOfString) {
-// putReturnChOfString(d)
-// }
-
-// func (_ _StringToString) GetWorkContext() *WorkContextOfStringToString {
-// return getWorkContextOfStringToString()
-// }
-// func (__ _StringToString) GetWorkContextWith(ctx context.Context, work *WorkOfStringToString) *WorkContextOfStringToString {
-// 	work_ctx := __.GetWorkContext()
-// 	work_ctx.Context = ctx
-// work_ctx.WorkOfStringToString = work
-// 	return work_ctx
-// }
-
-// func (_ _StringToString) PutWorkContext(d *WorkContextOfStringToString) {
-// putWorkContextOfStringToString(d)
-// }
 
 func (__ _StringToString) CallAsSync(ctx context.Context, value string, push func(ctx context.Context, value string, returnCh chan<- *ReturnOfString)) (context.Context, string, error) {
 	ch := Strings.Pool.ChanReturn.Get()
@@ -830,8 +550,6 @@ func (__ pool_WorkOfStringToInterface) GetWith(value string, returnCh chan<- *Re
 	return work
 }
 
-// var WorkOfStringToInterfacePool = pool_WorkOfStringToInterface{}
-
 type pool_WorkContextOfStringToInterface struct{}
 
 func (_ pool_WorkContextOfStringToInterface) Get() *WorkContextOfStringToInterface {
@@ -851,66 +569,12 @@ func (__ pool_WorkContextOfStringToInterface) GetWith(ctx context.Context, work 
 	return work_ctx
 }
 
-// var WorkContextOfStringToInterfacePool = pool_WorkContextOfStringToInterface{}
-
 type _StringToInterface struct {
 	Pool struct {
 		Work        pool_WorkOfStringToInterface
 		WorkContext pool_WorkContextOfStringToInterface
 	}
 }
-
-// func (_ _StringToInterface) GetWork() *WorkOfStringToInterface {
-// return getWorkOfStringToInterface()
-// }
-// func (__ _StringToInterface) GetWorkWith(value String, returnCh chan<- *ReturnOfInterface) *WorkOfStringToInterface {
-// 	work := __.GetWork()
-// 	work.Value = value
-// 	work.ReturnCh = returnCh
-// 	return work
-// }
-
-// func (_ _StringToInterface) PutWork(d *WorkOfStringToInterface) {
-// putWorkOfStringToInterface(d)
-// }
-
-// func (_ _StringToInterface) GetReturn() *ReturnOfInterface {
-// return getReturnOfInterface()
-// }
-
-// func (__ _StringToInterface) GetReturnWith(ctx context.Context, value Interface, err error) *ReturnOfInterface {
-// rtn := getReturnOfInterface()
-// 	rtn.Context = ctx
-// 	rtn.Value = value
-// 	rtn.Error = err
-// 	return rtn
-// }
-
-// func (_ _StringToInterface) PutReturn(d *ReturnOfInterface) {
-// putReturnOfInterface(d)
-// }
-
-// func (_ _StringToInterface) GetReturnCh() chan *ReturnOfInterface {
-// return getReturnChOfInterface()
-// }
-
-// func (_ _StringToInterface) PutReturnCh(d chan *ReturnOfInterface) {
-// putReturnChOfInterface(d)
-// }
-
-// func (_ _StringToInterface) GetWorkContext() *WorkContextOfStringToInterface {
-// return getWorkContextOfStringToInterface()
-// }
-// func (__ _StringToInterface) GetWorkContextWith(ctx context.Context, work *WorkOfStringToInterface) *WorkContextOfStringToInterface {
-// 	work_ctx := __.GetWorkContext()
-// 	work_ctx.Context = ctx
-// work_ctx.WorkOfStringToInterface = work
-// 	return work_ctx
-// }
-
-// func (_ _StringToInterface) PutWorkContext(d *WorkContextOfStringToInterface) {
-// putWorkContextOfStringToInterface(d)
-// }
 
 func (__ _StringToInterface) CallAsSync(ctx context.Context, value string, push func(ctx context.Context, value string, returnCh chan<- *ReturnOfInterface)) (context.Context, interface{}, error) {
 	ch := Interfaces.Pool.ChanReturn.Get()
@@ -984,8 +648,6 @@ func (__ pool_WorkOfInterfaceToBytes) GetWith(value interface{}, returnCh chan<-
 	return work
 }
 
-// var WorkOfInterfaceToBytesPool = pool_WorkOfInterfaceToBytes{}
-
 type pool_WorkContextOfInterfaceToBytes struct{}
 
 func (_ pool_WorkContextOfInterfaceToBytes) Get() *WorkContextOfInterfaceToBytes {
@@ -1005,66 +667,12 @@ func (__ pool_WorkContextOfInterfaceToBytes) GetWith(ctx context.Context, work *
 	return work_ctx
 }
 
-// var WorkContextOfInterfaceToBytesPool = pool_WorkContextOfInterfaceToBytes{}
-
 type _InterfaceToBytes struct {
 	Pool struct {
 		Work        pool_WorkOfInterfaceToBytes
 		WorkContext pool_WorkContextOfInterfaceToBytes
 	}
 }
-
-// func (_ _InterfaceToBytes) GetWork() *WorkOfInterfaceToBytes {
-// return getWorkOfInterfaceToBytes()
-// }
-// func (__ _InterfaceToBytes) GetWorkWith(value Interface, returnCh chan<- *ReturnOfBytes) *WorkOfInterfaceToBytes {
-// 	work := __.GetWork()
-// 	work.Value = value
-// 	work.ReturnCh = returnCh
-// 	return work
-// }
-
-// func (_ _InterfaceToBytes) PutWork(d *WorkOfInterfaceToBytes) {
-// putWorkOfInterfaceToBytes(d)
-// }
-
-// func (_ _InterfaceToBytes) GetReturn() *ReturnOfBytes {
-// return getReturnOfBytes()
-// }
-
-// func (__ _InterfaceToBytes) GetReturnWith(ctx context.Context, value Bytes, err error) *ReturnOfBytes {
-// rtn := getReturnOfBytes()
-// 	rtn.Context = ctx
-// 	rtn.Value = value
-// 	rtn.Error = err
-// 	return rtn
-// }
-
-// func (_ _InterfaceToBytes) PutReturn(d *ReturnOfBytes) {
-// putReturnOfBytes(d)
-// }
-
-// func (_ _InterfaceToBytes) GetReturnCh() chan *ReturnOfBytes {
-// return getReturnChOfBytes()
-// }
-
-// func (_ _InterfaceToBytes) PutReturnCh(d chan *ReturnOfBytes) {
-// putReturnChOfBytes(d)
-// }
-
-// func (_ _InterfaceToBytes) GetWorkContext() *WorkContextOfInterfaceToBytes {
-// return getWorkContextOfInterfaceToBytes()
-// }
-// func (__ _InterfaceToBytes) GetWorkContextWith(ctx context.Context, work *WorkOfInterfaceToBytes) *WorkContextOfInterfaceToBytes {
-// 	work_ctx := __.GetWorkContext()
-// 	work_ctx.Context = ctx
-// work_ctx.WorkOfInterfaceToBytes = work
-// 	return work_ctx
-// }
-
-// func (_ _InterfaceToBytes) PutWorkContext(d *WorkContextOfInterfaceToBytes) {
-// putWorkContextOfInterfaceToBytes(d)
-// }
 
 func (__ _InterfaceToBytes) CallAsSync(ctx context.Context, value interface{}, push func(ctx context.Context, value interface{}, returnCh chan<- *ReturnOfBytes)) (context.Context, Bytes, error) {
 	ch := Bytess.Pool.ChanReturn.Get()
@@ -1138,8 +746,6 @@ func (__ pool_WorkOfInterfaceToString) GetWith(value interface{}, returnCh chan<
 	return work
 }
 
-// var WorkOfInterfaceToStringPool = pool_WorkOfInterfaceToString{}
-
 type pool_WorkContextOfInterfaceToString struct{}
 
 func (_ pool_WorkContextOfInterfaceToString) Get() *WorkContextOfInterfaceToString {
@@ -1159,66 +765,12 @@ func (__ pool_WorkContextOfInterfaceToString) GetWith(ctx context.Context, work 
 	return work_ctx
 }
 
-// var WorkContextOfInterfaceToStringPool = pool_WorkContextOfInterfaceToString{}
-
 type _InterfaceToString struct {
 	Pool struct {
 		Work        pool_WorkOfInterfaceToString
 		WorkContext pool_WorkContextOfInterfaceToString
 	}
 }
-
-// func (_ _InterfaceToString) GetWork() *WorkOfInterfaceToString {
-// return getWorkOfInterfaceToString()
-// }
-// func (__ _InterfaceToString) GetWorkWith(value Interface, returnCh chan<- *ReturnOfString) *WorkOfInterfaceToString {
-// 	work := __.GetWork()
-// 	work.Value = value
-// 	work.ReturnCh = returnCh
-// 	return work
-// }
-
-// func (_ _InterfaceToString) PutWork(d *WorkOfInterfaceToString) {
-// putWorkOfInterfaceToString(d)
-// }
-
-// func (_ _InterfaceToString) GetReturn() *ReturnOfString {
-// return getReturnOfString()
-// }
-
-// func (__ _InterfaceToString) GetReturnWith(ctx context.Context, value String, err error) *ReturnOfString {
-// rtn := getReturnOfString()
-// 	rtn.Context = ctx
-// 	rtn.Value = value
-// 	rtn.Error = err
-// 	return rtn
-// }
-
-// func (_ _InterfaceToString) PutReturn(d *ReturnOfString) {
-// putReturnOfString(d)
-// }
-
-// func (_ _InterfaceToString) GetReturnCh() chan *ReturnOfString {
-// return getReturnChOfString()
-// }
-
-// func (_ _InterfaceToString) PutReturnCh(d chan *ReturnOfString) {
-// putReturnChOfString(d)
-// }
-
-// func (_ _InterfaceToString) GetWorkContext() *WorkContextOfInterfaceToString {
-// return getWorkContextOfInterfaceToString()
-// }
-// func (__ _InterfaceToString) GetWorkContextWith(ctx context.Context, work *WorkOfInterfaceToString) *WorkContextOfInterfaceToString {
-// 	work_ctx := __.GetWorkContext()
-// 	work_ctx.Context = ctx
-// work_ctx.WorkOfInterfaceToString = work
-// 	return work_ctx
-// }
-
-// func (_ _InterfaceToString) PutWorkContext(d *WorkContextOfInterfaceToString) {
-// putWorkContextOfInterfaceToString(d)
-// }
 
 func (__ _InterfaceToString) CallAsSync(ctx context.Context, value interface{}, push func(ctx context.Context, value interface{}, returnCh chan<- *ReturnOfString)) (context.Context, string, error) {
 	ch := Strings.Pool.ChanReturn.Get()
@@ -1292,8 +844,6 @@ func (__ pool_WorkOfInterfaceToInterface) GetWith(value interface{}, returnCh ch
 	return work
 }
 
-// var WorkOfInterfaceToInterfacePool = pool_WorkOfInterfaceToInterface{}
-
 type pool_WorkContextOfInterfaceToInterface struct{}
 
 func (_ pool_WorkContextOfInterfaceToInterface) Get() *WorkContextOfInterfaceToInterface {
@@ -1313,66 +863,12 @@ func (__ pool_WorkContextOfInterfaceToInterface) GetWith(ctx context.Context, wo
 	return work_ctx
 }
 
-// var WorkContextOfInterfaceToInterfacePool = pool_WorkContextOfInterfaceToInterface{}
-
 type _InterfaceToInterface struct {
 	Pool struct {
 		Work        pool_WorkOfInterfaceToInterface
 		WorkContext pool_WorkContextOfInterfaceToInterface
 	}
 }
-
-// func (_ _InterfaceToInterface) GetWork() *WorkOfInterfaceToInterface {
-// return getWorkOfInterfaceToInterface()
-// }
-// func (__ _InterfaceToInterface) GetWorkWith(value Interface, returnCh chan<- *ReturnOfInterface) *WorkOfInterfaceToInterface {
-// 	work := __.GetWork()
-// 	work.Value = value
-// 	work.ReturnCh = returnCh
-// 	return work
-// }
-
-// func (_ _InterfaceToInterface) PutWork(d *WorkOfInterfaceToInterface) {
-// putWorkOfInterfaceToInterface(d)
-// }
-
-// func (_ _InterfaceToInterface) GetReturn() *ReturnOfInterface {
-// return getReturnOfInterface()
-// }
-
-// func (__ _InterfaceToInterface) GetReturnWith(ctx context.Context, value Interface, err error) *ReturnOfInterface {
-// rtn := getReturnOfInterface()
-// 	rtn.Context = ctx
-// 	rtn.Value = value
-// 	rtn.Error = err
-// 	return rtn
-// }
-
-// func (_ _InterfaceToInterface) PutReturn(d *ReturnOfInterface) {
-// putReturnOfInterface(d)
-// }
-
-// func (_ _InterfaceToInterface) GetReturnCh() chan *ReturnOfInterface {
-// return getReturnChOfInterface()
-// }
-
-// func (_ _InterfaceToInterface) PutReturnCh(d chan *ReturnOfInterface) {
-// putReturnChOfInterface(d)
-// }
-
-// func (_ _InterfaceToInterface) GetWorkContext() *WorkContextOfInterfaceToInterface {
-// return getWorkContextOfInterfaceToInterface()
-// }
-// func (__ _InterfaceToInterface) GetWorkContextWith(ctx context.Context, work *WorkOfInterfaceToInterface) *WorkContextOfInterfaceToInterface {
-// 	work_ctx := __.GetWorkContext()
-// 	work_ctx.Context = ctx
-// work_ctx.WorkOfInterfaceToInterface = work
-// 	return work_ctx
-// }
-
-// func (_ _InterfaceToInterface) PutWorkContext(d *WorkContextOfInterfaceToInterface) {
-// putWorkContextOfInterfaceToInterface(d)
-// }
 
 func (__ _InterfaceToInterface) CallAsSync(ctx context.Context, value interface{}, push func(ctx context.Context, value interface{}, returnCh chan<- *ReturnOfInterface)) (context.Context, interface{}, error) {
 	ch := Interfaces.Pool.ChanReturn.Get()
