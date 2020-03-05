@@ -6,7 +6,7 @@ import (
 )
 
 type WorkerOfSomeToOther interface {
-	Push(ctx context.Context, work *WorkOfSomeToOther, returnCh chan<- *ReturnOfOther)
+	Push(ctx context.Context, value *Some, returnCh chan<- *ReturnOfOther)
 }
 
 type WorkOfSomeToOther struct {
@@ -14,9 +14,9 @@ type WorkOfSomeToOther struct {
 	ReturnCh chan<- *ReturnOfOther
 }
 
-type WorkOfSomeToOtherWithContext struct {
+type WorkContextOfSomeToOther struct {
 	Context context.Context
-	WorkOfSomeToOther
+	*WorkOfSomeToOther
 }
 
 var (
@@ -25,6 +25,11 @@ var (
 	pool_of_WorkOfSomeToOther       = sync.Pool{
 		New: func() interface{} {
 			return &WorkOfSomeToOther{}
+		},
+	}
+	pool_of_WorkOfSomeToOtherContext = sync.Pool{
+		New: func() interface{} {
+			return &WorkContextOfSomeToOther{}
 		},
 	}
 )
@@ -36,6 +41,16 @@ func putWorkOfSomeToOther(d *WorkOfSomeToOther) {
 	d.Value = zero_of_WorkOfSomeToOther_Value
 	d.ReturnCh = nil
 	pool_of_WorkOfSomeToOther.Put(d)
+}
+
+func getWorkContextOfSomeToOther() *WorkContextOfSomeToOther {
+	return pool_of_WorkOfSomeToOtherContext.Get().(*WorkContextOfSomeToOther)
+}
+func putWorkContextOfSomeToOther(d *WorkContextOfSomeToOther) {
+	d.Context = nil
+	d.Value = zero_of_WorkOfSomeToOther_Value
+	d.ReturnCh = nil
+	pool_of_WorkOfSomeToOtherContext.Put(d)
 }
 
 type _SomeToOther struct{}
@@ -78,23 +93,37 @@ func (_ _SomeToOther) PutReturnCh(d chan *ReturnOfOther) {
 	putReturnChOfOther(d)
 }
 
-func (__ _SomeToOther) CallSync(ctx context.Context, value Some, push func(ctx context.Context, work *WorkOfSomeToOther, returnCh chan<- *ReturnOfOther)) (context.Context, Other, error) {
+func (_ _SomeToOther) GetWorkContext() *WorkContextOfSomeToOther {
+	return getWorkContextOfSomeToOther()
+}
+func (__ _SomeToOther) GetWorkContextWith(ctx context.Context, work *WorkOfSomeToOther) *WorkContextOfSomeToOther {
+	work_ctx := __.GetWorkContext()
+	work_ctx.Context = ctx
+	work_ctx.WorkOfSomeToOther = work
+	return work_ctx
+}
+
+func (_ _SomeToOther) PutWorkContext(d *WorkContextOfSomeToOther) {
+	putWorkContextOfSomeToOther(d)
+}
+
+func (__ _SomeToOther) CallAsSync(ctx context.Context, value Some, push func(ctx context.Context, value Some, returnCh chan<- *ReturnOfOther)) (context.Context, Other, error) {
 	ch := __.GetReturnCh()
 	defer __.PutReturnCh(ch)
 
-	work := __.GetWorkWith(value, ch)
-	push(ctx, work, ch)
+	push(ctx, value, ch)
 	rtn := <-ch
-	defer __.PutReturn(rtn)
 	return rtn.Context, rtn.Value, rtn.Error
 }
 
-func (__ _SomeToOther) CallAsync(ctx context.Context, work *WorkOfSomeToOther, h func(ctx context.Context, arg Some) (Other, error), defered func()) {
+func (__ _SomeToOther) CallAsAsync(ctx context.Context, value Some, returnCh chan<- *ReturnOfOther, h func(ctx context.Context, arg Some) (Other, error), defered func()) {
 	go func() {
 		defer defered()
 
-		res, err := h(ctx, work.Value)
+		res, err := h(ctx, value)
 		rtn := __.GetReturnWith(ctx, res, err)
-		work.ReturnCh <- rtn
+		returnCh <- rtn
 	}()
 }
+
+var SomeToOther = _SomeToOther{}
