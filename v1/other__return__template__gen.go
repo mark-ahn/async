@@ -141,7 +141,7 @@ func (_ chanReturnOfBytes) Push(ctx Valuable, ch chan<- *ReturnOfBytes) bool {
 }
 
 func (__ chanReturnOfBytes) Notify(ctx Valuable, rtn *ReturnOfBytes) bool {
-	ch := __.Top(ctx)
+	ch := __.Pop(ctx)
 	if ch == nil {
 		return false
 	}
@@ -300,7 +300,7 @@ func (_ chanReturnOfString) Push(ctx Valuable, ch chan<- *ReturnOfString) bool {
 }
 
 func (__ chanReturnOfString) Notify(ctx Valuable, rtn *ReturnOfString) bool {
-	ch := __.Top(ctx)
+	ch := __.Pop(ctx)
 	if ch == nil {
 		return false
 	}
@@ -459,7 +459,7 @@ func (_ chanReturnOfInterface) Push(ctx Valuable, ch chan<- *ReturnOfInterface) 
 }
 
 func (__ chanReturnOfInterface) Notify(ctx Valuable, rtn *ReturnOfInterface) bool {
-	ch := __.Top(ctx)
+	ch := __.Pop(ctx)
 	if ch == nil {
 		return false
 	}

@@ -137,7 +137,7 @@ func (_ chanReturnOfOther) Push(ctx Valuable, ch chan<- *ReturnOfOther) bool {
 }
 
 func (__ chanReturnOfOther) Notify(ctx Valuable, rtn *ReturnOfOther) bool {
-	ch := __.Top(ctx)
+	ch := __.Pop(ctx)
 	if ch == nil {
 		return false
 	}
