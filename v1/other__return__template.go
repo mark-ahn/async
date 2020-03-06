@@ -50,6 +50,12 @@ func (__ pool_ReturnOfOther) GetWith(ctx context.Context, value Other, err error
 	return rtn
 }
 
+func (__ pool_ReturnOfOther) Collect(d *ReturnOfOther) (context.Context, Other, error) {
+	ctx, value, err := d.Unpack()
+	__.Put(d)
+	return ctx, value, err
+}
+
 type pool_ChanReturnOfOther struct{}
 
 func (_ pool_ChanReturnOfOther) Get() chan *ReturnOfOther {

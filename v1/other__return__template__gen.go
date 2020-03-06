@@ -54,6 +54,12 @@ func (__ pool_ReturnOfBytes) GetWith(ctx context.Context, value Bytes, err error
 	return rtn
 }
 
+func (__ pool_ReturnOfBytes) Collect(d *ReturnOfBytes) (context.Context, Bytes, error) {
+	ctx, value, err := d.Unpack()
+	__.Put(d)
+	return ctx, value, err
+}
+
 type pool_ChanReturnOfBytes struct{}
 
 func (_ pool_ChanReturnOfBytes) Get() chan *ReturnOfBytes {
@@ -213,6 +219,12 @@ func (__ pool_ReturnOfString) GetWith(ctx context.Context, value string, err err
 	return rtn
 }
 
+func (__ pool_ReturnOfString) Collect(d *ReturnOfString) (context.Context, string, error) {
+	ctx, value, err := d.Unpack()
+	__.Put(d)
+	return ctx, value, err
+}
+
 type pool_ChanReturnOfString struct{}
 
 func (_ pool_ChanReturnOfString) Get() chan *ReturnOfString {
@@ -370,6 +382,12 @@ func (__ pool_ReturnOfInterface) GetWith(ctx context.Context, value interface{},
 	rtn.Value = value
 	rtn.Error = err
 	return rtn
+}
+
+func (__ pool_ReturnOfInterface) Collect(d *ReturnOfInterface) (context.Context, interface{}, error) {
+	ctx, value, err := d.Unpack()
+	__.Put(d)
+	return ctx, value, err
 }
 
 type pool_ChanReturnOfInterface struct{}

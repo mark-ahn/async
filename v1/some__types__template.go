@@ -64,8 +64,6 @@ func (_ pool_WorkContextOfSomeToOther) Get() *WorkContextOfSomeToOther {
 func (_ pool_WorkContextOfSomeToOther) Put(d *WorkContextOfSomeToOther) {
 	d.Context = nil
 	d.WorkOfSomeToOther = nil
-	// d.Value = zero_of_WorkOfSomeToOther_Value
-	// d.ReturnCh = nil
 	pool_of_WorkOfSomeToOtherContext.Put(d)
 }
 
@@ -81,6 +79,12 @@ func (__ pool_WorkContextOfSomeToOther) GetWiths(ctx context.Context, value Some
 	work.Value = value
 	work.ReturnCh = returnCh
 	return __.GetWith(ctx, work)
+}
+
+func (__ pool_WorkContextOfSomeToOther) Collect(d *WorkContextOfSomeToOther) (context.Context, Some, chan<- *ReturnOfOther) {
+	ctx, value, rtn_ch := d.Unpack()
+	__.Puts(d)
+	return ctx, value, rtn_ch
 }
 
 func (__ pool_WorkContextOfSomeToOther) Puts(d *WorkContextOfSomeToOther) {
