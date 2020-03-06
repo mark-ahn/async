@@ -51,11 +51,11 @@ func newFuncWorkerOfBytesToBytes(ctx context.Context, h func(context.Context, By
 				break loop
 			case work := <-__.work_ch:
 				__.threads.Add(1)
-				go BytesToBytes.CallAsAsync(work.Context, work.WorkOfBytesToBytes.Value, work.WorkOfBytesToBytes.ReturnCh, __.handler, func() {
+				ctx, value, rtn_ch := work.Unpack()
+				go BytesToBytes.CallAsAsync(ctx, value, rtn_ch, __.handler, func() {
 					__.threads.Done()
 				})
-				BytesToBytes.Work.Pool.Put(work.WorkOfBytesToBytes)
-				BytesToBytes.WorkContext.Pool.Put(work)
+				BytesToBytes.WorkContext.Pool.Puts(work)
 			case reset_done_ch := <-__.reset_ch:
 				__.reset_queue()
 				close(reset_done_ch)
@@ -79,7 +79,7 @@ func (__ *FuncWorkerOfBytesToBytes) Push(ctx context.Context, value Bytes, retur
 	__.threads.Add(1)
 	defer __.threads.Done()
 
-	work_ctx := BytesToBytes.WorkContext.Pool.GetWith(ctx, BytesToBytes.Work.Pool.GetWith(value, returnCh))
+	work_ctx := BytesToBytes.WorkContext.Pool.GetWiths(ctx, value, returnCh)
 	__.work_ch <- work_ctx
 }
 
@@ -144,11 +144,11 @@ func newFuncWorkerOfBytesToString(ctx context.Context, h func(context.Context, B
 				break loop
 			case work := <-__.work_ch:
 				__.threads.Add(1)
-				go BytesToString.CallAsAsync(work.Context, work.WorkOfBytesToString.Value, work.WorkOfBytesToString.ReturnCh, __.handler, func() {
+				ctx, value, rtn_ch := work.Unpack()
+				go BytesToString.CallAsAsync(ctx, value, rtn_ch, __.handler, func() {
 					__.threads.Done()
 				})
-				BytesToString.Work.Pool.Put(work.WorkOfBytesToString)
-				BytesToString.WorkContext.Pool.Put(work)
+				BytesToString.WorkContext.Pool.Puts(work)
 			case reset_done_ch := <-__.reset_ch:
 				__.reset_queue()
 				close(reset_done_ch)
@@ -172,7 +172,7 @@ func (__ *FuncWorkerOfBytesToString) Push(ctx context.Context, value Bytes, retu
 	__.threads.Add(1)
 	defer __.threads.Done()
 
-	work_ctx := BytesToString.WorkContext.Pool.GetWith(ctx, BytesToString.Work.Pool.GetWith(value, returnCh))
+	work_ctx := BytesToString.WorkContext.Pool.GetWiths(ctx, value, returnCh)
 	__.work_ch <- work_ctx
 }
 
@@ -237,11 +237,11 @@ func newFuncWorkerOfBytesToInterface(ctx context.Context, h func(context.Context
 				break loop
 			case work := <-__.work_ch:
 				__.threads.Add(1)
-				go BytesToInterface.CallAsAsync(work.Context, work.WorkOfBytesToInterface.Value, work.WorkOfBytesToInterface.ReturnCh, __.handler, func() {
+				ctx, value, rtn_ch := work.Unpack()
+				go BytesToInterface.CallAsAsync(ctx, value, rtn_ch, __.handler, func() {
 					__.threads.Done()
 				})
-				BytesToInterface.Work.Pool.Put(work.WorkOfBytesToInterface)
-				BytesToInterface.WorkContext.Pool.Put(work)
+				BytesToInterface.WorkContext.Pool.Puts(work)
 			case reset_done_ch := <-__.reset_ch:
 				__.reset_queue()
 				close(reset_done_ch)
@@ -265,7 +265,7 @@ func (__ *FuncWorkerOfBytesToInterface) Push(ctx context.Context, value Bytes, r
 	__.threads.Add(1)
 	defer __.threads.Done()
 
-	work_ctx := BytesToInterface.WorkContext.Pool.GetWith(ctx, BytesToInterface.Work.Pool.GetWith(value, returnCh))
+	work_ctx := BytesToInterface.WorkContext.Pool.GetWiths(ctx, value, returnCh)
 	__.work_ch <- work_ctx
 }
 
@@ -330,11 +330,11 @@ func newFuncWorkerOfStringToBytes(ctx context.Context, h func(context.Context, s
 				break loop
 			case work := <-__.work_ch:
 				__.threads.Add(1)
-				go StringToBytes.CallAsAsync(work.Context, work.WorkOfStringToBytes.Value, work.WorkOfStringToBytes.ReturnCh, __.handler, func() {
+				ctx, value, rtn_ch := work.Unpack()
+				go StringToBytes.CallAsAsync(ctx, value, rtn_ch, __.handler, func() {
 					__.threads.Done()
 				})
-				StringToBytes.Work.Pool.Put(work.WorkOfStringToBytes)
-				StringToBytes.WorkContext.Pool.Put(work)
+				StringToBytes.WorkContext.Pool.Puts(work)
 			case reset_done_ch := <-__.reset_ch:
 				__.reset_queue()
 				close(reset_done_ch)
@@ -358,7 +358,7 @@ func (__ *FuncWorkerOfStringToBytes) Push(ctx context.Context, value string, ret
 	__.threads.Add(1)
 	defer __.threads.Done()
 
-	work_ctx := StringToBytes.WorkContext.Pool.GetWith(ctx, StringToBytes.Work.Pool.GetWith(value, returnCh))
+	work_ctx := StringToBytes.WorkContext.Pool.GetWiths(ctx, value, returnCh)
 	__.work_ch <- work_ctx
 }
 
@@ -423,11 +423,11 @@ func newFuncWorkerOfStringToString(ctx context.Context, h func(context.Context, 
 				break loop
 			case work := <-__.work_ch:
 				__.threads.Add(1)
-				go StringToString.CallAsAsync(work.Context, work.WorkOfStringToString.Value, work.WorkOfStringToString.ReturnCh, __.handler, func() {
+				ctx, value, rtn_ch := work.Unpack()
+				go StringToString.CallAsAsync(ctx, value, rtn_ch, __.handler, func() {
 					__.threads.Done()
 				})
-				StringToString.Work.Pool.Put(work.WorkOfStringToString)
-				StringToString.WorkContext.Pool.Put(work)
+				StringToString.WorkContext.Pool.Puts(work)
 			case reset_done_ch := <-__.reset_ch:
 				__.reset_queue()
 				close(reset_done_ch)
@@ -451,7 +451,7 @@ func (__ *FuncWorkerOfStringToString) Push(ctx context.Context, value string, re
 	__.threads.Add(1)
 	defer __.threads.Done()
 
-	work_ctx := StringToString.WorkContext.Pool.GetWith(ctx, StringToString.Work.Pool.GetWith(value, returnCh))
+	work_ctx := StringToString.WorkContext.Pool.GetWiths(ctx, value, returnCh)
 	__.work_ch <- work_ctx
 }
 
@@ -516,11 +516,11 @@ func newFuncWorkerOfStringToInterface(ctx context.Context, h func(context.Contex
 				break loop
 			case work := <-__.work_ch:
 				__.threads.Add(1)
-				go StringToInterface.CallAsAsync(work.Context, work.WorkOfStringToInterface.Value, work.WorkOfStringToInterface.ReturnCh, __.handler, func() {
+				ctx, value, rtn_ch := work.Unpack()
+				go StringToInterface.CallAsAsync(ctx, value, rtn_ch, __.handler, func() {
 					__.threads.Done()
 				})
-				StringToInterface.Work.Pool.Put(work.WorkOfStringToInterface)
-				StringToInterface.WorkContext.Pool.Put(work)
+				StringToInterface.WorkContext.Pool.Puts(work)
 			case reset_done_ch := <-__.reset_ch:
 				__.reset_queue()
 				close(reset_done_ch)
@@ -544,7 +544,7 @@ func (__ *FuncWorkerOfStringToInterface) Push(ctx context.Context, value string,
 	__.threads.Add(1)
 	defer __.threads.Done()
 
-	work_ctx := StringToInterface.WorkContext.Pool.GetWith(ctx, StringToInterface.Work.Pool.GetWith(value, returnCh))
+	work_ctx := StringToInterface.WorkContext.Pool.GetWiths(ctx, value, returnCh)
 	__.work_ch <- work_ctx
 }
 
@@ -609,11 +609,11 @@ func newFuncWorkerOfInterfaceToBytes(ctx context.Context, h func(context.Context
 				break loop
 			case work := <-__.work_ch:
 				__.threads.Add(1)
-				go InterfaceToBytes.CallAsAsync(work.Context, work.WorkOfInterfaceToBytes.Value, work.WorkOfInterfaceToBytes.ReturnCh, __.handler, func() {
+				ctx, value, rtn_ch := work.Unpack()
+				go InterfaceToBytes.CallAsAsync(ctx, value, rtn_ch, __.handler, func() {
 					__.threads.Done()
 				})
-				InterfaceToBytes.Work.Pool.Put(work.WorkOfInterfaceToBytes)
-				InterfaceToBytes.WorkContext.Pool.Put(work)
+				InterfaceToBytes.WorkContext.Pool.Puts(work)
 			case reset_done_ch := <-__.reset_ch:
 				__.reset_queue()
 				close(reset_done_ch)
@@ -637,7 +637,7 @@ func (__ *FuncWorkerOfInterfaceToBytes) Push(ctx context.Context, value interfac
 	__.threads.Add(1)
 	defer __.threads.Done()
 
-	work_ctx := InterfaceToBytes.WorkContext.Pool.GetWith(ctx, InterfaceToBytes.Work.Pool.GetWith(value, returnCh))
+	work_ctx := InterfaceToBytes.WorkContext.Pool.GetWiths(ctx, value, returnCh)
 	__.work_ch <- work_ctx
 }
 
@@ -702,11 +702,11 @@ func newFuncWorkerOfInterfaceToString(ctx context.Context, h func(context.Contex
 				break loop
 			case work := <-__.work_ch:
 				__.threads.Add(1)
-				go InterfaceToString.CallAsAsync(work.Context, work.WorkOfInterfaceToString.Value, work.WorkOfInterfaceToString.ReturnCh, __.handler, func() {
+				ctx, value, rtn_ch := work.Unpack()
+				go InterfaceToString.CallAsAsync(ctx, value, rtn_ch, __.handler, func() {
 					__.threads.Done()
 				})
-				InterfaceToString.Work.Pool.Put(work.WorkOfInterfaceToString)
-				InterfaceToString.WorkContext.Pool.Put(work)
+				InterfaceToString.WorkContext.Pool.Puts(work)
 			case reset_done_ch := <-__.reset_ch:
 				__.reset_queue()
 				close(reset_done_ch)
@@ -730,7 +730,7 @@ func (__ *FuncWorkerOfInterfaceToString) Push(ctx context.Context, value interfa
 	__.threads.Add(1)
 	defer __.threads.Done()
 
-	work_ctx := InterfaceToString.WorkContext.Pool.GetWith(ctx, InterfaceToString.Work.Pool.GetWith(value, returnCh))
+	work_ctx := InterfaceToString.WorkContext.Pool.GetWiths(ctx, value, returnCh)
 	__.work_ch <- work_ctx
 }
 
@@ -795,11 +795,11 @@ func newFuncWorkerOfInterfaceToInterface(ctx context.Context, h func(context.Con
 				break loop
 			case work := <-__.work_ch:
 				__.threads.Add(1)
-				go InterfaceToInterface.CallAsAsync(work.Context, work.WorkOfInterfaceToInterface.Value, work.WorkOfInterfaceToInterface.ReturnCh, __.handler, func() {
+				ctx, value, rtn_ch := work.Unpack()
+				go InterfaceToInterface.CallAsAsync(ctx, value, rtn_ch, __.handler, func() {
 					__.threads.Done()
 				})
-				InterfaceToInterface.Work.Pool.Put(work.WorkOfInterfaceToInterface)
-				InterfaceToInterface.WorkContext.Pool.Put(work)
+				InterfaceToInterface.WorkContext.Pool.Puts(work)
 			case reset_done_ch := <-__.reset_ch:
 				__.reset_queue()
 				close(reset_done_ch)
@@ -823,7 +823,7 @@ func (__ *FuncWorkerOfInterfaceToInterface) Push(ctx context.Context, value inte
 	__.threads.Add(1)
 	defer __.threads.Done()
 
-	work_ctx := InterfaceToInterface.WorkContext.Pool.GetWith(ctx, InterfaceToInterface.Work.Pool.GetWith(value, returnCh))
+	work_ctx := InterfaceToInterface.WorkContext.Pool.GetWiths(ctx, value, returnCh)
 	__.work_ch <- work_ctx
 }
 
