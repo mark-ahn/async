@@ -11,7 +11,7 @@ type ReturnOfOther struct {
 	Error   error
 }
 
-func (__ *ReturnOfOther) Unpack() (context.Context, Some, error) {
+func (__ *ReturnOfOther) Unpack() (context.Context, Other, error) {
 	return __.Context, __.Value, __.Error
 }
 

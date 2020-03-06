@@ -15,7 +15,7 @@ type ReturnOfBytes struct {
 	Error   error
 }
 
-func (__ *ReturnOfBytes) Unpack() (context.Context, Some, error) {
+func (__ *ReturnOfBytes) Unpack() (context.Context, Bytes, error) {
 	return __.Context, __.Value, __.Error
 }
 
@@ -174,7 +174,7 @@ type ReturnOfString struct {
 	Error   error
 }
 
-func (__ *ReturnOfString) Unpack() (context.Context, Some, error) {
+func (__ *ReturnOfString) Unpack() (context.Context, string, error) {
 	return __.Context, __.Value, __.Error
 }
 
@@ -333,7 +333,7 @@ type ReturnOfInterface struct {
 	Error   error
 }
 
-func (__ *ReturnOfInterface) Unpack() (context.Context, Some, error) {
+func (__ *ReturnOfInterface) Unpack() (context.Context, interface{}, error) {
 	return __.Context, __.Value, __.Error
 }
 
