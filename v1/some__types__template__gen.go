@@ -102,7 +102,7 @@ func (__ pool_WorkContextOfBytesToBytes) Puts(d *WorkContextOfBytesToBytes) {
 
 type func_worker_BytesToBytes struct{}
 
-func (_ func_worker_BytesToBytes) New(ctx context.Context, h func(context.Context, Bytes) (Bytes, error), n int) *FuncWorkerOfBytesToBytes {
+func (_ func_worker_BytesToBytes) New(ctx context.Context, h func(context.Context, Bytes) (context.Context, Bytes, error), n int) *FuncWorkerOfBytesToBytes {
 	return newFuncWorkerOfBytesToBytes(ctx, h, n)
 }
 
@@ -129,11 +129,11 @@ func (__ _BytesToBytes) CallAsSync(ctx context.Context, value Bytes, push func(c
 	return rtn.Context, rtn.Value, rtn.Error
 }
 
-func (__ _BytesToBytes) CallAsAsync(ctx context.Context, value Bytes, returnCh chan<- *ReturnOfBytes, h func(ctx context.Context, arg Bytes) (Bytes, error), defered func()) {
+func (__ _BytesToBytes) CallAsAsync(ctx context.Context, value Bytes, returnCh chan<- *ReturnOfBytes, h func(ctx context.Context, arg Bytes) (context.Context, Bytes, error), defered func()) {
 	go func() {
 		defer defered()
 
-		res, err := h(ctx, value)
+		ctx, res, err := h(ctx, value)
 		rtn := Bytess.Return.Pool.GetWith(ctx, res, err)
 		returnCh <- rtn
 	}()
@@ -234,7 +234,7 @@ func (__ pool_WorkContextOfBytesToString) Puts(d *WorkContextOfBytesToString) {
 
 type func_worker_BytesToString struct{}
 
-func (_ func_worker_BytesToString) New(ctx context.Context, h func(context.Context, Bytes) (string, error), n int) *FuncWorkerOfBytesToString {
+func (_ func_worker_BytesToString) New(ctx context.Context, h func(context.Context, Bytes) (context.Context, string, error), n int) *FuncWorkerOfBytesToString {
 	return newFuncWorkerOfBytesToString(ctx, h, n)
 }
 
@@ -261,11 +261,11 @@ func (__ _BytesToString) CallAsSync(ctx context.Context, value Bytes, push func(
 	return rtn.Context, rtn.Value, rtn.Error
 }
 
-func (__ _BytesToString) CallAsAsync(ctx context.Context, value Bytes, returnCh chan<- *ReturnOfString, h func(ctx context.Context, arg Bytes) (string, error), defered func()) {
+func (__ _BytesToString) CallAsAsync(ctx context.Context, value Bytes, returnCh chan<- *ReturnOfString, h func(ctx context.Context, arg Bytes) (context.Context, string, error), defered func()) {
 	go func() {
 		defer defered()
 
-		res, err := h(ctx, value)
+		ctx, res, err := h(ctx, value)
 		rtn := Strings.Return.Pool.GetWith(ctx, res, err)
 		returnCh <- rtn
 	}()
@@ -366,7 +366,7 @@ func (__ pool_WorkContextOfBytesToInterface) Puts(d *WorkContextOfBytesToInterfa
 
 type func_worker_BytesToInterface struct{}
 
-func (_ func_worker_BytesToInterface) New(ctx context.Context, h func(context.Context, Bytes) (interface{}, error), n int) *FuncWorkerOfBytesToInterface {
+func (_ func_worker_BytesToInterface) New(ctx context.Context, h func(context.Context, Bytes) (context.Context, interface{}, error), n int) *FuncWorkerOfBytesToInterface {
 	return newFuncWorkerOfBytesToInterface(ctx, h, n)
 }
 
@@ -393,11 +393,11 @@ func (__ _BytesToInterface) CallAsSync(ctx context.Context, value Bytes, push fu
 	return rtn.Context, rtn.Value, rtn.Error
 }
 
-func (__ _BytesToInterface) CallAsAsync(ctx context.Context, value Bytes, returnCh chan<- *ReturnOfInterface, h func(ctx context.Context, arg Bytes) (interface{}, error), defered func()) {
+func (__ _BytesToInterface) CallAsAsync(ctx context.Context, value Bytes, returnCh chan<- *ReturnOfInterface, h func(ctx context.Context, arg Bytes) (context.Context, interface{}, error), defered func()) {
 	go func() {
 		defer defered()
 
-		res, err := h(ctx, value)
+		ctx, res, err := h(ctx, value)
 		rtn := Interfaces.Return.Pool.GetWith(ctx, res, err)
 		returnCh <- rtn
 	}()
@@ -498,7 +498,7 @@ func (__ pool_WorkContextOfStringToBytes) Puts(d *WorkContextOfStringToBytes) {
 
 type func_worker_StringToBytes struct{}
 
-func (_ func_worker_StringToBytes) New(ctx context.Context, h func(context.Context, string) (Bytes, error), n int) *FuncWorkerOfStringToBytes {
+func (_ func_worker_StringToBytes) New(ctx context.Context, h func(context.Context, string) (context.Context, Bytes, error), n int) *FuncWorkerOfStringToBytes {
 	return newFuncWorkerOfStringToBytes(ctx, h, n)
 }
 
@@ -525,11 +525,11 @@ func (__ _StringToBytes) CallAsSync(ctx context.Context, value string, push func
 	return rtn.Context, rtn.Value, rtn.Error
 }
 
-func (__ _StringToBytes) CallAsAsync(ctx context.Context, value string, returnCh chan<- *ReturnOfBytes, h func(ctx context.Context, arg string) (Bytes, error), defered func()) {
+func (__ _StringToBytes) CallAsAsync(ctx context.Context, value string, returnCh chan<- *ReturnOfBytes, h func(ctx context.Context, arg string) (context.Context, Bytes, error), defered func()) {
 	go func() {
 		defer defered()
 
-		res, err := h(ctx, value)
+		ctx, res, err := h(ctx, value)
 		rtn := Bytess.Return.Pool.GetWith(ctx, res, err)
 		returnCh <- rtn
 	}()
@@ -630,7 +630,7 @@ func (__ pool_WorkContextOfStringToString) Puts(d *WorkContextOfStringToString) 
 
 type func_worker_StringToString struct{}
 
-func (_ func_worker_StringToString) New(ctx context.Context, h func(context.Context, string) (string, error), n int) *FuncWorkerOfStringToString {
+func (_ func_worker_StringToString) New(ctx context.Context, h func(context.Context, string) (context.Context, string, error), n int) *FuncWorkerOfStringToString {
 	return newFuncWorkerOfStringToString(ctx, h, n)
 }
 
@@ -657,11 +657,11 @@ func (__ _StringToString) CallAsSync(ctx context.Context, value string, push fun
 	return rtn.Context, rtn.Value, rtn.Error
 }
 
-func (__ _StringToString) CallAsAsync(ctx context.Context, value string, returnCh chan<- *ReturnOfString, h func(ctx context.Context, arg string) (string, error), defered func()) {
+func (__ _StringToString) CallAsAsync(ctx context.Context, value string, returnCh chan<- *ReturnOfString, h func(ctx context.Context, arg string) (context.Context, string, error), defered func()) {
 	go func() {
 		defer defered()
 
-		res, err := h(ctx, value)
+		ctx, res, err := h(ctx, value)
 		rtn := Strings.Return.Pool.GetWith(ctx, res, err)
 		returnCh <- rtn
 	}()
@@ -762,7 +762,7 @@ func (__ pool_WorkContextOfStringToInterface) Puts(d *WorkContextOfStringToInter
 
 type func_worker_StringToInterface struct{}
 
-func (_ func_worker_StringToInterface) New(ctx context.Context, h func(context.Context, string) (interface{}, error), n int) *FuncWorkerOfStringToInterface {
+func (_ func_worker_StringToInterface) New(ctx context.Context, h func(context.Context, string) (context.Context, interface{}, error), n int) *FuncWorkerOfStringToInterface {
 	return newFuncWorkerOfStringToInterface(ctx, h, n)
 }
 
@@ -789,11 +789,11 @@ func (__ _StringToInterface) CallAsSync(ctx context.Context, value string, push 
 	return rtn.Context, rtn.Value, rtn.Error
 }
 
-func (__ _StringToInterface) CallAsAsync(ctx context.Context, value string, returnCh chan<- *ReturnOfInterface, h func(ctx context.Context, arg string) (interface{}, error), defered func()) {
+func (__ _StringToInterface) CallAsAsync(ctx context.Context, value string, returnCh chan<- *ReturnOfInterface, h func(ctx context.Context, arg string) (context.Context, interface{}, error), defered func()) {
 	go func() {
 		defer defered()
 
-		res, err := h(ctx, value)
+		ctx, res, err := h(ctx, value)
 		rtn := Interfaces.Return.Pool.GetWith(ctx, res, err)
 		returnCh <- rtn
 	}()
@@ -894,7 +894,7 @@ func (__ pool_WorkContextOfInterfaceToBytes) Puts(d *WorkContextOfInterfaceToByt
 
 type func_worker_InterfaceToBytes struct{}
 
-func (_ func_worker_InterfaceToBytes) New(ctx context.Context, h func(context.Context, interface{}) (Bytes, error), n int) *FuncWorkerOfInterfaceToBytes {
+func (_ func_worker_InterfaceToBytes) New(ctx context.Context, h func(context.Context, interface{}) (context.Context, Bytes, error), n int) *FuncWorkerOfInterfaceToBytes {
 	return newFuncWorkerOfInterfaceToBytes(ctx, h, n)
 }
 
@@ -921,11 +921,11 @@ func (__ _InterfaceToBytes) CallAsSync(ctx context.Context, value interface{}, p
 	return rtn.Context, rtn.Value, rtn.Error
 }
 
-func (__ _InterfaceToBytes) CallAsAsync(ctx context.Context, value interface{}, returnCh chan<- *ReturnOfBytes, h func(ctx context.Context, arg interface{}) (Bytes, error), defered func()) {
+func (__ _InterfaceToBytes) CallAsAsync(ctx context.Context, value interface{}, returnCh chan<- *ReturnOfBytes, h func(ctx context.Context, arg interface{}) (context.Context, Bytes, error), defered func()) {
 	go func() {
 		defer defered()
 
-		res, err := h(ctx, value)
+		ctx, res, err := h(ctx, value)
 		rtn := Bytess.Return.Pool.GetWith(ctx, res, err)
 		returnCh <- rtn
 	}()
@@ -1026,7 +1026,7 @@ func (__ pool_WorkContextOfInterfaceToString) Puts(d *WorkContextOfInterfaceToSt
 
 type func_worker_InterfaceToString struct{}
 
-func (_ func_worker_InterfaceToString) New(ctx context.Context, h func(context.Context, interface{}) (string, error), n int) *FuncWorkerOfInterfaceToString {
+func (_ func_worker_InterfaceToString) New(ctx context.Context, h func(context.Context, interface{}) (context.Context, string, error), n int) *FuncWorkerOfInterfaceToString {
 	return newFuncWorkerOfInterfaceToString(ctx, h, n)
 }
 
@@ -1053,11 +1053,11 @@ func (__ _InterfaceToString) CallAsSync(ctx context.Context, value interface{}, 
 	return rtn.Context, rtn.Value, rtn.Error
 }
 
-func (__ _InterfaceToString) CallAsAsync(ctx context.Context, value interface{}, returnCh chan<- *ReturnOfString, h func(ctx context.Context, arg interface{}) (string, error), defered func()) {
+func (__ _InterfaceToString) CallAsAsync(ctx context.Context, value interface{}, returnCh chan<- *ReturnOfString, h func(ctx context.Context, arg interface{}) (context.Context, string, error), defered func()) {
 	go func() {
 		defer defered()
 
-		res, err := h(ctx, value)
+		ctx, res, err := h(ctx, value)
 		rtn := Strings.Return.Pool.GetWith(ctx, res, err)
 		returnCh <- rtn
 	}()
@@ -1158,7 +1158,7 @@ func (__ pool_WorkContextOfInterfaceToInterface) Puts(d *WorkContextOfInterfaceT
 
 type func_worker_InterfaceToInterface struct{}
 
-func (_ func_worker_InterfaceToInterface) New(ctx context.Context, h func(context.Context, interface{}) (interface{}, error), n int) *FuncWorkerOfInterfaceToInterface {
+func (_ func_worker_InterfaceToInterface) New(ctx context.Context, h func(context.Context, interface{}) (context.Context, interface{}, error), n int) *FuncWorkerOfInterfaceToInterface {
 	return newFuncWorkerOfInterfaceToInterface(ctx, h, n)
 }
 
@@ -1185,11 +1185,11 @@ func (__ _InterfaceToInterface) CallAsSync(ctx context.Context, value interface{
 	return rtn.Context, rtn.Value, rtn.Error
 }
 
-func (__ _InterfaceToInterface) CallAsAsync(ctx context.Context, value interface{}, returnCh chan<- *ReturnOfInterface, h func(ctx context.Context, arg interface{}) (interface{}, error), defered func()) {
+func (__ _InterfaceToInterface) CallAsAsync(ctx context.Context, value interface{}, returnCh chan<- *ReturnOfInterface, h func(ctx context.Context, arg interface{}) (context.Context, interface{}, error), defered func()) {
 	go func() {
 		defer defered()
 
-		res, err := h(ctx, value)
+		ctx, res, err := h(ctx, value)
 		rtn := Interfaces.Return.Pool.GetWith(ctx, res, err)
 		returnCh <- rtn
 	}()

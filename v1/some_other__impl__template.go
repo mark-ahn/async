@@ -7,7 +7,7 @@ import (
 )
 
 type FuncWorkerOfSomeToOther struct {
-	handler func(context.Context, Some) (Other, error)
+	handler func(context.Context, Some) (context.Context, Other, error)
 
 	ctx context.Context
 
@@ -17,7 +17,7 @@ type FuncWorkerOfSomeToOther struct {
 	reset_ch chan chan error
 }
 
-func newFuncWorkerOfSomeToOther(ctx context.Context, h func(context.Context, Some) (Other, error), n int) *FuncWorkerOfSomeToOther {
+func newFuncWorkerOfSomeToOther(ctx context.Context, h func(context.Context, Some) (context.Context, Other, error), n int) *FuncWorkerOfSomeToOther {
 	__ := &FuncWorkerOfSomeToOther{
 		handler: h,
 

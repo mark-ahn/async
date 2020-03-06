@@ -11,7 +11,7 @@ import (
 )
 
 type FuncWorkerOfBytesToBytes struct {
-	handler func(context.Context, Bytes) (Bytes, error)
+	handler func(context.Context, Bytes) (context.Context, Bytes, error)
 
 	ctx context.Context
 
@@ -21,7 +21,7 @@ type FuncWorkerOfBytesToBytes struct {
 	reset_ch chan chan error
 }
 
-func newFuncWorkerOfBytesToBytes(ctx context.Context, h func(context.Context, Bytes) (Bytes, error), n int) *FuncWorkerOfBytesToBytes {
+func newFuncWorkerOfBytesToBytes(ctx context.Context, h func(context.Context, Bytes) (context.Context, Bytes, error), n int) *FuncWorkerOfBytesToBytes {
 	__ := &FuncWorkerOfBytesToBytes{
 		handler: h,
 
@@ -104,7 +104,7 @@ func (__ *FuncWorkerOfBytesToBytes) Reset(ctx context.Context) <-chan error {
 }
 
 type FuncWorkerOfBytesToString struct {
-	handler func(context.Context, Bytes) (string, error)
+	handler func(context.Context, Bytes) (context.Context, string, error)
 
 	ctx context.Context
 
@@ -114,7 +114,7 @@ type FuncWorkerOfBytesToString struct {
 	reset_ch chan chan error
 }
 
-func newFuncWorkerOfBytesToString(ctx context.Context, h func(context.Context, Bytes) (string, error), n int) *FuncWorkerOfBytesToString {
+func newFuncWorkerOfBytesToString(ctx context.Context, h func(context.Context, Bytes) (context.Context, string, error), n int) *FuncWorkerOfBytesToString {
 	__ := &FuncWorkerOfBytesToString{
 		handler: h,
 
@@ -197,7 +197,7 @@ func (__ *FuncWorkerOfBytesToString) Reset(ctx context.Context) <-chan error {
 }
 
 type FuncWorkerOfBytesToInterface struct {
-	handler func(context.Context, Bytes) (interface{}, error)
+	handler func(context.Context, Bytes) (context.Context, interface{}, error)
 
 	ctx context.Context
 
@@ -207,7 +207,7 @@ type FuncWorkerOfBytesToInterface struct {
 	reset_ch chan chan error
 }
 
-func newFuncWorkerOfBytesToInterface(ctx context.Context, h func(context.Context, Bytes) (interface{}, error), n int) *FuncWorkerOfBytesToInterface {
+func newFuncWorkerOfBytesToInterface(ctx context.Context, h func(context.Context, Bytes) (context.Context, interface{}, error), n int) *FuncWorkerOfBytesToInterface {
 	__ := &FuncWorkerOfBytesToInterface{
 		handler: h,
 
@@ -290,7 +290,7 @@ func (__ *FuncWorkerOfBytesToInterface) Reset(ctx context.Context) <-chan error 
 }
 
 type FuncWorkerOfStringToBytes struct {
-	handler func(context.Context, string) (Bytes, error)
+	handler func(context.Context, string) (context.Context, Bytes, error)
 
 	ctx context.Context
 
@@ -300,7 +300,7 @@ type FuncWorkerOfStringToBytes struct {
 	reset_ch chan chan error
 }
 
-func newFuncWorkerOfStringToBytes(ctx context.Context, h func(context.Context, string) (Bytes, error), n int) *FuncWorkerOfStringToBytes {
+func newFuncWorkerOfStringToBytes(ctx context.Context, h func(context.Context, string) (context.Context, Bytes, error), n int) *FuncWorkerOfStringToBytes {
 	__ := &FuncWorkerOfStringToBytes{
 		handler: h,
 
@@ -383,7 +383,7 @@ func (__ *FuncWorkerOfStringToBytes) Reset(ctx context.Context) <-chan error {
 }
 
 type FuncWorkerOfStringToString struct {
-	handler func(context.Context, string) (string, error)
+	handler func(context.Context, string) (context.Context, string, error)
 
 	ctx context.Context
 
@@ -393,7 +393,7 @@ type FuncWorkerOfStringToString struct {
 	reset_ch chan chan error
 }
 
-func newFuncWorkerOfStringToString(ctx context.Context, h func(context.Context, string) (string, error), n int) *FuncWorkerOfStringToString {
+func newFuncWorkerOfStringToString(ctx context.Context, h func(context.Context, string) (context.Context, string, error), n int) *FuncWorkerOfStringToString {
 	__ := &FuncWorkerOfStringToString{
 		handler: h,
 
@@ -476,7 +476,7 @@ func (__ *FuncWorkerOfStringToString) Reset(ctx context.Context) <-chan error {
 }
 
 type FuncWorkerOfStringToInterface struct {
-	handler func(context.Context, string) (interface{}, error)
+	handler func(context.Context, string) (context.Context, interface{}, error)
 
 	ctx context.Context
 
@@ -486,7 +486,7 @@ type FuncWorkerOfStringToInterface struct {
 	reset_ch chan chan error
 }
 
-func newFuncWorkerOfStringToInterface(ctx context.Context, h func(context.Context, string) (interface{}, error), n int) *FuncWorkerOfStringToInterface {
+func newFuncWorkerOfStringToInterface(ctx context.Context, h func(context.Context, string) (context.Context, interface{}, error), n int) *FuncWorkerOfStringToInterface {
 	__ := &FuncWorkerOfStringToInterface{
 		handler: h,
 
@@ -569,7 +569,7 @@ func (__ *FuncWorkerOfStringToInterface) Reset(ctx context.Context) <-chan error
 }
 
 type FuncWorkerOfInterfaceToBytes struct {
-	handler func(context.Context, interface{}) (Bytes, error)
+	handler func(context.Context, interface{}) (context.Context, Bytes, error)
 
 	ctx context.Context
 
@@ -579,7 +579,7 @@ type FuncWorkerOfInterfaceToBytes struct {
 	reset_ch chan chan error
 }
 
-func newFuncWorkerOfInterfaceToBytes(ctx context.Context, h func(context.Context, interface{}) (Bytes, error), n int) *FuncWorkerOfInterfaceToBytes {
+func newFuncWorkerOfInterfaceToBytes(ctx context.Context, h func(context.Context, interface{}) (context.Context, Bytes, error), n int) *FuncWorkerOfInterfaceToBytes {
 	__ := &FuncWorkerOfInterfaceToBytes{
 		handler: h,
 
@@ -662,7 +662,7 @@ func (__ *FuncWorkerOfInterfaceToBytes) Reset(ctx context.Context) <-chan error 
 }
 
 type FuncWorkerOfInterfaceToString struct {
-	handler func(context.Context, interface{}) (string, error)
+	handler func(context.Context, interface{}) (context.Context, string, error)
 
 	ctx context.Context
 
@@ -672,7 +672,7 @@ type FuncWorkerOfInterfaceToString struct {
 	reset_ch chan chan error
 }
 
-func newFuncWorkerOfInterfaceToString(ctx context.Context, h func(context.Context, interface{}) (string, error), n int) *FuncWorkerOfInterfaceToString {
+func newFuncWorkerOfInterfaceToString(ctx context.Context, h func(context.Context, interface{}) (context.Context, string, error), n int) *FuncWorkerOfInterfaceToString {
 	__ := &FuncWorkerOfInterfaceToString{
 		handler: h,
 
@@ -755,7 +755,7 @@ func (__ *FuncWorkerOfInterfaceToString) Reset(ctx context.Context) <-chan error
 }
 
 type FuncWorkerOfInterfaceToInterface struct {
-	handler func(context.Context, interface{}) (interface{}, error)
+	handler func(context.Context, interface{}) (context.Context, interface{}, error)
 
 	ctx context.Context
 
@@ -765,7 +765,7 @@ type FuncWorkerOfInterfaceToInterface struct {
 	reset_ch chan chan error
 }
 
-func newFuncWorkerOfInterfaceToInterface(ctx context.Context, h func(context.Context, interface{}) (interface{}, error), n int) *FuncWorkerOfInterfaceToInterface {
+func newFuncWorkerOfInterfaceToInterface(ctx context.Context, h func(context.Context, interface{}) (context.Context, interface{}, error), n int) *FuncWorkerOfInterfaceToInterface {
 	__ := &FuncWorkerOfInterfaceToInterface{
 		handler: h,
 

@@ -98,7 +98,7 @@ func (__ pool_WorkContextOfSomeToOther) Puts(d *WorkContextOfSomeToOther) {
 
 type func_worker_SomeToOther struct{}
 
-func (_ func_worker_SomeToOther) New(ctx context.Context, h func(context.Context, Some) (Other, error), n int) *FuncWorkerOfSomeToOther {
+func (_ func_worker_SomeToOther) New(ctx context.Context, h func(context.Context, Some) (context.Context, Other, error), n int) *FuncWorkerOfSomeToOther {
 	return newFuncWorkerOfSomeToOther(ctx, h, n)
 }
 
@@ -125,11 +125,11 @@ func (__ _SomeToOther) CallAsSync(ctx context.Context, value Some, push func(ctx
 	return rtn.Context, rtn.Value, rtn.Error
 }
 
-func (__ _SomeToOther) CallAsAsync(ctx context.Context, value Some, returnCh chan<- *ReturnOfOther, h func(ctx context.Context, arg Some) (Other, error), defered func()) {
+func (__ _SomeToOther) CallAsAsync(ctx context.Context, value Some, returnCh chan<- *ReturnOfOther, h func(ctx context.Context, arg Some) (context.Context, Other, error), defered func()) {
 	go func() {
 		defer defered()
 
-		res, err := h(ctx, value)
+		ctx, res, err := h(ctx, value)
 		rtn := Others.Return.Pool.GetWith(ctx, res, err)
 		returnCh <- rtn
 	}()
