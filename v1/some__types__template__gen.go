@@ -67,8 +67,9 @@ func (_ pool_WorkContextOfBytesToBytes) Get() *WorkContextOfBytesToBytes {
 }
 func (_ pool_WorkContextOfBytesToBytes) Put(d *WorkContextOfBytesToBytes) {
 	d.Context = nil
-	d.Value = zero_of_WorkOfBytesToBytes_Value
-	d.ReturnCh = nil
+	d.WorkOfBytesToBytes = nil
+	// d.Value = zero_of_WorkOfBytesToBytes_Value
+	// d.ReturnCh = nil
 	pool_of_WorkOfBytesToBytesContext.Put(d)
 }
 
@@ -77,6 +78,22 @@ func (__ pool_WorkContextOfBytesToBytes) GetWith(ctx context.Context, work *Work
 	work_ctx.Context = ctx
 	work_ctx.WorkOfBytesToBytes = work
 	return work_ctx
+}
+
+func (__ pool_WorkContextOfBytesToBytes) GetWiths(ctx context.Context, value Bytes, returnCh chan<- *ReturnOfBytes) *WorkContextOfBytesToBytes {
+	work := pool_of_WorkOfBytesToBytes.Get().(*WorkOfBytesToBytes)
+	work.Value = value
+	work.ReturnCh = returnCh
+	return __.GetWith(ctx, work)
+}
+
+func (__ pool_WorkContextOfBytesToBytes) Puts(d *WorkContextOfBytesToBytes) {
+	work := d.WorkOfBytesToBytes
+	work.Value = zero_of_WorkOfBytesToBytes_Value
+	work.ReturnCh = nil
+	pool_of_WorkOfBytesToBytes.Put(work)
+
+	__.Put(d)
 }
 
 type func_worker_BytesToBytes struct{}
@@ -178,8 +195,9 @@ func (_ pool_WorkContextOfBytesToString) Get() *WorkContextOfBytesToString {
 }
 func (_ pool_WorkContextOfBytesToString) Put(d *WorkContextOfBytesToString) {
 	d.Context = nil
-	d.Value = zero_of_WorkOfBytesToString_Value
-	d.ReturnCh = nil
+	d.WorkOfBytesToString = nil
+	// d.Value = zero_of_WorkOfBytesToString_Value
+	// d.ReturnCh = nil
 	pool_of_WorkOfBytesToStringContext.Put(d)
 }
 
@@ -188,6 +206,22 @@ func (__ pool_WorkContextOfBytesToString) GetWith(ctx context.Context, work *Wor
 	work_ctx.Context = ctx
 	work_ctx.WorkOfBytesToString = work
 	return work_ctx
+}
+
+func (__ pool_WorkContextOfBytesToString) GetWiths(ctx context.Context, value Bytes, returnCh chan<- *ReturnOfString) *WorkContextOfBytesToString {
+	work := pool_of_WorkOfBytesToString.Get().(*WorkOfBytesToString)
+	work.Value = value
+	work.ReturnCh = returnCh
+	return __.GetWith(ctx, work)
+}
+
+func (__ pool_WorkContextOfBytesToString) Puts(d *WorkContextOfBytesToString) {
+	work := d.WorkOfBytesToString
+	work.Value = zero_of_WorkOfBytesToString_Value
+	work.ReturnCh = nil
+	pool_of_WorkOfBytesToString.Put(work)
+
+	__.Put(d)
 }
 
 type func_worker_BytesToString struct{}
@@ -289,8 +323,9 @@ func (_ pool_WorkContextOfBytesToInterface) Get() *WorkContextOfBytesToInterface
 }
 func (_ pool_WorkContextOfBytesToInterface) Put(d *WorkContextOfBytesToInterface) {
 	d.Context = nil
-	d.Value = zero_of_WorkOfBytesToInterface_Value
-	d.ReturnCh = nil
+	d.WorkOfBytesToInterface = nil
+	// d.Value = zero_of_WorkOfBytesToInterface_Value
+	// d.ReturnCh = nil
 	pool_of_WorkOfBytesToInterfaceContext.Put(d)
 }
 
@@ -299,6 +334,22 @@ func (__ pool_WorkContextOfBytesToInterface) GetWith(ctx context.Context, work *
 	work_ctx.Context = ctx
 	work_ctx.WorkOfBytesToInterface = work
 	return work_ctx
+}
+
+func (__ pool_WorkContextOfBytesToInterface) GetWiths(ctx context.Context, value Bytes, returnCh chan<- *ReturnOfInterface) *WorkContextOfBytesToInterface {
+	work := pool_of_WorkOfBytesToInterface.Get().(*WorkOfBytesToInterface)
+	work.Value = value
+	work.ReturnCh = returnCh
+	return __.GetWith(ctx, work)
+}
+
+func (__ pool_WorkContextOfBytesToInterface) Puts(d *WorkContextOfBytesToInterface) {
+	work := d.WorkOfBytesToInterface
+	work.Value = zero_of_WorkOfBytesToInterface_Value
+	work.ReturnCh = nil
+	pool_of_WorkOfBytesToInterface.Put(work)
+
+	__.Put(d)
 }
 
 type func_worker_BytesToInterface struct{}
@@ -400,8 +451,9 @@ func (_ pool_WorkContextOfStringToBytes) Get() *WorkContextOfStringToBytes {
 }
 func (_ pool_WorkContextOfStringToBytes) Put(d *WorkContextOfStringToBytes) {
 	d.Context = nil
-	d.Value = zero_of_WorkOfStringToBytes_Value
-	d.ReturnCh = nil
+	d.WorkOfStringToBytes = nil
+	// d.Value = zero_of_WorkOfStringToBytes_Value
+	// d.ReturnCh = nil
 	pool_of_WorkOfStringToBytesContext.Put(d)
 }
 
@@ -410,6 +462,22 @@ func (__ pool_WorkContextOfStringToBytes) GetWith(ctx context.Context, work *Wor
 	work_ctx.Context = ctx
 	work_ctx.WorkOfStringToBytes = work
 	return work_ctx
+}
+
+func (__ pool_WorkContextOfStringToBytes) GetWiths(ctx context.Context, value string, returnCh chan<- *ReturnOfBytes) *WorkContextOfStringToBytes {
+	work := pool_of_WorkOfStringToBytes.Get().(*WorkOfStringToBytes)
+	work.Value = value
+	work.ReturnCh = returnCh
+	return __.GetWith(ctx, work)
+}
+
+func (__ pool_WorkContextOfStringToBytes) Puts(d *WorkContextOfStringToBytes) {
+	work := d.WorkOfStringToBytes
+	work.Value = zero_of_WorkOfStringToBytes_Value
+	work.ReturnCh = nil
+	pool_of_WorkOfStringToBytes.Put(work)
+
+	__.Put(d)
 }
 
 type func_worker_StringToBytes struct{}
@@ -511,8 +579,9 @@ func (_ pool_WorkContextOfStringToString) Get() *WorkContextOfStringToString {
 }
 func (_ pool_WorkContextOfStringToString) Put(d *WorkContextOfStringToString) {
 	d.Context = nil
-	d.Value = zero_of_WorkOfStringToString_Value
-	d.ReturnCh = nil
+	d.WorkOfStringToString = nil
+	// d.Value = zero_of_WorkOfStringToString_Value
+	// d.ReturnCh = nil
 	pool_of_WorkOfStringToStringContext.Put(d)
 }
 
@@ -521,6 +590,22 @@ func (__ pool_WorkContextOfStringToString) GetWith(ctx context.Context, work *Wo
 	work_ctx.Context = ctx
 	work_ctx.WorkOfStringToString = work
 	return work_ctx
+}
+
+func (__ pool_WorkContextOfStringToString) GetWiths(ctx context.Context, value string, returnCh chan<- *ReturnOfString) *WorkContextOfStringToString {
+	work := pool_of_WorkOfStringToString.Get().(*WorkOfStringToString)
+	work.Value = value
+	work.ReturnCh = returnCh
+	return __.GetWith(ctx, work)
+}
+
+func (__ pool_WorkContextOfStringToString) Puts(d *WorkContextOfStringToString) {
+	work := d.WorkOfStringToString
+	work.Value = zero_of_WorkOfStringToString_Value
+	work.ReturnCh = nil
+	pool_of_WorkOfStringToString.Put(work)
+
+	__.Put(d)
 }
 
 type func_worker_StringToString struct{}
@@ -622,8 +707,9 @@ func (_ pool_WorkContextOfStringToInterface) Get() *WorkContextOfStringToInterfa
 }
 func (_ pool_WorkContextOfStringToInterface) Put(d *WorkContextOfStringToInterface) {
 	d.Context = nil
-	d.Value = zero_of_WorkOfStringToInterface_Value
-	d.ReturnCh = nil
+	d.WorkOfStringToInterface = nil
+	// d.Value = zero_of_WorkOfStringToInterface_Value
+	// d.ReturnCh = nil
 	pool_of_WorkOfStringToInterfaceContext.Put(d)
 }
 
@@ -632,6 +718,22 @@ func (__ pool_WorkContextOfStringToInterface) GetWith(ctx context.Context, work 
 	work_ctx.Context = ctx
 	work_ctx.WorkOfStringToInterface = work
 	return work_ctx
+}
+
+func (__ pool_WorkContextOfStringToInterface) GetWiths(ctx context.Context, value string, returnCh chan<- *ReturnOfInterface) *WorkContextOfStringToInterface {
+	work := pool_of_WorkOfStringToInterface.Get().(*WorkOfStringToInterface)
+	work.Value = value
+	work.ReturnCh = returnCh
+	return __.GetWith(ctx, work)
+}
+
+func (__ pool_WorkContextOfStringToInterface) Puts(d *WorkContextOfStringToInterface) {
+	work := d.WorkOfStringToInterface
+	work.Value = zero_of_WorkOfStringToInterface_Value
+	work.ReturnCh = nil
+	pool_of_WorkOfStringToInterface.Put(work)
+
+	__.Put(d)
 }
 
 type func_worker_StringToInterface struct{}
@@ -733,8 +835,9 @@ func (_ pool_WorkContextOfInterfaceToBytes) Get() *WorkContextOfInterfaceToBytes
 }
 func (_ pool_WorkContextOfInterfaceToBytes) Put(d *WorkContextOfInterfaceToBytes) {
 	d.Context = nil
-	d.Value = zero_of_WorkOfInterfaceToBytes_Value
-	d.ReturnCh = nil
+	d.WorkOfInterfaceToBytes = nil
+	// d.Value = zero_of_WorkOfInterfaceToBytes_Value
+	// d.ReturnCh = nil
 	pool_of_WorkOfInterfaceToBytesContext.Put(d)
 }
 
@@ -743,6 +846,22 @@ func (__ pool_WorkContextOfInterfaceToBytes) GetWith(ctx context.Context, work *
 	work_ctx.Context = ctx
 	work_ctx.WorkOfInterfaceToBytes = work
 	return work_ctx
+}
+
+func (__ pool_WorkContextOfInterfaceToBytes) GetWiths(ctx context.Context, value interface{}, returnCh chan<- *ReturnOfBytes) *WorkContextOfInterfaceToBytes {
+	work := pool_of_WorkOfInterfaceToBytes.Get().(*WorkOfInterfaceToBytes)
+	work.Value = value
+	work.ReturnCh = returnCh
+	return __.GetWith(ctx, work)
+}
+
+func (__ pool_WorkContextOfInterfaceToBytes) Puts(d *WorkContextOfInterfaceToBytes) {
+	work := d.WorkOfInterfaceToBytes
+	work.Value = zero_of_WorkOfInterfaceToBytes_Value
+	work.ReturnCh = nil
+	pool_of_WorkOfInterfaceToBytes.Put(work)
+
+	__.Put(d)
 }
 
 type func_worker_InterfaceToBytes struct{}
@@ -844,8 +963,9 @@ func (_ pool_WorkContextOfInterfaceToString) Get() *WorkContextOfInterfaceToStri
 }
 func (_ pool_WorkContextOfInterfaceToString) Put(d *WorkContextOfInterfaceToString) {
 	d.Context = nil
-	d.Value = zero_of_WorkOfInterfaceToString_Value
-	d.ReturnCh = nil
+	d.WorkOfInterfaceToString = nil
+	// d.Value = zero_of_WorkOfInterfaceToString_Value
+	// d.ReturnCh = nil
 	pool_of_WorkOfInterfaceToStringContext.Put(d)
 }
 
@@ -854,6 +974,22 @@ func (__ pool_WorkContextOfInterfaceToString) GetWith(ctx context.Context, work 
 	work_ctx.Context = ctx
 	work_ctx.WorkOfInterfaceToString = work
 	return work_ctx
+}
+
+func (__ pool_WorkContextOfInterfaceToString) GetWiths(ctx context.Context, value interface{}, returnCh chan<- *ReturnOfString) *WorkContextOfInterfaceToString {
+	work := pool_of_WorkOfInterfaceToString.Get().(*WorkOfInterfaceToString)
+	work.Value = value
+	work.ReturnCh = returnCh
+	return __.GetWith(ctx, work)
+}
+
+func (__ pool_WorkContextOfInterfaceToString) Puts(d *WorkContextOfInterfaceToString) {
+	work := d.WorkOfInterfaceToString
+	work.Value = zero_of_WorkOfInterfaceToString_Value
+	work.ReturnCh = nil
+	pool_of_WorkOfInterfaceToString.Put(work)
+
+	__.Put(d)
 }
 
 type func_worker_InterfaceToString struct{}
@@ -955,8 +1091,9 @@ func (_ pool_WorkContextOfInterfaceToInterface) Get() *WorkContextOfInterfaceToI
 }
 func (_ pool_WorkContextOfInterfaceToInterface) Put(d *WorkContextOfInterfaceToInterface) {
 	d.Context = nil
-	d.Value = zero_of_WorkOfInterfaceToInterface_Value
-	d.ReturnCh = nil
+	d.WorkOfInterfaceToInterface = nil
+	// d.Value = zero_of_WorkOfInterfaceToInterface_Value
+	// d.ReturnCh = nil
 	pool_of_WorkOfInterfaceToInterfaceContext.Put(d)
 }
 
@@ -965,6 +1102,22 @@ func (__ pool_WorkContextOfInterfaceToInterface) GetWith(ctx context.Context, wo
 	work_ctx.Context = ctx
 	work_ctx.WorkOfInterfaceToInterface = work
 	return work_ctx
+}
+
+func (__ pool_WorkContextOfInterfaceToInterface) GetWiths(ctx context.Context, value interface{}, returnCh chan<- *ReturnOfInterface) *WorkContextOfInterfaceToInterface {
+	work := pool_of_WorkOfInterfaceToInterface.Get().(*WorkOfInterfaceToInterface)
+	work.Value = value
+	work.ReturnCh = returnCh
+	return __.GetWith(ctx, work)
+}
+
+func (__ pool_WorkContextOfInterfaceToInterface) Puts(d *WorkContextOfInterfaceToInterface) {
+	work := d.WorkOfInterfaceToInterface
+	work.Value = zero_of_WorkOfInterfaceToInterface_Value
+	work.ReturnCh = nil
+	pool_of_WorkOfInterfaceToInterface.Put(work)
+
+	__.Put(d)
 }
 
 type func_worker_InterfaceToInterface struct{}
