@@ -151,6 +151,10 @@ func (__ chanReturnOfOther) Notify(ctx Valuable, rtn *ReturnOfOther) bool {
 	return true
 }
 
+func (__ chanReturnOfOther) NotifyWith(ctx context.Context, value Other, err error) bool {
+	return __.Notify(ctx, Others.Return.Pool.GetWith(ctx, value, err))
+}
+
 type _Other struct {
 	Return struct {
 		Pool pool_ReturnOfOther

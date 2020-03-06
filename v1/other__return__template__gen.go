@@ -155,6 +155,10 @@ func (__ chanReturnOfBytes) Notify(ctx Valuable, rtn *ReturnOfBytes) bool {
 	return true
 }
 
+func (__ chanReturnOfBytes) NotifyWith(ctx context.Context, value Bytes, err error) bool {
+	return __.Notify(ctx, Bytess.Return.Pool.GetWith(ctx, value, err))
+}
+
 type _Bytes struct {
 	Return struct {
 		Pool pool_ReturnOfBytes
@@ -320,6 +324,10 @@ func (__ chanReturnOfString) Notify(ctx Valuable, rtn *ReturnOfString) bool {
 	return true
 }
 
+func (__ chanReturnOfString) NotifyWith(ctx context.Context, value string, err error) bool {
+	return __.Notify(ctx, Strings.Return.Pool.GetWith(ctx, value, err))
+}
+
 type _String struct {
 	Return struct {
 		Pool pool_ReturnOfString
@@ -483,6 +491,10 @@ func (__ chanReturnOfInterface) Notify(ctx Valuable, rtn *ReturnOfInterface) boo
 	}
 	ch <- rtn
 	return true
+}
+
+func (__ chanReturnOfInterface) NotifyWith(ctx context.Context, value interface{}, err error) bool {
+	return __.Notify(ctx, Interfaces.Return.Pool.GetWith(ctx, value, err))
 }
 
 type _Interface struct {
