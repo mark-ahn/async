@@ -9,14 +9,14 @@ func (_ func_worker[In, Out]) New(ctx context.Context, h func(context.Context, I
 }
 
 type AsyncPoolSet[In any, Out any] struct {
-	Param  ParamPoolSet[In, Out]
-	Return ReturnPoolSet[Out]
+	Param  *ParamPoolSet[In, Out]
+	Return *ReturnPoolSet[Out]
 }
 
 func NewAsyncPoolSet[In any, Out any]() *AsyncPoolSet[In, Out] {
 	return &AsyncPoolSet[In, Out]{
-		Param:  *NewParamPoolSet[In, Out](),
-		Return: *NewReturnPoolSet[Out](),
+		Param:  NewParamPoolSet[In, Out](),
+		Return: NewReturnPoolSet[Out](),
 	}
 }
 

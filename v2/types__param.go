@@ -79,14 +79,14 @@ func (__ *pool_work_context[In, Out]) Pack(ctx context.Context, work *Work[In, O
 
 func NewParamPoolSet[In any, Out any]() *ParamPoolSet[In, Out] {
 	return &ParamPoolSet[In, Out]{
-		Work:        *new_pool_work[In, Out](),
-		WorkContext: *new_pool_work_context[In, Out](),
+		Work:        new_pool_work[In, Out](),
+		WorkContext: new_pool_work_context[In, Out](),
 	}
 }
 
 type ParamPoolSet[In any, Out any] struct {
-	Work        pool_work[In, Out]
-	WorkContext pool_work_context[In, Out]
+	Work        *pool_work[In, Out]
+	WorkContext *pool_work_context[In, Out]
 	FuncWorker  func_worker[In, Out]
 }
 
