@@ -5,17 +5,17 @@ import (
 	"sync"
 )
 
-type Chain[Item any] struct {
+type WorkerChain[Item any] struct {
 	ctx context.Context
 
-	pool    *TypePoolSet[Item, Item]
+	pool    *AsyncPoolSet[Item, Item]
 	doneCh  chan struct{}
 	chains  []Worker[Item, Item]
 	threads sync.WaitGroup
 }
 
-func NewChain[Item any](ctx context.Context, workers ...Worker[Item, Item]) *Chain[Item] {
-	__ := &Chain[Item]{
+func NewWorkerChain[Item any](ctx context.Context, workers ...Worker[Item, Item]) *WorkerChain[Item] {
+	__ := &WorkerChain[Item]{
 		pool:   PoolOf[Item, Item](),
 		ctx:    ctx,
 		doneCh: make(chan struct{}),
@@ -38,13 +38,13 @@ func NewChain[Item any](ctx context.Context, workers ...Worker[Item, Item]) *Cha
 	return __
 }
 
-func (__ *Chain[Item]) Push(ctx context.Context, value Item, returnCh chan<- *Return[Item]) {
+func (__ *WorkerChain[Item]) Push(ctx context.Context, value Item, returnCh chan<- *Return[Item]) {
 	__.threads.Add(1)
 	select {
 	case <-__.ctx.Done():
 		defer __.threads.Done()
 		var zero Item
-		rtn := __.pool.Return.Return.Pool.GetWith(ctx, zero, context.Canceled)
+		rtn := __.pool.Return.Value.Pack(ctx, zero, context.Canceled)
 		returnCh <- rtn
 		return
 	default:
@@ -67,8 +67,8 @@ func (__ *Chain[Item]) Push(ctx context.Context, value Item, returnCh chan<- *Re
 
 		var err error
 		arg := value
-		ch := __.pool.Return.ChanReturn.Pool.Get()
-		defer __.pool.Return.ChanReturn.Pool.Put(ch)
+		ch := __.pool.Return.Chan.Get()
+		defer __.pool.Return.Chan.Put(ch)
 		var rvalue Item = arg
 		for _, worker := range __.chains {
 			worker.Push(ctx, rvalue, ch)
@@ -78,18 +78,18 @@ func (__ *Chain[Item]) Push(ctx context.Context, value Item, returnCh chan<- *Re
 				returnCh <- rtn
 				return
 			}
-			__.pool.Return.Return.Pool.Put(rtn)
+			__.pool.Return.Value.Put(rtn)
 		}
-		rtn := __.pool.Return.Return.Pool.GetWith(ctx, rvalue, err)
+		rtn := __.pool.Return.Value.Pack(ctx, rvalue, err)
 		returnCh <- rtn
 	}()
 }
 
-func (__ *Chain[Item]) DoneNotify() <-chan struct{} {
+func (__ *WorkerChain[Item]) DoneNotify() <-chan struct{} {
 	return __.doneCh
 }
 
-func (__ *Chain[Item]) Reset(_ context.Context) <-chan error {
+func (__ *WorkerChain[Item]) Reset(_ context.Context) <-chan error {
 	ch := make(chan error)
 	close(ch)
 	return ch

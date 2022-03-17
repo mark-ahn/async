@@ -3,17 +3,11 @@ package async
 import (
 	"context"
 	"fmt"
-	"reflect"
 	"sync"
 )
 
-type type_param[Some any, Other any] struct{}
-
-var pool_lock sync.Mutex
-var pools = map[reflect.Type]interface{}{}
-
 type FuncWorker[Some any, Other any] struct {
-	pool    *TypePoolSet[Some, Other]
+	pool    *AsyncPoolSet[Some, Other]
 	handler func(context.Context, Some) (context.Context, Other, error)
 
 	ctx context.Context
@@ -61,7 +55,7 @@ func NewFuncWorker[Some any, Other any](ctx context.Context, h func(context.Cont
 				go pool.CallAsAsync(ctx, value, rtn_ch, __.handler, func() {
 					__.threads.Done()
 				})
-				pool.Param.Puts(work)
+				pool.Param.puts(work)
 			case reset_done_ch := <-__.reset_ch:
 				__.reset_queue()
 				close(reset_done_ch)
@@ -75,7 +69,7 @@ func NewFuncWorker[Some any, Other any](ctx context.Context, h func(context.Cont
 func (__ *FuncWorker[Some, Other]) reset_queue() {
 	for i := 0; i < len(__.work_ch); i += 1 {
 		req := <-__.work_ch
-		rtn := __.pool.Return.Return.Pool.Get()
+		rtn := __.pool.Return.Value.Get()
 		rtn.Error = fmt.Errorf("canceled by reset")
 		req.ReturnCh <- rtn
 	}
@@ -85,7 +79,7 @@ func (__ *FuncWorker[Some, Other]) Push(ctx context.Context, value Some, returnC
 	__.threads.Add(1)
 	defer __.threads.Done()
 
-	work_ctx := __.pool.Param.GetWiths(ctx, value, returnCh)
+	work_ctx := __.pool.Param.Pack(ctx, value, returnCh)
 	__.work_ch <- work_ctx
 }
 

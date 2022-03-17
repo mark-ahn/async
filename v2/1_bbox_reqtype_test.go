@@ -12,7 +12,7 @@ import (
 
 func TestBasic(t *testing.T) {
 	worker_ctx, stop_worker := context.WithCancel(context.Background())
-	var worker async.Worker[any, any] = async.NewChain(worker_ctx, new_square_brackets(), new_brackets())
+	var worker async.Worker[any, any] = async.NewWorkerChain(worker_ctx, new_square_brackets(), new_brackets())
 
 	_, value, err := async.CallAsSync(context.TODO(), "50", worker.Push)
 	if err != nil {
@@ -29,7 +29,7 @@ func TestBasic(t *testing.T) {
 
 func push(ctx context.Context, value interface{}, rtnCh chan<- *async.Return[any]) *async.WorkContext[any, any] {
 	pool := async.PoolOf[any, any]()
-	return pool.Param.WorkContext.Pool.GetWith(ctx, pool.Param.Work.Pool.GetWith(value, rtnCh))
+	return pool.Param.WorkContext.Pack(ctx, pool.Param.Work.Pack(value, rtnCh))
 }
 
 func TestAsyncLogic(t *testing.T) {
@@ -41,11 +41,11 @@ func TestAsyncLogic(t *testing.T) {
 
 	requests := make(chan *async.WorkContext[any, any], 2)
 	go func() {
-		squared := pool.Return.ChanReturn.Pool.Get()
-		rounded := pool.Return.ChanReturn.Pool.Get()
+		squared := pool.Return.Chan.Get()
+		rounded := pool.Return.Chan.Get()
 		defer func() {
-			pool.Return.ChanReturn.Pool.Put(squared)
-			pool.Return.ChanReturn.Pool.Put(rounded)
+			pool.Return.Chan.Put(squared)
+			pool.Return.Chan.Put(rounded)
 			fmt.Println("exit thread")
 		}()
 	loop:
@@ -54,7 +54,7 @@ func TestAsyncLogic(t *testing.T) {
 			case request := <-requests:
 				func() {
 					ctx, value, returnCh := request.Unpack()
-					defer pool.Param.WorkContext.Pool.Put(request)
+					defer pool.Param.WorkContext.Put(request)
 					ctx = pool.Return.WithStack(ctx, 2)
 					pool.Return.Push(ctx, returnCh)
 					square.Push(ctx, value, squared)
@@ -65,7 +65,7 @@ func TestAsyncLogic(t *testing.T) {
 					pool.Return.Notify(ctx, square)
 					continue
 				}
-				pool.Return.Return.Pool.Put(square)
+				pool.Return.Value.Put(square)
 				round.Push(ctx, value, rounded)
 			case round := <-rounded:
 				ctx, _, err := round.Unpack()
@@ -83,7 +83,7 @@ func TestAsyncLogic(t *testing.T) {
 	}()
 
 	expect := "([50])"
-	rtn_ch := pool.Return.ChanReturn.Pool.Get()
+	rtn_ch := pool.Return.Chan.Get()
 	// requests <- async.InterfaceToInterface.GetWorkContextWith(context.TODO(), async.InterfaceToInterface.GetWorkWith("50", rtn_ch))
 	requests <- push(context.TODO(), "50", rtn_ch)
 	rtn := <-rtn_ch
