@@ -42,7 +42,7 @@ func (__ *pool_work[In, Out]) Put(d *Work[In, Out]) {
 	__.pool().Put(d)
 }
 
-func (__ pool_work[In, Out]) Pack(value In, returnCh chan<- *Return[Out]) *Work[In, Out] {
+func (__ *pool_work[In, Out]) Pack(value In, returnCh chan<- *Return[Out]) *Work[In, Out] {
 	work := __.Get()
 	work.Value = value
 	work.ReturnCh = returnCh
@@ -87,20 +87,20 @@ func NewParamPoolSet[In any, Out any]() *ParamPoolSet[In, Out] {
 type ParamPoolSet[In any, Out any] struct {
 	Work        *pool_work[In, Out]
 	WorkContext *pool_work_context[In, Out]
-	FuncWorker  func_worker[In, Out]
+	// FuncWorker  func_worker[In, Out]
 }
 
-func (__ ParamPoolSet[In, Out]) Pack(ctx context.Context, value In, returnCh chan<- *Return[Out]) *WorkContext[In, Out] {
+func (__ *ParamPoolSet[In, Out]) Pack(ctx context.Context, value In, returnCh chan<- *Return[Out]) *WorkContext[In, Out] {
 	return __.WorkContext.Pack(ctx, __.Work.Pack(value, returnCh))
 }
 
-func (__ ParamPoolSet[In, Out]) Collect(d *WorkContext[In, Out]) (context.Context, In, chan<- *Return[Out]) {
+func (__ *ParamPoolSet[In, Out]) Collect(d *WorkContext[In, Out]) (context.Context, In, chan<- *Return[Out]) {
 	ctx, value, rtn_ch := d.Unpack()
 	__.puts(d)
 	return ctx, value, rtn_ch
 }
 
-func (__ ParamPoolSet[In, Out]) puts(d *WorkContext[In, Out]) {
+func (__ *ParamPoolSet[In, Out]) puts(d *WorkContext[In, Out]) {
 	__.Work.Put(d.Work)
 	__.WorkContext.Put(d)
 }
