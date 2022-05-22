@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/mark-ahn/async"
+	"github.com/mark-ahn/async/v0"
 )
 
 type worker interface {

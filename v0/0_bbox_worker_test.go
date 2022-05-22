@@ -6,7 +6,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/mark-ahn/async"
+	"github.com/mark-ahn/async/v0"
 )
 
 type some_worker struct {
